@@ -1,0 +1,167 @@
+firebase.initializeApp({
+    apiKey: "AIzaSyCPxvJ5OdAS0J_qb0Ma0HTQzrexo0fE5B0",
+    authDomain: "wholexale-44b57.firebaseapp.com",
+    projectId: "wholexale-44b57",
+    storageBucket: "wholexale-44b57.firebasestorage.app",
+    messagingSenderId: "979912551095",
+    appId: "1:979912551095:web:670d6133cf504244af7b32",
+});
+
+const messaging = firebase.messaging();
+
+// Foreground message handler
+messaging.onMessage((payload) => {
+    console.log("Foreground message received:", payload);
+    
+    // Log the complete payload structure
+    if (payload.data) {
+        console.log("Data payload:", payload.data);
+        console.log("Image from data:", payload.data.image);
+        console.log("Click action from data:", payload.data.click_action);
+    }
+    
+    const notificationTitle = payload.notification?.title || payload.data?.title || "New Notification";
+    const notificationBody = payload.notification?.body || payload.data?.body || "";
+    
+    // Get image and click URL from data payload
+    const notificationImage = payload.data?.image;
+    const clickUrl = payload.data?.click_action || payload.data?.url || '/';
+    
+    console.log("=== Notification Details ===");
+    console.log("Title:", notificationTitle);
+    console.log("Body:", notificationBody);
+    console.log("Image URL:", notificationImage);
+    console.log("Click URL:", clickUrl);
+    console.log("==========================");
+    
+    // Show browser notification with image
+    if (Notification.permission === "granted") {
+        const options = {
+            body: notificationBody,
+            icon: "/icons/icon-192x192.png",
+            badge: "/icons/icon-72x72.png",
+            data: { 
+                url: clickUrl,
+                ...payload.data 
+            },
+            tag: 'notification-' + Date.now(),
+            requireInteraction: false,
+            vibrate: [200, 100, 200]
+        };
+        
+        // Add image if available
+        if (notificationImage) {
+            options.image = notificationImage;
+            console.log("✅ Image added to notification options");
+        } else {
+            console.log("❌ No image found in payload");
+        }
+        
+        console.log("Final notification options:", options);
+        
+        const notification = new Notification(notificationTitle, options);
+        
+        console.log("✅ Notification created successfully");
+        
+        // Handle notification click
+        notification.onclick = function(event) {
+            event.preventDefault();
+            console.log("🖱️ Notification clicked! Opening URL:", clickUrl);
+            
+            // Try to focus existing window first
+            if (window.focus) {
+                window.focus();
+            }
+            
+            // Navigate to the URL
+            if (clickUrl && clickUrl !== '/') {
+                window.location.href = clickUrl;
+            }
+            
+            notification.close();
+        };
+        
+        // Log when notification is shown
+        notification.onshow = function() {
+            console.log("📢 Notification is now visible to user");
+        };
+        
+        // Log if notification fails
+        notification.onerror = function(error) {
+            console.error("❌ Notification error:", error);
+        };
+        
+    } else {
+        console.log("❌ Notification permission not granted");
+        alert(notificationTitle + "\n" + notificationBody);
+    }
+});
+
+// Main function to enable notifications
+window.enableNotification = async function () {
+    try {
+        // Check if service worker is supported
+        if (!("serviceWorker" in navigator)) {
+            alert("Service workers are not supported in this browser.");
+            return;
+        }
+
+        // Wait for service worker to be ready
+        let registration;
+        try {
+            registration = await navigator.serviceWorker.ready;
+            console.log("Service Worker is ready:", registration);
+        } catch (error) {
+            console.error("Service Worker not ready:", error);
+            alert("Service Worker is not ready yet. Please refresh the page and try again.");
+            return;
+        }
+
+        // Request notification permission
+        const permission = await Notification.requestPermission();
+        console.log("Notification permission:", permission);
+
+        if (permission !== "granted") {
+            alert("You blocked notification permission. Please enable it in your browser settings.");
+            return;
+        }
+
+        // Get FCM token
+        console.log("Getting FCM token...");
+        const token = await messaging.getToken({
+            vapidKey: "BJoC3rkScqlfgfIBTroWKNeD9xF5FntB7-6bIjDyD6JYX0v3iQqkTHlFv-M4KasS42JUMxYPJ7MaHN91OFTQDcQ",
+            serviceWorkerRegistration: registration
+        });
+
+        console.log("FCM Token obtained:", token);
+
+        // Save token to server
+        const csrfToken = document.querySelector('meta[name="csrf-token"]');
+        if (!csrfToken) {
+            console.error("CSRF token not found");
+            alert("CSRF token missing. Please refresh the page.");
+            return;
+        }
+
+        const response = await fetch('/save-token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken.content,
+            },
+            body: JSON.stringify({ token }),
+        });
+
+        if (response.ok) {
+            alert("Notifications enabled successfully! 🎉");
+        } else {
+            const errorData = await response.json();
+            console.error("Failed to save token:", errorData);
+            alert("Failed to save notification token. Please try again.");
+        }
+
+    } catch (error) {
+        console.error("Error enabling notifications:", error);
+        alert("Error: " + error.message);
+    }
+};

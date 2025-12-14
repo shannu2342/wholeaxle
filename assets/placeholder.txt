@@ -1,0 +1,57 @@
+# Assets Directory
+
+This directory should contain the following image assets:
+
+## Required Images
+
+### Logo & Branding
+- `logo.png` - Main app logo (120x40px)
+- `icon.png` - App icon (1024x1024px)
+- `adaptive-icon.png` - Adaptive icon for Android
+- `splash.png` - Splash screen image
+- `favicon.png` - Web favicon
+
+### Banner Images
+- `banner1.jpg` - Main banner image (375x200px)
+- `banner2.jpg` - Secondary banner image (375x200px)
+
+### Category Icons
+- `clothing-category.jpg` - Clothing & Accessories category
+- `bottom-wear.jpg` - Bottom Wear category
+- `women-ethnic.jpg` - Women Ethnic category
+- `stoles.jpg` - Stoles & Scarfs category
+- `women-icon.png` - Women category icon (40x40px)
+- `men-icon.png` - Men category icon (40x40px)
+- `kids-icon.png` - Kids category icon (40x40px)
+
+### Subcategory Images
+- `bottom-wear.png` - Bottom wear subcategory (50x50px)
+- `women-ethnic.png` - Women ethnic subcategory (50x50px)
+- `dupatta.png` - Dupatta subcategory (50x50px)
+- `stoles.png` - Stoles subcategory (50x50px)
+
+### Product Images
+- `product1.jpg` - Product image 1 (400x400px)
+- `product2.jpg` - Product image 2 (400x400px)
+- `product3.jpg` - Product image 3 (400x400px)
+
+### Brand Images
+- `brand1.jpg` - Haajra Garments brand image (80x60px)
+
+### Section Icons
+- `palazzo-icon.png` - Palazzo section icon (40x40px)
+
+## Usage Instructions
+
+1. Add the actual image files to this directory
+2. Ensure proper naming convention
+3. Recommended image formats: PNG for icons, JPG for photos
+4. Optimize images for mobile (compress without losing quality)
+
+## Image Guidelines
+
+- Use high-quality images
+- Maintain consistent aspect ratios
+- Optimize for fast loading
+- Use appropriate file sizes (under 500KB per image)
+- Test images on both iOS and Android

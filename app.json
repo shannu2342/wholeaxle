@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Wholexale",
+    "slug": "wholexale-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": null,
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": null,
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wholexale.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": null,
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.wholexale.app"
+    },
+    "web": {
+      "favicon": null
+    },
+    "plugins": []
+  }
+}
