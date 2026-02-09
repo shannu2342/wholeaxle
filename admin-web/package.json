@@ -16,6 +16,9 @@
     "admin",
     "dashboard"
   ],
+  "engines": {
+    "node": "20.x"
+  },
   "author": "Wholexale Team",
   "license": "MIT",
   "dependencies": {
