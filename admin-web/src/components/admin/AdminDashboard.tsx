@@ -344,7 +344,7 @@ export default function AdminDashboard() {
                                         <div>
                                             <h3 className="font-medium">{app.brandName}</h3>
                                             <p className="text-sm text-muted-foreground">
-                                                Submitted: {new Date(app.submittedAt).toLocaleDateString()}
+                                                Submitted: {app.submittedAt ? new Date(app.submittedAt).toLocaleDateString() : "-"}
                                             </p>
                                         </div>
                                         <Badge variant={getStatusBadgeVariant(app.status)}>
