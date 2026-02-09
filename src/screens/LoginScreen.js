@@ -11,30 +11,34 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../constants/Colors';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../store/slices/authSlice';
 
-const LoginScreen = ({ navigation, onLogin }) => {
+const LoginScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const { isLoading, error } = useSelector((state) => state.auth || {});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [userType, setUserType] = useState('buyer'); // 'buyer' or 'seller'
+  const [selectedUserType, setSelectedUserType] = useState('buyer');
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       Alert.alert('Error', 'Please enter email and password');
       return;
     }
-    
-    // Mock login - in real app, this would call an API
-    const userData = {
-      id: 1,
-      name: userType === 'buyer' ? 'John Buyer' : 'Haajra Garments',
-      email: email,
-      userType: userType,
-      isLoggedIn: true,
-    };
-    
-    if (onLogin) {
-      onLogin(userData);
+
+    try {
+      await dispatch(
+        loginUser({
+          email,
+          password,
+          userType: selectedUserType,
+        })
+      ).unwrap();
+    } catch (error) {
+      const message = typeof error === 'string' ? error : error?.message;
+      Alert.alert('Login Failed', message || 'Unable to login. Please try again.');
     }
   };
 
@@ -48,53 +52,15 @@ const LoginScreen = ({ navigation, onLogin }) => {
           <Text style={styles.tagline}>India's B2B Multi Vendor Marketplace</Text>
         </View>
 
-        {/* User Type Toggle (matching HTML) */}
-        <View style={styles.userTypeContainer}>
-          <TouchableOpacity
-            style={[
-              styles.userTypeButton,
-              userType === 'buyer' && styles.userTypeButtonActive,
-            ]}
-            onPress={() => setUserType('buyer')}
-          >
-            <Text style={styles.userTypeEmoji}>🛒</Text>
-            <Text
-              style={[
-                styles.userTypeText,
-                userType === 'buyer' && styles.userTypeTextActive,
-              ]}
-            >
-              Buyer
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.userTypeButton,
-              userType === 'seller' && styles.userTypeButtonActive,
-            ]}
-            onPress={() => setUserType('seller')}
-          >
-            <Text style={styles.userTypeEmoji}>🏪</Text>
-            <Text
-              style={[
-                styles.userTypeText,
-                userType === 'seller' && styles.userTypeTextActive,
-              ]}
-            >
-              Seller
-            </Text>
-          </TouchableOpacity>
-        </View>
-
         {/* Login Form (matching HTML) */}
         <View style={styles.formContainer}>
           <Text style={styles.formTitle} id="login-title">
-            {userType === 'buyer' ? 'Buyer Login' : 'Seller Login'}
+            Login
           </Text>
 
           {/* Email Input (matching HTML) */}
           <View style={styles.inputContainer}>
-            <Text style={styles.inputIcon}>📧</Text>
+            <Icon name="envelope" size={18} color="#666" style={styles.inputIcon} />
             <TextInput
               style={styles.input}
               placeholder="Email Address"
@@ -107,7 +73,7 @@ const LoginScreen = ({ navigation, onLogin }) => {
 
           {/* Password Input (matching HTML) */}
           <View style={styles.inputContainer}>
-            <Text style={styles.inputIcon}>🔒</Text>
+            <Icon name="lock" size={18} color="#666" style={styles.inputIcon} />
             <TextInput
               style={styles.input}
               placeholder="Password"
@@ -116,7 +82,7 @@ const LoginScreen = ({ navigation, onLogin }) => {
               secureTextEntry={!showPassword}
             />
             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-              <Text style={styles.eyeIcon}>👁️</Text>
+              <Icon name={showPassword ? 'eye' : 'eye-slash'} size={18} color="#666" />
             </TouchableOpacity>
           </View>
 
@@ -125,9 +91,41 @@ const LoginScreen = ({ navigation, onLogin }) => {
             <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
           </TouchableOpacity>
 
+          {/* User Type Selector */}
+          <View style={styles.userTypeSection}>
+            <Text style={styles.userTypeLabel}>Login as</Text>
+            <View style={styles.userTypeOptions}>
+              {[
+                { value: 'buyer', label: 'Buyer' },
+                { value: 'seller', label: 'Seller' },
+                { value: 'admin', label: 'Admin' },
+              ].map((option) => (
+                <TouchableOpacity
+                  key={option.value}
+                  style={[
+                    styles.userTypeButton,
+                    selectedUserType === option.value && styles.userTypeButtonActive,
+                  ]}
+                  onPress={() => setSelectedUserType(option.value)}
+                >
+                  <Text
+                    style={[
+                      styles.userTypeButtonText,
+                      selectedUserType === option.value && styles.userTypeButtonTextActive,
+                    ]}
+                  >
+                    {option.label}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+
           {/* Login Button (matching HTML) */}
-          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-            <Text style={styles.loginButtonText}>Login</Text>
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogin} disabled={isLoading}>
+            <Text style={styles.loginButtonText}>
+              {isLoading ? 'Logging in...' : 'Login'}
+            </Text>
           </TouchableOpacity>
 
           {/* OR Divider (matching HTML) */}
@@ -146,14 +144,14 @@ const LoginScreen = ({ navigation, onLogin }) => {
               <Text style={styles.socialIcon}>f</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
-              <Text style={styles.socialIcon}>🍎</Text>
+              <Icon name="apple" size={18} color="#333" />
             </TouchableOpacity>
           </View>
 
           {/* Register Link (matching HTML) */}
           <View style={styles.registerContainer}>
             <Text style={styles.registerText}>Don't have an account? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Register', { userType })}>
+            <TouchableOpacity onPress={() => navigation.navigate('Register', { userType: selectedUserType })}>
               <Text style={styles.registerLink}>Register</Text>
             </TouchableOpacity>
           </View>
@@ -173,7 +171,7 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     paddingBottom: 40,
   },
-  
+
   // Logo (matching HTML)
   logoContainer: {
     alignItems: 'center',
@@ -190,40 +188,7 @@ const styles = StyleSheet.create({
     color: '#666',
     marginBottom: 30,
   },
-  
-  // User Type Toggle (matching HTML)
-  userTypeContainer: {
-    flexDirection: 'row',
-    borderWidth: 2,
-    borderColor: Colors.primary,
-    borderRadius: 10,
-    overflow: 'hidden',
-    marginBottom: 30,
-  },
-  userTypeButton: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 15,
-    backgroundColor: Colors.white,
-  },
-  userTypeButtonActive: {
-    backgroundColor: Colors.primary,
-  },
-  userTypeEmoji: {
-    fontSize: 20,
-    marginRight: 8,
-  },
-  userTypeText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: Colors.primary,
-  },
-  userTypeTextActive: {
-    color: Colors.white,
-  },
-  
+
   // Form Container (matching HTML)
   formContainer: {
     // marginBottom: 20,
@@ -235,7 +200,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333',
   },
-  
+
   // Input Containers (matching HTML)
   inputContainer: {
     flexDirection: 'row',
@@ -249,7 +214,6 @@ const styles = StyleSheet.create({
   },
   inputIcon: {
     marginRight: 10,
-    fontSize: 18,
   },
   input: {
     flex: 1,
@@ -261,7 +225,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#666',
   },
-  
+
   // Forgot Password (matching HTML)
   forgotPassword: {
     alignSelf: 'flex-end',
@@ -272,7 +236,43 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textDecorationLine: 'underline',
   },
-  
+
+  // User type selector
+  userTypeSection: {
+    marginBottom: 20,
+  },
+  userTypeLabel: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 10,
+  },
+  userTypeOptions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  userTypeButton: {
+    flex: 1,
+    paddingVertical: 10,
+    marginHorizontal: 4,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    backgroundColor: '#f9f9f9',
+    alignItems: 'center',
+  },
+  userTypeButtonActive: {
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary,
+  },
+  userTypeButtonText: {
+    fontSize: 14,
+    color: '#666',
+    fontWeight: '500',
+  },
+  userTypeButtonTextActive: {
+    color: '#fff',
+  },
+
   // Login Button (matching HTML)
   loginButton: {
     backgroundColor: Colors.primary,
@@ -286,7 +286,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
   },
-  
+
   // Divider (matching HTML)
   divider: {
     flexDirection: 'row',
@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
     color: '#666',
     fontSize: 14,
   },
-  
+
   // Social Login (matching HTML)
   socialContainer: {
     flexDirection: 'row',
@@ -325,7 +325,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#333',
   },
-  
+
   // Register Link (matching HTML)
   registerContainer: {
     flexDirection: 'row',

@@ -1,19 +1,19 @@
 import React from 'react';
 import {
   View,
-  ActivityIndicator,
   StyleSheet,
   Text,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import AppLogo from '../svg/AppLogo';
+import Loader from '../svg/Loader';
 
 const LoadingSpinner = ({ message = 'Loading...', showIcon = false }) => {
   return (
     <View style={styles.container}>
       {showIcon && (
-        <Icon name="shopping-bag" size={40} color="#0390F3" style={styles.icon} />
+        <AppLogo size={40} style={styles.icon} />
       )}
-      <ActivityIndicator size="large" color="#0390F3" style={styles.spinner} />
+      <Loader size={50} style={styles.spinner} />
       <Text style={styles.message}>{message}</Text>
     </View>
   );

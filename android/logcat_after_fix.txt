@@ -1,0 +1,811 @@
+--------- beginning of main
+01-23 00:39:13.235 I/CardService[1006152].CardDataChannelImpl(11979): [7&200001&0_sid=536870911_rk=8a79b8] requestEstablishCardObservable, cardConfig=DecisionCardConfig(serviceId=536870911, type=7, name=@2132018313, desc=@2132018309, size=1, packageName=com.coloros.assistantscreen, componentName=com.oplus.assistantscreen.stepprovider.provider.StepCardProvider, category=2, supportActiveUpdate=true, minActiveUpdateInterval=1, updatePriority=1, maxUpdateFrequency=1, protocol=1, instantCardUrl=, supportSuperChannel=false)
+01-23 00:39:13.236 I/Channel.Server[1000037].assistantscreen.IServerImpl(11979): createClientProxy,injectFactory<IClientPuller>,serverAuthority:com.oplus.cardservice.repository.provider.CardServiceServerProvider,clientName = [com.oplus.assistantscreen.stepprovider.provider.StepCardProvider], config = [ClientConfig(clientPackage='com.coloros.assistantscreen', providerAuthority='com.coloros.assistantscreen.stepprovider.provider.stepcardprovider', serviceComponent='com.oplus.assistantscreen.stepprovider.provider.StepCardProvider', aliveType=1, needNotify=false)]
+01-23 00:39:13.236 I/Channel.Server[1000037].assistantscreen.ServerChannel(11979): initChannelWithContext,factory<IClientPuller>
+01-23 00:39:13.237 I/Channel.Server[1000037].assistantscreen.ClientProxyImpl(n.stepprovider.provider.StepCardProvider)(11979): observe, businessTag=[7&200001&0_sid=536870911_rk=8a79b8], observeResStr=card:7&200001&0, this=229205325
+01-23 00:39:13.237 I/CardService[1006152].CardServiceImpl(11979): [100&200001&0_sid=536871100_rk=b1eb70] realEstablishCardObservable, card = null
+01-23 00:39:13.238 I/CardService[1006152].CardDataChannelImpl(11979): [100&200001&0_sid=536871100_rk=b1eb70] requestEstablishCardObservable, cardConfig=DecisionCardConfig(serviceId=536871100, type=100, name=@2132017572, desc=@2132017568, size=1, packageName=com.coloros.phonemanager, componentName=com.coloros.phonemanager.idleoptimize.CardDataProvider, category=2, supportActiveUpdate=true, minActiveUpdateInterval=1, updatePriority=1, maxUpdateFrequency=1, protocol=1, instantCardUrl=, supportSuperChannel=false)
+01-23 00:39:13.239 I/Channel.Server[1000037].assistantscreen.IServerImpl(11979): createClientProxy,injectFactory<IClientPuller>,serverAuthority:com.oplus.cardservice.repository.provider.CardServiceServerProvider,clientName = [com.coloros.phonemanager.idleoptimize.CardDataProvider], config = [ClientConfig(clientPackage='com.coloros.phonemanager', providerAuthority='com.oplus.phonemanager.dataprovider', serviceComponent='com.coloros.phonemanager.idleoptimize.CardDataProvider', aliveType=1, needNotify=false)]
+01-23 00:39:13.239 I/Channel.Server[1000037].assistantscreen.ServerChannel(11979): initChannelWithContext,factory<IClientPuller>
+01-23 00:39:13.239 I/Channel.Server[1000037].assistantscreen.ClientProxyImpl(onemanager.idleoptimize.CardDataProvider)(11979): observe, businessTag=[100&200001&0_sid=536871100_rk=b1eb70], observeResStr=card:100&200001&0, this=167834899
+01-23 00:39:13.240 I/CardService[1006152].CardServiceImpl(11979): [77&200001&0_sid=268455940_rk=f1828e] realEstablishCardObservable, card = null
+01-23 00:39:13.240 I/CardService[1006152].CardDataChannelImpl(11979): [77&200001&0_sid=268455940_rk=f1828e] requestEstablishCardObservable, cardConfig=DecisionCardConfig(serviceId=268455940, type=77, name=@2132017554, desc=@2132017552, size=1, packageName=com.coloros.phonemanager, componentName=com.coloros.phonemanager.idleoptimize.CardDataProvider, category=2, supportActiveUpdate=true, minActiveUpdateInterval=1, updatePriority=1, maxUpdateFrequency=1, protocol=1, instantCardUrl=, supportSuperChannel=false)
+01-23 00:39:13.240 I/Channel.Server[1000037].assistantscreen.ClientProxyImpl(onemanager.idleoptimize.CardDataProvider)(11979): observe, businessTag=[77&200001&0_sid=268455940_rk=f1828e], observeResStr=card:77&200001&0, this=167834899
+01-23 00:39:13.241 I/CardService[1006152].CardServiceImpl(11979): [4&200001&0_sid=536871031_rk=59e706] realEstablishCardObservable, card = null
+01-23 00:39:13.241 I/CardService[1006152].CardDataChannelImpl(11979): [4&200001&0_sid=536871031_rk=59e706] requestEstablishCardObservable, cardConfig=DecisionCardConfig(serviceId=536871031, type=4, name=@2131821527, desc=@2131820605, size=1, packageName=com.coloros.note, componentName=com.nearme.note.cardwidget.provider.NoteCardWidgetProvider, category=2, supportActiveUpdate=false, minActiveUpdateInterval=1, updatePriority=1, maxUpdateFrequency=1, protocol=1, instantCardUrl=, supportSuperChannel=false)
+01-23 00:39:13.242 I/Channel.Server[1000037].assistantscreen.IServerImpl(11979): createClientProxy,injectFactory<IClientPuller>,serverAuthority:com.oplus.cardservice.repository.provider.CardServiceServerProvider,clientName = [com.nearme.note.cardwidget.provider.NoteCardWidgetProvider], config = [ClientConfig(clientPackage='com.coloros.note', providerAuthority='com.oplus.note.cardwidget', serviceComponent='com.nearme.note.cardwidget.provider.NoteCardWidgetProvider', aliveType=1, needNotify=false)]
+01-23 00:39:13.243 I/Channel.Server[1000037].assistantscreen.ServerChannel(11979): initChannelWithContext,factory<IClientPuller>
+01-23 00:39:13.243 I/Channel.Server[1000037].assistantscreen.ClientProxyImpl(rdwidget.provider.NoteCardWidgetProvider)(11979): observe, businessTag=[4&200001&0_sid=536871031_rk=59e706], observeResStr=card:4&200001&0, this=7248001
+01-23 00:39:13.243 I/CardService[1006152].CardServiceImpl(11979): [69&200001&0_sid=536871069_rk=3e4911] realEstablishCardObservable, card = null
+01-23 00:39:13.244 I/CardService[1006152].CardDataChannelImpl(11979): [69&200001&0_sid=536871069_rk=3e4911] requestEstablishCardObservable, cardConfig=DecisionCardConfig(serviceId=536871069, type=69, name=@2131820697, desc=@2131820662, size=1, packageName=com.coloros.alarmclock, componentName=com.coloros.refusedesktop.DialClockWidgetProvider, category=2, supportActiveUpdate=false, minActiveUpdateInterval=1, updatePriority=1, maxUpdateFrequency=1, protocol=1, instantCardUrl=, supportSuperChannel=false)
+01-23 00:39:13.245 I/Channel.Server[1000037].assistantscreen.IServerImpl(11979): createClientProxy,injectFactory<IClientPuller>,serverAuthority:com.oplus.cardservice.repository.provider.CardServiceServerProvider,clientName = [com.coloros.refusedesktop.DialClockWidgetProvider], config = [ClientConfig(clientPackage='com.coloros.alarmclock', providerAuthority='com.coloros.alarmclock.provider.dialclock', serviceComponent='com.coloros.refusedesktop.DialClockWidgetProvider', aliveType=1, needNotify=false)]
+01-23 00:39:13.245 I/Channel.Server[1000037].assistantscreen.ServerChannel(11979): initChannelWithContext,factory<IClientPuller>
+01-23 00:39:13.246 I/Channel.Server[1000037].assistantscreen.ClientProxyImpl(os.refusedesktop.DialClockWidgetProvider)(11979): observe, businessTag=[69&200001&0_sid=536871069_rk=3e4911], observeResStr=card:69&200001&0, this=70366996
+01-23 00:39:13.249 D/AppDelegatorImpl(12076): a.a.a.xl:onAppCreate 69
+01-23 00:39:13.249 I/Application(12076): com.nearme.instant.platform:provider onCreate end use: 123
+01-23 00:39:13.249 I/Application(12076): com.nearme.instant.platform:provider version :9.10.1 91004 SDK_INI: 33
+01-23 00:39:13.250 D/OplusActivityManager(12076): get AMS extension: android.os.BinderProxy@6f00c4e
+01-23 00:39:13.251 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.251 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.251 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.251 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.251 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.251 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.251 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.251 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.251 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.251 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.251 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.252 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.252 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.252 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.252 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.252 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.252 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.252 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.252 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.252 W/System.err(12076): 	... 10 more
+01-23 00:39:13.253 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.253 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.253 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.253 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.253 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.253 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.253 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.253 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.253 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.253 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.253 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.253 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.254 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.254 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.254 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.254 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.254 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.254 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.254 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.254 W/System.err(12076): 	... 10 more
+01-23 00:39:13.255 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.255 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.255 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.255 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.255 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.255 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.255 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.255 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.255 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.255 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.255 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.255 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.255 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.255 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.255 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.255 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.255 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.256 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.256 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.256 W/System.err(12076): 	... 10 more
+01-23 00:39:13.257 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.257 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.257 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.257 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.257 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.257 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.257 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.257 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.257 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.257 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.257 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.257 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.257 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.257 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.257 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.257 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.257 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.257 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.257 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.257 W/System.err(12076): 	... 10 more
+01-23 00:39:13.259 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.259 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.259 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.259 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.259 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.259 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.259 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.259 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.259 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.259 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.259 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.259 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.259 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.259 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.259 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.259 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.259 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.259 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.259 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.259 W/System.err(12076): 	... 10 more
+01-23 00:39:13.261 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.261 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.261 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.261 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.261 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.261 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.261 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.261 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.261 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.261 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.262 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.262 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.262 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.262 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.262 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.262 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.262 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.262 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.262 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.262 W/System.err(12076): 	... 10 more
+01-23 00:39:13.265 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.265 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.265 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.265 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.265 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.265 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.265 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.265 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.265 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.265 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.265 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.265 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.265 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.265 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.265 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.265 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.265 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.265 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.265 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.265 W/System.err(12076): 	... 10 more
+01-23 00:39:13.267 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.268 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.268 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.268 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.268 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.268 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.268 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.268 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.268 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.268 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.268 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.268 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.268 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.268 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.268 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.268 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.268 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.268 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.268 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.268 W/System.err(12076): 	... 10 more
+01-23 00:39:13.269 W/NearX.CloudConfig(mdp_241).ConfigState(11953): onConfig loading failed.. [weather_ui_host, 2] -> -5(message:java.lang.IllegalArgumentException: 配置项已存在。)
+01-23 00:39:13.270 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.270 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.270 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.270 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.270 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.270 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.270 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.270 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.270 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.270 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.270 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.270 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.270 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.270 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.270 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.270 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.270 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.270 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.270 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.270 W/System.err(12076): 	... 10 more
+01-23 00:39:13.270 E/AppFeatureProviderUtils(11979): getBoolean: getStringForFeature return null
+01-23 00:39:13.271 I/CardConfig.AtomMonitor(11979): trackEventScanCard state: 1, cardType: 3, count: 0, costTime: 0
+01-23 00:39:13.271 I/CardConfig.AtomMonitor(11979): trackEventDownload export not supported
+01-23 00:39:13.271 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.271 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.271 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.271 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.271 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.271 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.271 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.271 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.272 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.272 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.272 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.272 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.272 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.272 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.272 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.272 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.272 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.272 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.272 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.272 W/System.err(12076): 	... 10 more
+--------- beginning of system
+01-23 00:39:13.272 E/ActivityThread(11979): Failed to find provider info for com.oplus.pantanal.ums.statictis
+01-23 00:39:13.273 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.273 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.273 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.273 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.273 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.273 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.273 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.273 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.273 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.273 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.273 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.273 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.273 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.273 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.273 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.273 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.273 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.273 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.273 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.273 W/System.err(12076): 	... 10 more
+01-23 00:39:13.274 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.274 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.275 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.275 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.276 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.276 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.276 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.276 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.276 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.276 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.276 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.276 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.276 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.276 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.276 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.276 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.276 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.276 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.276 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.276 W/System.err(12076): 	... 10 more
+01-23 00:39:13.278 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.278 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.278 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.278 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.278 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.278 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.278 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.278 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.278 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.278 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.278 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.278 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.278 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.278 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.278 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.278 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.278 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.278 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.278 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.278 W/System.err(12076): 	... 10 more
+01-23 00:39:13.279 I/CardService[1006152].LauncherConfigurationPolicy(11979): observe invoke card config callback, observeResStr:card_config_change_to_launcher
+01-23 00:39:13.279 I/CardService[1006152].AssistantConfigurationPolicy(11979): observe invoke card config callback, observeResStr:card_config_change
+01-23 00:39:13.279 I/Channel.Client[1000037].assistantscreen.ClientProxy.card_service_launcher(11979): processObserve resUri=card_config_change_to_launcher, size is: 11681
+01-23 00:39:13.280 W/System.err(12076): java.lang.reflect.InvocationTargetException
+01-23 00:39:13.280 W/System.err(12076): 	at java.lang.reflect.Method.invoke(Native Method)
+01-23 00:39:13.280 W/System.err(12076): 	at a.a.a.o36.d(SourceFile:24)
+01-23 00:39:13.280 W/System.err(12076): 	at a.a.a.o36.c(SourceFile:57)
+01-23 00:39:13.280 W/System.err(12076): 	at a.a.a.xl.g(SourceFile:13)
+01-23 00:39:13.280 W/System.err(12076): 	at a.a.a.fn.q(SourceFile:10)
+01-23 00:39:13.280 W/System.err(12076): 	at a.a.a.fn.o(Unknown Source:0)
+01-23 00:39:13.280 W/System.err(12076): 	at a.a.a.cn.run(Unknown Source:2)
+01-23 00:39:13.280 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1154)
+01-23 00:39:13.280 W/System.err(12076): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:652)
+01-23 00:39:13.280 W/System.err(12076): 	at java.lang.Thread.run(Thread.java:1563)
+01-23 00:39:13.280 W/System.err(12076): Caused by: java.lang.SecurityException: grantRuntimePermission: Neither user 10012 nor current process has android.permission.GRANT_RUNTIME_PERMISSIONS.
+01-23 00:39:13.280 W/System.err(12076): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3062)
+01-23 00:39:13.280 W/System.err(12076): 	at android.os.Parcel.createException(Parcel.java:3046)
+01-23 00:39:13.280 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:3029)
+01-23 00:39:13.280 W/System.err(12076): 	at android.os.Parcel.readException(Parcel.java:2971)
+01-23 00:39:13.280 W/System.err(12076): 	at android.permission.IPermissionManager$Stub$Proxy.grantRuntimePermission(IPermissionManager.java:947)
+01-23 00:39:13.280 W/System.err(12076): 	at android.permission.PermissionManager.grantRuntimePermission(PermissionManager.java:598)
+01-23 00:39:13.280 W/System.err(12076): 	at android.app.ApplicationPackageManager.grantRuntimePermission(ApplicationPackageManager.java:918)
+01-23 00:39:13.280 W/System.err(12076): 	... 10 more
+01-23 00:39:13.280 D/AppDelegatorImpl(12076): a.a.a.xl:onAppCreate 31
+01-23 00:39:13.280 I/Channel.Client[1000037].assistantscreen.ClientProxy.card_service(11979): processObserve resUri=card_config_change, size is: 1966
+01-23 00:39:13.281 D/DataChannel.ClientProxyImpl( 2623): runCallback callbackId = [card_config_change_to_launcher], data = [[B@1668501], isOnceCallback = [false]
+01-23 00:39:13.281 I/PantaCard.AST.CardServerProvider( 4044):  call provider:com.oplus.card.server.provider, method = callback, args = card_service,extraBundle = Bundle[mParcelledData.dataSize=2120][sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.281 I/Channel.Server[1000037].assistantscreen.ChannelServerProvider( 4044): call, method=[callback], clientName=[card_service], resultCallBackId=[card_config_change]
+01-23 00:39:13.282 I/Channel.Server[1000037].assistantscreen.IServerImpl( 4044): runCallback, clientName=card_service, clientProxy=com.oplus.channel.server.ClientProxyImpl@e322a5b
+01-23 00:39:13.282 I/Channel.Server[1000037].assistantscreen.ClientProxyImpl(card_service)( 4044): runCallback, callbackId=[card_config_change], isOnceCallback=[false], this=238168667
+01-23 00:39:13.282 I/PantaCard.AST.CardConfigProxy( 4044):  received card config change from CardService,CardConfigChange Callback called for [assistantscreen,type=1,hostId=0],old size = 31[sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.283 I/PantaCard.AST.CompressHelper( 4044):  decompressData old size=1966, new size=11681,const time=1ms[sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.284 I/PantaCard.AST.CardConfigProxy( 4044):  Notify card change to entrance:[assistantscreen,type=1,hostId=0],total size:31,cardConfigResultStatus = 1,cardConfigs:[sid:536870913-type:222220132, sid:536871003-type:222220034, sid:536871003-type:222220035, sid:536870911-type:7, sid:536871018-type:32, sid:268455939-type:75, sid:268455940-type:77, sid:536871100-type:100, sid:536871037-type:222220037, sid:536871037-type:222220038, sid:536871206-type:206, sid:536871206-type:207, sid:536871206-type:208, sid:536871207-type:222220043, sid:536871207-type:222220044, sid:536871207-type:222220045, sid:536871003-type:2, sid:536871031-type:4, sid:536871031-type:222220030, sid:536871031-type:222220031, sid:536871069-type:69, sid:536871069-type:222220017, sid:536871045-type:777770015, sid:536871027-type:777770017, sid:536871044-type:777770014, sid:536871012-type:777770012, sid:536871016-type:777770016, sid:536871090-type:222220090, sid:536870119-type:222220119, sid:536870119-type:222220120, sid:536871142-type:222220124][sdk:v1.3.100-ceef8c0,app:v
+01-23 00:39:13.284 I/PantaCard.AST.CardConfigProxy( 4044): 16.19.31]
+01-23 00:39:13.285 I/PantaCard.AST.BaseTrackEvent( 4044):  entranceType:1 pantanl_card_config_update reportEvent infoMap : {process_detail=2026-01-23 00:39:13:282[1450-1451-1452], start_time=1769108953282, configs=[222220132  222220034  222220035  7  32  75  77  100  222220037  222220038  206  207  208  222220043  222220044  222220045  2  4  222220030  222220031  69  222220017  777770015  777770017  777770014  777770012  777770016  222220090  222220119  222220120  222220124], config_size=31, package_name=com.coloros.assistantscreen, trigger_mode=ums_notify, entrance_type=1, callback_size=0, panta_sdk_hash=[sdk:v1.3.100-ceef8c0], entrance_name=assistantscreen, old_config_size=31}[sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.286 I/PantaCard.AST.CardConfigProxy( 4044):  notifyAllObservers,cnt of v1 observers = 0,cnt of v2 observers = 1[sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.286 I/TrackUtil( 4044): get MetaValue key: isSupportTrackBatchSubmit
+01-23 00:39:13.286 I/PantaCard.AST.CardConfigProxy( 4044):  notifyAllObservers,Call CardConfigChangeCallback v2 da.e@20f473a for [assistantscreen,type=1,hostId=0], config size:31[sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.287 I/TrackUtil( 4044): getBooleanMetaValue:isSupportTrackBatchSubmit, error: com.oplus.pantanal.ums
+01-23 00:39:13.287 I/TrackUtil( 4044): isSupportBatchSubmit: false
+01-23 00:39:13.287 W/PantaCard.AST.STraceUtils( 4044):  traceBegin error:java.lang.NoSuchFieldError: No field TRACE_TAG_VIEW of type J in class Lcom/oplus/wrapper/os/Trace; or its superclasses (declaration of 'com.oplus.wrapper.os.Trace' appears in /system/framework/oplus-framework.jar)[sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.287 I/AstScreen.ConfigurationManagerProxy( 4044): cardConfigStatus: 1, currentCardConfigStatus: 1
+01-23 00:39:13.288 E/ActivityThread( 4044): Failed to find provider info for com.oplus.pantanal.ums.track
+01-23 00:39:13.288 D/PantaCard.AST.StatisticsTrackUtil( 4044):  uploadTechTrack success, eventId: pantanl_card_config_update, mutableMap: {process_detail=2026-01-23 00:39:13:282[1450-1451-1452], start_time=1769108953282, configs=[222220132  222220034  222220035  7  32  75  77  100  222220037  222220038  206  207  208  222220043  222220044  222220045  2  4  222220030  222220031  69  222220017  777770015  777770017  777770014  777770012  777770016  222220090  222220119  222220120  222220124], config_size=31, package_name=com.coloros.assistantscreen, trigger_mode=ums_notify, entrance_type=1, callback_size=0, panta_sdk_hash=[sdk:v1.3.100-ceef8c0], entrance_name=assistantscreen, old_config_size=31, upload_timestamp=1769108953286}[sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.288 I/AstScreen.CardConfigDataSource( 4044): observeCardConfigsChange success initCardConfigJob isActive:false getResultDataSize:26
+01-23 00:39:13.289 W/PantaCard.AST.STraceUtils( 4044):  traceEnd error:java.lang.NoSuchFieldError: No field TRACE_TAG_VIEW of type J in class Lcom/oplus/wrapper/os/Trace; or its superclasses (declaration of 'com.oplus.wrapper.os.Trace' appears in /system/framework/oplus-framework.jar)[sdk:v1.3.100-ceef8c0,app:v16.19.31]
+01-23 00:39:13.289 I/AstScreen.CardConfigDataSource( 4044): updateCardConfigFromUMS
+01-23 00:39:13.289 I/AstScreen.CardConfigDataSource( 4044): updateCardConfigFromUMS origin size = 26
+01-23 00:39:13.289 I/AstScreen.SpecificCardRepository( 4044): onCardConfigChange---list: []
+01-23 00:39:13.289 I/AstScreen.SpecificCardRepository( 4044): from=card_config
+01-23 00:39:13.291 I/AstScreen.RepeatCardFilter( 4044): filterForRecommendAllData cardList before: [2, 7, 100, 77, 4, 69]
+01-23 00:39:13.292 I/AstScreen.RepeatCardFilter( 4044): filterForRecommendAllData cardList after: [2, 7, 100, 77, 4, 69]
+01-23 00:39:13.293 I/AstScreen.MigrateDataLimitManager( 4044): updateRecommendPageData, firstPageList.cardType=[2, 7, 100, 77, 4, 69], secondPageList.cardType=[]
+01-23 00:39:13.293 D/LauncherCard( 2623): toListCardConfigInfo list.size = 31
+01-23 00:39:13.293 I/AstScreen.RecommendManager( 4044): filterAndPublishData---filteredData:[2, 7, 100, 77, 4, 69], allDataCacheAfterFilter:[2, 7, 100, 77, 4, 69], discardListRecord:[28, 200767, 1], reasons:[1, 1, 1], processedData：[2, 7, 100, 77, 4, 69], firstPageList=[2, 7, 100, 77, 4, 69], secondPageList=[]
+01-23 00:39:13.293 I/AstScreen.RepeatCardFilter( 4044): filtered[2, 7, 100, 77, 4, 69]
+01-23 00:39:13.294 D/LauncherCard( 2623): onCardConfigChange list.size--:31, cardConfigMap size =31
+01-23 00:39:13.294 I/AstScreen.RecommendManager( 4044): updateRecommendFirstPageCacheData filteredData:[2, 7, 100, 77, 4, 69]
+01-23 00:39:13.295 I/AstScreen.RecommendViewModel( 4044): updateRecommendCardListReal true list:[(-20001, null), (2, null), (7, null), (100, null), (77, null), (4, null), (69, null)]
+01-23 00:39:13.295 I/AstScreen.AsyncCardDisplayManager( 4044): preloadAndNotifyData DISPLAY_SOURCE_RECOMMEND data update，preloadCard [-10005, -10006, -20001, 2, 7, 100, 77, 4, 69]
+01-23 00:39:13.295 I/AstScreen.AsyncCardDisplayManager( 4044): preloadAndNotifyData DISPLAY_SOURCE_RECOMMEND processAsyncProgram:true;update originDataList: [-20001, 2, 7, 100, 77, 4, 69]
+01-23 00:39:13.296 I/AstScreen.CardViewPreloader( 4044): preloadPersistList, hash = 218074586, true
+01-23 00:39:13.297 I/AstScreen.CardViewPreloader( 4044): releasePreloadCardByIdentify destroyCard []
+01-23 00:39:13.297 I/AstScreen.CardViewPreloader( 4044): post invoke, hash = 218074586, AfterAction = interface kotlin.jvm.functions.Function0
+01-23 00:39:13.297 I/AstScreen.RecommendViewModel( 4044): getIgnoreAsyncList:[]
+01-23 00:39:13.297 I/AstScreen.AsyncCardDisplayManager( 4044): DISPLAY_SOURCE_RECOMMEND async update to [-20001, 2, 7, 100, 77, 4, 69]
+01-23 00:39:13.297 I/AstScreen.AsyncLoadTracker( 4044): updateAsyncData DISPLAY_SOURCE_RECOMMEND to ([-20001, 2, 7, 100, 77, 4, 69], [], [])
+01-23 00:39:13.297 I/AstScreen.AsyncCardDisplayManager( 4044): preloadAndNotifyData DISPLAY_SOURCE_RECOMMEND notify [-20001, 2, 7, 100, 77, 4, 69]
+01-23 00:39:13.298 W/AstScreen.AsyncCardDisplayManager( 4044): DISPLAY_SOURCE_RECOMMEND try update, but data not update
+01-23 00:39:13.300 I/CardConfig.AtomMonitor(11979): trackEventScanCard state: 2, cardType: 3, count: 68, costTime: 29
+01-23 00:39:13.300 I/CardConfig.AtomMonitor(11979): trackEventDownload export not supported
+01-23 00:39:13.300 I/AstScreen.RecommendDiskLruCache( 4044): write cache_data_real_display
+01-23 00:39:13.300 I/CardConfig.AppWidgetProviderInfoRepository(11979): initLocalAppWidgetProviderInfoCache, scanned:68
+01-23 00:39:13.301 I/CardConfig.OperationWidgetConfigRepository(11979): availableOperationWidgetConfig updated, size = 0, type = []
+01-23 00:39:13.301 I/AstScreen.RecommendDiskLruCache( 4044): write cache_first_page_data_display
+01-23 00:39:13.311 I/CardConfig.LoginManagerHelper(11979): getUserAgeLevel, classify:UN_LOGIN
+01-23 00:39:13.312 I/CardConfig.SeedingCardProviderProxy(11979): getLocalConfigCacheOrQuery, no local cards
+01-23 00:39:13.320 E/AppFeatureProviderUtils(11979): getBoolean: getStringForFeature return null
+01-23 00:39:13.324 I/CardConfig.StaticCardProviderProxy(11979): createdEntities(30): [222220034_101, 222220035_101, 7_101, 32_101, 75_101, 77_101, 100_101, 222220037_101, 222220038_101, 206_101, 207_101, 208_101, 222220043_101, 222220044_101, 222220045_101, 2_101, 4_101, 222220030_101, 222220031_101, 69_101, 222220017_101, 777770015_101, 777770017_101, 777770014_101, 777770012_101, 777770016_101, 222220090_101, 222220119_101, 222220120_101, 222220124_101]
+01-23 00:39:13.325 I/CardConfig.LoginManagerHelper(11979): getUserAgeLevel, classify:UN_LOGIN
+01-23 00:39:13.325 I/CardConfig.LoginManagerHelper(11979): getUserAgeLevel, classify:UN_LOGIN
+01-23 00:39:13.326 I/CardConfig.QuickAppCardProviderProxy(11979): createdEntities(1): [222220132_101]
+01-23 00:39:13.326 I/CardConfig.QuickAppUtils(11979): isShelfSupportQuickApp: true
+01-23 00:39:13.327 I/CardConfig.QuickAppCardProviderProxy(11979): sendDataCompat support preShow: true
+01-23 00:39:13.327 I/CardConfig.QuickAppCardProviderProxy(11979): sendDataCompat support compress: true
+01-23 00:39:13.334 E/ActivityThread(11979): Failed to find provider info for com.oplus.assistantscreen.card.quickapp.provider.QuickAppProvider
+01-23 00:39:13.335 I/CardConfig.CardConfigStatusHelper(11979): updateStatus cur: 1, newStatus: 1
+01-23 00:39:13.337 I/CardConfig.CardConfigStatusHelper(11979): updateStatus cur: 1, newStatus: 1
+01-23 00:39:13.338 I/CardConfig.SeedingCardProviderProxy(11979): updateCloudCardConfigsCache needDiscovery: true, discoveryErrorIds: []
+01-23 00:39:13.338 I/CardConfig.SeedingUtil(11979): [filterSubscribeSeedingCardConfig] export do not require filter
+01-23 00:39:13.339 I/CardConfig.SeedingCardProviderProxy(11979): createdEntities(0): []
+01-23 00:39:13.339 I/CardConfig.SeedingCardProviderProxy(11979): notifyDataChange elements equal, update nothing
+01-23 00:39:13.342 I/AstScreen.CardConfigDataSource( 4044): updateCardConfigFromUMS configInfoList after filtering assistantSize:21 launcherSize:19
+01-23 00:39:13.401 D/CompatibilityChangeReporter( 1748): Compat change id reported: 161252188; UID 10851; state: DISABLED
+01-23 00:39:13.402 I/ActivityTaskManager( 1748): START u0 {flg=0x10000000 cmp=com.wholexale.app.staging/com.wholexale.app.MainActivity mCallingUid=2000} from uid 2000
+01-23 00:39:13.403 I/mtkpower_client( 1748): perf_lock_rel, hdl:70628, tid:2280
+01-23 00:39:13.403 D/CompatibilityChangeReporter( 1748): Compat change id reported: 194480991; UID 10851; state: ENABLED
+01-23 00:39:13.404 I/mtkpower_client( 1748): perf_lock_acq, hdl:70628, dur:0, num:10, tid:2280
+01-23 00:39:13.404 I/libPowerHal(  859): [perfLockRel] hdl:70628, idx:0
+01-23 00:39:13.404 I/libPowerHal(  859): system_server: hard user limit set cpu freq: -1 -1 -1 -1
+01-23 00:39:13.404 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 00:39:13.405 D/OplusZoomWindowRUSConfigManager( 1748): isSupportZoomModeWithPolicyLocked: target = com.wholexale.app.staging/com.wholexale.app.MainActivity
+01-23 00:39:13.405 D/OplusZoomWindowRUSConfigManager( 1748): targetPkg = com.wholexale.app.staging
+01-23 00:39:13.405 V/OplusZoomWindowManagerService( 1748): unSupportZoom: false ,callingPid: 12279 ,sourceStack: null
+01-23 00:39:13.405 I/mtkpower@impl(  859): [setMode] type:5, enabled:1
+01-23 00:39:13.406 I/mtkpower_client( 1748): ret_hdl:70629
+01-23 00:39:13.406 D/ActivityTaskManager( 1748): onWindowFocusChanged Task{e60dcc4 #11666 type=standard A=10851:com.wholexale.app.staging U=0 visible=true visibleRequested=false mode=fullscreen translucent=true sz=1} would transfer to compact
+01-23 00:39:13.406 I/InputDispatcher( 1748): setFocusedApplication displayId=0 ActivityRecord{f7acf56 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11666}
+01-23 00:39:13.407 V/WindowManager( 1748): Changing focus from Window{578cf9b u0 com.android.launcher/com.android.launcher.Launcher} to null,diplayid=0
+01-23 00:39:13.407 D/Theia.NoFocusWindow( 1748): FocusWindowErrorScene CheckFreezeScreen
+01-23 00:39:13.407 I/mtkpower_client( 1748): perf_lock_rel, hdl:70629, tid:2280
+01-23 00:39:13.407 I/libPowerHal(  859): system_server: cpu_ctrl set cpu freq: 1275000 -1 2200000 -1
+01-23 00:39:13.408 D/ActivityTaskManager( 1748): getStartingWindowType: newTask=false, taskSwitch=true, processRunning=true, allowTaskSnapshot=false, activityCreated=true, snapshot=TaskSnapshot{ mId=1769108951583 mTopActivityComponent=com.wholexale.app.staging/com.wholexale.app.MainActivity mSnapshot=android.hardware.HardwareBuffer@b1d0c09 (1080x2400) mColorSpace=sRGB IEC61966-2.1 (id=0, model=RGB) mOrientation=1 mRotation=0 mTaskSize=Point(1080, 2400) mContentInsets=[0,110][0,0] mLetterboxInsets=[0,0][0,0] mIsLowResolution=false mIsRealSnapshot=true mWindowingMode=1 mAppearance=0 mIsTranslucent=false mHasImeSurface=false, record:ActivityRecord{f7acf56 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11666}
+01-23 00:39:13.408 I/libPowerHal(  859): LAUNCH: cpu_ctrl set cpu freq: 2000000 -1 2200000 -1
+01-23 00:39:13.410 I/libPowerHal(  859): [perfLockRel] hdl:70629, idx:0
+01-23 00:39:13.410 I/mtkpower_client( 1748): perf_lock_acq, hdl:70629, dur:0, num:10, tid:2280
+01-23 00:39:13.410 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-23 00:39:13.410 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-23 00:39:13.410 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 00:39:13.410 I/PowerHalWrapper( 1748): <amsBoostResume> last:com.android.launcher, next:com.wholexale.app.staging 
+01-23 00:39:13.411 I/mtkpower_client( 1748): ret_hdl:70631
+01-23 00:39:13.412 I/mtkpower_client( 1748): perf_lock_rel, hdl:70631, tid:2280
+01-23 00:39:13.412 I/mtkpower_client( 1748): perf_lock_acq, hdl:70631, dur:0, num:10, tid:2280
+01-23 00:39:13.412 I/libPowerHal(  859): [perfLockRel] hdl:70631, idx:0
+01-23 00:39:13.412 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-23 00:39:13.412 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-23 00:39:13.412 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 00:39:13.413 I/mtkpower_client( 1748): ret_hdl:70633
+01-23 00:39:13.414 D/CompatibilityChangeReporter( 1748): Compat change id reported: 194833441; UID 10851; state: ENABLED
+01-23 00:39:13.414 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-23 00:39:13.414 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 00:39:13.418 V/SensorManager( 1748): call sensorServiceCommonInterface name: setScreenShotDisable
+01-23 00:39:13.418 D/SensorService( 1748): SensorService sensorServiceCommonInterface = setScreenShotDisable
+01-23 00:39:13.418 D/SensorServiceExtImpl( 1748): sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+01-23 00:39:13.418 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-23 00:39:13.418 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 00:39:13.418 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 1
+01-23 00:39:13.418 I/OplusHansManager ( 1748): front pkg: com.wholexale.app.staging, uid: 10851, prev pkg: com.android.launcher, prev uid: 10106
+01-23 00:39:13.418 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-23 00:39:13.418 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 00:39:13.418 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 1
+01-23 00:39:13.419 I/OplusHansManager ( 1748): notifyAppGoForeground, uid=10851
+01-23 00:39:13.419 I/Osense-DecisionMaker( 1748): notifySceneToAthenaPolicy: SCENE_APP_SWITCH, bundle: Bundle[{prevPkgName=com.android.launcher, curUid=10851, curPkgName=com.wholexale.app.staging, prevUid=10106}]
+01-23 00:39:13.419 I/OplusHansManager ( 1748): notifyAppGoBackground, uid=10106
+01-23 00:39:13.419 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging R exit SM
+01-23 00:39:13.419 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging R exit(), R stay=1
+01-23 00:39:13.419 I/Osense-DecisionMaker( 1748): scene: SCENE_APP_SWITCH, excutingPolicy: freezer
+01-23 00:39:13.420 D/Osense-DecisionMaker( 1748): invoke freezer policy,type: fast
+01-23 00:39:13.420 D/VRI[MainActivity]( 1321): dispatchAppVisibility visible:true
+01-23 00:39:13.420 I/OplusResourcePreloadManager( 1748): resume pkg: com.wholexale.app.staging, uid:10851, prev pkg: com.android.launcher, prev uid: 10106
+01-23 00:39:13.421 I/OplusJoystickManager( 1748): handleApplicationSwitch deprecated!
+01-23 00:39:13.422 I/PowerHalWrapper( 1748): amsBoostNotify pid:1321,activity:com.wholexale.app.MainActivity, package:com.wholexale.app.staging, mProcessCreatePackcom.wholexale.app.staging 
+01-23 00:39:13.422 I/PowerHalWrapper( 1748): state: 1 
+01-23 00:39:13.422 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.wholexale.app.staging/com.wholexale.app.MainActivity pid=1321 state:1
+01-23 00:39:13.422 I/game_scn( 1748): collectForegroundAppList packName=com.wholexale.app.staging, actName=com.wholexale.app.MainActivity, pid=1321, uid=10851, state:RESUMED
+01-23 00:39:13.422 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:false 
+01-23 00:39:13.422 D/OplusAppSwitchListener( 1748): Detect com.android.launcher switch to background
+01-23 00:39:13.422 D/OplusEapManager( 1748): mTargetExitName :com.android.launcher
+01-23 00:39:13.423 V/DCSEX-AppSwitchManager( 1748): OnAppSwitchObserver: onAppExit, resuming = com.wholexale.app.staging, target = com.android.launcher, is ResumingFirstStart =  false, is ResumingMultiApp =  false, extensionInfo =  Bundle[{taskId=11666, uid=10851}]
+01-23 00:39:13.423 D/VRR [OPlusFrontAppManager]( 1748): OnAppSwitchObserver: onAppExit , info.targetName = com.android.launcher
+01-23 00:39:13.423 D/VRR [OPlusFrontAppManager]( 1748): packageName: null
+01-23 00:39:13.423 I/libPowerHal(  859): [perfNotifyAppState] foreground:com.wholexale.app.staging, pid:1321, uid:10851
+01-23 00:39:13.423 D/DCSEX-AppLaunchEventRecorder( 1748): onAppSwitch from = com.android.launcher to = com.wholexale.app.staging
+01-23 00:39:13.423 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging moveToTop:[]
+01-23 00:39:13.423 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 00:39:13.423 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging boost hint: 1321
+01-23 00:39:13.423 E/OplusThermalStats( 1748): Error getting package info: com.wholexale.app.staging
+01-23 00:39:13.423 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 0
+01-23 00:39:13.424 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging toForeOps: []
+01-23 00:39:13.424 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 00:39:13.424 E/UxUtility(  859): notifyAppState error = NULL
+01-23 00:39:13.424 I/TouchUtility(  859): notifyAppState error = NULL
+01-23 00:39:13.425 D/OplusAtlas.OplusAtlasEventDispatch( 3300): setEvent:atlas_event_on_foreground_activities_changed info:pid:1321,uid:10851,hasForegroundActivities:1
+01-23 00:39:13.426 D/OplusAtlas.OplusAudioScene( 3300): callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:1321,uid:10851,hasForegroundActivities:1
+01-23 00:39:13.426 D/OplusAtlas.OplusMessageHandler( 3300): handleMessage: Msg { when=0 what=2 obj=com.oplus.atlas.OplusAtlasEvent@8bdf3cd target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+01-23 00:39:13.426 D/VRR [OPlusRefreshRateService]( 1748): handleFrontAppChange pkgName: null
+01-23 00:39:13.426 D/VRR [OPlusExternalRefreshRateManager]( 1748): setFrontPackageName pkgName: null CurPkgName: com.android.launcher
+01-23 00:39:13.426 I/mtkpower@impl(  859): [notifyAppState] pc:0, com.android.launcher => com.wholexale.app.staging
+01-23 00:39:13.427 D/OplusUIFirst_FB( 1748): com.google.android.googlequicksearchbox moveToBack 12190
+01-23 00:39:13.427 D/TaskFragmentExtImpl( 1748): addColorModeOnResume resume=true pkg = com.wholexale.app.staging
+01-23 00:39:13.428 D/OplusUIFirst_FB( 1748): com.google.android.adservices.api moveToBack 8759
+01-23 00:39:13.428 E/Athena  ( 1748): MemoryGuardAction: handleAppChange
+01-23 00:39:13.428 V/DeepThinker( 5470): ProcessManager: onForegroundActivitiesChanged pid:1321, uid:10851, foregroundActivities:true
+01-23 00:39:13.429 D/OplusUIFirst_FB( 1748): com.coloros.assistantscreen moveToBack 4044
+01-23 00:39:13.430 D/OplusAppSwitchListener( 1748): Detect com.wholexale.app.staging switch to foreground
+01-23 00:39:13.431 D/OplusEapManager( 1748): mTargetEnterName :com.wholexale.app.staging
+01-23 00:39:13.431 D/OplusLatencyOptimizerManager( 1748): enter pkg: com.wholexale.app.staging isPrevBlackAppTop: false mIsBlackAppTop: false
+01-23 00:39:13.431 V/DCSEX-AppSwitchManager( 1748): OnAppSwitchObserver: onAppEnter, launchedFrom =  com.android.launcher, target =  com.wholexale.app.staging, is firstStart =  false, is multiApp =  false, extensionInfo =  Bundle[{taskId=11666, pid=1321, uid=10851, versionCode=1}]
+01-23 00:39:13.431 D/VRR [OPlusFrontAppManager]( 1748): OnAppSwitchObserver: onAppEnter , info.targetName = com.wholexale.app.staging
+01-23 00:39:13.431 D/VRR [OPlusFrontAppManager]( 1748): packageName: com.wholexale.app.staging
+01-23 00:39:13.431 D/VRR [OPlusRefreshRateService]( 1748): handleFrontAppChange pkgName: com.wholexale.app.staging
+01-23 00:39:13.431 D/VRR [OPlusExternalRefreshRateManager]( 1748): setFrontPackageName pkgName: com.wholexale.app.staging CurPkgName: null
+01-23 00:39:13.432 I/FocusResolver( 1748): updateFocusedWindow,  on display 0, reason: Waiting for window because NOT_FOCUSABLE, result:   FocusedWindows: <none>
+01-23 00:39:13.433 I/Athena  ( 2605): AthenaDynamicReceiver: pre_app:com.android.launcher, next_app:com.wholexale.app.staging(10851|1321)
+01-23 00:39:13.438 I/DeepThinker( 5470): IntentManager: onIntentProduced 1
+01-23 00:39:13.438 I/DeepThinker( 5470): IntentManager: dispatchIntents 1
+01-23 00:39:13.439 I/DeepThinker( 5470): EventFountainDispatcher: dispatchSpecificIntents 1
+01-23 00:39:13.439 I/DeepThinker( 5470): EventFountainDispatcher: dispatchSpecificIntents com.pantanal.action.APPS_LIST
+01-23 00:39:13.441 D/VRI[MainActivity]( 1321): setWindowStopped stopped:false
+01-23 00:39:13.444 W/Battery ( 4587): ThermalControlUtils: mForegroundPkg=com.wholexale.app.staging
+01-23 00:39:13.444 D/VRR [OPlusRefreshRateService]( 1748):  setFrameRateTargetControl [ 0.0 , com.android.launcher , false , com.oplus.battery ]
+01-23 00:39:13.444 D/VRR [OPlusRefreshRateService]( 1748):  setFrameRateTargetControl from [0, 1000, android.uid.system:1000]
+01-23 00:39:13.444 D/VRR [OPlusExternalRefreshRateManager]( 1748):  [FRTC] FrameRate : 0 com.android.launcher false com.oplus.battery 0 1000
+01-23 00:39:13.444 D/VRR [OPlusSurfaceFlingerController]( 1748):  add frtc FrameRate : 0 com.android.launcher false com.oplus.battery
+01-23 00:39:13.444 I/VRR [FRTC](  966): setFrameRateTarget with [0, com.android.launcher, 0, com.oplus.battery, 1, 0, 1000]
+01-23 00:39:13.445 W/VRR [FRTC](  966): invalid param { fps 0, proc_name com.android.launcher, strict_mode 0, description com.oplus.battery, proc_id 0, rate_status 0, backend Surface, version 1, pid 0, uid 1000, enable at 2026-01-23 00:39:13, disable waiting } for current status.
+01-23 00:39:13.445 W/VRR [FRTC](  966): CurrentTarget size 0:
+01-23 00:39:13.445 I/PowerHalWrapper( 1748): amsBoostNotify pid:2623,activity:com.android.launcher.Launcher, package:com.android.launcher, mProcessCreatePackcom.wholexale.app.staging 
+01-23 00:39:13.445 I/PowerHalWrapper( 1748): state: 0 
+01-23 00:39:13.445 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.android.launcher/com.android.launcher.Launcher pid=2623 state:0
+01-23 00:39:13.445 I/game_scn( 1748): collectForegroundAppList packName=com.android.launcher, actName=com.android.launcher.Launcher, pid=2623, uid=10106, state:PAUSED
+01-23 00:39:13.445 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:false 
+01-23 00:39:13.446 D/VRI[Launcher]( 2623): onFocusEvent false
+01-23 00:39:13.447 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 00:39:13.447 W/Battery ( 4587): ThermalControllHandler: tempLevel=7,userMode=3,gameUserMode=7,appType=-1,envTempType=1,appStates=[],appSwitchSafetyMode=false
+01-23 00:39:13.447 V/WindowManager( 1748): Relayout Window{1f2ff52 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=8, req=1080x2400
+01-23 00:39:13.447 W/Battery ( 4587): ThermalControllerCenter: mSafetyState=10000
+01-23 00:39:13.448 I/BufferQueueDebug(  966): [com.wholexale.app.staging/com.wholexale.app.MainActivity#27352](this:0xb4000070202ad9e8,id:-1,api:0,p:-1,c:-1) BufferQueue core=(966:/system/bin/surfaceflinger)
+01-23 00:39:13.450 W/Battery ( 4587): ThermalControllHandler: tempGear=7,configItemName=common_config
+01-23 00:39:13.451 D/OplusBatteryServiceFeature( 1748): setSmartCoolDown: coolDown = 3, normalCoolDown = 3, pkgName = com.wholexale.app.staging
+01-23 00:39:13.453 D/vendor.oplus.hardware.charger@1.0-service(  897): set cooldown:3,  normalCoolDown:3
+01-23 00:39:13.454 W/Battery ( 4587): ThermalControllHandler: MSG_THERMAL_CONTROL_CATEGORY_CHANGED
+01-23 00:39:13.454 V/WindowManager( 1748): Changing focus from null to Window{1f2ff52 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity},diplayid=0
+01-23 00:39:13.457 D/Theia.NoFocusWindow( 1748): FocusWindowErrorScene cancelCheckFreezeScreen
+01-23 00:39:13.459 D/[OSIE]  (  966): scltmLayer_name VRI[MainActivity][com.wholexale.app.staging/com.wholexale.app.MainActivity]
+01-23 00:39:13.459 D/[OSIE]  (  966): IsSCLTMLayer=0 
+01-23 00:39:13.459 D/BufferQueueConsumer( 1321): [](id:52900000002,api:0,p:-1,c:1321) connect: controlledByApp=false
+01-23 00:39:13.459 E/IPCThreadState( 1321): attemptIncStrongHandle(52): Not supported
+01-23 00:39:13.459 E/IPCThreadState( 1321): attemptIncStrongHandle(54): Not supported
+01-23 00:39:13.461 D/VRI[MainActivity]( 1321): registerCallbacksForSync syncBuffer=false
+01-23 00:39:13.463 D/Layer   (  966): reparent to null sequence=27344, seq[1], name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#27344
+01-23 00:39:13.464 D/Layer   (  966): reparent to null sequence=27345, seq[2], name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#27345
+01-23 00:39:13.464 D/OplusLayer(  966): ~Layer() sequence=27344, name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#27344
+01-23 00:39:13.464 D/OplusLayer(  966): ~Layer() sequence=27345, name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#27345
+01-23 00:39:13.467 D/BLASTBufferQueue( 1321): [VRI[MainActivity][com.wholexale.app.staging/com.wholexale.app.MainActivity]#2](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=104224388147827(auto) mPendingTransactions.size=0 graphicBufferId=5673651798032 transform=0
+01-23 00:39:13.468 D/VRI[MainActivity]( 1321): Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+01-23 00:39:13.468 D/VRI[MainActivity]( 1321): draw finished.
+01-23 00:39:13.468 D/WindowManager( 1748): finishDrawingWindow: Window{1f2ff52 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} mDrawState=DRAW_PENDING
+01-23 00:39:13.480 D/BufferStateLayer(  966): com.wholexale.app.staging/com.wholexale.app.MainActivity#27352 setBuffer frameId=1, bufferId=5673651798032 fenceId=888, w= 1080, h=2400
+01-23 00:39:13.480 D/OplusLayer(  966): (27352,com.wholexale.app.staging/com.wholexale.app.MainActivity#27352,com.wholexale.app.staging) setBuffer
+01-23 00:39:13.486 I/mtkpower@impl(  859): [setMode] type:5, enabled:0
+01-23 00:39:13.486 I/libPowerHal(  859): [perfLockRel] hdl:70630, idx:1
+01-23 00:39:13.487 I/PowerHalWrapper( 1748): amsBoostStop AMS_BOOST_PACK_SWITCH:true, AMS_BOOST_ACT_SWITCH:false, AMS_BOOST_PROCESS_CREATE:false 
+01-23 00:39:13.487 I/libPowerHal(  859): [perfLockRel] hdl:70632, idx:2
+01-23 00:39:13.487 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PACK_SWITCH update cmd:1000000, param:-1
+01-23 00:39:13.488 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PACK_SWITCH update cmd:1408300 param:0
+01-23 00:39:13.488 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PACK_SWITCH update cmd:1000000 param:-1
+01-23 00:39:13.515 I/DispPerfService(  966): updateLayerMask 9
+01-23 00:39:13.515 I/FocusResolver( 1748): updateFocusedWindow, 1f2ff52 com.wholexale.app.staging/com.wholexale.app.MainActivity on display 0, reason: Window became focusable. Previous reason: NOT_VISIBLE, result:   FocusedWindows:
+01-23 00:39:13.515 I/FocusResolver( 1748):     displayId=0, name='1f2ff52 com.wholexale.app.staging/com.wholexale.app.MainActivity'
+01-23 00:39:13.515 D/VRI[MainActivity]( 1321): onFocusEvent true
+01-23 00:39:13.516 D/InputMethodManagerService( 1748): isSecurity: attribute.packageName=com.wholexale.app.staging mCurMethodId=com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+01-23 00:39:13.517 D/InputMethodManagerService( 1748): isSecurity= false (  enable=false needShow=false inBlackList=false isExist=true )
+01-23 00:39:13.517 I/bpas    (12190): onPause
+01-23 00:39:13.519 I/GoogleInputMethodService(12290): GoogleInputMethodService.onFinishInput():2099 
+01-23 00:39:13.520 I/Module  (12290): DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+01-23 00:39:13.521 I/GoogleInputMethodService(12290): GoogleInputMethodService.onStartInput():1371 onStartInput(EditorInfo{EditorInfo{packageName=com.wholexale.app.staging, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=Bundle[{com.oplus.im.SCENES=0}], hintText=null, hintLocales=[]}}, false)
+01-23 00:39:13.521 I/Module  (12290): DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+01-23 00:39:13.525 D/InputMethodManagerService( 1748): onHandleImeWindowVisibleStatus: vis = 0, needsToShowImeSwitcher = false
+01-23 00:39:13.530 D/Layer   (  966): reparent to null sequence=27351, seq[3], name=Surface(name=48c0b3 InputMethod)/@0xce4cde9 - animation-leash of insets_animation#27351
+01-23 00:39:13.530 D/OplusLayer(  966): ~Layer() sequence=27351, name=Surface(name=48c0b3 InputMethod)/@0xce4cde9 - animation-leash of insets_animation#27351
+01-23 00:39:13.546 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-23 00:39:13.546 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.wholexale.app.staging
+01-23 00:39:13.547 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-23 00:39:13.547 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.twitter.android
+01-23 00:39:13.661 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:13.661 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 25
+01-23 00:39:13.661 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:13.661 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 0
+01-23 00:39:13.661 I/bt_btif ( 3256): LogMsg: bta_dm_observe_results_cb
+01-23 00:39:13.661 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD 55:dd:e6:6b:b5:95 cod is 0x000000
+01-23 00:39:13.661 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD cod in config 0x001f00, status=0
+01-23 00:39:13.661 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD invalid cod 0x0, use cod 0x1f00 in config
+01-23 00:39:13.661 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl : type 0 channel 0
+01-23 00:39:13.661 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl: HAL bt_gatt_callbacks->scanner->scan_result_cb
+01-23 00:39:13.661 D/BtGatt.GattService( 3256): onScanResult() - eventType=0x1b, addressType=1, address=55:DD:E6:6B:B5:95, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-66, periodicAdvInt=0x0, originalAddress=55:DD:E6:6B:B5:95, type=0, channel=0
+01-23 00:39:13.664 I/NearbyDiscovery(20067): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:13.664 I/NearbyDiscovery(22573): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:13.729 D/ScreenStatusProducer(25296): Current queue status: isIdle = true, isPolling = true
+01-23 00:39:13.762 D/VRI[Launcher](12190): dispatchAppVisibility visible:false
+01-23 00:39:13.762 V/OplusZoomWindowManagerService( 1748): onAnimationFinished:  r = ActivityRecord{a1e8fdf u0 com.android.launcher/.Launcher} t6}
+01-23 00:39:13.762 D/VRI[Launcher]( 2623): dispatchAppVisibility visible:false
+01-23 00:39:13.764 I/PowerHalWrapper( 1748): amsBoostNotify pid:2623,activity:com.android.launcher.Launcher, package:com.android.launcher, mProcessCreatePackcom.wholexale.app.staging 
+01-23 00:39:13.764 I/PowerHalWrapper( 1748): state: 0 
+01-23 00:39:13.764 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.android.launcher/com.android.launcher.Launcher pid=2623 state:0
+01-23 00:39:13.764 I/game_scn( 1748): collectForegroundAppList packName=com.android.launcher, actName=com.android.launcher.Launcher, pid=2623, uid=10106, state:PAUSED
+01-23 00:39:13.764 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:false 
+01-23 00:39:13.765 V/OplusZoomWindowManagerService( 1748): onAnimationFinished:  r = ActivityRecord{f7acf56 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11666}
+01-23 00:39:13.766 I/OplusAppSwitchManagerService( 1748):  handleAppVisible , r = ActivityRecord{f7acf56 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11666}
+01-23 00:39:13.768 D/OplusUIFirst_FB( 1748): com.android.launcher moveToBack 2623
+01-23 00:39:13.770 I/WindowStateExtImpl( 1748): onSurfaceShowChange show = false mPackageName = com.android.launcher parentPkgName = com.android.launcher
+01-23 00:39:13.777 D/BtGatt.ScanManager( 3256): uid 10128 isForeground true scanMode 1
+01-23 00:39:13.777 I/OplusCustomScanStrategy( 3256): msg.what = 6
+01-23 00:39:13.778 D/Layer   (  966): reparent to null sequence=27356, seq[19], name=Surface(name=Task=6)/@0xbb6404 - animation-leash of app_transition#27356
+01-23 00:39:13.778 D/Layer   (  966): reparent to null sequence=27355, seq[49], name=Surface(name=Task=11666)/@0xae1e253 - animation-leash of app_transition#27355
+01-23 00:39:13.778 D/OplusLayer(  966): ~Layer() sequence=27356, name=Surface(name=Task=6)/@0xbb6404 - animation-leash of app_transition#27356
+01-23 00:39:13.778 D/OplusLayer(  966): ~Layer() sequence=27355, name=Surface(name=Task=11666)/@0xae1e253 - animation-leash of app_transition#27355
+01-23 00:39:13.782 I/DispPerfService(  966): updateLayerMask 0
+01-23 00:39:13.785 V/WindowManager( 1748): Relayout Window{64337ed u0 com.android.launcher/com.android.launcher.Launcher}: viewVisibility=8, oldvis=0, req=1080x2400
+01-23 00:39:13.790 V/WindowManager( 1748): Relayout Window{578cf9b u0 com.android.launcher/com.android.launcher.Launcher}: viewVisibility=8, oldvis=0, req=1080x2400
+01-23 00:39:13.791 D/BLASTBufferQueue(12190): [VRI[Launcher][com.android.launcher/com.android.launcher.Launcher]#114](f:0,a:1) destructor()
+01-23 00:39:13.792 D/BufferQueueConsumer(12190): [VRI[Launcher][com.android.launcher/com.android.launcher.Launcher]#114(BLAST Consumer)114](id:2f9e00000072,api:0,p:-1,c:12190) disconnect
+01-23 00:39:13.796 D/BLASTBufferQueue( 2623): [VRI[Launcher][com.android.launcher/com.android.launcher.Launcher]#611](f:0,a:1) destructor()
+01-23 00:39:13.796 D/BufferQueueConsumer( 2623): [VRI[Launcher][com.android.launcher/com.android.launcher.Launcher]#611(BLAST Consumer)611](id:a3f0000028d,api:0,p:-1,c:2623) disconnect
+01-23 00:39:13.798 D/VRI[Launcher]( 2623): setWindowStopped stopped:true
+01-23 00:39:13.802 I/bpas    (12190): onStop
+01-23 00:39:13.811 D/Layer   (  966): reparent to null sequence=27346, seq[6], name=com.android.launcher/com.android.launcher.Launcher#27346
+01-23 00:39:13.811 D/Layer   (  966): reparent to null sequence=27343, seq[6], name=com.android.launcher/com.android.launcher.Launcher#27343
+01-23 00:39:13.811 I/BufferQueueDebug(  966): [com.android.launcher/com.android.launcher.Launcher#27346](this:0xb40000701de1e9e8,id:-1,api:0,p:-1,c:966) onDestructor()
+01-23 00:39:13.812 D/OplusLayer(  966): ~Layer() sequence=27346, name=com.android.launcher/com.android.launcher.Launcher#27346
+01-23 00:39:13.813 V/DeepThinker( 5470): ProcessManager: onForegroundActivitiesChanged pid:2623, uid:10106, foregroundActivities:false
+01-23 00:39:13.813 D/OplusAtlas.OplusAtlasEventDispatch( 3300): setEvent:atlas_event_on_foreground_activities_changed info:pid:2623,uid:10106,hasForegroundActivities:0
+01-23 00:39:13.813 D/OplusAtlas.OplusAudioScene( 3300): callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:2623,uid:10106,hasForegroundActivities:0
+01-23 00:39:13.814 D/OplusAtlas.OplusMessageHandler( 3300): handleMessage: Msg { when=0 what=2 obj=com.oplus.atlas.OplusAtlasEvent@6b77482 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+01-23 00:39:13.828 I/BufferQueueDebug(  966): [com.android.launcher/com.android.launcher.Launcher#27343](this:0xb40000701deee9e8,id:-1,api:0,p:-1,c:966) onDestructor()
+01-23 00:39:13.828 D/OplusLayer(  966): ~Layer() sequence=27343, name=com.android.launcher/com.android.launcher.Launcher#27343
+01-23 00:39:13.864 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.cricbuzz.android
+01-23 00:39:13.865 D/AudioManagerExtImpl(20117): getStreamVolume packageName=com.cricbuzz.android, index=2, streamType=3
+01-23 00:39:13.871 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.cricbuzz.android
+01-23 00:39:13.872 D/AudioManagerExtImpl(20117): getStreamVolume packageName=com.cricbuzz.android, index=2, streamType=3
+01-23 00:39:13.903 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 00:39:13.931 D/CameraDelegate( 1748): handleMessage:200
+01-23 00:39:14.014 I/mtkpower_client( 1748): perf_lock_rel, hdl:70633, tid:2280
+01-23 00:39:14.014 I/mtkpower_client( 1748): perf_lock_acq, hdl:70633, dur:0, num:6, tid:2280
+01-23 00:39:14.014 I/libPowerHal(  859): [perfLockRel] hdl:70633, idx:0
+01-23 00:39:14.015 I/libPowerHal(  859): system_server: cpu_ctrl set cpu freq: -1 -1 -1 -1
+01-23 00:39:14.015 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-23 00:39:14.015 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-23 00:39:14.015 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 00:39:14.016 I/mtkpower_client( 1748): ret_hdl:70634
+01-23 00:39:14.016 I/libPowerHal(  859): system_server: hard user limit set cpu freq: -1 -1 -1 1933000
+01-23 00:39:14.304 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:14.304 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 25
+01-23 00:39:14.305 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:14.305 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 0
+01-23 00:39:14.305 I/bt_btif ( 3256): LogMsg: bta_dm_observe_results_cb
+01-23 00:39:14.305 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD 55:dd:e6:6b:b5:95 cod is 0x000000
+01-23 00:39:14.305 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD cod in config 0x001f00, status=0
+01-23 00:39:14.305 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD invalid cod 0x0, use cod 0x1f00 in config
+01-23 00:39:14.305 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl : type 0 channel 0
+01-23 00:39:14.305 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl: HAL bt_gatt_callbacks->scanner->scan_result_cb
+01-23 00:39:14.306 D/BtGatt.GattService( 3256): onScanResult() - eventType=0x1b, addressType=1, address=55:DD:E6:6B:B5:95, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-63, periodicAdvInt=0x0, originalAddress=55:DD:E6:6B:B5:95, type=0, channel=0
+01-23 00:39:14.310 I/NearbyDiscovery(22573): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:14.310 I/NearbyDiscovery(20067): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:15.117 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:15.117 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 25
+01-23 00:39:15.117 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:15.117 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 0
+01-23 00:39:15.117 I/bt_btif ( 3256): LogMsg: bta_dm_observe_results_cb
+01-23 00:39:15.117 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD 55:dd:e6:6b:b5:95 cod is 0x000000
+01-23 00:39:15.117 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD cod in config 0x001f00, status=0
+01-23 00:39:15.117 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD invalid cod 0x0, use cod 0x1f00 in config
+01-23 00:39:15.118 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl : type 0 channel 0
+01-23 00:39:15.118 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl: HAL bt_gatt_callbacks->scanner->scan_result_cb
+01-23 00:39:15.118 D/BtGatt.GattService( 3256): onScanResult() - eventType=0x1b, addressType=1, address=55:DD:E6:6B:B5:95, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-69, periodicAdvInt=0x0, originalAddress=55:DD:E6:6B:B5:95, type=0, channel=0
+01-23 00:39:15.122 I/NearbyDiscovery(22573): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:15.123 I/NearbyDiscovery(20067): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:15.247 D/vendor.oplus.hardware.charger@1.0-service(  897): getChargerControl:
+01-23 00:39:15.253 W/HidlServiceHelper( 8826): Failed to read virtual TLC buffer usage returns is NULLnull
+01-23 00:39:15.420 D/Osense-DecisionMaker( 1748): notifyDelayedSceneToPolicy
+01-23 00:39:15.421 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2437
+01-23 00:39:15.421 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2437
+01-23 00:39:15.421 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2437
+01-23 00:39:15.421 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2437
+01-23 00:39:15.438 I/OplusHansManager ( 1748): uid=10744, pkg=com.cricbuzz.android can transition from M to F
+01-23 00:39:15.438 I/OplusHansManager ( 1748): uid=10744, pkg=com.cricbuzz.android F enter(), M stay=10
+01-23 00:39:15.448 I/OplusHansManager ( 1748): freeze uid: 10744 com.cricbuzz.android pids: [20117, 2556] IsolatedUid: [99338] scene: LcdOn
+01-23 00:39:15.450 D/IHansComunication( 6221): HansComunication::addUid-- 10744, persistent--0
+01-23 00:39:15.450 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = PKG, targetUid = 10744, pkgCmd = ADD_ONE_UID
+01-23 00:39:15.452 D/VRR [OTI](  966): handleIdle from 0 to 1
+01-23 00:39:15.452 D/VRR [OTI-HW](  966): isStateReady 0
+01-23 00:39:15.453 D/VRR [OTI-HW](  966): rate range: min {id=0, hwcId=0, resolution=1080x2400, refreshRate=60.00 Hz, dpi=409.02x409.02, group=0} cur {id=0, hwcId=0, resolution=1080x2400, refreshRate=60.00 Hz, dpi=409.02x409.02, group=0} max {id=0, hwcId=0, resolution=1080x2400, refreshRate=60.00 Hz, dpi=409.02x409.02, group=0}
+01-23 00:39:15.453 D/VRR [OTI-HW](  966): keep rate.
+01-23 00:39:15.772 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:15.772 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 25
+01-23 00:39:15.772 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:15.772 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 0
+01-23 00:39:15.772 I/bt_btif ( 3256): LogMsg: bta_dm_observe_results_cb
+01-23 00:39:15.772 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD 55:dd:e6:6b:b5:95 cod is 0x000000
+01-23 00:39:15.772 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD cod in config 0x001f00, status=0
+01-23 00:39:15.772 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD invalid cod 0x0, use cod 0x1f00 in config
+01-23 00:39:15.772 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl : type 0 channel 0
+01-23 00:39:15.773 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl: HAL bt_gatt_callbacks->scanner->scan_result_cb
+01-23 00:39:15.773 D/BtGatt.GattService( 3256): onScanResult() - eventType=0x1b, addressType=1, address=55:DD:E6:6B:B5:95, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-62, periodicAdvInt=0x0, originalAddress=55:DD:E6:6B:B5:95, type=0, channel=0
+01-23 00:39:15.777 I/NearbyDiscovery(22573): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:15.778 I/NearbyDiscovery(20067): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:15.952 I/Channel.Server[1000037].assistantscreen.ChannelServerProvider(11979): call, method=[pullCommand], clientName=[com.oplus.weather.quickcard.WeatherQuickCardWidgetGpProvider], resultCallBackId=[null]
+01-23 00:39:15.955 D/DataChannel.ClientProxy.WeatherQuickCardWidgetGpProvider(11953): pullAndRunCommand commandList = []
+01-23 00:39:15.955 D/DataChannel.ClientProxy.WeatherQuickCardWidgetGpProvider(11953): processCommandList: distinct processCommands = []
+01-23 00:39:15.955 D/DataChannel.ClientProxy.WeatherQuickCardWidgetGpProvider(11953): processCommandList: detail processCommands = []
+01-23 00:39:15.955 D/DataChannel.ClientProxy.WeatherSeedlingCardWidgetProvider(11953): tryRegisterContentObserver
+01-23 00:39:15.959 I/CardService[1006152].CardServiceServerProviderProxy(11979): call: method = pullCommand, callingPackageName = *om.co*oros.*eathe*2, callingPid = 11953
+01-23 00:39:15.959 I/Channel.Server[1000037].assistantscreen.ChannelServerProvider(11979): call, method=[pullCommand], clientName=[com.oplus.weather.seedlingcard.WeatherSeedlingCardWidgetProvider], resultCallBackId=[null]
+01-23 00:39:15.960 D/DataChannel.ClientProxy.WeatherSeedlingCardWidgetProvider(11953): pullAndRunCommand commandList = []
+01-23 00:39:15.960 D/DataChannel.ClientProxy.WeatherSeedlingCardWidgetProvider(11953): processCommandList: distinct processCommands = []
+01-23 00:39:15.961 D/DataChannel.ClientProxy.WeatherSeedlingCardWidgetProvider(11953): processCommandList: detail processCommands = []
+01-23 00:39:15.961 D/DataChannel.ClientProxy.WeatherQuickCardWidgetProvider(11953): tryRegisterContentObserver
+01-23 00:39:15.964 I/CardService[1006152].CardServiceServerProviderProxy(11979): call: method = pullCommand, callingPackageName = *om.co*oros.*eathe*2, callingPid = 11953
+01-23 00:39:15.965 I/Channel.Server[1000037].assistantscreen.ChannelServerProvider(11979): call, method=[pullCommand], clientName=[com.oplus.weather.quickcard.WeatherQuickCardWidgetProvider], resultCallBackId=[null]
+01-23 00:39:15.967 D/DataChannel.ClientProxy.WeatherQuickCardWidgetProvider(11953): pullAndRunCommand commandList = [Command(methodType=2, callbackId=card:2&200001&0, params=[B@1adf53e)]
+01-23 00:39:15.967 D/DataChannel.ClientProxy.WeatherQuickCardWidgetProvider(11953): processCommandList: distinct processCommands = [Command(methodType=2, callbackId=card:2&200001&0, params=[B@1adf53e)]
+01-23 00:39:15.967 D/DataChannel.ClientProxy.WeatherQuickCardWidgetProvider(11953): processCommandList: detail processCommands = [ActionIdentify(type=2, cardId=card:2&200001&0, hostId=, action=)]
+01-23 00:39:15.971 D/Weather_WeatherQuickCardWidgetProvider(11953): onCardsObserve
+01-23 00:39:15.976 I/Weather_WeatherQuickCardWidgetProviderDelegate(11953): onCardsObserve widgetCodes size 1 context com.coloros.weather2 com.oplus.weather.WeatherApplication@ec0aa71
+01-23 00:39:15.979 D/Weather_SPCardCityStorageImpl(11953): getCardSize size 2
+01-23 00:39:15.979 D/Weather_LanguageCodeUtils(11953): getLocale locale toLanguageTag: en-US
+01-23 00:39:15.980 I/Weather_CardCityBean(11953): parseToBean cardCode 2&200002&0 languageCode en-US lastUpdateTime 0 displayCityType 1 isLocationCity false displayCode 1 seedlingCardId null cityId -1
+01-23 00:39:15.980 I/Weather_SPCardCityStorageImpl(11953): getAllCard key 2&200002&0
+01-23 00:39:15.980 D/Weather_LanguageCodeUtils(11953): getLocale locale toLanguageTag: en-US
+01-23 00:39:15.980 I/Weather_CardCityBean(11953): parseToBean cardCode 2&200001&0 languageCode en-US lastUpdateTime 0 displayCityType 1 isLocationCity false displayCode 1 seedlingCardId null cityId -1
+01-23 00:39:15.980 I/Weather_SPCardCityStorageImpl(11953): getAllCard key 2&200001&0
+01-23 00:39:15.980 I/Weather_SPCardCityStorageImpl(11953): getAllCard all card size 2
+01-23 00:39:16.152 D/AALLightSensor( 1193): oldLux=5 [SA:1 LA:2] newLux=5 (oriLux: 0)
+01-23 00:39:16.218 I/OplusHansManager ( 1748): unfreeze uid: 10711 com.openai.chatgpt pids: [6179] reason: Broadcast scene: LcdOn
+01-23 00:39:16.219 I/OplusHansManager ( 1748): uid=10711, pkg=com.openai.chatgpt, transition from Frozen to Middle, reason=Broadcast
+01-23 00:39:16.219 I/OplusHansManager ( 1748): uid=10711, pkg=com.openai.chatgpt F exit(), F stay=20, reason=Broadcast
+01-23 00:39:16.222 D/vendor.oplus.hardware.charger@1.0-service(  897): getChargerControl:
+01-23 00:39:16.328 E/IHansComunication( 6221): HANS printMessageBody: RCV message: type = 0,port = 86870,caller_pid = 1089,caller_uid = 1047,target_pid = 20117,target_uid = 10744,pkg_cmd = -1,rpc = android.hardware.ICameraServiceListener/5
+01-23 00:39:16.328 E/IHansComunication( 6221): HANS printMessageBody: RCV message: type = 0,port = 86870,caller_pid = 1089,caller_uid = 1047,target_pid = 20117,target_uid = 10744,pkg_cmd = -1,rpc = android.hardware.ICameraServiceListener/5
+01-23 00:39:16.329 I/Choreographer(20117): Skipped 53 frames!  The application may be doing too much work on its main thread.
+01-23 00:39:16.333 I/OplusHansManager ( 1748): unfreeze uid: 10744 com.cricbuzz.android pids: [20117, 2556] reason: AsyncBinder scene: LcdOn
+01-23 00:39:16.334 I/OplusHansManager ( 1748): uid=10744, pkg=com.cricbuzz.android, transition from Frozen to Middle, reason=AsyncBinder
+01-23 00:39:16.334 I/OplusHansManager ( 1748): uid=10744, pkg=com.cricbuzz.android F exit(), F stay=0, reason=AsyncBinder
+01-23 00:39:16.335 I/OplusHansManager ( 1748): forceUnfreezeByPid pid= 20117 reason= unfreezeForKernel: AsyncBinder
+01-23 00:39:16.365 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.cricbuzz.android
+01-23 00:39:16.367 D/AudioManagerExtImpl(20117): getStreamVolume packageName=com.cricbuzz.android, index=2, streamType=3
+01-23 00:39:16.368 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.cricbuzz.android
+01-23 00:39:16.369 D/AudioManagerExtImpl(20117): getStreamVolume packageName=com.cricbuzz.android, index=2, streamType=3
+01-23 00:39:16.427 E/TaskPersister( 1748): File error accessing recents directory (directory doesn't exist?).
+01-23 00:39:16.450 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10744, pkgCmd = PKG_CMD_MAX
+01-23 00:39:16.505 I/Athena  ( 2605): CommonAction: 21,2434,122,0,0,0,358,0,2884,2131,1042,1206
+01-23 00:39:16.568 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:16.569 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 25
+01-23 00:39:16.569 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:16.569 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 0
+01-23 00:39:16.569 I/bt_btif ( 3256): LogMsg: bta_dm_observe_results_cb
+01-23 00:39:16.569 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD 55:dd:e6:6b:b5:95 cod is 0x000000
+01-23 00:39:16.569 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD cod in config 0x001f00, status=0
+01-23 00:39:16.569 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD invalid cod 0x0, use cod 0x1f00 in config
+01-23 00:39:16.570 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl : type 0 channel 0
+01-23 00:39:16.570 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl: HAL bt_gatt_callbacks->scanner->scan_result_cb
+01-23 00:39:16.570 D/BtGatt.GattService( 3256): onScanResult() - eventType=0x1b, addressType=1, address=55:DD:E6:6B:B5:95, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-62, periodicAdvInt=0x0, originalAddress=55:DD:E6:6B:B5:95, type=0, channel=0
+01-23 00:39:16.574 I/NearbyDiscovery(22573): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:16.574 I/NearbyDiscovery(20067): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:17.505 I/Athena  ( 2605): CommonAction: 0,2437,115,0,0,0,358,0,2881,2141,1044,1215
+01-23 00:39:17.613 D/AES     ( 1748): AEEIOCTL_GET/SET_SF_STATE IOCTL,cmd= 1074294797, lParam=0. 
+01-23 00:39:17.613 D/AES     ( 1748): AEEIOCTL_RT_MON_Kick IOCTL,cmd= 2147774474, lParam=300. 
+01-23 00:39:17.957 E/Situation(  852): processEvent, handle:26, flush_action:0
+01-23 00:39:17.957 E/Situation(  852): orientation state = 4 
+01-23 00:39:17.958 V/WindowOrientationListener( 1748): onSensorChanged mDesiredRotation = 4
+01-23 00:39:18.023 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:18.023 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 25
+01-23 00:39:18.023 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:18.023 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 0
+01-23 00:39:18.023 I/bt_btif ( 3256): LogMsg: bta_dm_observe_results_cb
+01-23 00:39:18.023 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD 55:dd:e6:6b:b5:95 cod is 0x000000
+01-23 00:39:18.023 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD cod in config 0x001f00, status=0
+01-23 00:39:18.023 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD invalid cod 0x0, use cod 0x1f00 in config
+01-23 00:39:18.023 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl : type 0 channel 0
+01-23 00:39:18.023 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl: HAL bt_gatt_callbacks->scanner->scan_result_cb
+01-23 00:39:18.024 D/BtGatt.GattService( 3256): onScanResult() - eventType=0x1b, addressType=1, address=55:DD:E6:6B:B5:95, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-62, periodicAdvInt=0x0, originalAddress=55:DD:E6:6B:B5:95, type=0, channel=0
+01-23 00:39:18.028 I/NearbyDiscovery(22573): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:18.029 I/NearbyDiscovery(20067): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:18.143 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 00:39:18.251 D/AppDelegatorImpl(12076): execute onAppIdle
+01-23 00:39:18.425 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.cricbuzz.android
+01-23 00:39:18.428 D/AudioManagerExtImpl(20117): getStreamVolume packageName=com.cricbuzz.android, index=2, streamType=3
+01-23 00:39:18.430 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.cricbuzz.android
+01-23 00:39:18.432 D/AudioManagerExtImpl(20117): getStreamVolume packageName=com.cricbuzz.android, index=2, streamType=3
+01-23 00:39:18.459 D/AppSwitchObserverHelper( 4587): packageName: com.wholexale.app.staging,com.android.launcher
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; CpuFgTime = 0 ms; CpuBgTime = -2395 ms.
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; CpuKernelFgTime = 0 ms; CpuKernelBgTime = -799 ms.
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; CpuUserFgTime = 0 ms ; CpuUserBgTime = -1596 ms.
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; CpuFgPower = 0.0 mAh.; CpuBgPower = -5.454166666666666E-4 mAh.
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; AlarmFgWakeupCount = 0; AlarmBgWakeupCount = 0
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; JobFgCount = 0; JobBgCount = 0; JobFgTime = 0; JobBgTime = 0
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; SyncFgCount = 0; SyncBgCount = 0; SyncFgTime = 0; SyncBgTime = 0
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; WakeLockFgTime = 0 ms; WakeLockFgPower = 0.0 mAh.; WakeLockBgTime = 0 ms; WakeLockBgPower = 0.0 mAh.
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; ScreenFgTime = 0 ms; ScreenFgPower = 0.0 mAh.
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgWifiRxBytes = 0 Bytes; BgWifiRxBytes = 0 Bytes; FgWifiTxBytes = 0 Bytes; BgWifiTxBytes = 0 Bytes; FgWifiRxPackets = 0 ; BgWifiRxPackets = 0 ; FgWifiTxPackets = 0 ; BgWifiTxPackets = 0 ; FgWiFiScanTimeMs = 0 ; BgWiFiScanTimeMs = 0 ; FgWiFiBatchScanTimeMs = 0 ; BgWiFiBatchScanTimeMs = 0 
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgWifiRxPacketsPower = 0.0 mAh; BgWifiRxPacketsPower = 0.0 mAh; FgWifiTxPacketsPower = 0.0 mAh; BgWifiTxPacketsPower = 0.0 mAh; FgWifiScanPower = 0.0 mAh; BgWifiScanPower = 0.0 mAh; FgWifiBatchScanPower = 0.0 mAh; BgWifiBatchScanPower = 0.0 mAh; FgWiFiTotalPower = 0.0 mAh; BgWiFiTotalPower = 0.0 mAh.
+01-23 00:39:18.546 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgMobileRxBytes = 0 Bytes; BgMobileRxBytes = 0 Bytes; FgMobileTxBytes = 0 Bytes; BgMobileTxBytes = 0 Bytes; FgMobileRxPackets = 0 ; BgMobileRxPackets = 0 ; FgMobileTxPackets = 0 ; BgMobileTxPackets = 0 ; FgMobileActiveCount = 0 ; BgMobileActiveCount = 0 ; FgMobileActiveTime = 0 ; BgMobileActiveTime = 0 
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgMobileRxPacketsPower = 0.0 mAh; BgMobileRxPacketsPower = 0.0 mAh; FgMobileTxPacketsPower = 0.0 mAh; BgMobileTxPacketsPower = 0.0 mAh; FgMobileTotalPower = 0.0 mAh; BgMobileTotalPower = 0.0 mAh.
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgGpsTime = 0 ms; BgGpsTime = 0 ms.
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgGpsPower = 0.0 mAh; BgGpsPower = 0.0 mAh.
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgSensorTime = 0 ms; BgSensorTime = 0 ms.
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgSensorPower = 0.0 mAh; BgSensorPower = 0.0 mAh.
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgCameraTime = 0 ms; BgCameraTime = 0 ms
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgCameraPower = 0.0 mAh; BgCameraPower = 0.0 mAh
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgFlashLightTime = 0 ms; BgFlashLightTime = 0 ms
+01-23 00:39:18.547 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgFlashLightPower = 0.0 mAh; BgFlashLightPower = 0.0 mAh
+01-23 00:39:18.549 E/WiseLight(  852): Light=574.000000, del_time=25.000000, light_c=15.000000
+01-23 00:39:18.655 D/ProfileInstaller(11953): Skipping profile installation for com.coloros.weather2
+01-23 00:39:18.674 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:18.674 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 25
+01-23 00:39:18.674 V/bt_stack( 3256): [VERBOSE1:btm_ble_gap.cc(2613)] btm_ble_process_adv_addr: bda=55:**:**:**:b5:95 addr_type=1
+01-23 00:39:18.674 I/bt_btm  ( 3256): LogMsg: btm_ble_process_adv_pkt: pkt_data_len: 0
+01-23 00:39:18.674 I/bt_btif ( 3256): LogMsg: bta_dm_observe_results_cb
+01-23 00:39:18.674 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD 55:dd:e6:6b:b5:95 cod is 0x000000
+01-23 00:39:18.674 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD cod in config 0x001f00, status=0
+01-23 00:39:18.674 I/bt_btif ( 3256): LogMsg: btif_ble_scanner_update_COD invalid cod 0x0, use cod 0x1f00 in config
+01-23 00:39:18.675 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl : type 0 channel 0
+01-23 00:39:18.675 I/bt_btif ( 3256): LogMsg: bta_scan_results_cb_impl: HAL bt_gatt_callbacks->scanner->scan_result_cb
+01-23 00:39:18.675 D/BtGatt.GattService( 3256): onScanResult() - eventType=0x1b, addressType=1, address=55:DD:E6:6B:B5:95, primaryPhy=1, secondaryPhy=0, advertisingSid=0xff, txPower=127, rssi=-63, periodicAdvInt=0x0, originalAddress=55:DD:E6:6B:B5:95, type=0, channel=0
+01-23 00:39:18.680 I/NearbyDiscovery(22573): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:18.680 I/NearbyDiscovery(20067): (REDACTED) BloomFilterAdvManager: Detected bloom filter but too far away, ignoring. %sm, %s
+01-23 00:39:18.749 E/WiseLight(  852): Light=585.000000, del_time=150.000000, light_c=15.000000
+01-23 00:39:18.949 E/WiseLight(  852): Light=585.000000, del_time=125.000000, light_c=13.000000
+01-23 00:39:19.067 D/OplusNetKit( 1748): interface name from LP: [ccmni0]
+01-23 00:39:19.067 D/OplusNetKit( 1748): interface name from LP: [ccmni2]
+01-23 00:39:19.067 D/OplusNetKit( 1748): interface name from LP: [wlan0]
+01-23 00:39:19.067 D/OplusNetKit( 1748): in getLpByInterface name from LP: [ccmni0]
+01-23 00:39:19.067 D/OplusNetKit( 1748): in getLpByInterface name from LP: [ccmni2]
+01-23 00:39:19.068 D/OplusNetKit( 1748): in getLpByInterface name from LP: [wlan0]
+01-23 00:39:19.068 D/OplusNetKit( 1748): in getLpByInterface name from LP: [ccmni0]
+01-23 00:39:19.068 D/OplusNetKit( 1748): in getLpByInterface name from LP: [ccmni2]
+01-23 00:39:19.068 D/OplusNetKit( 1748): in getLpByInterface name from LP: [wlan0]
+01-23 00:39:19.068 D/OplusNetKit( 1748): Route is ipv4 on wlan0 found, break

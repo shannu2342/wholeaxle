@@ -7,45 +7,73 @@ import {
   StyleSheet,
   Alert,
   StatusBar,
+  SafeAreaView,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../constants/Colors';
+import BecomeVendorButton from '../components/BecomeVendorButton';
+import AppHeader from '../components/AppHeader';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/slices/authSlice';
 
 const ProfileScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth?.user);
+  const userType = user?.userType || 'buyer';
   const menuItems = [
     {
       id: 1,
       title: 'My Orders',
-      icon: '📦',
+      icon: 'shopping-bag',
+      screen: 'Orders',
     },
     {
       id: 2,
       title: 'Wishlist',
-      icon: '❤️',
+      icon: 'heart',
+      screen: 'Wishlist',
     },
     {
       id: 3,
       title: 'Addresses',
-      icon: '📍',
+      icon: 'map-marker',
+      screen: 'Addresses',
     },
     {
       id: 4,
       title: 'Payment Methods',
-      icon: '💳',
+      icon: 'credit-card',
+      screen: 'PaymentMethods',
     },
     {
       id: 5,
       title: 'Offers & Deals',
-      icon: '🎁',
+      icon: 'gift',
+      screen: 'OffersDeals',
     },
     {
       id: 6,
       title: 'Help & Support',
-      icon: '❓',
+      icon: 'question-circle',
+      screen: 'HelpSupport',
     },
     {
       id: 7,
       title: 'Settings',
-      icon: '⚙️',
+      icon: 'cog',
+      screen: 'Settings',
+    },
+    {
+      id: 8,
+      title: 'Finance Hub',
+      icon: 'bank',
+      screen: 'FinanceHub',
+    },
+    {
+      id: 9,
+      title: 'System Messages',
+      icon: 'bell',
+      screen: 'SystemMessages',
     },
   ];
 
@@ -62,49 +90,80 @@ const ProfileScreen = ({ navigation }) => {
           text: 'Logout',
           style: 'destructive',
           onPress: () => {
-            // Handle logout
-            console.log('User logged out');
+            dispatch(logout());
           },
         },
       ]
     );
   };
 
+  const handleMenuPress = (item) => {
+    if (item?.screen) {
+      navigation.navigate(item.screen, item.params);
+      return;
+    }
+    Alert.alert('Coming soon', `${item.title} is not available yet.`);
+  };
+
   const renderMenuItem = (item) => (
-    <TouchableOpacity key={item.id} style={styles.menuItem}>
+    <TouchableOpacity key={item.id} style={styles.menuItem} onPress={() => handleMenuPress(item)}>
       <View style={styles.menuItemLeft}>
         <View style={styles.menuIcon}>
-          <Text style={styles.menuIconText}>{item.icon}</Text>
+          <Icon name={item.icon} size={16} color={Colors.primary} />
         </View>
         <Text style={styles.menuText}>{item.title}</Text>
       </View>
-      <Text style={styles.menuArrow}>→</Text>
+      <Icon name="chevron-right" size={14} color="#ccc" />
     </TouchableOpacity>
   );
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      
-      <View style={styles.content}>
-        {/* App Header (matching HTML) */}
-        <View style={styles.appHeader}>
-          <Text style={styles.headerTitle}>Profile</Text>
-          <TouchableOpacity style={styles.headerIcon}>
-            <Text style={styles.headerIconText}>⚙️</Text>
-          </TouchableOpacity>
-        </View>
+      <AppHeader
+        title="Profile"
+        rightIcons={[{ name: 'cog', onPress: () => navigation.navigate('Settings') }]}
+        backgroundColor={Colors.white}
+        textColor={Colors.text.primary}
+      />
+
+      <ScrollView contentContainerStyle={styles.content}>
 
         {/* Profile Header (matching HTML) */}
         <View style={styles.profileHeader}>
           <View style={styles.profileAvatar}>
-            <Text style={styles.avatarText}>👤</Text>
+            <Icon name="user" size={28} color={Colors.white} />
           </View>
           <View style={styles.profileInfo}>
-            <Text style={styles.profileName}>John Doe</Text>
-            <Text style={styles.profileEmail}>john.doe@example.com</Text>
+            <Text style={styles.profileName}>{user?.name || 'John Doe'}</Text>
+            <Text style={styles.profileEmail}>{user?.email || 'john.doe@example.com'}</Text>
           </View>
         </View>
+
+        {/* Become Vendor Button */}
+        {userType === 'buyer' && (
+          <BecomeVendorButton onPress={() => navigation.navigate('VendorApplication', { userId: user?.id })} />
+        )}
+
+        {userType === 'seller' && (
+          <TouchableOpacity
+            style={styles.roleButton}
+            onPress={() => navigation.navigate('SellerMain')}
+          >
+            <Icon name="dashboard" size={16} color={Colors.white} />
+            <Text style={styles.roleButtonText}>Go to Seller Dashboard</Text>
+          </TouchableOpacity>
+        )}
+
+        {userType === 'admin' && (
+          <TouchableOpacity
+            style={styles.roleButton}
+            onPress={() => navigation.navigate('AdminDashboard')}
+          >
+            <Icon name="shield" size={16} color={Colors.white} />
+            <Text style={styles.roleButtonText}>Go to Admin Dashboard</Text>
+          </TouchableOpacity>
+        )}
 
         {/* Profile Menu (matching HTML) */}
         <View style={styles.profileMenu}>
@@ -115,8 +174,8 @@ const ProfileScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -128,26 +187,7 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
   },
-  
-  // App Header (matching HTML)
-  appHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#333',
-  },
-  headerIcon: {
-    padding: 5,
-  },
-  headerIconText: {
-    fontSize: 18,
-  },
-  
+
   // Profile Header (matching HTML)
   profileHeader: {
     flexDirection: 'row',
@@ -180,7 +220,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
   },
-  
+
   // Profile Menu (matching HTML)
   profileMenu: {
     backgroundColor: Colors.white,
@@ -220,7 +260,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#ccc',
   },
-  
+
   // Logout Button
   logoutButton: {
     backgroundColor: '#ff4757',
@@ -232,6 +272,21 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 16,
     fontWeight: '600',
+  },
+  roleButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.primary,
+    paddingVertical: 12,
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  roleButtonText: {
+    color: Colors.white,
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 8,
   },
 });
 

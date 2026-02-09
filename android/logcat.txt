@@ -1,0 +1,1217 @@
+--------- beginning of main
+01-22 19:03:08.263 D/ExtensionsLoader(13198): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.265 D/ExtensionsLoader(13198): Opened libguiextimpl.so
+01-22 19:03:08.326 D/AVStageUtils(13198): Opened liboplusavenhancements.so
+01-22 19:03:08.326 D/AVStageUtils(13198): createInstance(64bit): createVendorAVUtils success!
+01-22 19:03:08.326 D/OplusUtils(13198): OplusUtils [84]: 
+01-22 19:03:08.330 D/AVMediaServiceFactory(13198): Opened liboplusavenhancements.so
+01-22 19:03:08.330 D/AVMediaServiceFactory(13198): createInstance(64bit): createExtendedMediaServiceFactory success!
+01-22 19:03:08.331 D/AVNuFactory(13198): Opened liboplusavenhancements.so
+01-22 19:03:08.331 D/AVNuFactory(13198): createInstance(64bit): createExtendedNuFactory success!
+01-22 19:03:08.331 D/AVStageFactory(13198): Opened liboplusavenhancements.so
+01-22 19:03:08.331 D/AVStageFactory(13198): createInstance(64bit): createVendorAVFactory success!
+01-22 19:03:08.331 D/AVStageUtils(13198): createInstance(64bit): createVendorAVUtils success!
+01-22 19:03:08.331 D/OplusUtils(13198): OplusUtils [84]: 
+01-22 19:03:08.332 D/AVStageFactory(13198): createInstance(64bit): createVendorAVFactory success!
+01-22 19:03:08.332 D/AVStageUtils(13198): createInstance(64bit): createVendorAVUtils success!
+01-22 19:03:08.332 D/OplusUtils(13198): OplusUtils [84]: 
+01-22 19:03:08.332 D/AVMediaServiceFactory(13198): createInstance(64bit): createExtendedMediaServiceFactory success!
+01-22 19:03:08.332 D/AVNuFactory(13198): createInstance(64bit): createExtendedNuFactory success!
+01-22 19:03:08.332 D/AVStageFactory(13198): Opened liboplusavenhancements.so
+01-22 19:03:08.332 D/AVStageFactory(13198): createInstance(64bit): createVendorAVFactory success!
+01-22 19:03:08.332 D/AVStageUtils(13198): createInstance(64bit): createVendorAVUtils success!
+01-22 19:03:08.332 D/OplusUtils(13198): OplusUtils [84]: 
+01-22 19:03:08.337 E/app_process(13198): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.338 E/app_process(13198): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.339 E/app_process(13198): Opened libsensorextimpl.so
+01-22 19:03:08.339 E/app_process(13198): Opened libsensorextimpl.so
+01-22 19:03:08.340 E/app_process(13198): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.345 E/app_process(13198): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.345 E/app_process(13198): Opened libinputextensionsimpl.so
+01-22 19:03:08.345 E/app_process(13198): Opened libinputextensionsimpl.so
+01-22 19:03:08.348 D/AndroidRuntime(13198): >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+01-22 19:03:08.357 I/AndroidRuntime(13198): Using default boot image
+01-22 19:03:08.357 I/AndroidRuntime(13198): Leaving lock profiling enabled
+01-22 19:03:08.362 I/app_process(13198): Using CollectorTypeCC GC.
+01-22 19:03:08.363 I/perfetto( 1022): ng_service_impl.cc:1894 FlushAndDisableTracing(6) done, success=1
+01-22 19:03:08.363 I/perfetto( 1021):  probes_producer.cc:398 Producer stop (id=6)
+01-22 19:03:08.364 I/perfetto( 1021):    ftrace_procfs.cc:342 disabled ftrace in /sys/kernel/tracing/
+--------- beginning of system
+01-22 19:03:08.365 I/iopgp   ( 2654): kTraceEnded and trace_end_kind = kSkip history_id = 0
+01-22 19:03:08.365 I/iopgp   ( 2654): skip out proto
+01-22 19:03:08.366 I/perfetto( 1022): ng_service_impl.cc:2430 Tracing session 6 ended, total sessions:0
+01-22 19:03:08.396 W/System.err( 1748): java.io.FileNotFoundException: /data/su_test: open failed: EACCES (Permission denied)
+01-22 19:03:08.396 W/System.err( 1748): 	at libcore.io.IoBridge.open(IoBridge.java:574)
+01-22 19:03:08.396 W/System.err( 1748): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:259)
+01-22 19:03:08.396 W/System.err( 1748): 	at java.io.FileOutputStream.<init>(FileOutputStream.java:147)
+01-22 19:03:08.396 W/System.err( 1748): 	at com.android.server.oplus.heimdall.root.RootDetector.writeFile(RootDetector.java:179)
+01-22 19:03:08.396 W/System.err( 1748): 	at com.android.server.oplus.heimdall.root.RootDetector.checkAccessRootData(RootDetector.java:152)
+01-22 19:03:08.396 W/System.err( 1748): 	at com.android.server.oplus.heimdall.root.RootDetector.checkDeviceRootStatus(RootDetector.java:45)
+01-22 19:03:08.396 W/System.err( 1748): 	at com.android.server.oplus.heimdall.HeimdallHandler.handleMessage(HeimdallHandler.java:43)
+01-22 19:03:08.396 W/System.err( 1748): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+01-22 19:03:08.396 W/System.err( 1748): 	at android.os.Looper.loopOnce(Looper.java:240)
+01-22 19:03:08.396 W/System.err( 1748): 	at android.os.Looper.loop(Looper.java:351)
+01-22 19:03:08.396 W/System.err( 1748): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+01-22 19:03:08.396 W/System.err( 1748): 	at com.android.server.ServiceThread.run(ServiceThread.java:44)
+01-22 19:03:08.396 W/System.err( 1748): Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)
+01-22 19:03:08.396 W/System.err( 1748): 	at libcore.io.Linux.open(Native Method)
+01-22 19:03:08.396 W/System.err( 1748): 	at libcore.io.ForwardingOs.open(ForwardingOs.java:574)
+01-22 19:03:08.396 W/System.err( 1748): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+01-22 19:03:08.396 W/System.err( 1748): 	at libcore.io.IoBridge.open(IoBridge.java:560)
+01-22 19:03:08.396 W/System.err( 1748): 	... 11 more
+01-22 19:03:08.397 W/System.err( 1748): java.io.FileNotFoundException: /data/su_test: open failed: ENOENT (No such file or directory)
+01-22 19:03:08.397 W/System.err( 1748): 	at libcore.io.IoBridge.open(IoBridge.java:574)
+01-22 19:03:08.397 W/System.err( 1748): 	at java.io.FileInputStream.<init>(FileInputStream.java:179)
+01-22 19:03:08.397 W/System.err( 1748): 	at com.android.server.oplus.heimdall.root.RootDetector.readFile(RootDetector.java:202)
+01-22 19:03:08.397 W/System.err( 1748): 	at com.android.server.oplus.heimdall.root.RootDetector.checkAccessRootData(RootDetector.java:160)
+01-22 19:03:08.397 W/System.err( 1748): 	at com.android.server.oplus.heimdall.root.RootDetector.checkDeviceRootStatus(RootDetector.java:45)
+01-22 19:03:08.397 W/System.err( 1748): 	at com.android.server.oplus.heimdall.HeimdallHandler.handleMessage(HeimdallHandler.java:43)
+01-22 19:03:08.397 W/System.err( 1748): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+01-22 19:03:08.397 W/System.err( 1748): 	at android.os.Looper.loopOnce(Looper.java:240)
+01-22 19:03:08.397 W/System.err( 1748): 	at android.os.Looper.loop(Looper.java:351)
+01-22 19:03:08.397 W/System.err( 1748): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+01-22 19:03:08.397 W/System.err( 1748): 	at com.android.server.ServiceThread.run(ServiceThread.java:44)
+01-22 19:03:08.397 W/System.err( 1748): Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+01-22 19:03:08.397 W/System.err( 1748): 	at libcore.io.Linux.open(Native Method)
+01-22 19:03:08.397 W/System.err( 1748): 	at libcore.io.ForwardingOs.open(ForwardingOs.java:574)
+01-22 19:03:08.397 W/System.err( 1748): 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:274)
+01-22 19:03:08.397 W/System.err( 1748): 	at libcore.io.IoBridge.open(IoBridge.java:560)
+01-22 19:03:08.397 W/System.err( 1748): 	... 10 more
+01-22 19:03:08.517 D/nativeloader(13198): InitDefaultPublicLibraries for_preload=1: libandroid.so:libaaudio.so:libamidi.so:libbinder_ndk.so:libc.so:libcamera2ndk.so:libdl.so:libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libicu.so:libicui18n.so:libicuuc.so:libjnigraphics.so:liblog.so:libmediandk.so:libm.so:libnativehelper.so:libnativewindow.so:libOpenMAXAL.so:libOpenSLES.so:libRS.so:libstdc++.so:libsync.so:libvulkan.so:libwebviewchromium_plat_support.so:libz.so
+01-22 19:03:08.546 D/nativeloader(13198): Load libicu_jni.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+01-22 19:03:08.547 D/app_process(13198): Time zone APEX ICU file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+01-22 19:03:08.547 D/app_process(13198): I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt70l.dat
+01-22 19:03:08.551 D/nativeloader(13198): Load libjavacore.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+01-22 19:03:08.555 D/nativeloader(13198): Load libopenjdk.so using APEX ns com_android_art for caller /apex/com.android.art/javalib/core-oj.jar: ok
+01-22 19:03:08.560 I/app_process(13198): Priority-to-niceness mapping: 19, 16, 13, 10, 0, -2, -4, -5, -6, -8
+01-22 19:03:08.573 D/ExtLoader(13198): DEFAULT_DEBUG_DUMMY=false, DEFAULT_DEBUG_CREATE=false
+01-22 19:03:08.576 D/nativeloader(13198): Load libonetrace_jni.so using system ns (caller=/system/framework/oplus-framework.jar): ok
+01-22 19:03:08.576 D/OplusTrace(13198): register_android_os_OplusTrace
+01-22 19:03:08.630 D/nativeloader(13198): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+01-22 19:03:08.631 D/AndroidRuntime(13198): Calling main entry com.android.commands.monkey.Monkey
+01-22 19:03:08.632 W/Monkey  (13198): args: [-p, com.wholexale.app.staging, -c, android.intent.category.LAUNCHER, 1]
+01-22 19:03:08.633 W/Monkey  (13198):  arg: "-p"
+01-22 19:03:08.633 W/Monkey  (13198):  arg: "com.wholexale.app.staging"
+01-22 19:03:08.633 W/Monkey  (13198):  arg: "-c"
+01-22 19:03:08.633 W/Monkey  (13198):  arg: "android.intent.category.LAUNCHER"
+01-22 19:03:08.633 W/Monkey  (13198):  arg: "1"
+01-22 19:03:08.633 W/Monkey  (13198): data="com.wholexale.app.staging"
+01-22 19:03:08.633 W/Monkey  (13198): data="android.intent.category.LAUNCHER"
+01-22 19:03:08.671 D/CompatibilityChangeReporter( 1748): Compat change id reported: 161145287; UID 2000; state: DISABLED
+01-22 19:03:08.673 W/BroadcastQueue( 1748): Skipping deliver [background] BroadcastRecord{a8afa5e u-1 android.net.conn.CONNECTIVITY_CHANGE} to ReceiverList{8296e3f 13198 (unknown name)/2000/u-1 remote:76088e0}: process gone or crashing
+01-22 19:03:08.704 D/CompatibilityChangeReporter( 1748): Compat change id reported: 161252188; UID 10851; state: DISABLED
+01-22 19:03:08.705 I/ActivityTaskManager( 1748): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.wholexale.app.staging/com.wholexale.app.MainActivity mCallingUid=2000} from uid 2000
+01-22 19:03:08.706 I/mtkpower_client( 1748): perf_lock_rel, hdl:59258, tid:2280
+01-22 19:03:08.706 I/mtkpower_client( 1748): perf_lock_acq, hdl:59258, dur:0, num:10, tid:2280
+01-22 19:03:08.706 I/libPowerHal(  859): [perfLockRel] hdl:59258, idx:0
+01-22 19:03:08.707 I/libPowerHal(  859): system_server: hard user limit set cpu freq: -1 -1 -1 -1
+01-22 19:03:08.707 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-22 19:03:08.707 D/CompatibilityChangeReporter( 1748): Compat change id reported: 194480991; UID 10851; state: ENABLED
+01-22 19:03:08.708 I/mtkpower_client( 1748): ret_hdl:59259
+01-22 19:03:08.709 D/OplusZoomWindowManagerService( 1748): onConfigurationChanged rotation not changed - prevRotation: 0
+01-22 19:03:08.711 I/OplusScreenSecurityMask( 1748): onStackAdded task = Task{e45f736 #11648 type=standard ?? U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=0} record = null displayId = 0
+01-22 19:03:08.711 I/OplusScreenSecurityMask( 1748): onStackAdded task = Task{e45f736 #11648 type=standard A=10851:com.wholexale.app.staging U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=0} record = null displayId = 0
+01-22 19:03:08.712 D/CompatibilityChangeReporter( 1748): Compat change id reported: 174042980; UID 10851; state: DISABLED
+01-22 19:03:08.713 D/CompatibilityChangeReporter( 1748): Compat change id reported: 184838306; UID 10851; state: DISABLED
+01-22 19:03:08.713 D/CompatibilityChangeReporter( 1748): Compat change id reported: 185004937; UID 10851; state: DISABLED
+01-22 19:03:08.713 D/CompatibilityChangeReporter( 1748): Compat change id reported: 181136395; UID 10851; state: DISABLED
+01-22 19:03:08.713 D/CompatibilityChangeReporter( 1748): Compat change id reported: 174042936; UID 10851; state: DISABLED
+01-22 19:03:08.714 D/TaskFragmentExtImpl( 1748): add ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11648} to mActivityRecordSum = Counter{ com.wholexale.app.staging/com.wholexale.app.MainActivity(1) }
+01-22 19:03:08.715 I/mtkpower@impl(  859): [setMode] type:5, enabled:1
+01-22 19:03:08.716 D/ActivityTaskManager( 1748): getStartingWindowType: newTask=true, taskSwitch=true, processRunning=false, allowTaskSnapshot=true, activityCreated=false, snapshot=null, record:ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11648}
+01-22 19:03:08.716 D/CompatibilityChangeReporter( 1748): Compat change id reported: 205907456; UID 10851; state: ENABLED
+01-22 19:03:08.717 D/OplusZoomWindowRUSConfigManager( 1748): isSupportZoomModeWithPolicyLocked: target = com.wholexale.app.staging/com.wholexale.app.MainActivity
+01-22 19:03:08.717 D/OplusZoomWindowRUSConfigManager( 1748): targetPkg = com.wholexale.app.staging
+01-22 19:03:08.717 V/OplusZoomWindowManagerService( 1748): unSupportZoom: false ,callingPid: 13198 ,sourceStack: null
+01-22 19:03:08.718 D/PhoneStartingWindowTypeAlgorithm( 2225): preferredStartingWindowType newTask=true, taskSwitch=true, processRunning=false, allowTaskSnapshot=true, activityCreated=false, isSolidColorSplashScreen=false, legacySplashScreen=false, activityDrawn=false, topIsHome=false
+01-22 19:03:08.719 I/PowerHalWrapper( 1748): <amsBoostResume> last:com.android.launcher, next:com.wholexale.app.staging 
+01-22 19:03:08.720 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-22 19:03:08.720 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:08.720 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 1
+01-22 19:03:08.720 I/libPowerHal(  859): [perfLockRel] hdl:59257, idx:6
+01-22 19:03:08.720 I/mtkpower_client( 1748): perf_lock_rel, hdl:59259, tid:2280
+01-22 19:03:08.721 I/libPowerHal(  859): [perfLockRel] hdl:59259, idx:0
+01-22 19:03:08.721 I/mtkpower_client( 1748): perf_lock_acq, hdl:59259, dur:0, num:10, tid:2280
+01-22 19:03:08.721 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-22 19:03:08.721 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-22 19:03:08.721 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-22 19:03:08.722 I/mtkpower_client( 1748): ret_hdl:59262
+01-22 19:03:08.725 D/OplusShellStartingWindowManager( 2225): adjustSuggestedWindowType: skip no-system app and no-exception list app
+01-22 19:03:08.725 D/CompatibilityChangeReporter( 1748): Compat change id reported: 194833441; UID 10851; state: ENABLED
+01-22 19:03:08.725 D/OplusAlwaysAliveManager( 1748): process not running, cold launch: ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11648}, processName: com.wholexale.app.staging
+01-22 19:03:08.725 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-22 19:03:08.725 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:08.726 D/ShellStartingWindow( 2225): getWindowAttrs window attributes color: 0, replace icon: false
+01-22 19:03:08.726 I/SurfaceFlinger(  966): [SF client] NEW(0xb400007052ea09c0) for (2225:com.android.systemui)
+01-22 19:03:08.726 I/Monkey  (13198): Events injected: 1
+01-22 19:03:08.727 I/PowerHalWrapper( 1748): amsBoostProcessCreate package:com.wholexale.app.staging 
+01-22 19:03:08.727 W/OplusSlideAnimOptHelper( 2225): initScrollOpt: not running in mainthread
+01-22 19:03:08.727 V/SensorManager( 1748): call sensorServiceCommonInterface name: setScreenShotDisable
+01-22 19:03:08.727 D/SensorService( 1748): SensorService sensorServiceCommonInterface = setScreenShotDisable
+01-22 19:03:08.728 D/SensorServiceExtImpl( 1748): sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+01-22 19:03:08.728 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-22 19:03:08.728 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:08.728 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 1
+01-22 19:03:08.728 I/OplusHansManager ( 1748): front pkg: com.wholexale.app.staging, uid: 10851, prev pkg: com.android.launcher, prev uid: 10106
+01-22 19:03:08.728 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-22 19:03:08.728 D/WindowManager( 2225): Add to mViews: android.widget.FrameLayout{2e0ef9 V.E...... ......I. 0,0-0,0},pkg= com.wholexale.app.staging
+01-22 19:03:08.728 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:08.728 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 1
+01-22 19:03:08.728 I/OplusHansManager ( 1748): notifyAppGoForeground, uid=10851
+01-22 19:03:08.728 I/Osense-DecisionMaker( 1748): notifySceneToAthenaPolicy: SCENE_APP_SWITCH, bundle: Bundle[{prevPkgName=com.android.launcher, curUid=10851, curPkgName=com.wholexale.app.staging, prevUid=10106}]
+01-22 19:03:08.728 I/OplusHansManager ( 1748): notifyAppGoBackground, uid=10106
+01-22 19:03:08.728 V/SensorManager( 1748): call sensorServiceCommonInterface name: setScreenShotDisable
+01-22 19:03:08.728 I/OplusResourcePreloadManager( 1748): resume pkg: com.wholexale.app.staging, uid:10851, prev pkg: com.android.launcher, prev uid: 10106
+01-22 19:03:08.728 D/SensorService( 1748): SensorService sensorServiceCommonInterface = setScreenShotDisable
+01-22 19:03:08.728 D/SensorServiceExtImpl( 1748): sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+01-22 19:03:08.728 I/Osense-DecisionMaker( 1748): scene: SCENE_APP_SWITCH, excutingPolicy: freezer
+01-22 19:03:08.729 D/Osense-DecisionMaker( 1748): invoke freezer policy,type: fast
+01-22 19:03:08.729 I/OplusHansManager ( 1748): Fast Freezer interval is less than 10000
+01-22 19:03:08.729 I/libPowerHal(  859): [perfLockRel] hdl:59256, idx:1
+01-22 19:03:08.729 V/SensorManager( 1748): call sensorServiceCommonInterface name: setScreenShotDisable
+01-22 19:03:08.729 D/SensorService( 1748): SensorService sensorServiceCommonInterface = setScreenShotDisable
+01-22 19:03:08.729 D/SensorServiceExtImpl( 1748): sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+01-22 19:03:08.733 D/ShellStartingWindow( 2225): inconsize = 408
+01-22 19:03:08.733 I/PowerHalWrapper( 1748): amsBoostNotify pid:2623,activity:com.android.launcher.Launcher, package:com.android.launcher, mProcessCreatePackcom.wholexale.app.staging 
+01-22 19:03:08.733 I/PowerHalWrapper( 1748): state: 0 
+01-22 19:03:08.733 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.android.launcher/com.android.launcher.Launcher pid=2623 state:0
+01-22 19:03:08.733 I/game_scn( 1748): collectForegroundAppList packName=com.android.launcher, actName=com.android.launcher.Launcher, pid=2623, uid=10106, state:PAUSED
+01-22 19:03:08.733 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:true 
+01-22 19:03:08.738 D/CompatibilityChangeReporter( 1748): Compat change id reported: 135634846; UID 10851; state: DISABLED
+01-22 19:03:08.738 D/CompatibilityChangeReporter( 1748): Compat change id reported: 177438394; UID 10851; state: DISABLED
+01-22 19:03:08.738 D/CompatibilityChangeReporter( 1748): Compat change id reported: 135772972; UID 10851; state: DISABLED
+01-22 19:03:08.738 D/CompatibilityChangeReporter( 1748): Compat change id reported: 135754954; UID 10851; state: ENABLED
+01-22 19:03:08.739 D/CompatibilityChangeReporter( 1748): Compat change id reported: 143937733; UID 10851; state: ENABLED
+01-22 19:03:08.742 D/CompatibilityChangeReporter( 1748): Compat change id reported: 168419799; UID 10851; state: DISABLED
+01-22 19:03:08.742 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-22 19:03:08.744 I/ActivityManager( 1748): Start proc 10113:com.wholexale.app.staging/u0a851 for next-top-activity {com.wholexale.app.staging/com.wholexale.app.MainActivity}
+01-22 19:03:08.745 I/WindowManager( 1748): addWindow: New client android.os.BinderProxy@55fb909 : window=Window{a18b70e u0 Splash Screen com.wholexale.app.staging}
+01-22 19:03:08.747 D/ViewRootImplExtImpl( 2225): onDisplayChanged -1 for VRI android.view.ViewRootImpl@efe4bbb
+01-22 19:03:08.749 D/InputEventReceiver( 2225): Input log is disabled
+01-22 19:03:08.750 D/OplusShellStartingWindowManager( 2225): handleSplashScreenView: normal third app or no-default
+01-22 19:03:08.754 E/ale.app.staging(10113): Unknown bits set in runtime_flags: 0x40000000
+01-22 19:03:08.754 I/ale.app.staging(10113): Using CollectorTypeCC GC.
+01-22 19:03:08.756 D/CoreBackPreview( 1748): Window{a18b70e u0 Splash Screen com.wholexale.app.staging}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@ad899e6, mPriority=0}
+01-22 19:03:08.756 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-22 19:03:08.756 V/WindowManager( 1748): Relayout Window{a18b70e u0 Splash Screen com.wholexale.app.staging}: viewVisibility=0, oldvis=0, req=1080x2400
+01-22 19:03:08.756 D/AudioManagerExtImpl(10620): getStreamVolume packageName=com.facebook.katana, index=0, streamType=1
+01-22 19:03:08.756 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:08.757 D/AudioManagerExtImpl( 9694): getStreamVolume packageName=com.cricbuzz.android, index=5, streamType=3
+01-22 19:03:08.757 I/BufferQueueDebug(  966): [Splash Screen com.wholexale.app.staging#24171](this:0xb400007020fd99e8,id:-1,api:0,p:-1,c:-1) BufferQueue core=(966:/system/bin/surfaceflinger)
+01-22 19:03:08.757 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:08.757 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.cricbuzz.android
+01-22 19:03:08.759 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:08.759 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:08.760 D/nativeloader(10113): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+01-22 19:03:08.763 V/WindowManager( 1748): Changing focus from Window{578cf9b u0 com.android.launcher/com.android.launcher.Launcher} to null,diplayid=0
+01-22 19:03:08.764 D/Theia.NoFocusWindow( 1748): FocusWindowErrorScene CheckFreezeScreen
+01-22 19:03:08.766 D/[OSIE]  (  966): scltmLayer_name VRI[staging][Splash Screen com.wholexale.app.staging]
+01-22 19:03:08.766 D/[OSIE]  (  966): IsSCLTMLayer=0 
+01-22 19:03:08.766 D/BufferQueueConsumer( 2225): [](id:8b100000748,api:0,p:-1,c:2225) connect: controlledByApp=false
+01-22 19:03:08.766 E/IPCThreadState( 2225): attemptIncStrongHandle(199): Not supported
+01-22 19:03:08.767 I/OneTrace(10113): Mark active for pid=10113? true
+01-22 19:03:08.767 D/cutils-dev(10113): otrace_set_tracing_enabled? true
+01-22 19:03:08.768 D/cutils-dev(10113): properties changed in otrace_seq_number_changed!
+01-22 19:03:08.769 E/ale.app.staging(10113): Could not write anonymous vdex /system/framework/oat/arm64/mediatek-framework.vdex: Could not open /system/framework/oat/arm64/mediatek-framework.vdex for writing
+01-22 19:03:08.769 I/FocusResolver( 1748): updateFocusedWindow,  on display 0, reason: NO_WINDOW, result:   FocusedWindows: <none>
+01-22 19:03:08.770 D/VRI[Launcher]( 2623): onFocusEvent false
+01-22 19:03:08.774 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging proc start: 10851 10113 false com.wholexale.app.staging
+01-22 19:03:08.774 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging start process: []
+01-22 19:03:08.774 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:08.775 I/Monkey  (13198): ## Network stats: elapsed time=51ms (0ms mobile, 0ms wifi, 51ms not connected)
+01-22 19:03:08.775 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging toForeOps: []
+01-22 19:03:08.775 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:08.776 D/VRI[staging]( 2225): registerCallbacksForSync syncBuffer=false
+01-22 19:03:08.776 I/app_process(13198): System.exit called, status: 0
+01-22 19:03:08.776 I/AndroidRuntime(13198): VM exiting with result code 0.
+01-22 19:03:08.777 D/RGBNormalizeServer( 1748): OplusRGBNormalize feature enabled ? false
+01-22 19:03:08.781 D/OplusDexOptimizeManager( 1748): Do not in AppLaunchOptList!
+01-22 19:03:08.783 I/OplusAppSwitchManagerService( 1748): appswitch hasProcess ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11648}
+01-22 19:03:08.783 I/OplusJoystickManager( 1748): handleApplicationSwitch deprecated!
+01-22 19:03:08.783 I/OplusAppSwitchManagerService( 1748): appswitch hasProcess ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11648}
+01-22 19:03:08.784 I/PowerHalWrapper( 1748): amsBoostNotify pid:10113,activity:com.wholexale.app.MainActivity, package:com.wholexale.app.staging, mProcessCreatePackcom.wholexale.app.staging 
+01-22 19:03:08.784 I/PowerHalWrapper( 1748): state: 1 
+01-22 19:03:08.784 I/libPowerHal(  859): [perfNotifyAppState] foreground:com.wholexale.app.staging, pid:10113, uid:10851
+01-22 19:03:08.785 E/UxUtility(  859): notifyAppState error = NULL
+01-22 19:03:08.785 I/TouchUtility(  859): notifyAppState error = NULL
+01-22 19:03:08.785 I/mtkpower@impl(  859): [notifyAppState] pc:1, com.android.launcher => com.wholexale.app.staging
+01-22 19:03:08.785 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.wholexale.app.staging/com.wholexale.app.MainActivity pid=10113 state:1
+01-22 19:03:08.785 I/game_scn( 1748): collectForegroundAppList packName=com.wholexale.app.staging, actName=com.wholexale.app.MainActivity, pid=10113, uid=10851, state:RESUMED
+01-22 19:03:08.785 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:true 
+01-22 19:03:08.786 D/ActivityTaskManager( 1748): onWindowFocusChanged Task{e45f736 #11648 type=standard A=10851:com.wholexale.app.staging U=0 visible=true visibleRequested=true mode=fullscreen translucent=false sz=1} would transfer to compact
+01-22 19:03:08.786 I/InputDispatcher( 1748): setFocusedApplication displayId=0 ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11648}
+01-22 19:03:08.786 E/OplusThermalStats( 1748): Error getting package info: com.wholexale.app.staging
+01-22 19:03:08.787 D/OplusAppSwitchListener( 1748): Detect com.android.launcher switch to background
+01-22 19:03:08.787 D/OplusEapManager( 1748): mTargetExitName :com.android.launcher
+01-22 19:03:08.788 I/mtkpower_client( 1748): perf_lock_rel, hdl:59262, tid:2280
+01-22 19:03:08.788 I/mtkpower_client( 1748): perf_lock_acq, hdl:59262, dur:0, num:10, tid:2280
+01-22 19:03:08.788 I/libPowerHal(  859): [perfLockRel] hdl:59262, idx:0
+01-22 19:03:08.789 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-22 19:03:08.789 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-22 19:03:08.789 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-22 19:03:08.789 D/BLASTBufferQueue( 2225): [VRI[staging][Splash Screen com.wholexale.app.staging]#1848](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=84987290125834(auto) mPendingTransactions.size=0 graphicBufferId=9556302251352 transform=0
+01-22 19:03:08.789 D/VRI[staging]( 2225): Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+01-22 19:03:08.789 V/DCSEX-AppSwitchManager( 1748): OnAppSwitchObserver: onAppExit, resuming = com.wholexale.app.staging, target = com.android.launcher, is ResumingFirstStart =  true, is ResumingMultiApp =  false, extensionInfo =  Bundle[{taskId=11648, uid=10851}]
+01-22 19:03:08.789 D/VRR [OPlusFrontAppManager]( 1748): OnAppSwitchObserver: onAppExit , info.targetName = com.android.launcher
+01-22 19:03:08.789 D/VRR [OPlusFrontAppManager]( 1748): packageName: null
+01-22 19:03:08.790 W/Parcel  ( 2225): Expecting binder but got null!
+01-22 19:03:08.790 D/VRI[staging]( 2225): draw finished.
+01-22 19:03:08.790 D/OplusAppSwitchListener( 1748): Detect com.wholexale.app.staging switch to foreground
+01-22 19:03:08.790 D/OplusEapManager( 1748): mTargetEnterName :com.wholexale.app.staging
+01-22 19:03:08.790 D/OplusLatencyOptimizerManager( 1748): enter pkg: com.wholexale.app.staging isPrevBlackAppTop: false mIsBlackAppTop: false
+01-22 19:03:08.790 V/DCSEX-AppSwitchManager( 1748): OnAppSwitchObserver: onAppEnter, launchedFrom =  com.android.shell, target =  com.wholexale.app.staging, is firstStart =  true, is multiApp =  false, extensionInfo =  Bundle[{taskId=11648, pid=10113, uid=10851, versionCode=1}]
+01-22 19:03:08.790 D/VRR [OPlusFrontAppManager]( 1748): OnAppSwitchObserver: onAppEnter , info.targetName = com.wholexale.app.staging
+01-22 19:03:08.790 D/VRR [OPlusFrontAppManager]( 1748): packageName: com.wholexale.app.staging
+01-22 19:03:08.791 D/CompatibilityChangeReporter(10113): Compat change id reported: 171979766; UID 10851; state: ENABLED
+01-22 19:03:08.791 E/Athena  ( 1748): MemoryGuardAction: handleAppChange
+01-22 19:03:08.791 I/mtkpower_client( 1748): ret_hdl:59264
+01-22 19:03:08.791 I/oplus.android.OplusFrameworkFactoryImpl(10113): get feature:IOplusAutoResolutionFeature
+01-22 19:03:08.791 I/oplus.android.OplusFrameworkFactoryImpl(10113): getOplusAutoResolutionFeature
+01-22 19:03:08.791 D/DCSEX-AppLaunchEventRecorder( 1748): onAppSwitch from = com.android.launcher to = com.wholexale.app.staging
+01-22 19:03:08.792 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging toForeOps: []
+01-22 19:03:08.792 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:08.792 D/VRR [OPlusRefreshRateService]( 1748): handleFrontAppChange pkgName: com.wholexale.app.staging
+01-22 19:03:08.792 D/VRR [OPlusExternalRefreshRateManager]( 1748): setFrontPackageName pkgName: com.wholexale.app.staging CurPkgName: com.android.launcher
+01-22 19:03:08.793 I/Athena  ( 2605): AthenaDynamicReceiver: pre_app:com.android.launcher, next_app:com.wholexale.app.staging(10851|10113)
+01-22 19:03:08.794 D/WindowManager( 1748): finishDrawingWindow: Window{a18b70e u0 Splash Screen com.wholexale.app.staging} mDrawState=DRAW_PENDING
+01-22 19:03:08.794 W/Battery ( 4587): ThermalControlUtils: mForegroundPkg=com.wholexale.app.staging
+01-22 19:03:08.795 D/VRR [OPlusRefreshRateService]( 1748):  setFrameRateTargetControl [ 0.0 , com.android.launcher , false , com.oplus.battery ]
+01-22 19:03:08.795 D/VRR [OPlusRefreshRateService]( 1748):  setFrameRateTargetControl from [0, 1000, android.uid.system:1000]
+01-22 19:03:08.795 D/VRR [OPlusExternalRefreshRateManager]( 1748):  [FRTC] FrameRate : 0 com.android.launcher false com.oplus.battery 0 1000
+01-22 19:03:08.795 D/SensorService( 1748): onUidStateChanged uid = 10851, state = UID_STATE_ACTIVE
+01-22 19:03:08.795 W/ContextImpl( 2605): Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1889 android.content.ContextWrapper.startService:827 u1.c.c:8 u1.c.a:4 y2.b.f:4 
+01-22 19:03:08.796 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging moveToTop:[]
+01-22 19:03:08.796 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:08.796 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging boost hint: 10113
+01-22 19:03:08.796 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 0
+01-22 19:03:08.796 D/VRR [OPlusSurfaceFlingerController]( 1748):  add frtc FrameRate : 0 com.android.launcher false com.oplus.battery
+01-22 19:03:08.796 I/OplusFeatureCache(10113): Milliseconds spent on init(): 5
+01-22 19:03:08.797 I/VRR [FRTC](  966): setFrameRateTarget with [0, com.android.launcher, 0, com.oplus.battery, 1, 0, 1000]
+01-22 19:03:08.797 W/VRR [FRTC](  966): invalid param { fps 0, proc_name com.android.launcher, strict_mode 0, description com.oplus.battery, proc_id 0, rate_status 0, backend Surface, version 1, pid 0, uid 1000, enable at 2026-01-22 19:03:08, disable waiting } for current status.
+01-22 19:03:08.797 W/VRR [FRTC](  966): CurrentTarget size 0:
+01-22 19:03:08.797 D/CompactWindowAppManager(10113): initCompactApplicationInfo 
+01-22 19:03:08.797 D/OplusUIFirst_FB( 1748): com.coloros.assistantscreen moveToBack 4044
+01-22 19:03:08.799 D/OplusUIFirst_FB( 1748): com.google.android.googlequicksearchbox moveToBack 12190
+01-22 19:03:08.799 D/BufferStateLayer(  966): Splash Screen com.wholexale.app.staging#24171 setBuffer frameId=1, bufferId=9556302251352 fenceId=821, w= 1080, h=2400
+01-22 19:03:08.799 W/Battery ( 4587): ThermalControllHandler: tempLevel=7,userMode=3,gameUserMode=7,appType=-1,envTempType=1,appStates=[],appSwitchSafetyMode=false
+01-22 19:03:08.800 D/OplusLayer(  966): (24171,Splash Screen com.wholexale.app.staging#24171,com.android.systemui) setBuffer
+01-22 19:03:08.800 D/OplusAtlas.OplusAtlasEventDispatch( 3300): setEvent:atlas_event_on_foreground_activities_changed info:pid:10113,uid:10851,hasForegroundActivities:1
+01-22 19:03:08.802 D/OplusAtlas.OplusAudioScene( 3300): callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:10113,uid:10851,hasForegroundActivities:1
+01-22 19:03:08.803 I/OplusHansManager ( 1748): onUidActive() update stay time, uid=10851, pkgName=com.wholexale.app.staging, U stay=4
+01-22 19:03:08.803 V/DeepThinker( 5470): ProcessManager: onForegroundActivitiesChanged pid:10113, uid:10851, foregroundActivities:true
+01-22 19:03:08.803 D/OplusAtlas.OplusMessageHandler( 3300): handleMessage: Msg { when=-2ms what=2 obj=com.oplus.atlas.OplusAtlasEvent@3ffa5da target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+01-22 19:03:08.803 D/OplusUIFirst_FB( 1748): com.google.android.adservices.api moveToBack 8759
+01-22 19:03:08.804 W/libc    (10113): Access denied finding property "ro.odm.prev.product.name"
+01-22 19:03:08.805 D/LoadedApk(10113): mApplicationInfo overrideDisplayId:null
+01-22 19:03:08.806 W/Battery ( 4587): ThermalControllerCenter: mSafetyState=10000
+01-22 19:03:08.808 W/Battery ( 4587): ThermalControllHandler: tempGear=7,configItemName=common_config
+01-22 19:03:08.809 I/ale.app.staging(10113): Failed to add image file: Failed to find OatDexFile for DexFile /data/app/~~_3U2ObYU1l6r-IubCFRFww==/com.wholexale.app.staging-K6dhLmoQr_4I6exMDAZpvw==/base.apk (canonical path /data/app/~~_3U2ObYU1l6r-IubCFRFww==/com.wholexale.app.staging-K6dhLmoQr_4I6exMDAZpvw==/base.apk) in OatFile /data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/oat/arm64/base.odex
+01-22 19:03:08.810 D/OplusBatteryServiceFeature( 1748): setSmartCoolDown: coolDown = 3, normalCoolDown = 3, pkgName = com.wholexale.app.staging
+01-22 19:03:08.810 D/vendor.oplus.hardware.charger@1.0-service(  897): set cooldown:3,  normalCoolDown:3
+01-22 19:03:08.810 D/nativeloader(10113): Configuring clns-4 for other apk /data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/lib/arm64:/data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.wholexale.app.staging
+01-22 19:03:08.811 W/Battery ( 4587): ThermalControllHandler: MSG_THERMAL_CONTROL_CATEGORY_CHANGED
+01-22 19:03:08.813 V/ShellTaskOrganizer( 2225): Task appeared taskId=11648
+01-22 19:03:08.816 I/DeepThinker( 5470): IntentManager: onIntentProduced 1
+01-22 19:03:08.816 I/DeepThinker( 5470): IntentManager: dispatchIntents 1
+01-22 19:03:08.818 D/nativeloader(10113): Load libframework-connectivity-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity.jar: ok
+01-22 19:03:08.819 I/DeepThinker( 5470): EventFountainDispatcher: dispatchSpecificIntents 1
+01-22 19:03:08.819 I/DeepThinker( 5470): EventFountainDispatcher: dispatchSpecificIntents com.pantanal.action.APPS_LIST
+01-22 19:03:08.820 V/GraphicsEnvironment(10113): ANGLE Developer option for 'com.wholexale.app.staging' set to: 'default'
+01-22 19:03:08.821 V/GraphicsEnvironment(10113): ANGLE GameManagerService for com.wholexale.app.staging: false
+01-22 19:03:08.821 V/GraphicsEnvironment(10113): Neither updatable production driver nor prerelease driver is supported.
+01-22 19:03:08.823 D/NetworkSecurityConfig(10113): No Network Security Config specified, using platform default
+01-22 19:03:08.824 D/NetworkSecurityConfig(10113): No Network Security Config specified, using platform default
+01-22 19:03:08.824 D/CompatibilityChangeReporter(10113): Compat change id reported: 183155436; UID 10851; state: ENABLED
+01-22 19:03:08.827 I/WindowStateExtImpl( 1748): onSurfaceShowChange show = true mPackageName = com.wholexale.app.staging parentPkgName = com.wholexale.app.staging
+01-22 19:03:08.827 I/bpas    (12190): onPause
+01-22 19:03:08.833 D/Layer   (  966): reparent to null sequence=24165, seq[1], name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#24165
+01-22 19:03:08.833 D/Layer   (  966): reparent to null sequence=24166, seq[2], name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#24166
+01-22 19:03:08.833 D/OplusLayer(  966): ~Layer() sequence=24165, name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#24165
+01-22 19:03:08.833 D/OplusLayer(  966): ~Layer() sequence=24166, name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#24166
+01-22 19:03:08.836 D/nativeloader(10113): Load libSchedAssistJni.so using system ns (caller=/system/framework/oplus-framework.jar): ok
+01-22 19:03:08.836 D/ExtensionsLoader(10113): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.836 D/ExtensionsLoader(10113): Opened libSchedAssistExtImpl.so
+01-22 19:03:08.836 E/ale.app.staging(10113): ofbOpen failed with error=No such file or directory
+01-22 19:03:08.836 E/ale.app.staging(10113): sysOpen failed with error=No such file or directory
+01-22 19:03:08.838 D/OplusGraphicsEvent(10113): OplusGraphicsEventListener create now!
+01-22 19:03:08.839 D/OplusGraphicsEvent(10113): addEventListener success!
+01-22 19:03:08.839 D/PhoneInterfaceManager( 2568): [PhoneIntfMgr] QueryTelephonyChecker-getDataNetworkTypeForSubscriber: packageName = com.android.phone, isGrant = true
+01-22 19:03:08.840 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:08.840 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.wholexale.app.staging
+01-22 19:03:08.840 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:08.840 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.truecaller
+01-22 19:03:08.841 D/PhoneInterfaceManager( 2568): [PhoneIntfMgr] QueryTelephonyChecker-getDataNetworkTypeForSubscriber: packageName = com.android.phone, isGrant = true
+01-22 19:03:08.842 V/SoLoader(10113): Init System Loader delegate
+01-22 19:03:08.843 D/OplusActivityManager(10113): get AMS extension: android.os.BinderProxy@a79f42e
+01-22 19:03:08.845 I/mtkpower_client( 1748): perf_lock_rel, hdl:59264, tid:2280
+01-22 19:03:08.846 I/mtkpower_client( 1748): perf_lock_acq, hdl:59264, dur:0, num:10, tid:2280
+01-22 19:03:08.846 I/libPowerHal(  859): [perfLockRel] hdl:59264, idx:0
+01-22 19:03:08.846 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-22 19:03:08.846 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-22 19:03:08.846 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-22 19:03:08.847 I/mtkpower_client( 1748): ret_hdl:59265
+01-22 19:03:08.848 D/OplusActivityManagerServiceEnhance( 1748): setGlThreads detect 10113 13229
+01-22 19:03:08.850 D/libMEOW (10113): meow new tls: 0xb400007a3649cac0
+01-22 19:03:08.851 D/libMEOW (10113): meow reload base cfg path: na
+01-22 19:03:08.851 D/libMEOW (10113): meow reload overlay cfg path: na
+01-22 19:03:08.851 I/DispPerfService(  966): updateLayerMask 9
+01-22 19:03:08.853 E/QT      (10113): [QT]file does not exist
+01-22 19:03:08.853 E/horae   ( 3350): 0: back:37133,frame:34917,front:38533, 7, +(3467), 1 ,42000,37150,39000,40000
+01-22 19:03:08.854 D/libMEOW (10113): applied 1 plugins for [com.wholexale.app.staging]:
+01-22 19:03:08.854 D/libMEOW (10113):   plugin 1: [libMEOW_gift.so]: 0xb400007a2a6c1780
+01-22 19:03:08.855 D/libMEOW (10113): rebuild call chain: 0xb400007a364bd140
+01-22 19:03:08.855 D/libMEOW (10113): meow delete tls: 0xb400007a3649cac0
+01-22 19:03:08.874 I/oplus.android.OplusFrameworkFactoryImpl(10113): Unknow feature:IOplusTextViewRTLUtilForUG
+01-22 19:03:08.878 W/unknown:ReactInstanceManagerBuilder(10113): You're not setting the JS Engine Resolution Algorithm. We'll try to load JSC first, and if it fails we'll fallback to Hermes
+01-22 19:03:08.880 D/nativeloader(10113): Load libjscexecutor.so using class loader ns clns-4 (caller=/data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk): dlopen failed: library "libjscexecutor.so" not found
+01-22 19:03:08.885 D/nativeloader(10113): Load /data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk!/lib/arm64-v8a/libhermes.so using class loader ns clns-4 (caller=/data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk): ok
+01-22 19:03:08.893 D/nativeloader(10113): Load /data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk!/lib/arm64-v8a/libhermes_executor.so using class loader ns clns-4 (caller=/data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk): ok
+01-22 19:03:08.897 D/nativeloader(10113): Load /data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk!/lib/arm64-v8a/libfbjni.so using class loader ns clns-4 (caller=/data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk): ok
+01-22 19:03:08.912 D/nativeloader(10113): Load /data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk!/lib/arm64-v8a/libreactnativejni.so using class loader ns clns-4 (caller=/data/app/~~GBPK08fTAhfiY6r_n8-kLQ==/com.wholexale.app.staging-QlLxrq2gFoFhuNrJ1lAjpw==/base.apk): ok
+01-22 19:03:08.922 D/nativeloader(10113): Load libpowerhalwrap_jni.so using system ns (caller=/system/framework/mediatek-framework.jar): ok
+01-22 19:03:08.922 I/PowerHalWrapper(10113): PowerHalWrapper.getInstance 
+01-22 19:03:08.922 I/PowerHalWrapper(10113): PowerHalWrapper.getInstance 
+01-22 19:03:08.923 I/MSYNC3-VariableRefreshRate(10113): Variable refreshrate is disabled
+01-22 19:03:08.923 D/OplusInputMethodUtil(10113): init sDebug to false, init sDebugIme to false, init sAlwaysOn to false
+01-22 19:03:08.923 D/OplusInputMethodUtil(10113): updateDebugToClass InputMethodManager.DEBUG = false
+01-22 19:03:08.923 D/OplusInputMethodUtil(10113): updateDebugToClass ImeFocusController.DEBUG = false
+01-22 19:03:08.923 D/OplusInputMethodUtil(10113): updateDebugToClass BaseInputConnection.DEBUG = false
+01-22 19:03:08.923 D/OplusInputMethodUtil(10113): updateDebugToClass ImeFocusController.sDebugIme = false
+01-22 19:03:08.925 I/SurfaceFactory(10113): [static] sSurfaceFactory = com.mediatek.view.impl.SurfaceFactoryImpl@b4b07a1
+01-22 19:03:08.925 I/SurfaceFlinger(  966): [SF client] NEW(0xb40000701f9faf00) for (10113:com.wholexale.app.staging)
+01-22 19:03:08.927 W/unknown:ReactContext(10113): initializeMessageQueueThreads() is called.
+01-22 19:03:08.928 D/WindowManager(10113): Add to mViews: DecorView@e1b1187[MainActivity],pkg= com.wholexale.app.staging
+01-22 19:03:08.928 I/OplusSlideAnimOptHelper(10113): checkListMode: is blacklist mode = true
+01-22 19:03:08.929 D/OplusSlideAnimOptHelper(10113): com.wholexale.app.staging scrollEffectOpt enable = true
+01-22 19:03:08.930 D/ExtensionsLoader(10113): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.933 D/ExtensionsLoader(10113): Opened libhwuiextimpl.so
+01-22 19:03:08.933 D/ExtensionsLoader(10113): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.933 D/ExtensionsLoader(10113): Opened libSchedAssistExtImpl.so
+01-22 19:03:08.939 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-22 19:03:08.940 I/SurfaceFlinger(  966): [SF client] NEW(0xb40000701dca29c0) for (1748:system_server)
+01-22 19:03:08.942 I/WindowManager( 1748): addWindow: New client android.os.BinderProxy@6522691 : window=Window{de0c9f6 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}
+01-22 19:03:08.944 D/ViewRootImplExtImpl(10113): onDisplayChanged -1 for VRI android.view.ViewRootImpl@26c09d9
+01-22 19:03:08.944 D/CoreBackPreview( 1748): Window{de0c9f6 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@838e864, mPriority=0}
+01-22 19:03:08.944 D/libMEOW (10113): meow new tls: 0xb4000079bd0d9640
+01-22 19:03:08.944 D/libMEOW (10113): applied 1 plugins for [com.wholexale.app.staging]:
+01-22 19:03:08.945 D/libMEOW (10113):   plugin 1: [libMEOW_gift.so]: 0xb400007a2a6c1780
+01-22 19:03:08.945 D/libMEOW (10113): rebuild call chain: 0xb4000079bd0e8fc0
+01-22 19:03:08.945 D/InputEventReceiver(10113): Input log is disabled
+01-22 19:03:08.947 I/Quality (10113): Skipped: false 1 cost 32.854076 refreshRate 16550723 bit true processName com.wholexale.app.staging
+01-22 19:03:08.950 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-22 19:03:08.951 V/WindowManager( 1748): Relayout Window{de0c9f6 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=4, req=1080x2400
+01-22 19:03:08.951 I/BufferQueueDebug(  966): [com.wholexale.app.staging/com.wholexale.app.MainActivity#24178](this:0xb400007020ffe9e8,id:-1,api:0,p:-1,c:-1) BufferQueue core=(966:/system/bin/surfaceflinger)
+01-22 19:03:08.958 V/WindowManager( 1748): Changing focus from null to Window{de0c9f6 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity},diplayid=0
+01-22 19:03:08.961 D/Theia.NoFocusWindow( 1748): FocusWindowErrorScene cancelCheckFreezeScreen
+01-22 19:03:08.963 D/[OSIE]  (  966): scltmLayer_name VRI[MainActivity][com.wholexale.app.staging/com.wholexale.app.MainActivity]
+01-22 19:03:08.963 D/[OSIE]  (  966): IsSCLTMLayer=0 
+01-22 19:03:08.963 D/BufferQueueConsumer(10113): [](id:278100000000,api:0,p:-1,c:10113) connect: controlledByApp=false
+01-22 19:03:08.965 D/ExtensionsLoader(10113): createInstance(64bit) : createExtendedFactory
+01-22 19:03:08.965 D/ExtensionsLoader(10113): Opened libSchedAssistExtImpl.so
+01-22 19:03:08.966 E/FBI     (10113): Can't load library: dlopen failed: library "libmagtsync.so" not found
+01-22 19:03:08.967 V/ZoomWindowDecorView(10113): setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.236654983
+01-22 19:03:08.968 D/VRI[MainActivity](10113): registerCallbacksForSync syncBuffer=false
+01-22 19:03:08.974 D/libMEOW (10113): meow new tls: 0xb4000079bd0f5640
+01-22 19:03:08.974 D/libMEOW (10113): applied 1 plugins for [com.wholexale.app.staging]:
+01-22 19:03:08.974 D/libMEOW (10113):   plugin 1: [libMEOW_gift.so]: 0xb400007a2a6c1780
+01-22 19:03:08.974 D/libMEOW (10113): rebuild call chain: 0xb4000079bd104a00
+01-22 19:03:08.976 W/unknown:ReactInstanceManagerBuilder(10113): You're not setting the JS Engine Resolution Algorithm. We'll try to load JSC first, and if it fails we'll fallback to Hermes
+01-22 19:03:08.979 I/ale.app.staging(10113): Rejecting re-init on previously-failed class java.lang.Class<com.facebook.react.jscexecutor.JSCExecutor>: java.lang.UnsatisfiedLinkError: dlopen failed: library "libjscexecutor.so" not found
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void java.lang.Runtime.loadLibrary0(java.lang.ClassLoader, java.lang.Class, java.lang.String) (Runtime.java:1097)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void java.lang.Runtime.loadLibrary0(java.lang.Class, java.lang.String) (Runtime.java:1019)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void java.lang.System.loadLibrary(java.lang.String) (System.java:1765)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at boolean com.facebook.soloader.nativeloader.SystemDelegate.loadLibrary(java.lang.String, int) (SystemDelegate.java:24)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at boolean com.facebook.soloader.nativeloader.NativeLoader.loadLibrary(java.lang.String, int) (NativeLoader.java:52)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at boolean com.facebook.soloader.nativeloader.NativeLoader.loadLibrary(java.lang.String) (NativeLoader.java:30)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at boolean com.facebook.soloader.SoLoader.loadLibrary(java.lang.String) (SoLoader.java:869)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.facebook.react.jscexecutor.JSCExecutor.loadLibrary() (JSCExecutor.java:24)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.facebook.react.jscexecutor.JSCExecutor.<clinit>() (JSCExecutor.java:20)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at com.facebook.react.bridge.JavaScriptExecutorFactory com.facebook.react.ReactInstanceManagerBuilder.getDefaultJSExecutorFactory(java.lang.String, java.lang.String, android.content.Context) (ReactInstanceManagerBuilder.java:373)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at com.facebook.react.ReactInstanceManager com.facebook.react.ReactInstanceManagerBuilder.build() (ReactInstanceManagerBuilder.java:325)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at com.facebook.react.ReactInstanceManager com.facebook.react.ReactNativeHost.createReactInstanceManager() (ReactNativeHost.java:96)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at com.facebook.react.ReactInstanceManager com.facebook.react.ReactNativeHost.getReactInstanceManager() (ReactNativeHost.java:42)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.facebook.react.ReactDelegate.loadApp(java.lang.String) (ReactDelegate.java:121)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.facebook.react.ReactActivityDelegate.loadApp(java.lang.String) (ReactActivityDelegate.java:114)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.facebook.react.ReactActivityDelegate.onCreate(android.os.Bundle) (ReactActivityDelegate.java:109)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.facebook.react.ReactActivity.onCreate(android.os.Bundle) (ReactActivity.java:46)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.wholexale.app.MainActivity.onCreate(android.os.Bundle) (MainActivity.kt:17)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.app.Activity.performCreate(android.os.Bundle, android.os.PersistableBundle) (Activity.java:8397)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.app.Activity.performCreate(android.os.Bundle) (Activity.java:8370)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.app.Instrumentation.callActivityOnCreate(android.app.Activity, android.os.Bundle) (Instrumentation.java:1403)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:3837)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at android.app.Activity android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.app.servertransaction.PendingTransactionActions, android.content.Intent) (ActivityThread.java:4006)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.app.servertransaction.LaunchActivityItem.execute(android.app.ClientTransactionHandler, android.os.IBinder, android.app.servertransaction.PendingTransactionActions) (LaunchActivityItem.java:111)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.app.servertransaction.TransactionExecutor.executeCallbacks(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:135)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.app.servertransaction.TransactionExecutor.execute(android.app.servertransaction.ClientTransaction) (TransactionExecutor.java:95)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:2462)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:106)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at boolean android.os.Looper.loopOnce(android.os.Looper, long, int) (Looper.java:240)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.os.Looper.loop() (Looper.java:351)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:8377)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:584)
+01-22 19:03:08.979 I/ale.app.staging(10113):   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:1013)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): Failed to create NativeModule "UIManager"
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): java.lang.NoClassDefFoundError: com.facebook.react.jscexecutor.JSCExecutor
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactInstanceManagerBuilder.getDefaultJSExecutorFactory(ReactInstanceManagerBuilder.java:373)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactInstanceManagerBuilder.build(ReactInstanceManagerBuilder.java:325)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactNativeHost.createReactInstanceManager(ReactNativeHost.java:96)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactNativeHost.getReactInstanceManager(ReactNativeHost.java:42)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.swmansion.reanimated.ReanimatedPackage.getReactInstanceManager(ReanimatedPackage.java:95)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.swmansion.reanimated.ReanimatedPackage.createUIManager(ReanimatedPackage.java:72)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.swmansion.reanimated.ReanimatedPackage.getModule(ReanimatedPackage.java:33)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.TurboReactPackage$ModuleHolderProvider.get(TurboReactPackage.java:161)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.TurboReactPackage$ModuleHolderProvider.get(TurboReactPackage.java:149)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.bridge.ModuleHolder.create(ModuleHolder.java:191)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.bridge.ModuleHolder.getModule(ModuleHolder.java:156)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.bridge.NativeModuleRegistry.getModule(NativeModuleRegistry.java:170)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.bridge.CatalystInstanceImpl.getNativeModule(CatalystInstanceImpl.java:493)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.bridge.CatalystInstanceImpl.getNativeModule(CatalystInstanceImpl.java:469)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.uimanager.UIManagerHelper.getUIManager(UIManagerHelper.java:89)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.uimanager.UIManagerHelper.getUIManager(UIManagerHelper.java:47)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactInstanceManager.attachRootViewToInstance(ReactInstanceManager.java:1243)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactInstanceManager.setupReactContext(ReactInstanceManager.java:1185)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactInstanceManager.-$$Nest$msetupReactContext(Unknown Source:0)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactInstanceManager$5$2.run(ReactInstanceManager.java:1139)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.os.Handler.handleCallback(Handler.java:942)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.bridge.queue.MessageQueueThreadHandler.dispatchMessage(MessageQueueThreadHandler.java:27)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.os.Looper.loopOnce(Looper.java:240)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.os.Looper.loop(Looper.java:351)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.bridge.queue.MessageQueueThreadImpl$4.run(MessageQueueThreadImpl.java:228)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at java.lang.Thread.run(Thread.java:1563)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): Caused by: java.lang.UnsatisfiedLinkError: dlopen failed: library "libjscexecutor.so" not found
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at java.lang.Runtime.loadLibrary0(Runtime.java:1097)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at java.lang.Runtime.loadLibrary0(Runtime.java:1019)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at java.lang.System.loadLibrary(System.java:1765)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.soloader.nativeloader.SystemDelegate.loadLibrary(SystemDelegate.java:24)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.soloader.nativeloader.NativeLoader.loadLibrary(NativeLoader.java:52)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.soloader.nativeloader.NativeLoader.loadLibrary(NativeLoader.java:30)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.soloader.SoLoader.loadLibrary(SoLoader.java:869)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.jscexecutor.JSCExecutor.loadLibrary(JSCExecutor.java:24)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.jscexecutor.JSCExecutor.<clinit>(JSCExecutor.java:20)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactInstanceManagerBuilder.getDefaultJSExecutorFactory(ReactInstanceManagerBuilder.java:373)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactInstanceManagerBuilder.build(ReactInstanceManagerBuilder.java:325)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactNativeHost.createReactInstanceManager(ReactNativeHost.java:96)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactNativeHost.getReactInstanceManager(ReactNativeHost.java:42)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactDelegate.loadApp(ReactDelegate.java:121)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactActivityDelegate.loadApp(ReactActivityDelegate.java:114)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactActivityDelegate.onCreate(ReactActivityDelegate.java:109)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.facebook.react.ReactActivity.onCreate(ReactActivity.java:46)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.wholexale.app.MainActivity.onCreate(MainActivity.kt:17)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.Activity.performCreate(Activity.java:8397)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.Activity.performCreate(Activity.java:8370)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1403)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3837)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4006)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:111)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:135)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2462)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.os.Looper.loopOnce(Looper.java:240)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.os.Looper.loop(Looper.java:351)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at android.app.ActivityThread.main(ActivityThread.java:8377)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at java.lang.reflect.Method.invoke(Native Method)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:584)
+01-22 19:03:08.979 E/unknown:NativeModuleInitError(10113): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1013)
+--------- beginning of crash
+01-22 19:03:08.980 E/AndroidRuntime(10113): FATAL EXCEPTION: mqt_native_modules
+01-22 19:03:08.980 E/AndroidRuntime(10113): Process: com.wholexale.app.staging, PID: 10113
+01-22 19:03:08.980 E/AndroidRuntime(10113): java.lang.NoClassDefFoundError: com.facebook.react.jscexecutor.JSCExecutor
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactInstanceManagerBuilder.getDefaultJSExecutorFactory(ReactInstanceManagerBuilder.java:373)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactInstanceManagerBuilder.build(ReactInstanceManagerBuilder.java:325)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactNativeHost.createReactInstanceManager(ReactNativeHost.java:96)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactNativeHost.getReactInstanceManager(ReactNativeHost.java:42)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.swmansion.reanimated.ReanimatedPackage.getReactInstanceManager(ReanimatedPackage.java:95)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.swmansion.reanimated.ReanimatedPackage.createUIManager(ReanimatedPackage.java:72)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.swmansion.reanimated.ReanimatedPackage.getModule(ReanimatedPackage.java:33)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.TurboReactPackage$ModuleHolderProvider.get(TurboReactPackage.java:161)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.TurboReactPackage$ModuleHolderProvider.get(TurboReactPackage.java:149)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.bridge.ModuleHolder.create(ModuleHolder.java:191)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.bridge.ModuleHolder.getModule(ModuleHolder.java:156)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.bridge.NativeModuleRegistry.getModule(NativeModuleRegistry.java:170)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.bridge.CatalystInstanceImpl.getNativeModule(CatalystInstanceImpl.java:493)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.bridge.CatalystInstanceImpl.getNativeModule(CatalystInstanceImpl.java:469)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.uimanager.UIManagerHelper.getUIManager(UIManagerHelper.java:89)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.uimanager.UIManagerHelper.getUIManager(UIManagerHelper.java:47)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactInstanceManager.attachRootViewToInstance(ReactInstanceManager.java:1243)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactInstanceManager.setupReactContext(ReactInstanceManager.java:1185)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactInstanceManager.-$$Nest$msetupReactContext(Unknown Source:0)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactInstanceManager$5$2.run(ReactInstanceManager.java:1139)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.os.Handler.handleCallback(Handler.java:942)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.bridge.queue.MessageQueueThreadHandler.dispatchMessage(MessageQueueThreadHandler.java:27)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.os.Looper.loopOnce(Looper.java:240)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.os.Looper.loop(Looper.java:351)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.bridge.queue.MessageQueueThreadImpl$4.run(MessageQueueThreadImpl.java:228)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at java.lang.Thread.run(Thread.java:1563)
+01-22 19:03:08.980 E/AndroidRuntime(10113): Caused by: java.lang.UnsatisfiedLinkError: dlopen failed: library "libjscexecutor.so" not found
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at java.lang.Runtime.loadLibrary0(Runtime.java:1097)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at java.lang.Runtime.loadLibrary0(Runtime.java:1019)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at java.lang.System.loadLibrary(System.java:1765)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.soloader.nativeloader.SystemDelegate.loadLibrary(SystemDelegate.java:24)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.soloader.nativeloader.NativeLoader.loadLibrary(NativeLoader.java:52)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.soloader.nativeloader.NativeLoader.loadLibrary(NativeLoader.java:30)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.soloader.SoLoader.loadLibrary(SoLoader.java:869)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.jscexecutor.JSCExecutor.loadLibrary(JSCExecutor.java:24)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.jscexecutor.JSCExecutor.<clinit>(JSCExecutor.java:20)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactInstanceManagerBuilder.getDefaultJSExecutorFactory(ReactInstanceManagerBuilder.java:373)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactInstanceManagerBuilder.build(ReactInstanceManagerBuilder.java:325)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactNativeHost.createReactInstanceManager(ReactNativeHost.java:96)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactNativeHost.getReactInstanceManager(ReactNativeHost.java:42)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactDelegate.loadApp(ReactDelegate.java:121)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactActivityDelegate.loadApp(ReactActivityDelegate.java:114)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactActivityDelegate.onCreate(ReactActivityDelegate.java:109)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.facebook.react.ReactActivity.onCreate(ReactActivity.java:46)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.wholexale.app.MainActivity.onCreate(MainActivity.kt:17)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.Activity.performCreate(Activity.java:8397)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.Activity.performCreate(Activity.java:8370)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1403)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3837)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4006)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:111)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:135)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2462)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.os.Looper.loopOnce(Looper.java:240)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.os.Looper.loop(Looper.java:351)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at android.app.ActivityThread.main(ActivityThread.java:8377)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at java.lang.reflect.Method.invoke(Native Method)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:584)
+01-22 19:03:08.980 E/AndroidRuntime(10113): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1013)
+01-22 19:03:08.981 I/hwservicemanager(  563): getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/default in either framework or device VINTF manifest.
+01-22 19:03:08.981 I/AbnormalAppMonitorController( 2190): recordAbnormalMessage - ThirdKitFeature =1
+01-22 19:03:08.981 D/OplusAppStartupMonitor( 1748): notifyUnstableAppInfo: Bundle[{unstableTime=1769088788981, reason=crash, userId=0, exceptionMsg=dlopen failed: library "libjscexecutor.so" not found, exceptionClass=java.lang.UnsatisfiedLinkError, app_channel_type=unstable, packageName=com.wholexale.app.staging, unstable_restrict_switch=true}]
+01-22 19:03:08.982 D/Layer   (  966): reparent to null sequence=24174, seq[1], name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#24174
+01-22 19:03:08.982 D/Layer   (  966): reparent to null sequence=24175, seq[2], name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#24175
+01-22 19:03:08.982 D/OplusLayer(  966): ~Layer() sequence=24174, name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#24174
+01-22 19:03:08.982 D/OplusLayer(  966): ~Layer() sequence=24175, name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#24175
+01-22 19:03:08.983 D/abnormalUtils( 2190): com.wholexale.app.staging is foreground =true
+01-22 19:03:08.985 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.wholexale.app.staging/com.wholexale.app.staging pid=10113 state:3
+01-22 19:03:08.985 I/game_scn( 1748): collectForegroundAppList packName=com.wholexale.app.staging, actName=com.wholexale.app.staging, pid=10113, uid=10851, state:DEAD
+01-22 19:03:08.986 W/ITheiaManagerExt( 1748): [checkEventUploadFrequent] 5 is reported frequently.
+01-22 19:03:08.986 W/ITheiaManagerExt( 1748): [sendEvent] {0x5 84987487 0x1003 10113 10851 com.wholexale.app.staging} reported frequently, then we return.
+01-22 19:03:08.987 W/OplusEapManager handleErrorInfo sendEvent: ( 1748): com.wholexale.app.staging Crashed
+01-22 19:03:08.987 D/OplusAnrCrashMonitor( 1748): handleAnrCrashData: bundle data done
+01-22 19:03:08.987 D/RilUtility(  859): notify_rild_crash_pid_set certPid:-1, crash:10113, scn:0x0
+01-22 19:03:08.987 D/OplusAmsUtilsFeatrue( 1748): detectExceptionsForOIDT type:0
+01-22 19:03:08.988 D/OplusAnrCrashMonitor( 1748): handleServiceCall: bundle data
+01-22 19:03:08.988 D/OplusManager( 1748): send on stamp success
+01-22 19:03:08.989 W/ActivityTaskManager( 1748):   Force finishing activity com.wholexale.app.staging/com.wholexale.app.MainActivity
+01-22 19:03:08.989 I/DropBoxManagerService( 1748): add tag=data_app_crash isTagEnabled=true flags=0x2
+01-22 19:03:08.991 I/mtkpower_client( 1748): perf_lock_rel, hdl:59265, tid:2280
+01-22 19:03:08.991 I/mtkpower_client( 1748): perf_lock_acq, hdl:59265, dur:0, num:10, tid:2280
+01-22 19:03:08.991 I/libPowerHal(  859): [perfLockRel] hdl:59265, idx:0
+01-22 19:03:08.991 D/ActivityTaskManager( 1748): onWindowFocusChanged Task{d4f2fea #6 type=home I=com.android.launcher/.Launcher U=0 rootTaskId=1 visible=true visibleRequested=false mode=fullscreen translucent=true sz=1} would transfer to compact
+01-22 19:03:08.991 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-22 19:03:08.991 I/InputDispatcher( 1748): setFocusedApplication displayId=0 ActivityRecord{a1e8fdf u0 com.android.launcher/.Launcher} t6}
+01-22 19:03:08.991 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-22 19:03:08.991 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-22 19:03:08.992 V/WindowManager( 1748): Changing focus from Window{de0c9f6 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} to null,diplayid=0
+01-22 19:03:08.992 E/SQLiteLog( 2190): (2570) os_unix.c:39722: (13) unlink(//data/persist_log/stamp/stamp.db-journal) - 
+01-22 19:03:08.992 E/SQLiteLog( 2190): (2570) disk I/O error in "PRAGMA journal_mode"
+01-22 19:03:08.992 I/mtkpower_client( 1748): ret_hdl:59266
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): Failed to open database 'data/persist_log/stamp/stamp.db'.
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): android.database.sqlite.SQLiteDiskIOException: disk I/O error (code 2570 SQLITE_IOERR_DELETE): , while compiling: PRAGMA journal_mode
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnection.nativePrepareStatement(Native Method)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnection.acquirePreparedStatement(SQLiteConnection.java:1074)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnection.executeForString(SQLiteConnection.java:817)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnection.setJournalMode(SQLiteConnection.java:425)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnection.setJournalFromConfiguration(SQLiteConnection.java:345)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnection.open(SQLiteConnection.java:274)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnection.open(SQLiteConnection.java:211)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnectionPool.openConnectionLocked(SQLiteConnectionPool.java:512)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnectionPool.open(SQLiteConnectionPool.java:210)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteConnectionPool.open(SQLiteConnectionPool.java:202)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteDatabase.openInner(SQLiteDatabase.java:1085)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteDatabase.open(SQLiteDatabase.java:1065)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteDatabase.openDatabase(SQLiteDatabase.java:956)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:973)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.database.sqlite.SQLiteDatabase.openOrCreateDatabase(SQLiteDatabase.java:965)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at v3.p.g(StampEventRecorder.java:1)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at v3.p.a(StampEventRecorder.java:15)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at v3.p$e.handleMessage(StampEventRecorder.java:4)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.os.Looper.loopOnce(Looper.java:240)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.os.Looper.loop(Looper.java:351)
+01-22 19:03:08.993 E/SQLiteDatabase( 2190): 	at android.os.HandlerThread.run(HandlerThread.java:67)
+01-22 19:03:08.993 V/StampEventRecorder( 2190): executeDbBegin e:android.database.sqlite.SQLiteDiskIOException: disk I/O error (code 2570 SQLITE_IOERR_DELETE): , while compiling: PRAGMA journal_mode
+01-22 19:03:08.993 W/OplusSelfProtectManager( 1748): pkg[com.oplus.crashbox] not in policy list
+01-22 19:03:08.993 V/StampEventRecorder( 2190): onStamp id : 020201
+01-22 19:03:08.993 V/StampEventRecorder( 2190): onStamp failed : java.lang.NullPointerException: Attempt to invoke virtual method 'void android.database.sqlite.SQLiteDatabase.execSQL(java.lang.String)' on a null object reference
+01-22 19:03:08.995 E/HWComposer(  966): getSupportedContentTypes: getSupportedContentTypes failed for display 0: Unsupported (8)
+01-22 19:03:08.995 D/Theia.NoFocusWindow( 1748): FocusWindowErrorScene CheckFreezeScreen
+01-22 19:03:08.996 V/OplusZoomWindowManagerService( 1748): prepareZoomTransition: curStack=Task{e45f736 #11648 type=standard A=10851:com.wholexale.app.staging U=0 visible=false visibleRequested=true mode=fullscreen translucent=true sz=1}   nextStackTask{d595e6b #1 type=home ?? U=0 visible=true visibleRequested=false mode=fullscreen translucent=true sz=1}
+01-22 19:03:08.997 I/mtkpower_client( 1748): perf_lock_rel, hdl:59266, tid:2280
+01-22 19:03:08.997 I/mtkpower_client( 1748): perf_lock_acq, hdl:59266, dur:0, num:10, tid:2280
+01-22 19:03:08.997 D/DropBoxManagerService( 1748): file :: /data/system/dropbox/data_app_crash@1769088788990.txt
+01-22 19:03:08.997 I/libPowerHal(  859): [perfLockRel] hdl:59266, idx:0
+01-22 19:03:08.997 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-22 19:03:08.997 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-22 19:03:08.997 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-22 19:03:08.998 W/AES     ( 1748): Exception Log handling...
+01-22 19:03:08.998 I/mtkpower_client( 1748): ret_hdl:59267
+01-22 19:03:08.998 W/AES     ( 1748): Skipped - do not care third party apk
+01-22 19:03:09.003 I/servicemanager(  562): Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+01-22 19:03:09.007 E/ion     (10113): ioctl c0044901 failed with code -1: Invalid argument
+01-22 19:03:09.015 D/Layer   (  966): reparent to null sequence=24179, seq[1], name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#24179
+01-22 19:03:09.015 D/Layer   (  966): reparent to null sequence=24180, seq[2], name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#24180
+01-22 19:03:09.019 I/Process (10113): Sending signal. PID: 10113 SIG: 9
+01-22 19:03:09.028 W/BroadcastQueue( 1748): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+01-22 19:03:09.028 W/BroadcastQueue( 1748): Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+01-22 19:03:09.030 E/OplusThermalStats( 1748): Error getting package info: com.android.launcher
+01-22 19:03:09.041 D/OplusUIFirst_FB( 1748): com.android.launcher moveToTop:[]
+01-22 19:03:09.041 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:09.041 D/OplusUIFirst_FB( 1748): com.android.launcher boost hint: 2623
+01-22 19:03:09.041 D/OplusUIFirst_FB( 1748): handleParaSwitch com.android.launcher null null 0
+01-22 19:03:09.045 W/System  ( 2190): A resource failed to call release. 
+01-22 19:03:09.045 W/System  ( 2190): A resource failed to call release. 
+01-22 19:03:09.045 W/System  ( 2190): A resource failed to call release. 
+01-22 19:03:09.045 W/System  ( 2190): A resource failed to call release. 
+01-22 19:03:09.046 W/System  ( 2190): A resource failed to call release. 
+01-22 19:03:09.046 W/System  ( 2190): A resource failed to call release. 
+01-22 19:03:09.046 W/System  ( 2190): A resource failed to call release. 
+01-22 19:03:09.046 W/System  ( 2190): A resource failed to call release. 
+01-22 19:03:09.047 D/OplusUIFirst_FB( 1748): com.coloros.assistantscreen toForeOps: []
+01-22 19:03:09.047 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:09.049 D/OplusUIFirst_FB( 1748): com.google.android.googlequicksearchbox toForeOps: []
+01-22 19:03:09.049 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:09.050 D/OplusUIFirst_FB( 1748): com.google.android.adservices.api toForeOps: []
+01-22 19:03:09.050 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:09.051 I/SurfaceFlinger(  966): [SF client] REMOVE (0xb40000701f9faf00) for (10113:com.wholexale.app.staging)
+01-22 19:03:09.053 I/WindowManager( 1748): WIN DEATH: Window{de0c9f6 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}
+01-22 19:03:09.053 W/InputManager-JNI( 1748): Input channel object 'de0c9f6 com.wholexale.app.staging/com.wholexale.app.MainActivity (client)' was disposed without first being removed with the input manager!
+01-22 19:03:09.054 D/OplusStartingWindowManager( 1748): interceptRemoveStartingWindow: packageName=com.wholexale.app.staging, isSnapshot=false, startingSurfaceRunnable=null
+01-22 19:03:09.054 D/OplusSplitScreenDnDUI( 1748): notifyRemoveStartingWindow isSpitScreenDrag = false mDropTargetSurface = null StartingWindowpkgName = com.wholexale.app.staging DragPkg = null isLauncherResume = false
+01-22 19:03:09.055 I/Zygote  (  819): Process 10113 exited due to signal 9 (Killed)
+01-22 19:03:09.056 D/DisplayManagerService( 1748): Display listener for pid 10113 died.
+01-22 19:03:09.059 I/SurfaceFlinger(  966): [SF client] REMOVE (0xb40000701dca29c0) for (1748:system_server)
+01-22 19:03:09.064 D/Layer   (  966): reparent to null sequence=24178, seq[4], name=com.wholexale.app.staging/com.wholexale.app.MainActivity#24178
+01-22 19:03:09.064 D/Layer   (  966): reparent to null sequence=24177, seq[3], name=de0c9f6 com.wholexale.app.staging/com.wholexale.app.MainActivity#24177
+01-22 19:03:09.065 D/OplusLayer(  966): ~Layer() sequence=24180, name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#24180
+01-22 19:03:09.065 D/OplusLayer(  966): ~Layer() sequence=24179, name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#24179
+01-22 19:03:09.065 D/OplusLayer(  966): ~Layer() sequence=24177, name=de0c9f6 com.wholexale.app.staging/com.wholexale.app.MainActivity#24177
+01-22 19:03:09.065 I/BufferQueueDebug(  966): [com.wholexale.app.staging/com.wholexale.app.MainActivity#24178](this:0xb400007020ffe9e8,id:-1,api:0,p:-1,c:966) onDestructor()
+01-22 19:03:09.065 D/OplusLayer(  966): ~Layer() sequence=24178, name=com.wholexale.app.staging/com.wholexale.app.MainActivity#24178
+01-22 19:03:09.068 W/Process ( 1748): Unable to open /proc/10113/status
+01-22 19:03:09.069 I/ActivityManager( 1748): Process com.wholexale.app.staging (pid 10113) has died: fg  TOP 
+01-22 19:03:09.071 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging remove pid: 10113
+01-22 19:03:09.071 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.wholexale.app.staging/com.wholexale.app.staging pid=10113 state:3
+01-22 19:03:09.071 I/game_scn( 1748): collectForegroundAppList packName=com.wholexale.app.staging, actName=com.wholexale.app.staging, pid=10113, uid=10851, state:DEAD
+01-22 19:03:09.072 I/libprocessgroup( 1748): Successfully killed process cgroup uid 10851 pid 10113 in 0ms
+01-22 19:03:09.073 I/OplusHansManager ( 1748): front pkg: com.android.launcher, uid: 10106, prev pkg: com.wholexale.app.staging, prev uid: 10851
+01-22 19:03:09.073 I/OplusHansManager ( 1748): notifyAppGoForeground, uid=10106
+01-22 19:03:09.073 I/OplusHansManager ( 1748): notifyAppGoBackground, uid=10851
+01-22 19:03:09.073 D/OplusUIFirst_FB( 1748): com.android.launcher activity event: []
+01-22 19:03:09.073 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-22 19:03:09.073 D/OplusUIFirst_FB( 1748): handleParaSwitch com.android.launcher null null 1
+01-22 19:03:09.074 I/Osense-DecisionMaker( 1748): notifySceneToAthenaPolicy: SCENE_LAUNCHER, bundle: Bundle[{prevPkgName=com.wholexale.app.staging, curUid=10106, curPkgName=com.android.launcher, prevUid=10851}]
+01-22 19:03:09.074 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2562
+01-22 19:03:09.074 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2564
+01-22 19:03:09.074 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2567
+01-22 19:03:09.075 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging enter SM
+01-22 19:03:09.075 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2567
+01-22 19:03:09.075 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging R enter(), D stay=0
+01-22 19:03:09.075 I/OplusResourcePreloadManager( 1748): resume pkg: com.android.launcher, uid:10106, prev pkg: com.wholexale.app.staging, prev uid: 10851
+01-22 19:03:09.075 D/RilUtility(  859): notify_rild_crash_pid_set certPid:-1, crash:10113, scn:0x0
+01-22 19:03:09.085 D/TaskFragmentExtImpl( 1748): addColorModeOnResume resume=true pkg = com.android.launcher
+01-22 19:03:09.085 D/LauncherClient( 2623): getThreadPriority -10
+01-22 19:03:09.086 I/bpas    (12190): onResume
+01-22 19:03:09.105 D/OplusLayer(  966): ~Layer() sequence=24183, name=Screenshot Parent#24183
+01-22 19:03:09.124 V/WindowManager( 1748): Relayout Window{578cf9b u0 com.android.launcher/com.android.launcher.Launcher}: viewVisibility=0, oldvis=0, req=1080x2400
+01-22 19:03:09.126 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:09.129 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:09.130 W/Looper  ( 1748): Slow dispatch took 116ms android.ui h=com.android.server.am.ActivityManagerService$UiHandler c=null m=1
+01-22 19:03:09.131 D/Layer   (  966): reparent to null sequence=24181, seq[1], name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#24181
+01-22 19:03:09.131 D/Layer   (  966): reparent to null sequence=24182, seq[2], name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#24182
+01-22 19:03:09.131 D/OplusLayer(  966): ~Layer() sequence=24181, name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#24181
+01-22 19:03:09.131 D/OplusLayer(  966): ~Layer() sequence=24182, name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#24182
+01-22 19:03:09.131 V/OplusZoomWindowManagerService( 1748): onAnimationFinished:  r = ActivityRecord{a1e8fdf u0 com.android.launcher/.Launcher} t6}
+01-22 19:03:09.132 I/OplusAppSwitchManagerService( 1748):  handleAppVisible , r = ActivityRecord{a1e8fdf u0 com.android.launcher/.Launcher} t6}
+01-22 19:03:09.134 V/OplusZoomWindowManagerService( 1748): onAnimationFinished:  r = ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11648 f} isExiting}
+01-22 19:03:09.134 I/WindowStateExtImpl( 1748): onSurfaceShowChange show = false mPackageName = com.wholexale.app.staging parentPkgName = com.wholexale.app.staging
+01-22 19:03:09.135 W/InputManager-JNI( 1748): Input channel object 'a18b70e Splash Screen com.wholexale.app.staging (client)' was disposed without first being removed with the input manager!
+01-22 19:03:09.137 D/SensorService( 1748): onUidStateChanged uid = 10851, state = UID_STATE_IDLE
+01-22 19:03:09.140 I/OplusHansManager ( 1748): onUidGone(), 10851 com.wholexale.app.staging exit SM
+01-22 19:03:09.142 V/WindowManager( 1748): Changing focus from null to Window{578cf9b u0 com.android.launcher/com.android.launcher.Launcher},diplayid=0
+01-22 19:03:09.142 D/Theia.NoFocusWindow( 1748): FocusWindowErrorScene cancelCheckFreezeScreen
+01-22 19:03:09.143 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging R exit SM
+01-22 19:03:09.143 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging R exit(), R stay=0
+01-22 19:03:09.147 D/Layer   (  966): reparent to null sequence=24171, seq[5], name=Splash Screen com.wholexale.app.staging#24171
+01-22 19:03:09.147 D/Layer   (  966): reparent to null sequence=24173, seq[19], name=Surface(name=Task=6)/@0xbb6404 - animation-leash of app_transition#24173
+01-22 19:03:09.147 D/Layer   (  966): reparent to null sequence=24172, seq[49], name=Surface(name=Task=11648)/@0x67a6fe9 - animation-leash of app_transition#24172
+01-22 19:03:09.147 D/Layer   (  966): reparent to null sequence=24170, seq[2], name=a18b70e Splash Screen com.wholexale.app.staging#24170
+01-22 19:03:09.148 D/OplusLayer(  966): ~Layer() sequence=24173, name=Surface(name=Task=6)/@0xbb6404 - animation-leash of app_transition#24173
+01-22 19:03:09.148 D/OplusLayer(  966): ~Layer() sequence=24172, name=Surface(name=Task=11648)/@0x67a6fe9 - animation-leash of app_transition#24172
+01-22 19:03:09.150 V/DeepThinker( 5470): ProcessManager: onProcessDied pid:10113, uid:10851
+01-22 19:03:09.151 I/DispPerfService(  966): updateLayerMask 9
+01-22 19:03:09.155 I/mtkpower@impl(  859): [setMode] type:5, enabled:0
+01-22 19:03:09.155 I/PowerHalWrapper( 1748): amsBoostStop AMS_BOOST_PACK_SWITCH:true, AMS_BOOST_ACT_SWITCH:false, AMS_BOOST_PROCESS_CREATE:true 
+01-22 19:03:09.156 I/libPowerHal(  859): [perfLockRel] hdl:59260, idx:2
+01-22 19:03:09.157 I/mtkpower@impl(  859): [mtkPowerHint] hint:21, hold:6000, ext:30, ext_hold:35000
+01-22 19:03:09.157 I/libPowerHal(  859): [perfLockRel] hdl:59261, idx:5
+01-22 19:03:09.157 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:09.158 D/OplusMirageWindowManagerService( 1748): onTaskRemoved displayid:0 taskId:11648 callers:com.android.server.wm.MirageWindowManagerExtImpl.onTaskRemoved:47 com.android.server.wm.TaskDisplayArea.removeChildTask:398 com.android.server.wm.TaskDisplayArea.removeChild:387 com.android.server.wm.WindowContainer.removeImmediately:891 com.android.server.wm.TaskFragment.removeImmediately:2904 
+01-22 19:03:09.158 I/OplusScreenSecurityMask( 1748): onStackRemoved task = Task{e45f736 #11648 type=standard A=10851:com.wholexale.app.staging U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=0} record = null displayId = 0
+01-22 19:03:09.158 D/OplusAlwaysAliveManager( 1748): removing: 11648, ComponentInfo{com.wholexale.app.staging/com.wholexale.app.MainActivity}
+01-22 19:03:09.158 D/TaskFragmentExtImpl( 1748): remove ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t-1 f}} to mActivityRecordSum = Counter{ }
+01-22 19:03:09.160 I/libPowerHal(  859): [perfLockRel] hdl:59263, idx:6
+01-22 19:03:09.162 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:09.163 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:09.164 D/Layer   (  966): reparent to null sequence=24169, seq[2], name=ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}#24169
+01-22 19:03:09.164 D/Layer   (  966): reparent to null sequence=24168, seq[5], name=Task=11648#24168
+01-22 19:03:09.164 D/Layer   (  966): reparent to null sequence=24186, seq[2], name=Task=11648#24186
+01-22 19:03:09.166 V/ShellTaskOrganizer( 2225): Task vanished taskId=11648
+01-22 19:03:09.167 I/FocusResolver( 1748): updateFocusedWindow, 578cf9b com.android.launcher/com.android.launcher.Launcher on display 0, reason: setFocusedWindow, result:   FocusedWindows:
+01-22 19:03:09.167 I/FocusResolver( 1748):     displayId=0, name='578cf9b com.android.launcher/com.android.launcher.Launcher'
+01-22 19:03:09.168 D/VRI[Launcher]( 2623): onFocusEvent true
+01-22 19:03:09.169 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:09.169 D/InputMethodManagerService( 1748): isSecurity: attribute.packageName=com.android.launcher mCurMethodId=com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+01-22 19:03:09.170 D/InputMethodManagerService( 1748): isSecurity= false (  enable=false needShow=false inBlackList=false isExist=true )
+01-22 19:03:09.171 D/TaskChangeNotificationControllerExtImpl( 1748): Skip pass Snapshot to listener:android.app.ITaskStackListener$Stub$Proxy@cb4af11
+01-22 19:03:09.173 I/GoogleInputMethodService(12290): GoogleInputMethodService.onFinishInput():2099 
+01-22 19:03:09.175 I/Module  (12290): DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+01-22 19:03:09.176 I/GoogleInputMethodService(12290): GoogleInputMethodService.onStartInput():1371 onStartInput(EditorInfo{EditorInfo{packageName=com.android.launcher, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=Bundle[{com.oplus.im.SCENES=0}], hintText=null, hintLocales=[]}}, false)
+01-22 19:03:09.179 I/Module  (12290): DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+01-22 19:03:09.181 D/OplusLayer(  966): ~Layer() sequence=24169, name=ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}#24169
+01-22 19:03:09.181 D/OplusLayer(  966): ~Layer() sequence=24176, name=206c0d1 ActivityRecordInputSink com.wholexale.app.staging/com.wholexale.app.MainActivity#24176
+01-22 19:03:09.181 D/OplusLayer(  966): ~Layer() sequence=24186, name=Task=11648#24186
+01-22 19:03:09.189 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:09.189 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.wholexale.app.staging
+01-22 19:03:09.189 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:09.189 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.truecaller
+01-22 19:03:09.189 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:09.189 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.whatsapp
+01-22 19:03:09.189 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:09.189 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.android.settings
+01-22 19:03:09.189 D/OplusSplitScreenManagerService( 1748): com.android.settings unSupportsSplitScreen by blockList or ForbidActivityList
+01-22 19:03:09.190 D/OplusSplitScreenManagerService( 1748): com.android.settings unSupportsSplitScreen by blockList or ForbidActivityList
+01-22 19:03:09.197 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:09.197 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.wholexale.app.staging
+01-22 19:03:09.197 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:09.197 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.truecaller
+01-22 19:03:09.197 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:09.197 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.whatsapp
+01-22 19:03:09.197 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:09.197 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.android.settings
+01-22 19:03:09.197 D/OplusSplitScreenManagerService( 1748): com.android.settings unSupportsSplitScreen by blockList or ForbidActivityList
+01-22 19:03:09.197 D/OplusSplitScreenManagerService( 1748): com.android.settings unSupportsSplitScreen by blockList or ForbidActivityList
+01-22 19:03:09.240 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:09.243 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:09.252 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:09.254 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:09.254 V/ListServiceUtils( 1748): checkInListByUid start module:custom-icc uid:1000  time 84987755832us
+01-22 19:03:09.254 V/ListServiceUtils( 1748): checkInListByUid end module:custom-icc uid:1000  time 84987756263us
+01-22 19:03:09.255 D/ListServiceUtils( 1748): checkInListByUid module:custom-icc uid:1000 cost 430us return 0
+01-22 19:03:09.255 D/MMListService( 1164): getListValueByUid module:image-processing, uid:1000
+01-22 19:03:09.255 V/ListServiceUtils( 1748): checkInListByUid module:image-processing uid:1000 cost 226us return (null)
+01-22 19:03:09.255 V/JpegEncoderExtImpl( 1748): Resolution: 1080 x 2400,support: 0;
+01-22 19:03:09.255 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:09.256 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:09.291 D/CameraDelegate( 1748): handleMessage:200
+01-22 19:03:09.297 E/IHansComunication( 6221): HANS printMessageBody: RCV message: type = 3,port = 86870,caller_pid = 1,caller_uid = 0,target_pid = 13257,target_uid = 1000,pkg_cmd = -1,rpc = signal/-1
+01-22 19:03:09.328 W/Bitmap  ( 1748): Called getWidth() on a recycle()'d bitmap! This is undefined behavior!
+01-22 19:03:09.328 W/Bitmap  ( 1748): Called getHeight() on a recycle()'d bitmap! This is undefined behavior!
+01-22 19:03:09.341 V/ListServiceUtils( 1748): checkInListByUid start module:custom-icc uid:1000  time 84987842554us
+01-22 19:03:09.341 V/ListServiceUtils( 1748): checkInListByUid end module:custom-icc uid:1000  time 84987842766us
+01-22 19:03:09.341 D/ListServiceUtils( 1748): checkInListByUid module:custom-icc uid:1000 cost 212us return 0
+01-22 19:03:09.341 D/MMListService( 1164): getListValueByUid module:image-processing, uid:1000
+01-22 19:03:09.341 V/ListServiceUtils( 1748): checkInListByUid module:image-processing uid:1000 cost 89us return (null)
+01-22 19:03:09.341 V/JpegEncoderExtImpl( 1748): Resolution: 540 x 1200,support: 0;
+01-22 19:03:09.429 W/WindowManager( 1748): Failed looking up window session=Session{370de18 2225:u0a10105} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6236 com.android.server.wm.WindowManagerService.relayoutWindow:2365 com.android.server.wm.Session.relayout:275 
+01-22 19:03:09.431 D/OplusScrollToTopManager( 2225): unregisterGuidePopupDismissReceiverInSystemUI
+01-22 19:03:09.431 D/OplusScrollToTopManager( 2225): Receiver not registered: android.view.OplusScrollToTopManager$1@2527af0
+01-22 19:03:09.431 D/OplusScrollToTopManager( 2225): unregisterSystemUIBroadcastReceiver 
+01-22 19:03:09.431 D/OplusScrollToTopManager( 2225): java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@433a869
+01-22 19:03:09.431 V/ZoomWindowDecorView( 2225): removeZoomView
+01-22 19:03:09.431 D/BLASTBufferQueue( 2225): [VRI[staging][Splash Screen com.wholexale.app.staging]#1848](f:0,a:1) destructor()
+01-22 19:03:09.431 D/BufferQueueConsumer( 2225): [VRI[staging][Splash Screen com.wholexale.app.staging]#1848(BLAST Consumer)1848](id:8b100000748,api:0,p:-1,c:2225) disconnect
+01-22 19:03:09.431 W/WindowManager( 1748): Failed looking up window session=Session{370de18 2225:u0a10105} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6236 com.android.server.wm.Session.setOnBackInvokedCallbackInfo:972 android.view.IWindowSession$Stub.onTransact:1209 
+01-22 19:03:09.431 E/WindowManager( 1748): setOnBackInvokedCallback(): No window state for package:com.android.systemui
+01-22 19:03:09.432 W/WindowManager( 1748): Failed looking up window session=Session{370de18 2225:u0a10105} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6236 com.android.server.wm.WindowManagerService.removeWindow:2147 com.android.server.wm.Session.remove:233 
+01-22 19:03:09.445 I/BufferQueueDebug(  966): [Splash Screen com.wholexale.app.staging#24171](this:0xb400007020fd99e8,id:-1,api:0,p:-1,c:966) onDestructor()
+01-22 19:03:09.446 D/OplusLayer(  966): ~Layer() sequence=24171, name=Splash Screen com.wholexale.app.staging#24171
+01-22 19:03:09.491 W/ActivityTaskManager( 1748): Activity top resumed state loss timeout for ActivityRecord{12a93f8 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t-1 f}}
+01-22 19:03:09.491 I/OplusJoystickManager( 1748): handleApplicationSwitch deprecated!
+01-22 19:03:09.491 D/OplusAppSwitchListener( 1748): Detect com.wholexale.app.staging switch to background
+01-22 19:03:09.491 D/OplusEapManager( 1748): mTargetExitName :com.wholexale.app.staging
+01-22 19:03:09.491 V/DCSEX-AppSwitchManager( 1748): OnAppSwitchObserver: onAppExit, resuming = com.android.launcher, target = com.wholexale.app.staging, is ResumingFirstStart =  false, is ResumingMultiApp =  false, extensionInfo =  Bundle[{taskId=6, uid=10106}]
+01-22 19:03:09.492 D/VRR [OPlusFrontAppManager]( 1748): OnAppSwitchObserver: onAppExit , info.targetName = com.wholexale.app.staging
+01-22 19:03:09.492 D/VRR [OPlusFrontAppManager]( 1748): packageName: null
+01-22 19:03:09.492 I/PowerHalWrapper( 1748): amsBoostNotify pid:2623,activity:com.android.launcher.Launcher, package:com.android.launcher, mProcessCreatePackcom.wholexale.app.staging 
+01-22 19:03:09.492 I/PowerHalWrapper( 1748): state: 1 
+01-22 19:03:09.492 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.android.launcher/com.android.launcher.Launcher pid=2623 state:1
+01-22 19:03:09.492 I/game_scn( 1748): collectForegroundAppList packName=com.android.launcher, actName=com.android.launcher.Launcher, pid=2623, uid=10106, state:RESUMED
+01-22 19:03:09.492 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:true 
+01-22 19:03:09.492 D/OplusAppSwitchListener( 1748): Detect com.android.launcher switch to foreground
+01-22 19:03:09.492 D/OplusEapManager( 1748): mTargetEnterName :com.android.launcher
+01-22 19:03:09.492 D/DCSEX-AppLaunchEventRecorder( 1748): onAppSwitch from = com.wholexale.app.staging to = com.android.launcher
+01-22 19:03:09.493 I/libPowerHal(  859): [perfNotifyAppState] foreground:com.android.launcher, pid:2623, uid:10106
+01-22 19:03:09.493 D/VRR [OPlusRefreshRateService]( 1748): handleFrontAppChange pkgName: null
+01-22 19:03:09.493 D/OplusLatencyOptimizerManager( 1748): enter pkg: com.android.launcher isPrevBlackAppTop: false mIsBlackAppTop: false
+01-22 19:03:09.493 E/UxUtility(  859): notifyAppState error = NULL
+01-22 19:03:09.493 I/TouchUtility(  859): notifyAppState error = NULL
+01-22 19:03:09.493 V/DCSEX-AppSwitchManager( 1748): OnAppSwitchObserver: onAppEnter, launchedFrom =  null, target =  com.android.launcher, is firstStart =  false, is multiApp =  false, extensionInfo =  Bundle[{taskId=6, pid=2623, uid=10106, versionCode=13000051}]
+01-22 19:03:09.493 D/VRR [OPlusFrontAppManager]( 1748): OnAppSwitchObserver: onAppEnter , info.targetName = com.android.launcher
+01-22 19:03:09.493 D/VRR [OPlusFrontAppManager]( 1748): packageName: com.android.launcher
+01-22 19:03:09.493 W/Battery ( 4587): ThermalControlUtils: mForegroundPkg=com.android.launcher
+01-22 19:03:09.493 E/Athena  ( 1748): MemoryGuardAction: handleAppChange
+01-22 19:03:09.494 D/VRR [OPlusRefreshRateService]( 1748):  setFrameRateTargetControl [ 0.0 , com.wholexale.app.staging , false , com.oplus.battery ]
+01-22 19:03:09.494 D/VRR [OPlusRefreshRateService]( 1748):  setFrameRateTargetControl from [0, 1000, android.uid.system:1000]
+01-22 19:03:09.495 I/mtkpower@impl(  859): [notifyAppState] pc:0, com.wholexale.app.staging => com.android.launcher
+01-22 19:03:09.495 I/Athena  ( 2605): AthenaDynamicReceiver: pre_app:com.wholexale.app.staging, next_app:com.android.launcher(10106|2623)
+01-22 19:03:09.496 D/VRR [OPlusExternalRefreshRateManager]( 1748): setFrontPackageName pkgName: null CurPkgName: com.wholexale.app.staging
+01-22 19:03:09.496 D/VRR [OPlusExternalRefreshRateManager]( 1748):  [FRTC] FrameRate : 0 com.wholexale.app.staging false com.oplus.battery 0 1000
+01-22 19:03:09.496 D/VRR [OPlusRefreshRateService]( 1748): handleFrontAppChange pkgName: com.android.launcher
+01-22 19:03:09.496 D/VRR [OPlusExternalRefreshRateManager]( 1748): setFrontPackageName pkgName: com.android.launcher CurPkgName: null
+01-22 19:03:09.496 D/VRR [OPlusSurfaceFlingerController]( 1748):  add frtc FrameRate : 0 com.wholexale.app.staging false com.oplus.battery
+01-22 19:03:09.496 I/VRR [FRTC](  966): setFrameRateTarget with [0, com.wholexale.app.staging, 0, com.oplus.battery, 1, 0, 1000]
+01-22 19:03:09.496 W/VRR [FRTC](  966): invalid param { fps 0, proc_name com.wholexale.app.staging, strict_mode 0, description com.oplus.battery, proc_id 0, rate_status 0, backend Surface, version 1, pid 0, uid 1000, enable at 2026-01-22 19:03:09, disable waiting } for current status.
+01-22 19:03:09.496 W/VRR [FRTC](  966): CurrentTarget size 0:
+01-22 19:03:09.497 W/Battery ( 4587): ThermalControllHandler: tempLevel=7,userMode=3,gameUserMode=7,appType=-1,envTempType=1,appStates=[],appSwitchSafetyMode=false
+01-22 19:03:09.497 W/Battery ( 4587): ThermalControllerCenter: mSafetyState=10000
+01-22 19:03:09.498 W/Battery ( 4587): ThermalControllHandler: tempGear=7,configItemName=common_config
+01-22 19:03:09.499 W/libc    (27464): Access denied finding property "vendor.gsm.serial"
+01-22 19:03:09.499 D/OplusBatteryServiceFeature( 1748): setSmartCoolDown: coolDown = 3, normalCoolDown = 3, pkgName = com.android.launcher
+01-22 19:03:09.500 D/vendor.oplus.hardware.charger@1.0-service(  897): set cooldown:3,  normalCoolDown:3
+01-22 19:03:09.500 W/Battery ( 4587): ThermalControllHandler: MSG_THERMAL_CONTROL_CATEGORY_CHANGED
+01-22 19:03:09.598 I/mtkpower_client( 1748): perf_lock_rel, hdl:59267, tid:2280
+01-22 19:03:09.598 I/mtkpower_client( 1748): perf_lock_acq, hdl:59267, dur:0, num:6, tid:2280
+01-22 19:03:09.598 I/libPowerHal(  859): [perfLockRel] hdl:59267, idx:0
+01-22 19:03:09.599 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-22 19:03:09.599 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-22 19:03:09.599 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-22 19:03:09.599 I/mtkpower_client( 1748): ret_hdl:59270
+01-22 19:03:09.600 I/libPowerHal(  859): system_server: hard user limit set cpu freq: -1 -1 -1 1933000
+01-22 19:03:09.648 E/Parcel  (13279): Attempt to read from protected data in Parcel 0x7fe76b0d30
+01-22 19:03:09.648 E/Parcel  (13279): Attempt to read from protected data in Parcel 0x7fe76b0d30
+01-22 19:03:09.648 E/Parcel  (13279): Attempt to read from protected data in Parcel 0x7fe76b0d30
+01-22 19:03:09.648 E/Parcel  (13279): Attempt to read from protected data in Parcel 0x7fe76b0d30
+01-22 19:03:09.648 E/Parcel  (13279): Attempt to read from protected data in Parcel 0x7fe76b0d30
+01-22 19:03:09.745 I/zygote  (  819): Delayed USAP Pool refill. New USAPs: 1
+01-22 19:03:09.750 E/Parcel  (13284): Attempt to read from protected data in Parcel 0x7fc9651c70
+01-22 19:03:09.750 E/Parcel  (13284): Attempt to read from protected data in Parcel 0x7fc9651c70
+01-22 19:03:09.750 E/Parcel  (13284): Attempt to read from protected data in Parcel 0x7fc9651c70
+01-22 19:03:09.750 E/Parcel  (13284): Attempt to read from protected data in Parcel 0x7fc9651c70
+01-22 19:03:09.750 E/Parcel  (13284): Attempt to read from protected data in Parcel 0x7fc9651c70
+01-22 19:03:09.754 D/Zygote  (  819): Forked child process 13287
+01-22 19:03:09.857 E/Parcel  (13294): Attempt to read from protected data in Parcel 0x7fdaea3f50
+01-22 19:03:09.857 E/Parcel  (13294): Attempt to read from protected data in Parcel 0x7fdaea3f50
+01-22 19:03:09.857 E/Parcel  (13294): Attempt to read from protected data in Parcel 0x7fdaea3f50
+01-22 19:03:09.857 E/Parcel  (13294): Attempt to read from protected data in Parcel 0x7fdaea3f50
+01-22 19:03:09.857 E/Parcel  (13294): Attempt to read from protected data in Parcel 0x7fdaea3f50
+01-22 19:03:09.936 D/OplusTelephonyController( 2568): onSignalStrengthChanged: SignalStrength=SignalStrength:{mCdma=CellSignalStrengthCdma: cdmaDbm=2147483647 cdmaEcio=2147483647 evdoDbm=2147483647 evdoEcio=2147483647 evdoSnr=2147483647 level=0,mGsm=CellSignalStrengthGsm: rssi=-83 ber=99 mTa=2147483647 mLevel=4,mWcdma=CellSignalStrengthWcdma: ss=2147483647 ber=2147483647 rscp=2147483647 ecno=2147483647 level=0,mTdscdma=CellSignalStrengthTdscdma: rssi=2147483647 ber=2147483647 rscp=2147483647 level=0,mLte=CellSignalStrengthLte: rssi=2147483647 rsrp=2147483647 rsrq=2147483647 rssnr=2147483647 cqiTableIndex=2147483647 cqi=2147483647 ta=2147483647 level=0 parametersUseForLevel=0,mNr=CellSignalStrengthNr:{ csiRsrp = 2147483647 csiRsrq = 2147483647 csiCqiTableIndex = 2147483647 csiCqiReport = [] ssRsrp = 2147483647 ssRsrq = 2147483647 ssSinr = 2147483647 level = 0 parametersUseForLevel = 0 },primary=CellSignalStrengthGsm}, phoneId=0, mMtkLevel=0, mMtkRsrpOnly=false, mMtkLteRsrpThreshold=null, mMtkLteRssnrThreshold=null
+01-22 19:03:09.944 W/libc    (12336): Access denied finding property "ro.oem_unlock_supported"
+01-22 19:03:09.987 D/CompatibilityChangeReporter(12336): Compat change id reported: 186082280; UID 10221; state: ENABLED
+01-22 19:03:09.993 D/CameraDelegate( 1748): handleMessage:200
+01-22 19:03:09.995 D/CompatibilityChangeReporter( 1748): Compat change id reported: 161145287; UID 10221; state: DISABLED
+01-22 19:03:10.234 I/Finsky  (27346): [2] SCH: job service start with id 9905.
+01-22 19:03:10.245 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 1-1337, CT: 1769062837223, Constraints: [{ L: 37539401, D: 80739401, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.245 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 12-1, CT: 1769088775360, Constraints: [{ L: 15000, D: 86400000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.245 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 34-426, CT: 1769062846973, Constraints: [{ L: 604800000, D: 2471522803, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.245 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 34-432, CT: 1769062846975, Constraints: [{ L: 604800000, D: 2550723487, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.245 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 34-442, CT: 1769062846979, Constraints: [{ L: 37922960, D: 1333922960, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.249 I/Finsky  (27346): [20131] SCH: Scheduling 1 system job(s)
+01-22 19:03:10.249 I/Finsky  (27346): [20131] SCH: Scheduling system job Id: 9911, L: 0, D: 54786375, C: false, I: false, N: 1
+01-22 19:03:10.257 I/Finsky  (27346): [2] SCH: job service start with id 9911.
+01-22 19:03:10.261 I/Finsky  (27346): [20692] SCH: job service finished with id 9905.
+01-22 19:03:10.270 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 1-1337, CT: 1769062837223, Constraints: [{ L: 37539401, D: 80739401, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.271 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 12-1, CT: 1769088775360, Constraints: [{ L: 15000, D: 86400000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.271 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 34-426, CT: 1769062846973, Constraints: [{ L: 604800000, D: 2471522803, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.271 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 34-432, CT: 1769062846975, Constraints: [{ L: 604800000, D: 2550723487, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.271 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 34-442, CT: 1769062846979, Constraints: [{ L: 37922960, D: 1333922960, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.275 I/Finsky  (27346): [20136] SCH: Scheduling 1 system job(s)
+01-22 19:03:10.276 I/Finsky  (27346): [20136] SCH: Scheduling system job Id: 9916, L: 0, D: 54786349, C: false, I: false, N: 1
+01-22 19:03:10.284 I/Finsky  (27346): [2] SCH: job service start with id 9916.
+01-22 19:03:10.288 I/Finsky  (27346): [20692] SCH: job service finished with id 9911.
+01-22 19:03:10.298 I/Finsky  (27346): [20131] SCH: Scheduling phonesky job Id: 1-1337, CT: 1769062837223, Constraints: [{ L: 37539401, D: 80739401, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.298 I/Finsky  (27346): [20131] SCH: Scheduling phonesky job Id: 12-1, CT: 1769088775360, Constraints: [{ L: 15000, D: 86400000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.298 I/Finsky  (27346): [20131] SCH: Scheduling phonesky job Id: 34-426, CT: 1769062846973, Constraints: [{ L: 604800000, D: 2471522803, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.298 I/Finsky  (27346): [20131] SCH: Scheduling phonesky job Id: 34-432, CT: 1769062846975, Constraints: [{ L: 604800000, D: 2550723487, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.298 I/Finsky  (27346): [20131] SCH: Scheduling phonesky job Id: 34-442, CT: 1769062846979, Constraints: [{ L: 37922960, D: 1333922960, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.302 I/Finsky  (27346): [20140] SCH: Scheduling 1 system job(s)
+01-22 19:03:10.303 I/Finsky  (27346): [20140] SCH: Scheduling system job Id: 9921, L: 0, D: 54786322, C: false, I: false, N: 1
+01-22 19:03:10.311 I/Finsky  (27346): [2] SCH: job service start with id 9921.
+01-22 19:03:10.316 I/Finsky  (27346): [20692] SCH: job service finished with id 9916.
+01-22 19:03:10.325 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 1-1337, CT: 1769062837223, Constraints: [{ L: 37539401, D: 80739401, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.326 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 12-1, CT: 1769088775360, Constraints: [{ L: 15000, D: 86400000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.326 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 34-426, CT: 1769062846973, Constraints: [{ L: 604800000, D: 2471522803, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.326 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 34-432, CT: 1769062846975, Constraints: [{ L: 604800000, D: 2550723487, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.326 I/Finsky  (27346): [20140] SCH: Scheduling phonesky job Id: 34-442, CT: 1769062846979, Constraints: [{ L: 37922960, D: 1333922960, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.330 I/Finsky  (27346): [20142] SCH: Scheduling 1 system job(s)
+01-22 19:03:10.330 I/Finsky  (27346): [20142] SCH: Scheduling system job Id: 9926, L: 0, D: 54786294, C: false, I: false, N: 1
+01-22 19:03:10.337 I/Finsky  (27346): [2] SCH: job service start with id 9926.
+01-22 19:03:10.342 I/Finsky  (27346): [20692] SCH: job service finished with id 9921.
+01-22 19:03:10.351 I/Finsky  (27346): [20136] SCH: Scheduling phonesky job Id: 1-1337, CT: 1769062837223, Constraints: [{ L: 37539401, D: 80739401, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.352 I/Finsky  (27346): [20136] SCH: Scheduling phonesky job Id: 12-1, CT: 1769088775360, Constraints: [{ L: 15000, D: 86400000, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.352 I/Finsky  (27346): [20136] SCH: Scheduling phonesky job Id: 34-426, CT: 1769062846973, Constraints: [{ L: 604800000, D: 2471522803, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.352 I/Finsky  (27346): [20136] SCH: Scheduling phonesky job Id: 34-432, CT: 1769062846975, Constraints: [{ L: 604800000, D: 2550723487, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.352 I/Finsky  (27346): [20136] SCH: Scheduling phonesky job Id: 34-442, CT: 1769062846979, Constraints: [{ L: 37922960, D: 1333922960, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:10.356 I/Finsky  (27346): [20131] SCH: Scheduling 1 system job(s)
+01-22 19:03:10.356 I/Finsky  (27346): [20131] SCH: Scheduling system job Id: 9931, L: 0, D: 54786268, C: false, I: false, N: 1
+01-22 19:03:10.364 I/GameManagerServiceExt( 1748): re: 4, Bundle[mParcelledData.dataSize=5600] .
+01-22 19:03:10.364 I/Finsky  (27346): [2] SCH: job service start with id 9931.
+01-22 19:03:10.367 I/Finsky  (27346): [20692] SCH: job service finished with id 9926.
+01-22 19:03:10.371 E/ActivityThread( 2190): Failed to find provider info for com.oplus.thirdkit
+01-22 19:03:10.371 E/AbnormalAppMonitorController( 2190): callProvider errorUnknown authority com.oplus.thirdkit
+01-22 19:03:10.374 I/Finsky  (27346): [20689] SCH: Satisfied jobs for 9931 are: 12-1
+01-22 19:03:10.374 I/Finsky  (27346): [20692] SCH: Job 12-1 starting
+01-22 19:03:10.375 I/Finsky  (27346): [2] WM::SCH: Logging work start for 12-1
+01-22 19:03:10.375 I/Finsky  (27346): [2] [ContentSync] job started
+01-22 19:03:10.462 D/vendor.oplus.hardware.charger@1.0-service(  897): getChargerControl:
+01-22 19:03:10.686 D/power@timer(  859): [mtkPowerTimer] visRead:0
+01-22 19:03:10.691 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.mainline.primary.libs' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.016 W/CrashBox_MaximumCounter(16320): insert info:2d53aa6c8080a3910f81290f9fa85cb8--get count is:3
+01-22 19:03:11.032 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.appsearch' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.034 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.art' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.088 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.mediaprovider' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.116 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.resolv' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.153 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.media' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.195 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:11.198 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:11.215 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:11.216 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:11.221 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:11.222 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:11.278 D/AALLightSensor( 1193): oldLux=0 [SA:0 LA:0] newLux=0 (oriLux: 0)
+01-22 19:03:11.297 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:11.298 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:11.301 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+01-22 19:03:11.307 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:11.307 I/OplusHansManager ( 1748): uid=10744, pkg=com.cricbuzz.android can transition from M to F
+01-22 19:03:11.308 I/OplusHansManager ( 1748): uid=10744, pkg=com.cricbuzz.android F enter(), M stay=10
+01-22 19:03:11.308 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:11.310 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:11.311 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:11.313 E/IHansComunication( 6221): HANS printMessageBody: RCV message: type = 0,port = 86870,caller_pid = 1089,caller_uid = 1047,target_pid = 9694,target_uid = 10744,pkg_cmd = -1,rpc = android.hardware.ICameraServiceListener/5
+01-22 19:03:11.315 I/OplusHansManager ( 1748): freeze uid: 10744 com.cricbuzz.android pids: [9694, 19174] IsolatedUid: [99275] scene: LcdOn
+01-22 19:03:11.316 D/IHansComunication( 6221): HansComunication::addUid-- 10744, persistent--0
+01-22 19:03:11.316 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = PKG, targetUid = 10744, pkgCmd = ADD_ONE_UID
+01-22 19:03:11.320 I/OplusHansManager ( 1748): unfreeze uid: 10744 com.cricbuzz.android pids: [9694, 19174] reason: AsyncBinder scene: LcdOn
+01-22 19:03:11.321 I/OplusHansManager ( 1748): uid=10744, pkg=com.cricbuzz.android, transition from Frozen to Middle, reason=AsyncBinder
+01-22 19:03:11.321 I/OplusHansManager ( 1748): uid=10744, pkg=com.cricbuzz.android F exit(), F stay=0, reason=AsyncBinder
+01-22 19:03:11.364 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.sdkext' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.372 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.adservices' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.372 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.tethering' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.549 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.cellbroadcast' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.750 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.tzdata4' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.795 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.permission' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:11.938 I/thermal_repeater( 1170): [recvMdThermalInfo] ret=29, strLen=127,  1, 32767,,, 197, 32767, 9462
+01-22 19:03:12.317 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10744, pkgCmd = PKG_CMD_MAX
+01-22 19:03:12.390 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.media.swcodec' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.470 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.adbd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.503 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.conscrypt' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.615 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.neuralnetworks' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.620 D/vendor.oplus.hardware.charger@1.0-service(  897): getChargerControl:
+01-22 19:03:12.622 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.ipsec' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.655 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.ondevicepersonalization' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.684 I/OplusHansManager ( 1748): uid=10817, pkg=com.indeed.android.jobsearch can transition from M to F
+01-22 19:03:12.684 I/OplusHansManager ( 1748): uid=10817, pkg=com.indeed.android.jobsearch F enter(), M stay=10
+01-22 19:03:12.689 I/OplusHansManager ( 1748): freeze uid: 10817 com.indeed.android.jobsearch pids: [3249, 3593] IsolatedUid: [99251] scene: LcdOn
+01-22 19:03:12.690 D/IHansComunication( 6221): HansComunication::addUid-- 10817, persistent--0
+01-22 19:03:12.690 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = PKG, targetUid = 10817, pkgCmd = ADD_ONE_UID
+01-22 19:03:12.720 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.extservices' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.728 E/TaskPersister( 1748): File error accessing recents directory (directory doesn't exist?).
+01-22 19:03:12.741 W/HidlServiceHelper(11138): Failed to read virtual TLC buffer usage returns is NULLnull
+01-22 19:03:12.852 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.os.statsd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.905 E/FilePhenotypeFlags(12336): Config package com.google.android.gms.clearcut_client#com.coloros.phonemanager cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+01-22 19:03:12.907 W/Finsky  (27346): [2] STU: Failed to get storage stats for package 'com.google.android.scheduling' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+01-22 19:03:12.921 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.safetynet.service.START pkg=com.google.android.gms }
+01-22 19:03:12.925 E/IHansComunication( 6221): HANS printMessageBody: RCV message: type = 0,port = 86870,caller_pid = 1089,caller_uid = 1047,target_pid = 3249,target_uid = 10817,pkg_cmd = -1,rpc = android.hardware.ICameraServiceListener/5
+01-22 19:03:12.929 I/OplusHansManager ( 1748): unfreeze uid: 10817 com.indeed.android.jobsearch pids: [3249, 3593] reason: AsyncBinder scene: LcdOn
+01-22 19:03:12.930 I/OplusHansManager ( 1748): uid=10817, pkg=com.indeed.android.jobsearch, transition from Frozen to Middle, reason=AsyncBinder
+01-22 19:03:12.930 I/OplusHansManager ( 1748): uid=10817, pkg=com.indeed.android.jobsearch F exit(), F stay=0, reason=AsyncBinder
+01-22 19:03:12.945 I/Finsky  (27346): [2] App states replicator found 50 unowned apps
+01-22 19:03:12.956 I/Finsky  (27346): [20142] Completed 0 account content syncs with 0 successful.
+01-22 19:03:12.956 I/Finsky  (27346): [2] [ContentSync] Installation state replication succeeded.
+01-22 19:03:12.956 I/Finsky  (27346): [2] SCH: jobFinished: 12-1. TimeElapsed: 2582ms.
+01-22 19:03:12.957 I/Finsky  (27346): [2] WM::SCH: Logging work end for 12-1
+01-22 19:03:12.962 E/FilePhenotypeFlags(12336): Config package com.google.android.gms.clearcut_client#com.coloros.phonemanager cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+01-22 19:03:12.964 E/FilePhenotypeFlags(12336): Config package com.google.android.gms.clearcut_client#com.coloros.phonemanager cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+01-22 19:03:12.977 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 1-1337, CT: 1769062837223, Constraints: [{ L: 37539401, D: 80739401, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:12.977 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 34-426, CT: 1769062846973, Constraints: [{ L: 604800000, D: 2471522803, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:12.977 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 34-432, CT: 1769062846975, Constraints: [{ L: 604800000, D: 2550723487, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:12.977 I/Finsky  (27346): [20142] SCH: Scheduling phonesky job Id: 34-442, CT: 1769062846979, Constraints: [{ L: 37922960, D: 1333922960, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+01-22 19:03:12.981 I/Finsky  (27346): [20131] SCH: Scheduling 1 system job(s)
+01-22 19:03:12.982 I/Finsky  (27346): [20131] SCH: Scheduling system job Id: 9936, L: 11583643, D: 54783643, C: false, I: false, N: 1
+01-22 19:03:12.988 I/Finsky  (27346): [20692] SCH: job service finished with id 9931.
+01-22 19:03:13.251 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:13.252 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:13.267 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:13.268 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:13.273 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:13.274 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:13.349 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:13.350 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:13.361 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:13.361 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:13.366 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:13.367 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:13.477 E/WiseLight(  852): Light=16.000000, del_time=200.000000, light_c=1.000000
+01-22 19:03:13.677 E/WiseLight(  852): Light=17.000000, del_time=150.000000, light_c=1.000000
+01-22 19:03:13.691 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10817, pkgCmd = PKG_CMD_MAX
+01-22 19:03:13.877 E/WiseLight(  852): Light=17.000000, del_time=175.000000, light_c=1.000000
+01-22 19:03:13.954 D/ccci_mdinit(  970): (1):monitor_time_update_thread round:7746 ########
+01-22 19:03:14.241 W/AlarmManager( 2425): Unrecognized alarm listener com.android.networkstack.android.net.ip.IpClientLinkObserver$Dhcp6PdPreferredPrefixAlarmListener@8b96adb
+01-22 19:03:14.241 I/[BIP]   ( 1457):  [BIP NL] event newaddr match dev 0
+01-22 19:03:14.241 I/[BIP]   ( 1457):  [BIP NL] IPv6: *:*:*:*:*:*:*:*
+01-22 19:03:14.241 I/[BIP]   ( 1457):  [BIP NL] addr state is 3, ipv4=*.*.*.*, ipv6=*:*:*:*:*:*:*:*
+01-22 19:03:14.241 I/[BIP]   ( 1457):  [BIP NL] event newaddr match dev 0
+01-22 19:03:14.241 I/[BIP]   ( 1457):  [BIP NL] IPv6: *:*:*:*:*:*:*:*
+01-22 19:03:14.241 I/[BIP]   ( 1457):  [BIP NL] addr state is 3, ipv4=*.*.*.*, ipv6=*:*:*:*:*:*:*:*
+01-22 19:03:14.497 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.safebrowsing.SafeBrowsingService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+01-22 19:03:14.502 D/AppSwitchObserverHelper( 4587): packageName: com.android.launcher,com.wholexale.app.staging
+01-22 19:03:14.578 I/OplusHansManager ( 1748): uid=10349, pkg=com.jio.myjio can transition from M to F
+01-22 19:03:14.578 I/OplusHansManager ( 1748): uid=10349, pkg=com.jio.myjio F enter(), M stay=10
+01-22 19:03:14.581 I/OplusHansManager ( 1748): freeze uid: 10349 com.jio.myjio pids: [10144] scene: LcdOn
+01-22 19:03:14.582 D/IHansComunication( 6221): HansComunication::addUid-- 10349, persistent--0
+01-22 19:03:14.582 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = PKG, targetUid = 10349, pkgCmd = ADD_ONE_UID
+01-22 19:03:14.821 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.appset.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+01-22 19:03:14.939 I/charon  (10534): 4717[JOB] [acquire_alarm_timer_wake_lock()  412] Acquire wake lock(fd:-1, result: 1, errno:9)
+01-22 19:03:14.939 I/charon  (10534): 03[JOB] [schedule()  269] Job timer expiry(now:121336, event->time:121336), queuing job for execution
+01-22 19:03:14.939 I/charon  (10534): 14[IKE] <pdn_1_23|23> [send_keepalive()  760] NATT keepalive through charon is enabled, interval:20
+01-22 19:03:14.939 I/charon  (10534): 14[IKE] <pdn_1_23|23> [send_keepalive()  780] sending keep alive to 49.44.190.250[4500]
+01-22 19:03:14.939 I/charon  (10534): 14[JOB] <pdn_1_23|23> [schedule_job_tv()  506] Put the job(expire at 121356) in heap position:1, next expired job:121356
+01-22 19:03:14.940 I/charon  (10534): 14[JOB] [release_alarm_timer_wake_lock()  391] Release wake lock(fd:-1, result: 1, errno:9)
+01-22 19:03:15.162 I/mtkpower@impl(  859): [powerd_req] TIMER_MSG_PERF_LOCK_TIMEOUT hdl:59268
+01-22 19:03:15.162 I/libPowerHal(  859): [perfLockRel] hdl:59268, idx:1
+01-22 19:03:15.163 I/libPowerHal(  859): MTKPOWER_HINT_PROCESS_CREATE: cpu_ctrl set cpu freq: -1 -1 -1 -1
+01-22 19:03:15.163 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PROCESS_CREATE update cmd:1000000, param:1
+01-22 19:03:15.163 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PROCESS_CREATE update cmd:1408300 param:40
+01-22 19:03:15.164 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PROCESS_CREATE update cmd:1434500 param:0
+01-22 19:03:15.164 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PROCESS_CREATE update cmd:1000000 param:1
+01-22 19:03:15.279 D/AALLightSensor( 1193): oldLux=0 [SA:0 LA:0] newLux=0 (oriLux: 0)
+01-22 19:03:15.306 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:15.309 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:15.321 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:15.322 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:15.327 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:15.328 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:15.404 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:15.407 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:15.416 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:15.418 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:15.420 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:15.422 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:15.471 D/OplusHecate(  966): pixels[1077,117]=0xff0d0b85
+01-22 19:03:15.583 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10349, pkgCmd = PKG_CMD_MAX
+01-22 19:03:16.091 D/IMGMemtrackHAL(  849): hal_get_memory: memtrack cache rebuild was required
+01-22 19:03:16.098 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:16.098 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.wholexale.app.staging
+01-22 19:03:16.098 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:16.098 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.truecaller
+01-22 19:03:16.099 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:16.099 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.whatsapp
+01-22 19:03:16.099 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:16.099 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.android.settings
+01-22 19:03:16.099 D/OplusSplitScreenManagerService( 1748): com.android.settings unSupportsSplitScreen by blockList or ForbidActivityList
+01-22 19:03:16.099 D/OplusSplitScreenManagerService( 1748): com.android.settings unSupportsSplitScreen by blockList or ForbidActivityList
+01-22 19:03:16.099 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:16.099 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.google.android.youtube
+01-22 19:03:16.100 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-22 19:03:16.100 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.cricbuzz.android
+01-22 19:03:16.107 W/GuardElfCpu( 4587): type=1400 audit(0.0:6909): avc: denied { read } for name="status" dev="proc" ino=46487149 scontext=u:r:system_app:s0 tcontext=u:r:surfaceflinger:s0 tclass=file permissive=0
+01-22 19:03:16.107 W/GuardElfCpu( 4587): type=1400 audit(0.0:6910): avc: denied { search } for name="846" dev="proc" ino=46477183 scontext=u:r:system_app:s0 tcontext=u:r:mtk_hal_c2:s0 tclass=dir permissive=0
+01-22 19:03:16.107 W/GuardElfCpu( 4587): type=1400 audit(0.0:6911): avc: denied { search } for name="843" dev="proc" ino=46486226 scontext=u:r:system_app:s0 tcontext=u:r:hal_graphics_composer_default:s0 tclass=dir permissive=0
+01-22 19:03:16.107 W/GuardElfCpu( 4587): type=1400 audit(0.0:6912): avc: denied { read } for name="status" dev="proc" ino=46487150 scontext=u:r:system_app:s0 tcontext=u:r:installd:s0 tclass=file permissive=0
+01-22 19:03:16.148 D/ScreenStatusProducer(25296): Current queue status: isIdle = true, isPolling = true
+01-22 19:03:16.683 I/Process (12516): Sending signal. PID: 12516 SIG: 9
+01-22 19:03:16.722 I/Zygote  (  819): Process 12516 exited due to signal 9 (Killed)
+01-22 19:03:16.722 W/Process ( 1748): Unable to open /proc/12516/status
+01-22 19:03:16.723 I/ActivityManager( 1748): Process com.oplus.deepthinker:worker (pid 12516) has died: cch+25 CEM 
+01-22 19:03:16.723 I/libprocessgroup( 1748): Successfully killed process cgroup uid 10358 pid 12516 in 0ms
+01-22 19:03:16.724 D/OplusUIFirst_FB( 1748): com.oplus.deepthinker remove pid: 12516
+01-22 19:03:16.724 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.oplus.deepthinker/com.oplus.deepthinker pid=12516 state:3
+01-22 19:03:16.724 I/game_scn( 1748): collectForegroundAppList packName=com.oplus.deepthinker, actName=com.oplus.deepthinker, pid=12516, uid=10358, state:DEAD
+01-22 19:03:16.725 V/DeepThinker( 5470): ProcessManager: onProcessDied pid:12516, uid:10358
+01-22 19:03:16.726 D/RilUtility(  859): notify_rild_crash_pid_set certPid:-1, crash:12516, scn:0x0
+01-22 19:03:16.783 D/IMGMemtrackHAL(  849): hal_get_memory: memtrack cache rebuild was required
+01-22 19:03:17.364 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:17.368 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:17.379 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:17.381 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:17.384 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:17.385 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:17.462 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:17.465 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:17.476 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:17.477 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:17.480 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:17.481 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:17.622 D/vendor.oplus.hardware.charger@1.0-service(  897): getChargerControl:
+01-22 19:03:17.742 W/HidlServiceHelper(11138): Failed to read virtual TLC buffer usage returns is NULLnull
+01-22 19:03:17.846 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.ads.service.CACHE pkg=com.google.android.gms }
+01-22 19:03:18.101 D/AtCmdParser( 2614): parserAtcmdUrc can not find parser for +EBARRING
+01-22 19:03:18.120 D/AtCmdParser( 2614): parserAtcmdUrc can not find parser for +EREG
+01-22 19:03:18.121 D/AtCmdParser( 2614): parserAtcmdUrc can not find parser for +EGREG
+01-22 19:03:18.188 D/OplusNecManager( 2568): broadcastServiceStateChanged slotId:1oos:false
+01-22 19:03:18.215 D/PowerMitigationService( 2461):  onServiceStateChanged curRat = 18, slotId1
+01-22 19:03:18.215 D/cellularState[1]( 2614): handleMessage: E msg.what=4
+01-22 19:03:18.215 D/cellularState[1]( 2614): processMsg: NetworkSearchingState
+01-22 19:03:18.215 D/cellularState[1]( 2614): processMsg: SimReadyState
+01-22 19:03:18.215 D/cellularState[1]( 2614): processMsg: DefaultState
+01-22 19:03:18.215 E/cellularState[1]( 2614):  - unhandledMessage: msg.what=4
+01-22 19:03:18.215 D/cellularState[1]( 2614): handleMessage: X
+01-22 19:03:18.215 D/PowerMitigationService( 2461): handleMessage: { when=-1ms what=12 arg1=1 target=y.b$b }
+01-22 19:03:18.221 W/ContextImpl( 1748): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1238 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3149 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1665 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 android.os.Binder.execTransactInternal:1331 
+01-22 19:03:18.223 W/ContextImpl( 1748): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1288 android.content.Context.sendBroadcastMultiplePermissions:2281 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3153 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1665 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 
+01-22 19:03:18.223 W/BroadcastQueue( 1748): Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{b3a2deb 2225:com.android.systemui/u0a105} (pid=2225, uid=10105) requires android.permission.ACCESS_FINE_LOCATION due to sender android (uid 1001)
+01-22 19:03:18.225 W/BroadcastQueue( 1748): Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+01-22 19:03:18.226 W/BroadcastQueue( 1748): Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{b3a2deb 2225:com.android.systemui/u0a105} (pid=2225, uid=10105) requires android.permission.ACCESS_FINE_LOCATION due to sender android (uid 1001)
+01-22 19:03:18.227 W/BroadcastQueue( 1748): Appop Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{8e991c2 1748:system/1000} (pid=1748, uid=1000) excludes appop android:read_phone_state due to sender android (uid 1001)
+01-22 19:03:18.227 W/ContextImpl( 1748): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1288 android.content.Context.sendBroadcastMultiplePermissions:2281 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3160 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1665 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 
+01-22 19:03:18.227 W/BroadcastQueue( 1748): Appop Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{68c6ecd 2568:com.android.phone/1001} (pid=2568, uid=1001) excludes appop android:read_phone_state due to sender android (uid 1001)
+01-22 19:03:18.228 W/BroadcastQueue( 1748): Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver requires android.permission.ACCESS_FINE_LOCATION due to sender android (uid 1001)
+01-22 19:03:18.229 W/ContextImpl( 1748): Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1288 android.content.Context.sendBroadcastMultiplePermissions:2281 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3164 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1665 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:492 
+01-22 19:03:18.230 W/BroadcastQueue( 1748): Appop Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{8e991c2 1748:system/1000} (pid=1748, uid=1000) excludes appop android:fine_location due to sender android (uid 1001)
+01-22 19:03:18.231 W/BroadcastQueue( 1748): Appop Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{68c6ecd 2568:com.android.phone/1001} (pid=2568, uid=1001) excludes appop android:fine_location due to sender android (uid 1001)
+01-22 19:03:18.231 W/BroadcastQueue( 1748): Permission Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver requires android.permission.READ_PHONE_STATE due to sender android (uid 1001)
+01-22 19:03:18.233 W/BroadcastQueue( 1748): Appop Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{b3a2deb 2225:com.android.systemui/u0a105} (pid=2225, uid=10105) excludes appop android:read_phone_state due to sender android (uid 1001)
+01-22 19:03:18.233 W/BroadcastQueue( 1748): Appop Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{8e991c2 1748:system/1000} (pid=1748, uid=1000) excludes appop android:read_phone_state due to sender android (uid 1001)
+01-22 19:03:18.234 W/BroadcastQueue( 1748): Appop Denial: receiving Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 (has extras) } to ProcessRecord{68c6ecd 2568:com.android.phone/1001} (pid=2568, uid=1001) excludes appop android:read_phone_state due to sender android (uid 1001)
+01-22 19:03:18.239 D/ServiceStateProvider( 2568): subId=6
+01-22 19:03:18.242 D/CellBroadcastReceiver(10366): onReceive Intent { act=android.intent.action.SERVICE_STATE flg=0x1000010 cmp=com.google.android.cellbroadcastreceiver/com.android.cellbroadcastreceiver.CellBroadcastReceiver (has extras) }
+01-22 19:03:18.243 D/KeyguardUpdateMonitor( 2225): slot id:0 subId:7
+01-22 19:03:18.243 D/KeyguardUpdateMonitor( 2225): is emergency: true
+01-22 19:03:18.243 D/KeyguardUpdateMonitor( 2225): voice state: 1
+01-22 19:03:18.244 D/KeyguardUpdateMonitor( 2225): slot id:1 subId:6
+01-22 19:03:18.244 D/KeyguardUpdateMonitor( 2225): is emergency: false
+01-22 19:03:18.244 D/KeyguardUpdateMonitor( 2225): voice state: 0
+01-22 19:03:18.244 D/KeyguardUpdateMonitor( 2225): is Emergency supported: false
+01-22 19:03:18.244 D/CellBroadcastReceiver(10366): onServiceStateChanged, ss: 0
+01-22 19:03:18.244 D/CellBroadcastReceiver(10366): networkOperator: 
+01-22 19:03:18.245 D/CellBroadcastReceiver(10366): networkOperator on emergency mode: 404 for the country code: in
+01-22 19:03:18.245 D/CellBroadcastReceiver(10366): update supported roaming operator as 
+01-22 19:03:18.246 D/KeyguardUpdateMonitor( 2225): slot id:0 subId:7
+01-22 19:03:18.246 D/KeyguardUpdateMonitor( 2225): is emergency: true
+01-22 19:03:18.248 D/KeyguardUpdateMonitor( 2225): voice state: 1
+01-22 19:03:18.249 D/KeyguardUpdateMonitor( 2225): slot id:1 subId:6
+01-22 19:03:18.249 D/KeyguardUpdateMonitor( 2225): is emergency: false
+01-22 19:03:18.249 D/KeyguardUpdateMonitor( 2225): voice state: 0
+01-22 19:03:18.249 D/KeyguardUpdateMonitor( 2225): is Emergency supported: false
+01-22 19:03:18.250 D/SimStateHelper( 2225): slot:0, lock state:Bundle[mParcelledData.dataSize=56]
+01-22 19:03:18.252 D/SimStateHelper( 2225): slot:1, lock state:Bundle[mParcelledData.dataSize=56]
+01-22 19:03:18.252 D/SimStateHelper( 2225): needDisableMenu: slot1State=0; slot2State=0
+01-22 19:03:18.252 D/SimStateHelper( 2225): needDisableMenu:false
+01-22 19:03:18.267 D/OplusCustomizeRestrictionManagerService( 1748): ismmsreceiveDisabled null
+01-22 19:03:18.269 E/OplusCustomizeRestrictionManagerService( 1748): getMobileDataMode error :s == null
+01-22 19:03:18.270 D/OplusCustomizeSecurityManagerService( 1748): we can't find the BLOCK
+01-22 19:03:18.280 D/PhoneGlobals( 2568): SimSettingReceiver.onReceive, action=android.intent.action.SERVICE_STATE
+01-22 19:03:18.582 D/AES     ( 1748): AEEIOCTL_GET/SET_SF_STATE IOCTL,cmd= 1074294797, lParam=0. 
+01-22 19:03:18.583 D/AES     ( 1748): AEEIOCTL_RT_MON_Kick IOCTL,cmd= 2147774474, lParam=300. 
+01-22 19:03:19.279 D/AALLightSensor( 1193): oldLux=0 [SA:0 LA:0] newLux=0 (oriLux: 0)
+01-22 19:03:19.407 D/OplusTelephonyController( 2568): onSignalStrengthChanged: SignalStrength=SignalStrength:{mCdma=CellSignalStrengthCdma: cdmaDbm=2147483647 cdmaEcio=2147483647 evdoDbm=2147483647 evdoEcio=2147483647 evdoSnr=2147483647 level=0,mGsm=CellSignalStrengthGsm: rssi=-85 ber=99 mTa=2147483647 mLevel=4,mWcdma=CellSignalStrengthWcdma: ss=2147483647 ber=2147483647 rscp=2147483647 ecno=2147483647 level=0,mTdscdma=CellSignalStrengthTdscdma: rssi=2147483647 ber=2147483647 rscp=2147483647 level=0,mLte=CellSignalStrengthLte: rssi=2147483647 rsrp=2147483647 rsrq=2147483647 rssnr=2147483647 cqiTableIndex=2147483647 cqi=2147483647 ta=2147483647 level=0 parametersUseForLevel=0,mNr=CellSignalStrengthNr:{ csiRsrp = 2147483647 csiRsrq = 2147483647 csiCqiTableIndex = 2147483647 csiCqiReport = [] ssRsrp = 2147483647 ssRsrq = 2147483647 ssSinr = 2147483647 level = 0 parametersUseForLevel = 0 },primary=CellSignalStrengthGsm}, phoneId=0, mMtkLevel=0, mMtkRsrpOnly=false, mMtkLteRsrpThreshold=null, mMtkLteRssnrThreshold=null
+01-22 19:03:19.431 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:19.435 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:19.436 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:19.438 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:19.447 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:19.449 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:19.522 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:19.525 D/AudioManagerExtImpl( 7107): getStreamVolume normal, volume index=5
+01-22 19:03:19.535 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:19.536 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller
+01-22 19:03:19.538 D/OplusAtlasService( 3300): getAttributeByAppName module:oplus-getStreamMaxVolume packageName:com.truecaller
+01-22 19:03:19.540 D/AudioManagerExtImpl( 7107): getStreamVolume too fast, volume index=5, package=com.truecaller

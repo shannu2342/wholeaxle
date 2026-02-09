@@ -1,49 +1,32 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   ScrollView,
   StyleSheet,
-  FlatList,
   Image,
   Alert,
+  SafeAreaView,
+  StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AppHeader from '../components/AppHeader';
+import { useSelector } from 'react-redux';
 
 const WishlistScreen = ({ navigation }) => {
-  const [wishlistItems, setWishlistItems] = useState([
-    {
-      id: 1,
-      name: '4/Pocket Srcumble Plazzo For Women',
-      brand: 'Haajra Garments',
-      price: 109,
-      originalPrice: 299,
-      margin: '64% Margin',
-      moq: 'MOQ: 10',
-      image: require('../../assets/product1.jpg'),
-    },
-    {
-      id: 2,
-      name: 'Srcumble Fabric Palazzo For Women',
-      brand: 'Haajra Garments',
-      price: 109,
-      originalPrice: 299,
-      margin: '64% Margin',
-      moq: 'MOQ: 10',
-      image: require('../../assets/product2.jpg'),
-    },
-    {
-      id: 3,
-      name: 'Cotton Leggings',
-      brand: 'Fashion Brand',
-      price: 199,
-      originalPrice: 399,
-      margin: '50% Margin',
-      moq: 'MOQ: 5',
-      image: require('../../assets/product3.jpg'),
-    },
-  ]);
+  const { products = [] } = useSelector((state) => state.products || {});
+  const [wishlistIds, setWishlistIds] = useState(new Set());
+
+  const wishlistItems = useMemo(() => {
+    return products
+      .map((item) => ({
+        ...item,
+        id: item.id || item._id,
+        image: item.image || item.images?.[0],
+      }))
+      .filter((item) => wishlistIds.has(item.id) || item.isWishlisted);
+  }, [products, wishlistIds]);
 
   const removeFromWishlist = (itemId) => {
     Alert.alert(
@@ -58,7 +41,11 @@ const WishlistScreen = ({ navigation }) => {
           text: 'Remove',
           style: 'destructive',
           onPress: () => {
-            setWishlistItems(wishlistItems.filter(item => item.id !== itemId));
+            setWishlistIds((prev) => {
+              const next = new Set(prev);
+              next.delete(itemId);
+              return next;
+            });
           },
         },
       ]
@@ -85,13 +72,35 @@ const WishlistScreen = ({ navigation }) => {
     );
   };
 
+  const clearWishlist = () => {
+    if (wishlistItems.length === 0) {
+      return;
+    }
+
+    Alert.alert(
+      'Clear Wishlist',
+      'Remove all items from your wishlist?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Clear All',
+          style: 'destructive',
+          onPress: () => setWishlistIds(new Set()),
+        },
+      ]
+    );
+  };
+
   const renderWishlistItem = ({ item }) => (
     <View style={styles.wishlistItem}>
       <TouchableOpacity 
         style={styles.productImageContainer}
         onPress={() => navigation.navigate('ProductDetail', { product: item })}
       >
-        <Image source={item.image} style={styles.productImage} />
+        <Image
+          source={item.image ? (typeof item.image === 'number' ? item.image : { uri: item.image }) : require('../../assets/product1.jpg')}
+          style={styles.productImage}
+        />
       </TouchableOpacity>
       
       <View style={styles.productInfo}>
@@ -135,18 +144,15 @@ const WishlistScreen = ({ navigation }) => {
   );
 
   return (
-    <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity 
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="arrow-left" size={20} color="#333" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Wishlist</Text>
-        <Text style={styles.itemCount}>({wishlistItems.length})</Text>
-      </View>
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      <AppHeader
+        title={`Wishlist (${wishlistItems.length})`}
+        showBackButton={false}
+        backgroundColor="#fff"
+        textColor="#333"
+        variant="compact"
+      />
 
       {wishlistItems.length === 0 ? (
         <View style={styles.emptyState}>
@@ -170,53 +176,31 @@ const WishlistScreen = ({ navigation }) => {
               <Icon name="share" size={16} color="#0390F3" />
               <Text style={styles.actionBarText}>Share All</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.actionBarButton}>
+            <TouchableOpacity
+              style={styles.actionBarButton}
+              onPress={clearWishlist}
+            >
               <Icon name="trash" size={16} color="#ff4757" />
               <Text style={styles.actionBarText}>Clear All</Text>
             </TouchableOpacity>
           </View>
 
           {/* Wishlist Items */}
-          <FlatList
-            data={wishlistItems}
-            renderItem={renderWishlistItem}
-            keyExtractor={(item) => item.id.toString()}
-            contentContainerStyle={styles.wishlistContainer}
-            showsVerticalScrollIndicator={false}
-          />
+          <ScrollView contentContainerStyle={styles.wishlistContainer} showsVerticalScrollIndicator={false}>
+            {wishlistItems.map((item) => (
+              <View key={item.id}>{renderWishlistItem({ item })}</View>
+            ))}
+          </ScrollView>
         </>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-    paddingVertical: 12,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-  },
-  backButton: {
-    padding: 5,
-  },
-  headerTitle: {
-    flex: 1,
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#333',
-    textAlign: 'center',
-  },
-  itemCount: {
-    fontSize: 14,
-    color: '#666',
   },
   actionBar: {
     flexDirection: 'row',

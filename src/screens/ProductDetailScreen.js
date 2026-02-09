@@ -8,13 +8,18 @@ import {
   Image,
   Dimensions,
   Alert,
+  SafeAreaView,
+  StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AppHeader from '../components/AppHeader';
+import { Colors } from '../constants/Colors';
+import { useSelector } from 'react-redux';
 
 const { width } = Dimensions.get('window');
 
 const ProductDetailScreen = ({ route, navigation }) => {
-  const { product } = route.params;
+  const product = route?.params?.product;
   const [selectedSize, setSelectedSize] = useState('M');
   const [selectedColor, setSelectedColor] = useState('Blue');
   const [quantity, setQuantity] = useState(1);
@@ -22,15 +27,31 @@ const ProductDetailScreen = ({ route, navigation }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   // Sample additional images
+  if (!product) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar barStyle="light-content" backgroundColor={Colors.primary} />
+        <AppHeader
+          title="Product Details"
+          showBackButton
+          onBackPress={() => navigation.goBack()}
+        />
+        <View style={styles.emptyProduct}>
+          <Text style={styles.emptyProductText}>Product not found.</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   const productImages = [
     product.image,
     require('../../assets/product1.jpg'),
     require('../../assets/product2.jpg'),
     require('../../assets/product3.jpg'),
-  ];
+  ].filter(Boolean);
 
-  const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
-  const colors = ['Blue', 'Red', 'Green', 'Black', 'Multicolor'];
+  const sizes = product.sizes || ['S', 'M', 'L', 'XL', 'XXL'];
+  const colors = product.colors || ['Blue', 'Red', 'Green', 'Black', 'Multicolor'];
 
   const toggleWishlist = () => {
     setIsWishlisted(!isWishlisted);
@@ -83,47 +104,42 @@ const ProductDetailScreen = ({ route, navigation }) => {
     return product.price * quantity;
   };
 
-  return (
-    <ScrollView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity 
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="arrow-left" size={20} color="#333" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle} numberOfLines={1}>
-          Product Details
-        </Text>
-        <TouchableOpacity 
-          style={styles.shareButton}
-          onPress={() => console.log('Share product')}
-        >
-          <Icon name="share-nodes" size={20} color="#333" />
-        </TouchableOpacity>
-      </View>
+  const { products: storedProducts = [] } = useSelector((state) => state.products || {});
+  const similarProducts = storedProducts.filter(
+    (item) => (item.id || item._id) !== product.id && item.category === product.category
+  );
 
-      {/* Product Images */}
-      <View style={styles.imageSection}>
-        <ScrollView
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          onMomentumScrollEnd={(event) => {
-            const index = Math.round(event.nativeEvent.contentOffset.x / width);
-            setSelectedImageIndex(index);
-          }}
-        >
-          {productImages.map((image, index) => (
-            <Image
-              key={index}
-              source={image}
-              style={styles.productImage}
-              resizeMode="contain"
-            />
-          ))}
-        </ScrollView>
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="light-content" backgroundColor={Colors.primary} />
+      <AppHeader
+        title="Product Details"
+        showBackButton
+        onBackPress={() => navigation.goBack()}
+        rightIcons={[{ name: 'share-alt', onPress: () => console.log('Share product') }]}
+      />
+
+      <ScrollView style={styles.container}>
+        {/* Product Images */}
+        <View style={styles.imageSection}>
+          <ScrollView
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            onMomentumScrollEnd={(event) => {
+              const index = Math.round(event.nativeEvent.contentOffset.x / width);
+              setSelectedImageIndex(index);
+            }}
+          >
+            {productImages.map((image, index) => (
+              <Image
+                key={index}
+                source={typeof image === 'number' ? image : { uri: image }}
+                style={styles.productImage}
+                resizeMode="contain"
+              />
+            ))}
+          </ScrollView>
         
         {/* Image Indicators */}
         <View style={styles.imageIndicators}>
@@ -151,10 +167,10 @@ const ProductDetailScreen = ({ route, navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Product Info */}
-      <View style={styles.infoSection}>
-        <Text style={styles.brandName}>{product.brand}</Text>
-        <Text style={styles.productName}>{product.name}</Text>
+        {/* Product Info */}
+        <View style={styles.infoSection}>
+          <Text style={styles.brandName}>{product.brand}</Text>
+          <Text style={styles.productName}>{product.name}</Text>
         
         <View style={styles.badgesContainer}>
           <View style={styles.marginBadge}>
@@ -165,14 +181,18 @@ const ProductDetailScreen = ({ route, navigation }) => {
           </View>
         </View>
 
-        <View style={styles.priceContainer}>
-          <Text style={styles.price}>₹{product.price}</Text>
-          <Text style={styles.originalPrice}>₹{product.originalPrice}</Text>
-          <Text style={styles.discount}>
-            {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
-          </Text>
+          <View style={styles.priceContainer}>
+            <Text style={styles.price}>₹{product.price}</Text>
+            {product.originalPrice ? (
+              <>
+                <Text style={styles.originalPrice}>₹{product.originalPrice}</Text>
+                <Text style={styles.discount}>
+                  {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                </Text>
+              </>
+            ) : null}
+          </View>
         </View>
-      </View>
 
       {/* Size Selection */}
       <View style={styles.section}>
@@ -274,19 +294,19 @@ const ProductDetailScreen = ({ route, navigation }) => {
         <View style={styles.detailsContainer}>
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>Material:</Text>
-            <Text style={styles.detailValue}>Cotton</Text>
+            <Text style={styles.detailValue}>{product.material || 'Cotton'}</Text>
           </View>
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>Pattern:</Text>
-            <Text style={styles.detailValue}>Solid</Text>
+            <Text style={styles.detailValue}>{product.pattern || 'Solid'}</Text>
           </View>
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>Care:</Text>
-            <Text style={styles.detailValue}>Machine Wash</Text>
+            <Text style={styles.detailValue}>{product.care || 'Machine Wash'}</Text>
           </View>
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>Origin:</Text>
-            <Text style={styles.detailValue}>India</Text>
+            <Text style={styles.detailValue}>{product.origin || 'India'}</Text>
           </View>
         </View>
       </View>
@@ -295,8 +315,8 @@ const ProductDetailScreen = ({ route, navigation }) => {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Description</Text>
         <Text style={styles.description}>
-          Comfortable and stylish palazzo for women. Perfect for casual and formal occasions. 
-          Made with high-quality fabric for durability and comfort. Available in multiple sizes and colors.
+          {product.description ||
+            'Comfortable and stylish product designed for retailers. Durable materials and premium finish.'}
         </Text>
       </View>
 
@@ -304,50 +324,41 @@ const ProductDetailScreen = ({ route, navigation }) => {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Similar Products</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.similarProducts}>
-          {/* Similar product cards would go here */}
-          <View style={styles.similarProductCard}>
-            <Image source={require('../../assets/product1.jpg')} style={styles.similarProductImage} />
-            <Text style={styles.similarProductName} numberOfLines={2}>Similar Product 1</Text>
-            <Text style={styles.similarProductPrice}>₹129</Text>
-          </View>
-          <View style={styles.similarProductCard}>
-            <Image source={require('../../assets/product2.jpg')} style={styles.similarProductImage} />
-            <Text style={styles.similarProductName} numberOfLines={2}>Similar Product 2</Text>
-            <Text style={styles.similarProductPrice}>₹149</Text>
-          </View>
+          {similarProducts.length === 0 ? (
+            <View style={styles.similarProductCard}>
+              <Text style={styles.similarProductName} numberOfLines={2}>No similar products yet</Text>
+            </View>
+          ) : (
+            similarProducts.map((item) => (
+              <TouchableOpacity
+                key={item.id}
+                style={styles.similarProductCard}
+                onPress={() => navigation.push('ProductDetail', { product: item })}
+              >
+                <Image
+                  source={typeof item.image === 'number' ? item.image : { uri: item.image }}
+                  style={styles.similarProductImage}
+                />
+                <Text style={styles.similarProductName} numberOfLines={2}>{item.name}</Text>
+                <Text style={styles.similarProductPrice}>₹{item.price}</Text>
+              </TouchableOpacity>
+            ))
+          )}
         </ScrollView>
       </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: Colors.white,
+  },
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    paddingVertical: 12,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-  },
-  backButton: {
-    padding: 5,
-  },
-  headerTitle: {
-    flex: 1,
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
-    textAlign: 'center',
-  },
-  shareButton: {
-    padding: 5,
   },
   imageSection: {
     backgroundColor: '#fff',
@@ -623,6 +634,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
     color: '#333',
+  },
+  emptyProduct: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: Colors.white,
+  },
+  emptyProductText: {
+    fontSize: 14,
+    color: Colors.text.secondary,
   },
 });
 

@@ -1,0 +1,128 @@
+--------- beginning of main
+01-22 19:25:54.368 I/ReactNativeJS(17151): ✅ Patched React Native list components (FlatList/VirtualizedList/SectionList) to guard against undefined `this` / props
+01-22 19:25:54.368 I/ReactNativeJS(17151): 🚀 Starting Wholexale app...
+01-22 19:25:54.368 I/ReactNativeJS(17151): 'App name:', 'WholexaleApp'
+01-22 19:25:54.383 I/ReactNativeJS(17151): Loading App.js...
+01-22 19:25:54.413 I/ReactNativeJS(17151): 'App component:', 'Loaded'
+01-22 19:25:54.413 I/ReactNativeJS(17151): ✅ App registered successfully
+01-22 19:25:54.413 I/ReactNativeJS(17151): Running "WholexaleApp
+01-22 19:25:54.415 I/ReactNativeJS(17151): 🚀 App component rendering...
+01-22 19:25:54.415 I/ReactNativeJS(17151): 🔍 Loading ReduxProvider...
+01-22 19:25:54.415 I/ReactNativeJS(17151): 🔍 Loading AIProvider...
+01-22 19:25:54.415 I/ReactNativeJS(17151): 🔍 Loading AppProvider...
+01-22 19:25:54.415 I/ReactNativeJS(17151): 🔍 Loading AppInner...
+01-22 19:25:54.456 I/ReactNativeJS(17151): DEBUG: Starting category flow initialization...
+01-22 19:25:54.457 I/ReactNativeJS(17151): 'DEBUG: Current user:', null
+01-22 19:25:54.457 I/ReactNativeJS(17151): 'DEBUG: Current isCategoryCompleted:', false
+01-22 19:25:54.457 I/ReactNativeJS(17151): DEBUG: Loading category preference from storage...
+01-22 19:25:54.463 I/ReactNativeJS(17151): 'Retrieved category preference from AsyncStorage:', null
+01-22 19:25:54.465 I/ReactNativeJS(17151): 'DEBUG: Category preference loaded. Result:', { type: 'category/loadCategoryPreference/fulfilled',
+01-22 19:25:54.465 I/ReactNativeJS(17151):   payload: { categoryId: null, categoryDetails: null, isCompleted: false },
+01-22 19:25:54.465 I/ReactNativeJS(17151):   meta: 
+01-22 19:25:54.465 I/ReactNativeJS(17151):    { arg: undefined,
+01-22 19:25:54.465 I/ReactNativeJS(17151):      requestId: 'Evwg6Fxaacwx15SOVFr-2',
+01-22 19:25:54.465 I/ReactNativeJS(17151):      requestStatus: 'fulfilled' } }
+01-22 19:25:54.465 I/ReactNativeJS(17151): DEBUG: Checking if category selection should be shown...
+01-22 19:25:54.465 I/ReactNativeJS(17151): 'DEBUG: Current user state:', null
+01-22 19:25:54.465 I/ReactNativeJS(17151): 'DEBUG: Current isCategoryCompleted:', false
+01-22 19:25:54.465 I/ReactNativeJS(17151): 'DEBUG: isFirstTimeUser calculated as:', true
+01-22 19:25:54.469 I/ReactNativeJS(17151): 'Retrieved category preference from AsyncStorage:', null
+01-22 19:25:54.470 I/ReactNativeJS(17151): 'DEBUG: Category flow check result:', { shouldShow: true,
+01-22 19:25:54.470 I/ReactNativeJS(17151):   reason: 'first_time_user',
+01-22 19:25:54.470 I/ReactNativeJS(17151):   user: false,
+01-22 19:25:54.470 I/ReactNativeJS(17151):   isCategoryCompleted: false }
+01-22 19:25:54.470 I/ReactNativeJS(17151): DEBUG: Updating Redux state with category selection decision...
+01-22 19:25:54.470 I/ReactNativeJS(17151): DEBUG: Category flow initialization completed
+01-22 19:25:55.474 I/ReactNativeJS(17151): 🤖 Starting AI services initialization...
+01-22 19:25:55.515 I/ReactNativeJS(17151): 🤖 Initializing AI Services...
+01-22 19:25:55.515 I/ReactNativeJS(17151): 🚀 Initializing Model Manager...
+01-22 19:25:55.517 I/ReactNativeJS(17151): 🧠 Using CPU backend for TensorFlow.js
+01-22 19:25:55.517 I/ReactNativeJS(17151): 🧠 TensorFlow.js initialized with cpu backend
+01-22 19:25:55.518 I/ReactNativeJS(17151): 📊 Performance monitoring started
+01-22 19:25:55.518 I/ReactNativeJS(17151): ✅ Model Manager initialized successfully
+01-22 19:25:55.518 I/ReactNativeJS(17151): 🔄 Loading model: compliance-detector-compliance-model-v1
+01-22 19:25:56.078 I/ReactNativeJS(17151): ✅ Model compliance-detector-compliance-model-v1 loaded successfully in 559.97ms
+01-22 19:25:56.078 I/ReactNativeJS(17151): 🔄 Loading model: feature-extractor-feature-extractor-v1
+01-22 19:25:56.753 I/ReactNativeJS(17151): ✅ Model feature-extractor-feature-extractor-v1 loaded successfully in 675.26ms
+01-22 19:25:56.753 I/ReactNativeJS(17151): 🔄 Loading model: similarity-matcher-similarity-model-v1
+01-22 19:25:56.753 I/ReactNativeJS(17151): ✅ Model similarity-matcher-similarity-model-v1 loaded successfully in 0.06ms
+01-22 19:25:56.753 I/ReactNativeJS(17151): ⚡ Initializing Background Processor...
+01-22 19:25:56.754 I/ReactNativeJS(17151): ⚡ Background processing started
+01-22 19:25:56.754 I/ReactNativeJS(17151): ✅ Background Processor initialized successfully
+01-22 19:25:56.754 I/ReactNativeJS(17151): ✅ AI Services initialized successfully
+01-22 19:25:56.755 I/ReactNativeJS(17151): ✅ AI services initialized successfully
+01-22 19:25:56.755 I/ReactNativeJS(17151): 🔥 AI service warmed up and ready
+01-22 19:26:06.137 E/ReactNativeJS(17151): TypeError: Cannot read property 'getItem' of undefined
+01-22 19:26:06.137 E/ReactNativeJS(17151): 
+01-22 19:26:06.137 E/ReactNativeJS(17151): This error is located at:
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in FlatList
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in BusinessCategoryScreen
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in StaticContainer
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in EnsureSingleNavigator
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in SceneView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in CardSheet
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in PanGestureHandler
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in PanGestureHandler
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Card
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in CardContainer
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RNSScreen
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Suspender
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Suspense
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Freeze
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in DelayedFreeze
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in InnerScreen
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Screen
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in MaybeScreen
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RNSScreenContainer
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in ScreenContainer
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in MaybeScreenContainer
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Background
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in CardStack
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RNCSafeAreaProvider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in SafeAreaProvider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in SafeAreaProviderCompat
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RNGestureHandlerRootView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in GestureHandlerRootView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in StackView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in PreventRemoveProvider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in NavigationContent
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in StackNavigator
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in EnsureSingleNavigator
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in BaseNavigationContainer
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in ThemeProvider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in NavigationContainerInner
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in AppInner
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in AppProvider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in AIProvider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in LocalizationProvider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in PersistGate
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Provider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in ReduxProvider
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in App
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in RCTView
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in Unknown
+01-22 19:26:06.137 E/ReactNativeJS(17151):     in AppContainer, js engine: hermes

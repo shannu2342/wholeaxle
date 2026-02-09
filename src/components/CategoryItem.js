@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../constants/Colors';
 
 const CategoryItem = ({ 
@@ -23,12 +24,11 @@ const CategoryItem = ({
         styles.categoryIcon,
         isActive && styles.activeCategoryIcon
       ]}>
-        <Text style={[
-          styles.categoryEmoji,
-          isActive && styles.activeCategoryEmoji
-        ]}>
-          {icon}
-        </Text>
+        <Icon
+          name={icon}
+          size={18}
+          color={Colors.white}
+        />
       </View>
       <Text style={[
         styles.categoryText,
@@ -67,12 +67,6 @@ const styles = StyleSheet.create({
   },
   activeCategoryIcon: {
     backgroundColor: Colors.primary,
-  },
-  categoryEmoji: {
-    fontSize: Colors.fontSize.lg,
-  },
-  activeCategoryEmoji: {
-    color: Colors.white,
   },
   categoryText: {
     fontSize: Colors.fontSize.sm,

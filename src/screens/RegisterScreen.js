@@ -9,10 +9,14 @@ import {
   Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from '../store/slices/authSlice';
 
 const RegisterScreen = ({ navigation, route }) => {
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector((state) => state.auth || {});
   const initialUserType = route?.params?.userType || 'buyer';
-  const [userType, setUserType] = useState(initialUserType);
+  const [userType] = useState(initialUserType);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,7 +31,7 @@ const RegisterScreen = ({ navigation, route }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (!formData.name || !formData.email || !formData.password) {
       Alert.alert('Error', 'Please fill all required fields');
       return;
@@ -40,12 +44,21 @@ const RegisterScreen = ({ navigation, route }) => {
       Alert.alert('Error', 'Please agree to Terms & Conditions');
       return;
     }
-    
-    Alert.alert(
-      'Success',
-      `${userType === 'buyer' ? 'Buyer' : 'Seller'} account created successfully!`,
-      [{ text: 'OK', onPress: () => navigation.navigate('Login') }]
-    );
+
+    const accountLabel =
+      userType === 'seller' ? 'Seller' : userType === 'admin' ? 'Admin' : 'Buyer';
+
+    try {
+      await dispatch(registerUser({ ...formData, userType })).unwrap();
+      Alert.alert(
+        'Success',
+        `${accountLabel} account created successfully!`,
+        [{ text: 'OK', onPress: () => navigation.navigate('Login') }]
+      );
+    } catch (error) {
+      const message = typeof error === 'string' ? error : error?.message;
+      Alert.alert('Error', message || 'Unable to register. Please try again.');
+    }
   };
 
   const updateFormData = (key, value) => {
@@ -63,32 +76,11 @@ const RegisterScreen = ({ navigation, route }) => {
         <View style={{ width: 40 }} />
       </View>
 
-      {/* User Type Toggle */}
-      <View style={styles.userTypeContainer}>
-        <TouchableOpacity
-          style={[styles.userTypeButton, userType === 'buyer' && styles.userTypeButtonActive]}
-          onPress={() => setUserType('buyer')}
-        >
-          <Icon name="shopping-cart" size={18} color={userType === 'buyer' ? '#fff' : '#0390F3'} />
-          <Text style={[styles.userTypeText, userType === 'buyer' && styles.userTypeTextActive]}>
-            Buyer
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.userTypeButton, userType === 'seller' && styles.userTypeButtonActive]}
-          onPress={() => setUserType('seller')}
-        >
-          <Icon name="store" size={18} color={userType === 'seller' ? '#fff' : '#0390F3'} />
-          <Text style={[styles.userTypeText, userType === 'seller' && styles.userTypeTextActive]}>
-            Seller
-          </Text>
-        </TouchableOpacity>
-      </View>
 
       {/* Form */}
       <View style={styles.formContainer}>
         <Text style={styles.sectionTitle}>Personal Information</Text>
-        
+
         <View style={styles.inputContainer}>
           <Icon name="user" size={18} color="#666" style={styles.inputIcon} />
           <TextInput
@@ -147,67 +139,9 @@ const RegisterScreen = ({ navigation, route }) => {
           />
         </View>
 
-        {/* Seller Specific Fields */}
-        {userType === 'seller' && (
-          <>
-            <Text style={[styles.sectionTitle, { marginTop: 20 }]}>Business Information</Text>
-            
-            <View style={styles.inputContainer}>
-              <Icon name="building" size={18} color="#666" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Business Name *"
-                value={formData.businessName}
-                onChangeText={(value) => updateFormData('businessName', value)}
-              />
-            </View>
-
-            <View style={styles.inputContainer}>
-              <Icon name="id-card" size={16} color="#666" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="GST Number"
-                value={formData.gstNumber}
-                onChangeText={(value) => updateFormData('gstNumber', value)}
-                autoCapitalize="characters"
-              />
-            </View>
-
-            <View style={styles.inputContainer}>
-              <Icon name="map-marker" size={20} color="#666" style={styles.inputIcon} />
-              <TextInput
-                style={styles.input}
-                placeholder="Business Address"
-                value={formData.businessAddress}
-                onChangeText={(value) => updateFormData('businessAddress', value)}
-                multiline
-              />
-            </View>
-
-            <View style={styles.sellerBenefits}>
-              <Text style={styles.benefitsTitle}>Seller Benefits:</Text>
-              <View style={styles.benefitItem}>
-                <Icon name="check-circle" size={14} color="#00c57d" />
-                <Text style={styles.benefitText}>Reach millions of buyers</Text>
-              </View>
-              <View style={styles.benefitItem}>
-                <Icon name="check-circle" size={14} color="#00c57d" />
-                <Text style={styles.benefitText}>Low commission rates</Text>
-              </View>
-              <View style={styles.benefitItem}>
-                <Icon name="check-circle" size={14} color="#00c57d" />
-                <Text style={styles.benefitText}>Easy product management</Text>
-              </View>
-              <View style={styles.benefitItem}>
-                <Icon name="check-circle" size={14} color="#00c57d" />
-                <Text style={styles.benefitText}>Fast payments</Text>
-              </View>
-            </View>
-          </>
-        )}
 
         {/* Terms & Conditions */}
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.termsContainer}
           onPress={() => setAgreeTerms(!agreeTerms)}
         >
@@ -221,9 +155,15 @@ const RegisterScreen = ({ navigation, route }) => {
         </TouchableOpacity>
 
         {/* Register Button */}
-        <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
+        <TouchableOpacity style={styles.registerButton} onPress={handleRegister} disabled={isLoading}>
           <Text style={styles.registerButtonText}>
-            {userType === 'buyer' ? 'Create Buyer Account' : 'Create Seller Account'}
+            {isLoading
+              ? 'Creating...'
+              : userType === 'seller'
+                ? 'Create Seller Account'
+                : userType === 'admin'
+                  ? 'Create Admin Account'
+                  : 'Create Buyer Account'}
           </Text>
         </TouchableOpacity>
 
@@ -261,34 +201,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     color: '#333',
-  },
-  userTypeContainer: {
-    flexDirection: 'row',
-    marginBottom: 25,
-    borderRadius: 10,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#0390F3',
-  },
-  userTypeButton: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    backgroundColor: '#fff',
-  },
-  userTypeButtonActive: {
-    backgroundColor: '#0390F3',
-  },
-  userTypeText: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#0390F3',
-    marginLeft: 8,
-  },
-  userTypeTextActive: {
-    color: '#fff',
   },
   formContainer: {
     backgroundColor: '#fff',

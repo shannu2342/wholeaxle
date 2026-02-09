@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../constants/Colors';
 
 const SearchBar = ({ 
@@ -12,7 +13,7 @@ const SearchBar = ({
 }) => {
   return (
     <View style={[styles.searchBar, style]}>
-      <Text style={styles.searchIcon}>🔍</Text>
+      <Icon name="search" size={16} color={Colors.text.placeholder} />
       <TextInput
         style={styles.searchInput}
         value={value}
@@ -37,13 +38,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
-  },
-  searchIcon: {
-    fontSize: 16,
-    color: Colors.text.placeholder,
   },
   searchInput: {
+    marginLeft: 10,
     flex: 1,
     fontSize: 14,
     color: Colors.text.primary,

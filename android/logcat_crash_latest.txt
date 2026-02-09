@@ -1,0 +1,721 @@
+--------- beginning of main
+01-23 12:05:43.267 D/SensorService( 1748): onUidStateChanged uid = 10245, state = UID_STATE_IDLE
+--------- beginning of system
+01-23 12:05:43.341 D/CompatibilityChangeReporter( 1748): Compat change id reported: 161252188; UID 10851; state: DISABLED
+01-23 12:05:43.342 I/ActivityTaskManager( 1748): START u0 {flg=0x10000000 cmp=com.wholexale.app.staging/com.wholexale.app.MainActivity mCallingUid=2000} from uid 2000
+01-23 12:05:43.343 I/mtkpower_client( 1748): perf_lock_rel, hdl:76753, tid:2280
+01-23 12:05:43.343 I/mtkpower_client( 1748): perf_lock_acq, hdl:76753, dur:0, num:10, tid:2280
+01-23 12:05:43.343 I/libPowerHal(  859): [perfLockRel] hdl:76753, idx:0
+01-23 12:05:43.344 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 12:05:43.344 D/OplusZoomWindowRUSConfigManager( 1748): isSupportZoomModeWithPolicyLocked: target = com.wholexale.app.staging/com.wholexale.app.MainActivity
+01-23 12:05:43.344 D/OplusZoomWindowRUSConfigManager( 1748): targetPkg = com.wholexale.app.staging
+01-23 12:05:43.344 V/OplusZoomWindowManagerService( 1748): unSupportZoom: false ,callingPid: 16438 ,sourceStack: null
+01-23 12:05:43.346 I/mtkpower_client( 1748): ret_hdl:76767
+01-23 12:05:43.346 I/libPowerHal(  859): system_server: cpu_ctrl set cpu freq: 1275000 -1 2200000 -1
+01-23 12:05:43.349 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-23 12:05:43.349 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 12:05:43.352 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:43.352 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:43.366 I/PowerHalWrapper( 1748): amsBoostStop AMS_BOOST_PACK_SWITCH:false, AMS_BOOST_ACT_SWITCH:false, AMS_BOOST_PROCESS_CREATE:false 
+01-23 12:05:43.473 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:43.670 D/OGG_Detector( 1748): D:done mCurrStatus: 0
+01-23 12:05:43.670 D/NoBackGesture( 2225): Start gesture: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=293.75, y[0]=1698.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=121784742, downTime=121784742, deviceId=4, source=0x1002, displayId=0, eventId=234408659 }
+01-23 12:05:43.670 D/PowerManagerService( 1748): userActivityNoUpdateLocked: groupId=0, eventTime=121784742, event=2, flags=0x0, uid=1000
+01-23 12:05:43.670 D/NoBackGesture( 2225): Not in side gesture area
+01-23 12:05:43.749 I/libPowerHal(  859): [perfLockRel] hdl:76768, idx:1
+01-23 12:05:43.749 I/libPowerHal(  859): [PD] MTKPOWER_HINT_APP_TOUCH update cmd:3408600 param:0
+01-23 12:05:43.778 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:43.785 D/AES     ( 1748): AEEIOCTL_GET/SET_SF_STATE IOCTL,cmd= 1074294797, lParam=0. 
+01-23 12:05:43.785 D/AES     ( 1748): AEEIOCTL_RT_MON_Kick IOCTL,cmd= 2147774474, lParam=300. 
+01-23 12:05:43.825 D/OplusTelephonyController( 2568): onSignalStrengthChanged: SignalStrength=SignalStrength:{mCdma=CellSignalStrengthCdma: cdmaDbm=2147483647 cdmaEcio=2147483647 evdoDbm=2147483647 evdoEcio=2147483647 evdoSnr=2147483647 level=0,mGsm=CellSignalStrengthGsm: rssi=2147483647 ber=2147483647 mTa=2147483647 mLevel=0,mWcdma=CellSignalStrengthWcdma: ss=2147483647 ber=2147483647 rscp=2147483647 ecno=2147483647 level=0,mTdscdma=CellSignalStrengthTdscdma: rssi=2147483647 ber=2147483647 rscp=2147483647 level=0,mLte=CellSignalStrengthLte: rssi=2147483647 rsrp=-115 rsrq=-11 rssnr=6 cqiTableIndex=2147483647 cqi=0 ta=0 level=2 parametersUseForLevel=0,mNr=CellSignalStrengthNr:{ csiRsrp = 2147483647 csiRsrq = 2147483647 csiCqiTableIndex = 2147483647 csiCqiReport = [] ssRsrp = 2147483647 ssRsrq = 2147483647 ssSinr = 2147483647 level = 0 parametersUseForLevel = 0 },primary=CellSignalStrengthLte}, phoneId=0, mMtkLevel=0, mMtkRsrpOnly=false, mMtkLteRsrpThreshold=null, mMtkLteRssnrThreshold=null
+01-23 12:05:43.834 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:43.834 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:43.845 I/mtkpower_client( 1748): perf_lock_rel, hdl:76767, tid:2280
+01-23 12:05:43.846 I/mtkpower_client( 1748): perf_lock_acq, hdl:76767, dur:0, num:4, tid:2280
+01-23 12:05:43.846 I/libPowerHal(  859): [perfLockRel] hdl:76767, idx:0
+01-23 12:05:43.847 I/libPowerHal(  859): system_server: cpu_ctrl set cpu freq: -1 -1 -1 -1
+01-23 12:05:43.847 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-23 12:05:43.847 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-23 12:05:43.847 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 12:05:43.848 I/mtkpower_client( 1748): ret_hdl:76769
+01-23 12:05:44.185 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:44.629 D/AALLightSensor( 1193): oldLux=0 [SA:0 LA:0] newLux=0 (oriLux: 0)
+01-23 12:05:44.694 E/Parcel  (16478): Attempt to read from protected data in Parcel 0x7fde67c6b0
+01-23 12:05:44.694 E/Parcel  (16478): Attempt to read from protected data in Parcel 0x7fde67c6b0
+01-23 12:05:44.694 E/Parcel  (16478): Attempt to read from protected data in Parcel 0x7fde67c6b0
+01-23 12:05:44.694 E/Parcel  (16478): Attempt to read from protected data in Parcel 0x7fde67c6b0
+01-23 12:05:44.694 E/Parcel  (16478): Attempt to read from protected data in Parcel 0x7fde67c6b0
+01-23 12:05:44.809 E/Parcel  (16484): Attempt to read from protected data in Parcel 0x7ffe04cfb0
+01-23 12:05:44.809 E/Parcel  (16484): Attempt to read from protected data in Parcel 0x7ffe04cfb0
+01-23 12:05:44.809 E/Parcel  (16484): Attempt to read from protected data in Parcel 0x7ffe04cfb0
+01-23 12:05:44.809 E/Parcel  (16484): Attempt to read from protected data in Parcel 0x7ffe04cfb0
+01-23 12:05:44.809 E/Parcel  (16484): Attempt to read from protected data in Parcel 0x7ffe04cfb0
+01-23 12:05:44.862 E/Parcel  (16489): Attempt to read from protected data in Parcel 0x7fc0bfd520
+01-23 12:05:44.862 E/Parcel  (16489): Attempt to read from protected data in Parcel 0x7fc0bfd520
+01-23 12:05:44.862 E/Parcel  (16489): Attempt to read from protected data in Parcel 0x7fc0bfd520
+01-23 12:05:44.862 E/Parcel  (16489): Attempt to read from protected data in Parcel 0x7fc0bfd520
+01-23 12:05:44.862 E/Parcel  (16489): Attempt to read from protected data in Parcel 0x7fc0bfd520
+01-23 12:05:44.884 D/OGG_Detector( 1748): D:done mCurrStatus: 0
+01-23 12:05:44.884 D/NoBackGesture( 2225): Start gesture: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=374.0, y[0]=2235.75, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=121785957, downTime=121785957, deviceId=4, source=0x1002, displayId=0, eventId=471276487 }
+01-23 12:05:44.884 D/NoBackGesture( 2225): Not in side gesture area
+01-23 12:05:44.884 D/PowerManagerService( 1748): userActivityNoUpdateLocked: groupId=0, eventTime=121785957, event=2, flags=0x0, uid=1000
+01-23 12:05:44.914 E/Parcel  (16494): Attempt to read from protected data in Parcel 0x7fcee01af0
+01-23 12:05:44.914 E/Parcel  (16494): Attempt to read from protected data in Parcel 0x7fcee01af0
+01-23 12:05:44.914 E/Parcel  (16494): Attempt to read from protected data in Parcel 0x7fcee01af0
+01-23 12:05:44.914 E/Parcel  (16494): Attempt to read from protected data in Parcel 0x7fcee01af0
+01-23 12:05:44.914 E/Parcel  (16494): Attempt to read from protected data in Parcel 0x7fcee01af0
+01-23 12:05:44.933 I/libPowerHal(  859): [perfLockRel] hdl:76770, idx:1
+01-23 12:05:44.934 I/libPowerHal(  859): [PD] MTKPOWER_HINT_APP_TOUCH update cmd:3408600 param:0
+01-23 12:05:44.936 D/AtCmdParser( 2614): parserAtcmdUrc can not find parser for +CIEV
+01-23 12:05:44.940 I/ReactNativeJS( 8534): DEBUG: Starting category selection process...
+01-23 12:05:44.940 I/ReactNativeJS( 8534): 'DEBUG: Selected category:', { id: 'fmcg-food',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   name: 'FMCG & Food',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   icon: 'shopping-cart',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   color: '#4CAF50',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   subCategories: 
+01-23 12:05:44.940 I/ReactNativeJS( 8534):    [ 'Packaged Foods',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):      'Beverages',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):      'Personal Care',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):      'Household Items',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):      'Fresh Produce',
+01-23 12:05:44.940 I/ReactNativeJS( 8534):      'Dairy Products' ] }
+01-23 12:05:44.940 I/ReactNativeJS( 8534): 'DEBUG: Navigation object:', { replace: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   push: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   pop: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   popToTop: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   goBack: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   navigate: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   reset: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   setParams: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   dispatch: [Function: dispatch],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   isFocused: [Function: isFocused],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   canGoBack: [Function: canGoBack],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   getId: [Function: getId],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   getParent: [Function: getParent],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   getState: [Function],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   addListener: [Function: addListener],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   removeListener: [Function: removeListener],
+01-23 12:05:44.940 I/ReactNativeJS( 8534):   setOptions: [Function: setOptions] }
+01-23 12:05:44.941 I/ReactNativeJS( 8534): 'DEBUG: Route params:', undefined
+01-23 12:05:44.941 I/ReactNativeJS( 8534): DEBUG: Saving to Redux store...
+01-23 12:05:44.941 I/ReactNativeJS( 8534): DEBUG: Redux store updated successfully
+01-23 12:05:44.942 I/ReactNativeJS( 8534): DEBUG: Saving to AsyncStorage...
+01-23 12:05:44.966 E/Parcel  (16499): Attempt to read from protected data in Parcel 0x7fda947fb0
+01-23 12:05:44.966 E/Parcel  (16499): Attempt to read from protected data in Parcel 0x7fda947fb0
+01-23 12:05:44.966 E/Parcel  (16499): Attempt to read from protected data in Parcel 0x7fda947fb0
+01-23 12:05:44.966 E/Parcel  (16499): Attempt to read from protected data in Parcel 0x7fda947fb0
+01-23 12:05:44.966 E/Parcel  (16499): Attempt to read from protected data in Parcel 0x7fda947fb0
+01-23 12:05:44.982 I/ReactNativeJS( 8534): DEBUG: Starting category flow initialization...
+01-23 12:05:44.983 I/ReactNativeJS( 8534): 'DEBUG: Current user:', { id: 'user_123',
+01-23 12:05:44.983 I/ReactNativeJS( 8534):   email: 'test@example.com',
+01-23 12:05:44.983 I/ReactNativeJS( 8534):   name: 'John Doe',
+01-23 12:05:44.983 I/ReactNativeJS( 8534):   userType: 'buyer',
+01-23 12:05:44.983 I/ReactNativeJS( 8534):   phone: '+91 9876543210',
+01-23 12:05:44.983 I/ReactNativeJS( 8534):   location: { state: 'Maharashtra', city: 'Mumbai', pincode: '400001' },
+01-23 12:05:44.983 I/ReactNativeJS( 8534):   verificationStatus: 'verified',
+01-23 12:05:44.983 I/ReactNativeJS( 8534):   createdAt: '2026-01-23T06:34:46.702Z',
+01-23 12:05:44.983 I/ReactNativeJS( 8534):   lastLoginAt: '2026-01-23T06:34:46.702Z' }
+01-23 12:05:44.983 I/ReactNativeJS( 8534): 'DEBUG: Current isCategoryCompleted:', true
+01-23 12:05:44.983 I/ReactNativeJS( 8534): DEBUG: Loading category preference from storage...
+01-23 12:05:44.989 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:44.989 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:44.989 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:44.991 I/ReactNativeJS( 8534): 'Category preference saved to AsyncStorage:', 'fmcg-food'
+01-23 12:05:44.991 I/ReactNativeJS( 8534): DEBUG: AsyncStorage save completed
+01-23 12:05:44.991 I/ReactNativeJS( 8534): DEBUG: Saving to backend...
+01-23 12:05:44.993 I/ReactNativeJS( 8534): 'Retrieved category preference from AsyncStorage:', 'fmcg-food'
+01-23 12:05:45.004 W/Choreographer( 8534): Frame time is 0.109925 ms in the future!  Check that graphics HAL is generating vsync timestamps using the correct timebase.
+01-23 12:05:45.012 I/ReactNativeJS( 8534): 'DEBUG: Category preference loaded. Result:', { type: 'category/loadCategoryPreference/fulfilled',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   payload: 
+01-23 12:05:45.012 I/ReactNativeJS( 8534):    { categoryId: 'fmcg-food',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):      categoryDetails: 
+01-23 12:05:45.012 I/ReactNativeJS( 8534):       { id: 'fmcg-food',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):         name: 'FMCG & Food',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):         icon: 'shopping-cart',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):         color: '#4CAF50',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):         subCategories: 
+01-23 12:05:45.012 I/ReactNativeJS( 8534):          [ 'Packaged Foods',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):            'Beverages',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):            'Personal Care',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):            'Household Items',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):            'Fresh Produce',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):            'Dairy Products' ] },
+01-23 12:05:45.012 I/ReactNativeJS( 8534):      isCompleted: false },
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   meta: 
+01-23 12:05:45.012 I/ReactNativeJS( 8534):    { arg: undefined,
+01-23 12:05:45.012 I/ReactNativeJS( 8534):      requestId: 'mj_dkWjy2Zp8Ul0Fkj8aX',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):      requestStatus: 'fulfilled' } }
+01-23 12:05:45.012 I/ReactNativeJS( 8534): DEBUG: Checking if category selection should be shown...
+01-23 12:05:45.012 I/ReactNativeJS( 8534): 'DEBUG: Current user state:', { id: 'user_123',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   email: 'test@example.com',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   name: 'John Doe',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   userType: 'buyer',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   phone: '+91 9876543210',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   location: { state: 'Maharashtra', city: 'Mumbai', pincode: '400001' },
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   verificationStatus: 'verified',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   createdAt: '2026-01-23T06:34:46.702Z',
+01-23 12:05:45.012 I/ReactNativeJS( 8534):   lastLoginAt: '2026-01-23T06:34:46.702Z' }
+01-23 12:05:45.012 I/ReactNativeJS( 8534): 'DEBUG: Current isCategoryCompleted:', true
+01-23 12:05:45.013 I/ReactNativeJS( 8534): 'DEBUG: isFirstTimeUser calculated as:', false
+01-23 12:05:45.013 I/ReactNativeJS( 8534): DEBUG: Starting category flow initialization...
+01-23 12:05:45.013 I/ReactNative( 8534): [GESTURE HANDLER] Tearing down gesture handler registered for root view com.facebook.react.ReactRootView{9d67f9e V.E...... ......ID 0,0-1080,2290 #b}
+01-23 12:05:45.014 I/ReactNativeJS( 8534): 'DEBUG: Current user:', { id: 'user_123',
+01-23 12:05:45.014 I/ReactNativeJS( 8534):   email: 'test@example.com',
+01-23 12:05:45.014 I/ReactNativeJS( 8534):   name: 'John Doe',
+01-23 12:05:45.014 I/ReactNativeJS( 8534):   userType: 'buyer',
+01-23 12:05:45.014 I/ReactNativeJS( 8534):   phone: '+91 9876543210',
+01-23 12:05:45.014 I/ReactNativeJS( 8534):   location: { state: 'Maharashtra', city: 'Mumbai', pincode: '400001' },
+01-23 12:05:45.014 I/ReactNativeJS( 8534):   verificationStatus: 'verified',
+01-23 12:05:45.014 I/ReactNativeJS( 8534):   createdAt: '2026-01-23T06:34:46.702Z',
+01-23 12:05:45.014 I/ReactNativeJS( 8534):   lastLoginAt: '2026-01-23T06:34:46.702Z' }
+01-23 12:05:45.014 I/ReactNativeJS( 8534): 'DEBUG: Current isCategoryCompleted:', false
+01-23 12:05:45.014 I/ReactNativeJS( 8534): DEBUG: Loading category preference from storage...
+01-23 12:05:45.017 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:45.017 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:45.017 I/ReactNativeJS( 8534): 'Retrieved category preference from AsyncStorage:', 'fmcg-food'
+01-23 12:05:45.018 I/ReactNativeJS( 8534): 'Retrieved category preference from AsyncStorage:', 'fmcg-food'
+01-23 12:05:45.018 I/ReactNativeJS( 8534): 'DEBUG: Category flow check result:', { shouldShow: true,
+01-23 12:05:45.018 I/ReactNativeJS( 8534):   reason: 'incomplete_setup',
+01-23 12:05:45.018 I/ReactNativeJS( 8534):   user: true,
+01-23 12:05:45.018 I/ReactNativeJS( 8534):   isCategoryCompleted: true }
+01-23 12:05:45.018 I/ReactNativeJS( 8534): DEBUG: Updating Redux state with category selection decision...
+01-23 12:05:45.018 I/ReactNativeJS( 8534): DEBUG: Category flow initialization completed
+01-23 12:05:45.023 D/NetworkEvent( 2614): OplusNetworkEventCbProxy invoke.....onDnsEvent argslen:8
+01-23 12:05:45.025 E/Parcel  (16504): Attempt to read from protected data in Parcel 0x7fc4cf0ee0
+01-23 12:05:45.025 E/Parcel  (16504): Attempt to read from protected data in Parcel 0x7fc4cf0ee0
+01-23 12:05:45.025 E/Parcel  (16504): Attempt to read from protected data in Parcel 0x7fc4cf0ee0
+01-23 12:05:45.025 E/Parcel  (16504): Attempt to read from protected data in Parcel 0x7fc4cf0ee0
+01-23 12:05:45.025 E/Parcel  (16504): Attempt to read from protected data in Parcel 0x7fc4cf0ee0
+01-23 12:05:45.029 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:45.029 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:45.061 I/ReactNativeJS( 8534): 'DEBUG: Category preference loaded. Result:', { type: 'category/loadCategoryPreference/fulfilled',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):   payload: 
+01-23 12:05:45.061 I/ReactNativeJS( 8534):    { categoryId: 'fmcg-food',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):      categoryDetails: 
+01-23 12:05:45.061 I/ReactNativeJS( 8534):       { id: 'fmcg-food',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):         name: 'FMCG & Food',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):         icon: 'shopping-cart',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):         color: '#4CAF50',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):         subCategories: 
+01-23 12:05:45.061 I/ReactNativeJS( 8534):          [ 'Packaged Foods',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):            'Beverages',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):            'Personal Care',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):            'Household Items',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):            'Fresh Produce',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):            'Dairy Products' ] },
+01-23 12:05:45.061 I/ReactNativeJS( 8534):      isCompleted: false },
+01-23 12:05:45.061 I/ReactNativeJS( 8534):   meta: 
+01-23 12:05:45.061 I/ReactNativeJS( 8534):    { arg: undefined,
+01-23 12:05:45.061 I/ReactNativeJS( 8534):      requestId: 'ePAlLm7xqxKY5g_WMeb87',
+01-23 12:05:45.061 I/ReactNativeJS( 8534):      requestStatus: 'fulfilled' } }
+01-23 12:05:45.061 I/ReactNativeJS( 8534): DEBUG: Checking if category selection should be shown...
+01-23 12:05:45.062 I/ReactNativeJS( 8534): 'DEBUG: Current user state:', { id: 'user_123',
+01-23 12:05:45.062 I/ReactNativeJS( 8534):   email: 'test@example.com',
+01-23 12:05:45.062 I/ReactNativeJS( 8534):   name: 'John Doe',
+01-23 12:05:45.062 I/ReactNativeJS( 8534):   userType: 'buyer',
+01-23 12:05:45.062 I/ReactNativeJS( 8534):   phone: '+91 9876543210',
+01-23 12:05:45.062 I/ReactNativeJS( 8534):   location: { state: 'Maharashtra', city: 'Mumbai', pincode: '400001' },
+01-23 12:05:45.062 I/ReactNativeJS( 8534):   verificationStatus: 'verified',
+01-23 12:05:45.062 I/ReactNativeJS( 8534):   createdAt: '2026-01-23T06:34:46.702Z',
+01-23 12:05:45.062 I/ReactNativeJS( 8534):   lastLoginAt: '2026-01-23T06:34:46.702Z' }
+01-23 12:05:45.062 I/ReactNativeJS( 8534): 'DEBUG: Current isCategoryCompleted:', false
+01-23 12:05:45.062 I/ReactNativeJS( 8534): 'DEBUG: isFirstTimeUser calculated as:', false
+01-23 12:05:45.068 E/ReactNativeJS( 8534): 'Error saving category preference to backend:', [TypeError: Network request failed]
+01-23 12:05:45.069 I/ReactNativeJS( 8534): DEBUG: Backend save completed
+01-23 12:05:45.069 I/ReactNativeJS( 8534): DEBUG: Preparing navigation...
+01-23 12:05:45.069 I/ReactNativeJS( 8534): DEBUG: First time selection - resetting navigation to BuyerMain
+01-23 12:05:45.069 I/ReactNativeJS( 8534): DEBUG: Attempting navigation reset...
+01-23 12:05:45.069 I/ReactNativeJS( 8534): DEBUG: Navigation reset successful
+01-23 12:05:45.069 I/ReactNativeJS( 8534): DEBUG: handleContinue completed (success or failure)
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): console.error: Error saving category preference to backend: TypeError: Network request failed, js engine: hermes, stack:
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): _construct@1:154780
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): Wrapper@1:154429
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): _callSuper@1:152516
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): SyntheticError@1:153907
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): reactConsoleErrorHandler@1:153556
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): ?anon_0_@1:2399720
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): asyncGeneratorStep@1:491894
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): _throw@1:492214
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): tryCallOne@53:15
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): anonymous@139:26
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): anonymous@1:171643
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): _callTimer@1:170592
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): _callReactNativeMicrotasksPass@1:170756
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): callReactNativeMicrotasks@1:172726
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): __callReactNativeMicrotasks@1:58113
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): anonymous@1:57202
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): __guard@1:57954
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): flushedQueue@1:57113
+01-23 12:05:45.071 E/unknown:ReactNative( 8534): callFunctionReturnFlushedQueue@1:56969
+01-23 12:05:45.074 I/ReactNativeJS( 8534): 'Retrieved category preference from AsyncStorage:', 'fmcg-food'
+01-23 12:05:45.074 I/ReactNativeJS( 8534): 'DEBUG: Category flow check result:', { shouldShow: true,
+01-23 12:05:45.074 I/ReactNativeJS( 8534):   reason: 'incomplete_setup',
+01-23 12:05:45.074 I/ReactNativeJS( 8534):   user: true,
+01-23 12:05:45.074 I/ReactNativeJS( 8534):   isCategoryCompleted: false }
+01-23 12:05:45.074 I/ReactNativeJS( 8534): DEBUG: Updating Redux state with category selection decision...
+01-23 12:05:45.075 I/ReactNativeJS( 8534): DEBUG: Category flow initialization completed
+01-23 12:05:45.077 I/oplus.android.OplusFrameworkFactoryImpl( 8534): get feature:IOplusDynamicVsyncFeature
+01-23 12:05:45.077 I/oplus.android.OplusFrameworkFactoryImpl( 8534): get feature:IOplusDynamicVsyncFeature
+01-23 12:05:45.077 I/oplus.android.OplusFrameworkFactoryImpl( 8534): get feature:IOplusDynamicVsyncFeature
+01-23 12:05:45.080 E/Parcel  (16514): Attempt to read from protected data in Parcel 0x7fc5068de0
+01-23 12:05:45.080 E/Parcel  (16514): Attempt to read from protected data in Parcel 0x7fc5068de0
+01-23 12:05:45.080 E/Parcel  (16514): Attempt to read from protected data in Parcel 0x7fc5068de0
+01-23 12:05:45.080 E/Parcel  (16514): Attempt to read from protected data in Parcel 0x7fc5068de0
+01-23 12:05:45.080 E/Parcel  (16514): Attempt to read from protected data in Parcel 0x7fc5068de0
+01-23 12:05:45.081 I/ReactNative( 8534): [GESTURE HANDLER] Initialize gesture handler for root view com.facebook.react.ReactRootView{9d67f9e V.E...... ......ID 0,0-1080,2290 #b}
+01-23 12:05:45.093 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:45.093 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:45.104 I/Quality ( 8534): Skipped: true 1 cost 17.375587 refreshRate 16549362 bit true processName com.wholexale.app.staging
+01-23 12:05:45.130 E/Parcel  (16519): Attempt to read from protected data in Parcel 0x7fea9e0250
+01-23 12:05:45.131 E/Parcel  (16519): Attempt to read from protected data in Parcel 0x7fea9e0250
+01-23 12:05:45.131 E/Parcel  (16519): Attempt to read from protected data in Parcel 0x7fea9e0250
+01-23 12:05:45.131 E/Parcel  (16519): Attempt to read from protected data in Parcel 0x7fea9e0250
+01-23 12:05:45.131 E/Parcel  (16519): Attempt to read from protected data in Parcel 0x7fea9e0250
+01-23 12:05:45.180 E/Parcel  (16523): Attempt to read from protected data in Parcel 0x7fe6bbad30
+01-23 12:05:45.180 E/Parcel  (16523): Attempt to read from protected data in Parcel 0x7fe6bbad30
+01-23 12:05:45.180 E/Parcel  (16523): Attempt to read from protected data in Parcel 0x7fe6bbad30
+01-23 12:05:45.180 E/Parcel  (16523): Attempt to read from protected data in Parcel 0x7fe6bbad30
+01-23 12:05:45.180 E/Parcel  (16523): Attempt to read from protected data in Parcel 0x7fe6bbad30
+01-23 12:05:45.225 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:45.228 E/Parcel  (16527): Attempt to read from protected data in Parcel 0x7fc0c428f0
+01-23 12:05:45.229 E/Parcel  (16527): Attempt to read from protected data in Parcel 0x7fc0c428f0
+01-23 12:05:45.229 E/Parcel  (16527): Attempt to read from protected data in Parcel 0x7fc0c428f0
+01-23 12:05:45.229 E/Parcel  (16527): Attempt to read from protected data in Parcel 0x7fc0c428f0
+01-23 12:05:45.229 E/Parcel  (16527): Attempt to read from protected data in Parcel 0x7fc0c428f0
+01-23 12:05:45.281 E/Parcel  (16533): Attempt to read from protected data in Parcel 0x7fc54ac670
+01-23 12:05:45.282 E/Parcel  (16533): Attempt to read from protected data in Parcel 0x7fc54ac670
+01-23 12:05:45.282 E/Parcel  (16533): Attempt to read from protected data in Parcel 0x7fc54ac670
+01-23 12:05:45.282 E/Parcel  (16533): Attempt to read from protected data in Parcel 0x7fc54ac670
+01-23 12:05:45.282 E/Parcel  (16533): Attempt to read from protected data in Parcel 0x7fc54ac670
+01-23 12:05:45.330 E/Parcel  (16538): Attempt to read from protected data in Parcel 0x7fd4da0500
+01-23 12:05:45.330 E/Parcel  (16538): Attempt to read from protected data in Parcel 0x7fd4da0500
+01-23 12:05:45.330 E/Parcel  (16538): Attempt to read from protected data in Parcel 0x7fd4da0500
+01-23 12:05:45.330 E/Parcel  (16538): Attempt to read from protected data in Parcel 0x7fd4da0500
+01-23 12:05:45.330 E/Parcel  (16538): Attempt to read from protected data in Parcel 0x7fd4da0500
+01-23 12:05:45.392 E/Parcel  (16543): Attempt to read from protected data in Parcel 0x7fef5cb7a0
+01-23 12:05:45.392 E/Parcel  (16543): Attempt to read from protected data in Parcel 0x7fef5cb7a0
+01-23 12:05:45.392 E/Parcel  (16543): Attempt to read from protected data in Parcel 0x7fef5cb7a0
+01-23 12:05:45.392 E/Parcel  (16543): Attempt to read from protected data in Parcel 0x7fef5cb7a0
+01-23 12:05:45.392 E/Parcel  (16543): Attempt to read from protected data in Parcel 0x7fef5cb7a0
+01-23 12:05:45.451 E/Parcel  (16549): Attempt to read from protected data in Parcel 0x7fccbfac40
+01-23 12:05:45.451 E/Parcel  (16549): Attempt to read from protected data in Parcel 0x7fccbfac40
+01-23 12:05:45.451 E/Parcel  (16549): Attempt to read from protected data in Parcel 0x7fccbfac40
+01-23 12:05:45.451 E/Parcel  (16549): Attempt to read from protected data in Parcel 0x7fccbfac40
+01-23 12:05:45.451 E/Parcel  (16549): Attempt to read from protected data in Parcel 0x7fccbfac40
+01-23 12:05:45.500 E/Parcel  (16553): Attempt to read from protected data in Parcel 0x7fd1ed5490
+01-23 12:05:45.501 E/Parcel  (16553): Attempt to read from protected data in Parcel 0x7fd1ed5490
+01-23 12:05:45.501 E/Parcel  (16553): Attempt to read from protected data in Parcel 0x7fd1ed5490
+01-23 12:05:45.501 E/Parcel  (16553): Attempt to read from protected data in Parcel 0x7fd1ed5490
+01-23 12:05:45.501 E/Parcel  (16553): Attempt to read from protected data in Parcel 0x7fd1ed5490
+01-23 12:05:45.562 E/Parcel  (16557): Attempt to read from protected data in Parcel 0x7fe7fcc950
+01-23 12:05:45.562 E/Parcel  (16557): Attempt to read from protected data in Parcel 0x7fe7fcc950
+01-23 12:05:45.562 E/Parcel  (16557): Attempt to read from protected data in Parcel 0x7fe7fcc950
+01-23 12:05:45.562 E/Parcel  (16557): Attempt to read from protected data in Parcel 0x7fe7fcc950
+01-23 12:05:45.562 E/Parcel  (16557): Attempt to read from protected data in Parcel 0x7fe7fcc950
+01-23 12:05:45.585 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:45.627 E/Parcel  (16561): Attempt to read from protected data in Parcel 0x7fd0564fa0
+01-23 12:05:45.627 E/Parcel  (16561): Attempt to read from protected data in Parcel 0x7fd0564fa0
+01-23 12:05:45.627 E/Parcel  (16561): Attempt to read from protected data in Parcel 0x7fd0564fa0
+01-23 12:05:45.627 E/Parcel  (16561): Attempt to read from protected data in Parcel 0x7fd0564fa0
+01-23 12:05:45.627 E/Parcel  (16561): Attempt to read from protected data in Parcel 0x7fd0564fa0
+01-23 12:05:45.683 E/Parcel  (16566): Attempt to read from protected data in Parcel 0x7fd807ed60
+01-23 12:05:45.684 E/Parcel  (16566): Attempt to read from protected data in Parcel 0x7fd807ed60
+01-23 12:05:45.684 E/Parcel  (16566): Attempt to read from protected data in Parcel 0x7fd807ed60
+01-23 12:05:45.684 E/Parcel  (16566): Attempt to read from protected data in Parcel 0x7fd807ed60
+01-23 12:05:45.684 E/Parcel  (16566): Attempt to read from protected data in Parcel 0x7fd807ed60
+01-23 12:05:45.752 E/Parcel  (16571): Attempt to read from protected data in Parcel 0x7fe486d9d0
+01-23 12:05:45.753 E/Parcel  (16571): Attempt to read from protected data in Parcel 0x7fe486d9d0
+01-23 12:05:45.753 E/Parcel  (16571): Attempt to read from protected data in Parcel 0x7fe486d9d0
+01-23 12:05:45.753 E/Parcel  (16571): Attempt to read from protected data in Parcel 0x7fe486d9d0
+01-23 12:05:45.753 E/Parcel  (16571): Attempt to read from protected data in Parcel 0x7fe486d9d0
+01-23 12:05:45.808 E/Parcel  (16576): Attempt to read from protected data in Parcel 0x7ff33e6a80
+01-23 12:05:45.808 E/Parcel  (16576): Attempt to read from protected data in Parcel 0x7ff33e6a80
+01-23 12:05:45.808 E/Parcel  (16576): Attempt to read from protected data in Parcel 0x7ff33e6a80
+01-23 12:05:45.808 E/Parcel  (16576): Attempt to read from protected data in Parcel 0x7ff33e6a80
+01-23 12:05:45.808 E/Parcel  (16576): Attempt to read from protected data in Parcel 0x7ff33e6a80
+01-23 12:05:45.866 E/Parcel  (16582): Attempt to read from protected data in Parcel 0x7feaadde50
+01-23 12:05:45.867 E/Parcel  (16582): Attempt to read from protected data in Parcel 0x7feaadde50
+01-23 12:05:45.867 E/Parcel  (16582): Attempt to read from protected data in Parcel 0x7feaadde50
+01-23 12:05:45.867 E/Parcel  (16582): Attempt to read from protected data in Parcel 0x7feaadde50
+01-23 12:05:45.867 E/Parcel  (16582): Attempt to read from protected data in Parcel 0x7feaadde50
+01-23 12:05:45.917 E/Parcel  (16586): Attempt to read from protected data in Parcel 0x7fd4d6d0f0
+01-23 12:05:45.918 E/Parcel  (16586): Attempt to read from protected data in Parcel 0x7fd4d6d0f0
+01-23 12:05:45.918 E/Parcel  (16586): Attempt to read from protected data in Parcel 0x7fd4d6d0f0
+01-23 12:05:45.918 E/Parcel  (16586): Attempt to read from protected data in Parcel 0x7fd4d6d0f0
+01-23 12:05:45.918 E/Parcel  (16586): Attempt to read from protected data in Parcel 0x7fd4d6d0f0
+01-23 12:05:45.968 E/Parcel  (16590): Attempt to read from protected data in Parcel 0x7fd8121830
+01-23 12:05:45.969 E/Parcel  (16590): Attempt to read from protected data in Parcel 0x7fd8121830
+01-23 12:05:45.969 E/Parcel  (16590): Attempt to read from protected data in Parcel 0x7fd8121830
+01-23 12:05:45.969 E/Parcel  (16590): Attempt to read from protected data in Parcel 0x7fd8121830
+01-23 12:05:45.969 E/Parcel  (16590): Attempt to read from protected data in Parcel 0x7fd8121830
+01-23 12:05:46.029 E/Parcel  (16594): Attempt to read from protected data in Parcel 0x7fe0d27430
+01-23 12:05:46.030 E/Parcel  (16594): Attempt to read from protected data in Parcel 0x7fe0d27430
+01-23 12:05:46.030 E/Parcel  (16594): Attempt to read from protected data in Parcel 0x7fe0d27430
+01-23 12:05:46.030 E/Parcel  (16594): Attempt to read from protected data in Parcel 0x7fe0d27430
+01-23 12:05:46.030 E/Parcel  (16594): Attempt to read from protected data in Parcel 0x7fe0d27430
+01-23 12:05:46.101 E/Parcel  (16599): Attempt to read from protected data in Parcel 0x7fe4045b90
+01-23 12:05:46.102 E/Parcel  (16599): Attempt to read from protected data in Parcel 0x7fe4045b90
+01-23 12:05:46.102 E/Parcel  (16599): Attempt to read from protected data in Parcel 0x7fe4045b90
+01-23 12:05:46.102 E/Parcel  (16599): Attempt to read from protected data in Parcel 0x7fe4045b90
+01-23 12:05:46.102 E/Parcel  (16599): Attempt to read from protected data in Parcel 0x7fe4045b90
+01-23 12:05:46.153 E/Parcel  (16604): Attempt to read from protected data in Parcel 0x7fed0794f0
+01-23 12:05:46.153 E/Parcel  (16604): Attempt to read from protected data in Parcel 0x7fed0794f0
+01-23 12:05:46.153 E/Parcel  (16604): Attempt to read from protected data in Parcel 0x7fed0794f0
+01-23 12:05:46.153 E/Parcel  (16604): Attempt to read from protected data in Parcel 0x7fed0794f0
+01-23 12:05:46.153 E/Parcel  (16604): Attempt to read from protected data in Parcel 0x7fed0794f0
+01-23 12:05:46.203 E/Parcel  (16609): Attempt to read from protected data in Parcel 0x7fd3dbe860
+01-23 12:05:46.203 E/Parcel  (16609): Attempt to read from protected data in Parcel 0x7fd3dbe860
+01-23 12:05:46.203 E/Parcel  (16609): Attempt to read from protected data in Parcel 0x7fd3dbe860
+01-23 12:05:46.203 E/Parcel  (16609): Attempt to read from protected data in Parcel 0x7fd3dbe860
+01-23 12:05:46.203 E/Parcel  (16609): Attempt to read from protected data in Parcel 0x7fd3dbe860
+01-23 12:05:46.272 E/Parcel  (16616): Attempt to read from protected data in Parcel 0x7ff72d4f70
+01-23 12:05:46.272 E/Parcel  (16616): Attempt to read from protected data in Parcel 0x7ff72d4f70
+01-23 12:05:46.272 E/Parcel  (16616): Attempt to read from protected data in Parcel 0x7ff72d4f70
+01-23 12:05:46.272 E/Parcel  (16616): Attempt to read from protected data in Parcel 0x7ff72d4f70
+01-23 12:05:46.272 E/Parcel  (16616): Attempt to read from protected data in Parcel 0x7ff72d4f70
+01-23 12:05:46.322 E/Parcel  (16620): Attempt to read from protected data in Parcel 0x7fe82b6fd0
+01-23 12:05:46.322 E/Parcel  (16620): Attempt to read from protected data in Parcel 0x7fe82b6fd0
+01-23 12:05:46.322 E/Parcel  (16620): Attempt to read from protected data in Parcel 0x7fe82b6fd0
+01-23 12:05:46.322 E/Parcel  (16620): Attempt to read from protected data in Parcel 0x7fe82b6fd0
+01-23 12:05:46.322 E/Parcel  (16620): Attempt to read from protected data in Parcel 0x7fe82b6fd0
+01-23 12:05:46.368 E/IHansComunication( 6221): HANS printMessageBody: RCV message: type = 4,port = 86870,caller_pid = -1,caller_uid = -1,target_pid = -1,target_uid = 10660,pkg_cmd = -1,rpc = PKG/-1
+01-23 12:05:46.371 I/OplusHansManager ( 1748): unfreeze uid: 10660 net.one97.paytm pids: [11978] reason: Packet scene: LcdOn
+01-23 12:05:46.372 I/OplusHansManager ( 1748): uid=10660, pkg=net.one97.paytm, transition from Frozen to Middle, reason=Packet
+01-23 12:05:46.372 I/OplusHansManager ( 1748): uid=10660, pkg=net.one97.paytm F exit(), F stay=92, reason=Packet
+01-23 12:05:46.394 E/Parcel  (16624): Attempt to read from protected data in Parcel 0x7fe0209d20
+01-23 12:05:46.394 E/Parcel  (16624): Attempt to read from protected data in Parcel 0x7fe0209d20
+01-23 12:05:46.394 E/Parcel  (16624): Attempt to read from protected data in Parcel 0x7fe0209d20
+01-23 12:05:46.394 E/Parcel  (16624): Attempt to read from protected data in Parcel 0x7fe0209d20
+01-23 12:05:46.394 E/Parcel  (16624): Attempt to read from protected data in Parcel 0x7fe0209d20
+01-23 12:05:46.454 E/Parcel  (16629): Attempt to read from protected data in Parcel 0x7fea4a02c0
+01-23 12:05:46.454 E/Parcel  (16629): Attempt to read from protected data in Parcel 0x7fea4a02c0
+01-23 12:05:46.454 E/Parcel  (16629): Attempt to read from protected data in Parcel 0x7fea4a02c0
+01-23 12:05:46.454 E/Parcel  (16629): Attempt to read from protected data in Parcel 0x7fea4a02c0
+01-23 12:05:46.454 E/Parcel  (16629): Attempt to read from protected data in Parcel 0x7fea4a02c0
+01-23 12:05:46.506 E/Parcel  (16634): Attempt to read from protected data in Parcel 0x7fe66f2460
+01-23 12:05:46.506 E/Parcel  (16634): Attempt to read from protected data in Parcel 0x7fe66f2460
+01-23 12:05:46.506 E/Parcel  (16634): Attempt to read from protected data in Parcel 0x7fe66f2460
+01-23 12:05:46.506 E/Parcel  (16634): Attempt to read from protected data in Parcel 0x7fe66f2460
+01-23 12:05:46.506 E/Parcel  (16634): Attempt to read from protected data in Parcel 0x7fe66f2460
+01-23 12:05:46.573 E/Parcel  (16639): Attempt to read from protected data in Parcel 0x7ff1985df0
+01-23 12:05:46.573 E/Parcel  (16639): Attempt to read from protected data in Parcel 0x7ff1985df0
+01-23 12:05:46.573 E/Parcel  (16639): Attempt to read from protected data in Parcel 0x7ff1985df0
+01-23 12:05:46.573 E/Parcel  (16639): Attempt to read from protected data in Parcel 0x7ff1985df0
+01-23 12:05:46.573 E/Parcel  (16639): Attempt to read from protected data in Parcel 0x7ff1985df0
+01-23 12:05:46.625 E/Parcel  (16644): Attempt to read from protected data in Parcel 0x7ff4393000
+01-23 12:05:46.625 E/Parcel  (16644): Attempt to read from protected data in Parcel 0x7ff4393000
+01-23 12:05:46.625 E/Parcel  (16644): Attempt to read from protected data in Parcel 0x7ff4393000
+01-23 12:05:46.625 E/Parcel  (16644): Attempt to read from protected data in Parcel 0x7ff4393000
+01-23 12:05:46.625 E/Parcel  (16644): Attempt to read from protected data in Parcel 0x7ff4393000
+01-23 12:05:46.677 E/Parcel  (16649): Attempt to read from protected data in Parcel 0x7ff9e52000
+01-23 12:05:46.677 E/Parcel  (16649): Attempt to read from protected data in Parcel 0x7ff9e52000
+01-23 12:05:46.677 E/Parcel  (16649): Attempt to read from protected data in Parcel 0x7ff9e52000
+01-23 12:05:46.677 E/Parcel  (16649): Attempt to read from protected data in Parcel 0x7ff9e52000
+01-23 12:05:46.677 E/Parcel  (16649): Attempt to read from protected data in Parcel 0x7ff9e52000
+01-23 12:05:46.734 E/Parcel  (16653): Attempt to read from protected data in Parcel 0x7ff7fa47e0
+01-23 12:05:46.735 E/Parcel  (16653): Attempt to read from protected data in Parcel 0x7ff7fa47e0
+01-23 12:05:46.735 E/Parcel  (16653): Attempt to read from protected data in Parcel 0x7ff7fa47e0
+01-23 12:05:46.735 E/Parcel  (16653): Attempt to read from protected data in Parcel 0x7ff7fa47e0
+01-23 12:05:46.735 E/Parcel  (16653): Attempt to read from protected data in Parcel 0x7ff7fa47e0
+01-23 12:05:46.792 E/Parcel  (16657): Attempt to read from protected data in Parcel 0x7fc5e679e0
+01-23 12:05:46.792 E/Parcel  (16657): Attempt to read from protected data in Parcel 0x7fc5e679e0
+01-23 12:05:46.792 E/Parcel  (16657): Attempt to read from protected data in Parcel 0x7fc5e679e0
+01-23 12:05:46.792 E/Parcel  (16657): Attempt to read from protected data in Parcel 0x7fc5e679e0
+01-23 12:05:46.792 E/Parcel  (16657): Attempt to read from protected data in Parcel 0x7fc5e679e0
+01-23 12:05:46.808 D/OGG_Detector( 1748): D:done mCurrStatus: 0
+01-23 12:05:46.809 D/PowerManagerService( 1748): userActivityNoUpdateLocked: groupId=0, eventTime=121787880, event=2, flags=0x0, uid=1000
+01-23 12:05:46.809 D/NoBackGesture( 2225): Start gesture: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=144.25, y[0]=1037.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=121787880, downTime=121787880, deviceId=4, source=0x1002, displayId=0, eventId=581010532 }
+01-23 12:05:46.809 D/NoBackGesture( 2225): Not in side gesture area
+01-23 12:05:46.849 E/Parcel  (16661): Attempt to read from protected data in Parcel 0x7fd1424b40
+01-23 12:05:46.849 E/Parcel  (16661): Attempt to read from protected data in Parcel 0x7fd1424b40
+01-23 12:05:46.849 E/Parcel  (16661): Attempt to read from protected data in Parcel 0x7fd1424b40
+01-23 12:05:46.849 E/Parcel  (16661): Attempt to read from protected data in Parcel 0x7fd1424b40
+01-23 12:05:46.849 E/Parcel  (16661): Attempt to read from protected data in Parcel 0x7fd1424b40
+01-23 12:05:46.893 I/libPowerHal(  859): [perfLockRel] hdl:76771, idx:1
+01-23 12:05:46.894 I/libPowerHal(  859): [PD] MTKPOWER_HINT_APP_TOUCH update cmd:3408600 param:0
+01-23 12:05:46.905 E/Parcel  (16668): Attempt to read from protected data in Parcel 0x7fcdcbfa20
+01-23 12:05:46.905 E/Parcel  (16668): Attempt to read from protected data in Parcel 0x7fcdcbfa20
+01-23 12:05:46.905 E/Parcel  (16668): Attempt to read from protected data in Parcel 0x7fcdcbfa20
+01-23 12:05:46.905 E/Parcel  (16668): Attempt to read from protected data in Parcel 0x7fcdcbfa20
+01-23 12:05:46.905 E/Parcel  (16668): Attempt to read from protected data in Parcel 0x7fcdcbfa20
+01-23 12:05:46.963 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:46.963 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:46.965 E/Parcel  (16679): Attempt to read from protected data in Parcel 0x7fc640aef0
+01-23 12:05:46.965 E/Parcel  (16679): Attempt to read from protected data in Parcel 0x7fc640aef0
+01-23 12:05:46.965 E/Parcel  (16679): Attempt to read from protected data in Parcel 0x7fc640aef0
+01-23 12:05:46.965 E/Parcel  (16679): Attempt to read from protected data in Parcel 0x7fc640aef0
+01-23 12:05:46.965 E/Parcel  (16679): Attempt to read from protected data in Parcel 0x7fc640aef0
+01-23 12:05:47.023 E/Parcel  (16686): Attempt to read from protected data in Parcel 0x7fe686f980
+01-23 12:05:47.023 E/Parcel  (16686): Attempt to read from protected data in Parcel 0x7fe686f980
+01-23 12:05:47.023 E/Parcel  (16686): Attempt to read from protected data in Parcel 0x7fe686f980
+01-23 12:05:47.023 E/Parcel  (16686): Attempt to read from protected data in Parcel 0x7fe686f980
+01-23 12:05:47.023 E/Parcel  (16686): Attempt to read from protected data in Parcel 0x7fe686f980
+01-23 12:05:47.076 E/Parcel  (16692): Attempt to read from protected data in Parcel 0x7fe3d27ed0
+01-23 12:05:47.076 E/Parcel  (16692): Attempt to read from protected data in Parcel 0x7fe3d27ed0
+01-23 12:05:47.076 E/Parcel  (16692): Attempt to read from protected data in Parcel 0x7fe3d27ed0
+01-23 12:05:47.076 E/Parcel  (16692): Attempt to read from protected data in Parcel 0x7fe3d27ed0
+01-23 12:05:47.076 E/Parcel  (16692): Attempt to read from protected data in Parcel 0x7fe3d27ed0
+01-23 12:05:47.129 E/Parcel  (16696): Attempt to read from protected data in Parcel 0x7fd47d9800
+01-23 12:05:47.130 E/Parcel  (16696): Attempt to read from protected data in Parcel 0x7fd47d9800
+01-23 12:05:47.130 E/Parcel  (16696): Attempt to read from protected data in Parcel 0x7fd47d9800
+01-23 12:05:47.130 E/Parcel  (16696): Attempt to read from protected data in Parcel 0x7fd47d9800
+01-23 12:05:47.130 E/Parcel  (16696): Attempt to read from protected data in Parcel 0x7fd47d9800
+01-23 12:05:47.179 E/Parcel  (16700): Attempt to read from protected data in Parcel 0x7fe1beafd0
+01-23 12:05:47.179 E/Parcel  (16700): Attempt to read from protected data in Parcel 0x7fe1beafd0
+01-23 12:05:47.179 E/Parcel  (16700): Attempt to read from protected data in Parcel 0x7fe1beafd0
+01-23 12:05:47.179 E/Parcel  (16700): Attempt to read from protected data in Parcel 0x7fe1beafd0
+01-23 12:05:47.179 E/Parcel  (16700): Attempt to read from protected data in Parcel 0x7fe1beafd0
+01-23 12:05:47.236 E/Parcel  (16704): Attempt to read from protected data in Parcel 0x7ffb990bc0
+01-23 12:05:47.236 E/Parcel  (16704): Attempt to read from protected data in Parcel 0x7ffb990bc0
+01-23 12:05:47.236 E/Parcel  (16704): Attempt to read from protected data in Parcel 0x7ffb990bc0
+01-23 12:05:47.236 E/Parcel  (16704): Attempt to read from protected data in Parcel 0x7ffb990bc0
+01-23 12:05:47.236 E/Parcel  (16704): Attempt to read from protected data in Parcel 0x7ffb990bc0
+01-23 12:05:47.288 E/Parcel  (16710): Attempt to read from protected data in Parcel 0x7ffa3d6490
+01-23 12:05:47.288 E/Parcel  (16710): Attempt to read from protected data in Parcel 0x7ffa3d6490
+01-23 12:05:47.288 E/Parcel  (16710): Attempt to read from protected data in Parcel 0x7ffa3d6490
+01-23 12:05:47.288 E/Parcel  (16710): Attempt to read from protected data in Parcel 0x7ffa3d6490
+01-23 12:05:47.288 E/Parcel  (16710): Attempt to read from protected data in Parcel 0x7ffa3d6490
+01-23 12:05:47.346 E/Parcel  (16715): Attempt to read from protected data in Parcel 0x7ff8ab5be0
+01-23 12:05:47.346 E/Parcel  (16715): Attempt to read from protected data in Parcel 0x7ff8ab5be0
+01-23 12:05:47.346 E/Parcel  (16715): Attempt to read from protected data in Parcel 0x7ff8ab5be0
+01-23 12:05:47.346 E/Parcel  (16715): Attempt to read from protected data in Parcel 0x7ff8ab5be0
+01-23 12:05:47.346 E/Parcel  (16715): Attempt to read from protected data in Parcel 0x7ff8ab5be0
+01-23 12:05:47.408 E/Parcel  (16720): Attempt to read from protected data in Parcel 0x7feab00350
+01-23 12:05:47.408 E/Parcel  (16720): Attempt to read from protected data in Parcel 0x7feab00350
+01-23 12:05:47.408 E/Parcel  (16720): Attempt to read from protected data in Parcel 0x7feab00350
+01-23 12:05:47.408 E/Parcel  (16720): Attempt to read from protected data in Parcel 0x7feab00350
+01-23 12:05:47.408 E/Parcel  (16720): Attempt to read from protected data in Parcel 0x7feab00350
+01-23 12:05:47.458 E/Parcel  (16726): Attempt to read from protected data in Parcel 0x7fd22dff70
+01-23 12:05:47.458 E/Parcel  (16726): Attempt to read from protected data in Parcel 0x7fd22dff70
+01-23 12:05:47.458 E/Parcel  (16726): Attempt to read from protected data in Parcel 0x7fd22dff70
+01-23 12:05:47.458 E/Parcel  (16726): Attempt to read from protected data in Parcel 0x7fd22dff70
+01-23 12:05:47.458 E/Parcel  (16726): Attempt to read from protected data in Parcel 0x7fd22dff70
+01-23 12:05:47.519 E/Parcel  (16730): Attempt to read from protected data in Parcel 0x7fc2736b50
+01-23 12:05:47.519 E/Parcel  (16730): Attempt to read from protected data in Parcel 0x7fc2736b50
+01-23 12:05:47.519 E/Parcel  (16730): Attempt to read from protected data in Parcel 0x7fc2736b50
+01-23 12:05:47.519 E/Parcel  (16730): Attempt to read from protected data in Parcel 0x7fc2736b50
+01-23 12:05:47.519 E/Parcel  (16730): Attempt to read from protected data in Parcel 0x7fc2736b50
+01-23 12:05:47.572 E/Parcel  (16735): Attempt to read from protected data in Parcel 0x7ff11271c0
+01-23 12:05:47.572 E/Parcel  (16735): Attempt to read from protected data in Parcel 0x7ff11271c0
+01-23 12:05:47.572 E/Parcel  (16735): Attempt to read from protected data in Parcel 0x7ff11271c0
+01-23 12:05:47.572 E/Parcel  (16735): Attempt to read from protected data in Parcel 0x7ff11271c0
+01-23 12:05:47.572 E/Parcel  (16735): Attempt to read from protected data in Parcel 0x7ff11271c0
+01-23 12:05:47.612 D/PowerManagerService( 1748): userActivityNoUpdateLocked: groupId=0, eventTime=121788685, event=2, flags=0x0, uid=1000
+01-23 12:05:47.612 D/OGG_Detector( 1748): D:done mCurrStatus: 0
+01-23 12:05:47.613 D/NoBackGesture( 2225): Start gesture: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=291.25, y[0]=2246.75, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=121788685, downTime=121788685, deviceId=4, source=0x1002, displayId=0, eventId=803918585 }
+01-23 12:05:47.613 D/NoBackGesture( 2225): Not in side gesture area
+01-23 12:05:47.635 E/Parcel  (16740): Attempt to read from protected data in Parcel 0x7fe6603ba0
+01-23 12:05:47.635 E/Parcel  (16740): Attempt to read from protected data in Parcel 0x7fe6603ba0
+01-23 12:05:47.635 E/Parcel  (16740): Attempt to read from protected data in Parcel 0x7fe6603ba0
+01-23 12:05:47.635 E/Parcel  (16740): Attempt to read from protected data in Parcel 0x7fe6603ba0
+01-23 12:05:47.635 E/Parcel  (16740): Attempt to read from protected data in Parcel 0x7fe6603ba0
+01-23 12:05:47.685 E/Parcel  (16745): Attempt to read from protected data in Parcel 0x7fdb81e460
+01-23 12:05:47.685 E/Parcel  (16745): Attempt to read from protected data in Parcel 0x7fdb81e460
+01-23 12:05:47.685 E/Parcel  (16745): Attempt to read from protected data in Parcel 0x7fdb81e460
+01-23 12:05:47.685 E/Parcel  (16745): Attempt to read from protected data in Parcel 0x7fdb81e460
+01-23 12:05:47.685 E/Parcel  (16745): Attempt to read from protected data in Parcel 0x7fdb81e460
+01-23 12:05:47.699 I/libPowerHal(  859): [perfLockRel] hdl:76772, idx:1
+01-23 12:05:47.700 I/libPowerHal(  859): [PD] MTKPOWER_HINT_APP_TOUCH update cmd:3408600 param:0
+01-23 12:05:47.707 I/ReactNativeJS( 8534): DEBUG: Starting category selection process...
+01-23 12:05:47.710 I/ReactNativeJS( 8534): 'DEBUG: Selected category:', { id: 'fashion-lifestyle',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):   name: 'Fashion & Lifestyle',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):   icon: 'shopping-bag',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):   color: '#E91E63',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):   subCategories: 
+01-23 12:05:47.710 I/ReactNativeJS( 8534):    [ 'Clothing',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):      'Footwear',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):      'Accessories',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):      'Beauty Products',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):      'Jewelry',
+01-23 12:05:47.710 I/ReactNativeJS( 8534):      'Bags & Luggage' ] }
+01-23 12:05:47.712 I/ReactNativeJS( 8534): 'DEBUG: Navigation object:', { replace: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   push: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   pop: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   popToTop: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   goBack: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   navigate: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   reset: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   setParams: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   dispatch: [Function: dispatch],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   isFocused: [Function: isFocused],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   canGoBack: [Function: canGoBack],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   getId: [Function: getId],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   getParent: [Function: getParent],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   getState: [Function],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   addListener: [Function: addListener],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   removeListener: [Function: removeListener],
+01-23 12:05:47.712 I/ReactNativeJS( 8534):   setOptions: [Function: setOptions] }
+01-23 12:05:47.713 I/ReactNativeJS( 8534): 'DEBUG: Route params:', undefined
+01-23 12:05:47.713 I/ReactNativeJS( 8534): DEBUG: Saving to Redux store...
+01-23 12:05:47.717 I/ReactNativeJS( 8534): DEBUG: Redux store updated successfully
+01-23 12:05:47.717 I/ReactNativeJS( 8534): DEBUG: Saving to AsyncStorage...
+01-23 12:05:47.795 I/ReactNativeJS( 8534): DEBUG: Starting category flow initialization...
+01-23 12:05:47.796 I/ReactNativeJS( 8534): 'DEBUG: Current user:', { id: 'user_123',
+01-23 12:05:47.796 I/ReactNativeJS( 8534):   email: 'test@example.com',
+01-23 12:05:47.796 I/ReactNativeJS( 8534):   name: 'John Doe',
+01-23 12:05:47.796 I/ReactNativeJS( 8534):   userType: 'buyer',
+01-23 12:05:47.796 I/ReactNativeJS( 8534):   phone: '+91 9876543210',
+01-23 12:05:47.796 I/ReactNativeJS( 8534):   location: { state: 'Maharashtra', city: 'Mumbai', pincode: '400001' },
+01-23 12:05:47.796 I/ReactNativeJS( 8534):   verificationStatus: 'verified',
+01-23 12:05:47.796 I/ReactNativeJS( 8534):   createdAt: '2026-01-23T06:34:46.702Z',
+01-23 12:05:47.796 I/ReactNativeJS( 8534):   lastLoginAt: '2026-01-23T06:34:46.702Z' }
+01-23 12:05:47.796 I/ReactNativeJS( 8534): 'DEBUG: Current isCategoryCompleted:', true
+01-23 12:05:47.796 I/ReactNativeJS( 8534): DEBUG: Loading category preference from storage...
+01-23 12:05:47.806 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:47.806 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:47.809 I/ReactNativeJS( 8534): 'Category preference saved to AsyncStorage:', 'fashion-lifestyle'
+01-23 12:05:47.809 I/ReactNativeJS( 8534): DEBUG: AsyncStorage save completed
+01-23 12:05:47.809 I/ReactNativeJS( 8534): DEBUG: Saving to backend...
+01-23 12:05:47.810 I/ReactNativeJS( 8534): 'Retrieved category preference from AsyncStorage:', 'fashion-lifestyle'
+01-23 12:05:47.822 I/ReactNative( 8534): [GESTURE HANDLER] Tearing down gesture handler registered for root view com.facebook.react.ReactRootView{9d67f9e V.E...... ......ID 0,0-1080,2290 #b}
+01-23 12:05:47.823 I/ReactNativeJS( 8534): 'DEBUG: Category preference loaded. Result:', { type: 'category/loadCategoryPreference/fulfilled',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   payload: 
+01-23 12:05:47.823 I/ReactNativeJS( 8534):    { categoryId: 'fashion-lifestyle',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):      categoryDetails: 
+01-23 12:05:47.823 I/ReactNativeJS( 8534):       { id: 'fashion-lifestyle',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):         name: 'Fashion & Lifestyle',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):         icon: 'shopping-bag',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):         color: '#E91E63',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):         subCategories: 
+01-23 12:05:47.823 I/ReactNativeJS( 8534):          [ 'Clothing',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):            'Footwear',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):            'Accessories',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):            'Beauty Products',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):            'Jewelry',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):            'Bags & Luggage' ] },
+01-23 12:05:47.823 I/ReactNativeJS( 8534):      isCompleted: false },
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   meta: 
+01-23 12:05:47.823 I/ReactNativeJS( 8534):    { arg: undefined,
+01-23 12:05:47.823 I/ReactNativeJS( 8534):      requestId: 'kZ9q6ygcmZuuY0M4Hs3Wd',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):      requestStatus: 'fulfilled' } }
+01-23 12:05:47.823 I/ReactNativeJS( 8534): DEBUG: Checking if category selection should be shown...
+01-23 12:05:47.823 I/ReactNativeJS( 8534): 'DEBUG: Current user state:', { id: 'user_123',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   email: 'test@example.com',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   name: 'John Doe',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   userType: 'buyer',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   phone: '+91 9876543210',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   location: { state: 'Maharashtra', city: 'Mumbai', pincode: '400001' },
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   verificationStatus: 'verified',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   createdAt: '2026-01-23T06:34:46.702Z',
+01-23 12:05:47.823 I/ReactNativeJS( 8534):   lastLoginAt: '2026-01-23T06:34:46.702Z' }
+01-23 12:05:47.823 I/ReactNativeJS( 8534): 'DEBUG: Current isCategoryCompleted:', true
+01-23 12:05:47.823 I/ReactNativeJS( 8534): 'DEBUG: isFirstTimeUser calculated as:', false
+01-23 12:05:47.823 I/ReactNativeJS( 8534): DEBUG: Starting category flow initialization...
+01-23 12:05:47.824 I/ReactNativeJS( 8534): 'DEBUG: Current user:', { id: 'user_123',
+01-23 12:05:47.824 I/ReactNativeJS( 8534):   email: 'test@example.com',
+01-23 12:05:47.824 I/ReactNativeJS( 8534):   name: 'John Doe',
+01-23 12:05:47.824 I/ReactNativeJS( 8534):   userType: 'buyer',
+01-23 12:05:47.824 I/ReactNativeJS( 8534):   phone: '+91 9876543210',
+01-23 12:05:47.824 I/ReactNativeJS( 8534):   location: { state: 'Maharashtra', city: 'Mumbai', pincode: '400001' },
+01-23 12:05:47.824 I/ReactNativeJS( 8534):   verificationStatus: 'verified',
+01-23 12:05:47.824 I/ReactNativeJS( 8534):   createdAt: '2026-01-23T06:34:46.702Z',
+01-23 12:05:47.824 I/ReactNativeJS( 8534):   lastLoginAt: '2026-01-23T06:34:46.702Z' }
+01-23 12:05:47.824 I/ReactNativeJS( 8534): 'DEBUG: Current isCategoryCompleted:', false
+01-23 12:05:47.824 I/ReactNativeJS( 8534): DEBUG: Loading category preference from storage...
+01-23 12:05:47.825 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:47.825 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:47.826 I/ReactNativeJS( 8534): 'Retrieved category preference from AsyncStorage:', 'fashion-lifestyle'
+01-23 12:05:47.827 I/ReactNativeJS( 8534): 'Retrieved category preference from AsyncStorage:', 'fashion-lifestyle'
+01-23 12:05:47.827 I/ReactNativeJS( 8534): 'DEBUG: Category flow check result:', { shouldShow: true,
+01-23 12:05:47.827 I/ReactNativeJS( 8534):   reason: 'incomplete_setup',
+01-23 12:05:47.827 I/ReactNativeJS( 8534):   user: true,
+01-23 12:05:47.827 I/ReactNativeJS( 8534):   isCategoryCompleted: true }
+01-23 12:05:47.827 I/ReactNativeJS( 8534): DEBUG: Updating Redux state with category selection decision...
+01-23 12:05:47.827 I/ReactNativeJS( 8534): DEBUG: Category flow initialization completed
+01-23 12:05:47.835 D/NetworkEvent( 2614): OplusNetworkEventCbProxy invoke.....onDnsEvent argslen:8
+01-23 12:05:47.835 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:47.835 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:47.868 I/ReactNativeJS( 8534): 'DEBUG: Category preference loaded. Result:', { type: 'category/loadCategoryPreference/fulfilled',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   payload: 
+01-23 12:05:47.868 I/ReactNativeJS( 8534):    { categoryId: 'fashion-lifestyle',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):      categoryDetails: 
+01-23 12:05:47.868 I/ReactNativeJS( 8534):       { id: 'fashion-lifestyle',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):         name: 'Fashion & Lifestyle',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):         icon: 'shopping-bag',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):         color: '#E91E63',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):         subCategories: 
+01-23 12:05:47.868 I/ReactNativeJS( 8534):          [ 'Clothing',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):            'Footwear',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):            'Accessories',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):            'Beauty Products',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):            'Jewelry',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):            'Bags & Luggage' ] },
+01-23 12:05:47.868 I/ReactNativeJS( 8534):      isCompleted: false },
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   meta: 
+01-23 12:05:47.868 I/ReactNativeJS( 8534):    { arg: undefined,
+01-23 12:05:47.868 I/ReactNativeJS( 8534):      requestId: 'CyZk5vlav4tuzLFu0OVyt',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):      requestStatus: 'fulfilled' } }
+01-23 12:05:47.868 I/ReactNativeJS( 8534): DEBUG: Checking if category selection should be shown...
+01-23 12:05:47.868 I/ReactNativeJS( 8534): 'DEBUG: Current user state:', { id: 'user_123',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   email: 'test@example.com',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   name: 'John Doe',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   userType: 'buyer',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   phone: '+91 9876543210',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   location: { state: 'Maharashtra', city: 'Mumbai', pincode: '400001' },
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   verificationStatus: 'verified',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   createdAt: '2026-01-23T06:34:46.702Z',
+01-23 12:05:47.868 I/ReactNativeJS( 8534):   lastLoginAt: '2026-01-23T06:34:46.702Z' }
+01-23 12:05:47.869 I/ReactNativeJS( 8534): 'DEBUG: Current isCategoryCompleted:', false
+01-23 12:05:47.869 I/ReactNativeJS( 8534): 'DEBUG: isFirstTimeUser calculated as:', false
+01-23 12:05:47.883 E/ReactNativeJS( 8534): 'Error saving category preference to backend:', [TypeError: Network request failed]
+01-23 12:05:47.884 I/ReactNativeJS( 8534): DEBUG: Backend save completed
+01-23 12:05:47.884 I/ReactNativeJS( 8534): DEBUG: Preparing navigation...
+01-23 12:05:47.884 I/ReactNativeJS( 8534): DEBUG: First time selection - resetting navigation to BuyerMain
+01-23 12:05:47.884 I/ReactNativeJS( 8534): DEBUG: Attempting navigation reset...
+01-23 12:05:47.884 I/ReactNativeJS( 8534): DEBUG: Navigation reset successful
+01-23 12:05:47.884 I/ReactNativeJS( 8534): DEBUG: handleContinue completed (success or failure)
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): console.error: Error saving category preference to backend: TypeError: Network request failed, js engine: hermes, stack:
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): _construct@1:154780
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): Wrapper@1:154429
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): _callSuper@1:152516
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): SyntheticError@1:153907
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): reactConsoleErrorHandler@1:153556
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): ?anon_0_@1:2399720
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): asyncGeneratorStep@1:491894
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): _throw@1:492214
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): tryCallOne@53:15
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): anonymous@139:26
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): anonymous@1:171643
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): _callTimer@1:170592
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): _callReactNativeMicrotasksPass@1:170756
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): callReactNativeMicrotasks@1:172726
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): __callReactNativeMicrotasks@1:58113
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): anonymous@1:57202
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): __guard@1:57954
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): flushedQueue@1:57113
+01-23 12:05:47.886 E/unknown:ReactNative( 8534): callFunctionReturnFlushedQueue@1:56969
+01-23 12:05:47.891 I/oplus.android.OplusFrameworkFactoryImpl( 8534): get feature:IOplusDynamicVsyncFeature
+01-23 12:05:47.891 I/oplus.android.OplusFrameworkFactoryImpl( 8534): get feature:IOplusDynamicVsyncFeature
+01-23 12:05:47.891 I/oplus.android.OplusFrameworkFactoryImpl( 8534): get feature:IOplusDynamicVsyncFeature
+01-23 12:05:47.897 I/ReactNativeJS( 8534): 'Retrieved category preference from AsyncStorage:', 'fashion-lifestyle'
+01-23 12:05:47.897 I/ReactNativeJS( 8534): 'DEBUG: Category flow check result:', { shouldShow: true,
+01-23 12:05:47.897 I/ReactNativeJS( 8534):   reason: 'incomplete_setup',
+01-23 12:05:47.897 I/ReactNativeJS( 8534):   user: true,
+01-23 12:05:47.897 I/ReactNativeJS( 8534):   isCategoryCompleted: false }
+01-23 12:05:47.897 I/ReactNativeJS( 8534): DEBUG: Updating Redux state with category selection decision...
+01-23 12:05:47.897 I/ReactNativeJS( 8534): DEBUG: Category flow initialization completed
+01-23 12:05:47.899 I/ReactNative( 8534): [GESTURE HANDLER] Initialize gesture handler for root view com.facebook.react.ReactRootView{9d67f9e V.E...... ......ID 0,0-1080,2290 #b}
+01-23 12:05:47.915 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:47.916 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:47.917 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:47.926 I/Quality ( 8534): Skipped: true 1 cost 26.37062 refreshRate 16553221 bit true processName com.wholexale.app.staging
+01-23 12:05:48.041 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:48.381 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:48.440 I/OplusHansManager ( 1748): uid=10245, pkg=in.amazon.mShop.android.shopping can transition from M to F
+01-23 12:05:48.440 I/OplusHansManager ( 1748): uid=10245, pkg=in.amazon.mShop.android.shopping F enter(), M stay=10
+01-23 12:05:48.445 I/OplusHansManager ( 1748): freeze uid: 10245 in.amazon.mShop.android.shopping pids: [8302, 13278] scene: LcdOn
+01-23 12:05:48.446 D/IHansComunication( 6221): HansComunication::addUid-- 10245, persistent--0
+01-23 12:05:48.447 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = PKG, targetUid = 10245, pkgCmd = ADD_ONE_UID
+01-23 12:05:48.550 I/thermal_repeater( 1170): [recvMdThermalInfo] ret=26, strLen=127,  3, 40, -50, 197, 32767, 1
+01-23 12:05:48.630 D/AALLightSensor( 1193): oldLux=0 [SA:0 LA:0] newLux=0 (oriLux: 0)
+01-23 12:05:48.726 D/OGG_Detector( 1748): D:done mCurrStatus: 0
+01-23 12:05:48.726 D/PowerManagerService( 1748): userActivityNoUpdateLocked: groupId=0, eventTime=121789797, event=2, flags=0x0, uid=1000
+01-23 12:05:48.726 D/NoBackGesture( 2225): Start gesture: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=110.0, y[0]=999.5, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=121789797, downTime=121789797, deviceId=4, source=0x1002, displayId=0, eventId=592492442 }
+01-23 12:05:48.727 D/NoBackGesture( 2225): Not in side gesture area
+01-23 12:05:48.826 I/libPowerHal(  859): [perfLockRel] hdl:76773, idx:1
+01-23 12:05:48.826 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:05:48.827 D/PowerManagerService( 1748): userActivityNoUpdateLocked: groupId=0, eventTime=121789899, event=2, flags=0x0, uid=1000
+01-23 12:05:48.827 I/libPowerHal(  859): [PD] MTKPOWER_HINT_APP_TOUCH update cmd:3408600 param:0
+01-23 12:05:48.883 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:05:48.883 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=0, req=1080x2400
+01-23 12:05:48.953 D/OplusTelephonyController( 2568): onSignalStrengthChanged: SignalStrength=SignalStrength:{mCdma=CellSignalStrengthCdma: cdmaDbm=2147483647 cdmaEcio=2147483647 evdoDbm=2147483647 evdoEcio=2147483647 evdoSnr=2147483647 level=0,mGsm=CellSignalStrengthGsm: rssi=2147483647 ber=2147483647 mTa=2147483647 mLevel=0,mWcdma=CellSignalStrengthWcdma: ss=2147483647 ber=2147483647 rscp=2147483647 ecno=2147483647 level=0,mTdscdma=CellSignalStrengthTdscdma: rssi=2147483647 ber=2147483647 rscp=2147483647 level=0,mLte=CellSignalStrengthLte: rssi=2147483647 rsrp=-116 rsrq=-10 rssnr=7 cqiTableIndex=2147483647 cqi=0 ta=0 level=2 parametersUseForLevel=0,mNr=CellSignalStrengthNr:{ csiRsrp = 2147483647 csiRsrq = 2147483647 csiCqiTableIndex = 2147483647 csiCqiReport = [] ssRsrp = 2147483647 ssRsrq = 2147483647 ssSinr = 2147483647 level = 0 parametersUseForLevel = 0 },primary=CellSignalStrengthLte}, phoneId=0, mMtkLevel=0, mMtkRsrpOnly=false, mMtkLteRsrpThreshold=null, mMtkLteRssnrThreshold=null

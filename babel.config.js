@@ -1,9 +1,12 @@
-module.exports = function(api) {
+module.exports = function (api) {
   api.cache(true);
   return {
-    presets: ['babel-preset-expo'],
+    presets: [
+      'module:metro-react-native-babel-preset',
+      '@babel/preset-react'
+    ],
     plugins: [
-      'react-native-reanimated/plugin',
+      ['@babel/plugin-transform-private-methods', { loose: true }],
     ],
   };
 };

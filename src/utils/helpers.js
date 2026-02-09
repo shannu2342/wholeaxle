@@ -1,7 +1,8 @@
 // Utility functions for the Wholexale app
 
 import { Dimensions } from 'react-native';
-import { mockProducts, mockCategories } from '../data/mockData';
+const emptyProducts = [];
+const emptyCategories = [];
 
 // Get screen dimensions
 export const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
@@ -59,7 +60,7 @@ export const debounce = (func, wait) => {
 };
 
 // Search products
-export const searchProducts = (query, products = mockProducts) => {
+export const searchProducts = (query, products = emptyProducts) => {
   if (!query.trim()) return products;
   
   const searchTerm = query.toLowerCase();
@@ -71,13 +72,13 @@ export const searchProducts = (query, products = mockProducts) => {
 };
 
 // Filter products by category
-export const filterByCategory = (category, products = mockProducts) => {
+export const filterByCategory = (category, products = emptyProducts) => {
   if (category === 'All') return products;
   return products.filter(product => product.category === category);
 };
 
 // Filter products by price range
-export const filterByPriceRange = (priceRange, products = mockProducts) => {
+export const filterByPriceRange = (priceRange, products = emptyProducts) => {
   if (priceRange === 'All') return products;
   
   switch (priceRange) {
@@ -114,7 +115,7 @@ export const sortProducts = (products, sortBy) => {
 };
 
 // Get related products
-export const getRelatedProducts = (productId, products = mockProducts, limit = 4) => {
+export const getRelatedProducts = (productId, products = emptyProducts, limit = 4) => {
   const product = products.find(p => p.id === productId);
   if (!product) return [];
   

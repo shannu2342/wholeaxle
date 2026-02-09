@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholexale.com Demo - User App & Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .demo-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0390F3;
+            margin-bottom: 10px;
+        }
+
+        .demo-subtitle {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: 2px solid #0390F3;
+            background: white;
+            color: #0390F3;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: #0390F3;
+            color: white;
+        }
+
+        .demo-section {
+            display: none;
+        }
+
+        .demo-section.active {
+            display: block;
+        }
+
+        /* User App Styles */
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            background: #000;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 0 auto;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .app-header {
+            background: #0390F3;
+            padding: 15px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .search-bar {
+            background: #f8f9fa;
+            margin: 10px 20px;
+            border-radius: 25px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .banner-section {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 20px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            z-index: 2;
+        }
+
+        .banner-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .banner-subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .category-section {
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .categories {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+        }
+
+        .category-item {
+            min-width: 80px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .category-item.active {
+            border-color: #0390F3;
+            background: #f0f8ff;
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background: #0390F3;
+            border-radius: 50%;
+            margin: 0 auto 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .category-text {
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .products-section {
+            padding: 0 20px 20px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+        }
+
+        .filter-tab {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #e0e0e0;
+            background: #f1f1f1;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .filter-tab.active {
+            background: #0390F3;
+            color: white;
+            border-color: #0390F3;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image {
+            height: 150px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-info {
+            padding: 10px;
+        }
+
+        .brand-name {
+            font-size: 11px;
+            color: #0390F3;
+            margin-bottom: 3px;
+        }
+
+        .product-name {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 16px;
+        }
+
+        .badges {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 9px;
+            background: aliceblue;
+            color: #0390F3;
+        }
+
+        .price-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .original-price {
+            font-size: 11px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 5px;
+        }
+
+        .share-btn {
+            padding: 5px;
+            color: #666;
+        }
+
+        .bottom-nav {
+            height: 60px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 5px;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            color: #666;
+        }
+
+        .nav-icon.active {
+            color: #0390F3;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .nav-label.active {
+            color: #0390F3;
+        }
+
+        .screen {
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Admin Dashboard Styles */
+        .admin-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .admin-header {
+            background: #1f2937;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .admin-refresh-btn {
+            background: #374151;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .stat-content h3 {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .stat-content .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .tabs-container {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .tabs-list {
+            display: flex;
+            padding: 0 20px;
+        }
+
+        .tab-trigger {
+            padding: 12px 24px;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .tab-trigger.active {
+            color: #0390F3;
+            border-bottom-color: #0390F3;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .overview-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .quick-actions-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .quick-actions-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            border-color: #0390F3;
+            background: #f0f8ff;
+        }
+
+        .action-icon {
+            width: 48px;
+            height: 48px;
+            background: #0390F3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .action-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .badge-small {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .recent-activity-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .activity-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .activity-icon-small {
+            width: 32px;
+            height: 32px;
+            background: #0390F3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-message {
+            font-size: 14px;
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .brand-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .brand-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .review-btn {
+            background: #0390F3;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .brand-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+
+        .brand-info h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .brand-date {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-approved {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-rejected {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .inventory-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .inventory-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .inventory-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .view-btn {
+            background: #f3f4f6;
+            color: #374151;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .inventory-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item h4 {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .stat-item .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .alerts-section h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .alerts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .alert-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .alert-high {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .alert-medium {
+            background: #fefce8;
+            border: 1px solid #fde68a;
+        }
+
+        .alert-low {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+        }
+
+        .alert-icon {
+            font-size: 20px;
+            color: #dc2626;
+        }
+
+        .alert-content h5 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .alert-sku {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .bulk-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .bulk-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .bulk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .bulk-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .bulk-btn:hover {
+            border-color: #0390F3;
+            background: #f0f8ff;
+        }
+
+        .bulk-icon {
+            width: 48px;
+            height: 48px;
+            background: #0390F3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .bulk-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .bulk-desc {
+            font-size: 12px;
+            color: #6b7280;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1 class="demo-title">Wholexale.com®</h1>
+            <p class="demo-subtitle">India's B2B Multi Vendor Marketplace - Demo Preview</p>
+        </div>
+
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchDemo('user')">User App</button>
+            <button class="tab-btn" onclick="switchDemo('admin')">Admin Dashboard</button>
+        </div>
+
+        <!-- User App Demo -->
+        <div class="demo-section active" id="user-demo">
+            <div class="phone-container">
+                <div class="phone-screen">
+                    <!-- Status Bar -->
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>●●●●●●</span>
+                    </div>
+
+                    <!-- Home Screen -->
+                    <div class="screen active" id="home-screen">
+                        <!-- App Header -->
+                        <div class="app-header">
+                            <div class="logo">Wholexale</div>
+                            <div class="header-icons">
+                                <span>❤️</span>
+                                <span>🛒</span>
+                                <span>👤</span>
+                            </div>
+                        </div>
+
+                        <!-- Search Bar -->
+                        <div class="search-bar">
+                            <span>🔍</span>
+                            <input type="text" class="search-input" placeholder="Search by Products" readonly>
+                        </div>
+
+                        <!-- Banner Section -->
+                        <div class="banner-section">
+                            <div class="banner-content">
+                                <div class="banner-title">B2B Marketplace</div>
+                                <div class="banner-subtitle">Wholesale Fashion for retailers</div>
+                            </div>
+                        </div>
+
+                        <!-- Categories Section -->
+                        <div class="category-section">
+                            <div class="section-title">Explore Popular Categories</div>
+                            <div class="categories">
+                                <div class="category-item active">
+                                    <div class="category-icon">👗</div>
+                                    <div class="category-text">Women</div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon">👔</div>
+                                    <div class="category-text">Men</div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon">🧒</div>
+                                    <div class="category-text">Kids</div>
+                                </div>
+                                <div class="category-item">
+                                    <div class="category-icon">👠</div>
+                                    <div class="category-text">Accessories</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Products Section -->
+                        <div class="products-section">
+                            <div class="section-title">Palazzo Collection</div>
+
+                            <!-- Filter Tabs -->
+                            <div class="filter-tabs">
+                                <div class="filter-tab active">Shape Type</div>
+                                <div class="filter-tab">Weave Type</div>
+                                <div class="filter-tab">Set Type</div>
+                            </div>
+
+                            <!-- Products Grid -->
+                            <div class="products-grid">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        👖<br>Palazzo
+                                    </div>
+                                    <div class="wishlist-btn">❤️</div>
+                                    <div class="product-info">
+                                        <div class="brand-name">Haajra Garments</div>
+                                        <div class="product-name">4/Pocket Scramble Plazzo For Women</div>
+                                        <div class="badges">
+                                            <div class="badge">64% Margin</div>
+                                            <div class="badge">MOQ: 10</div>
+                                        </div>
+                                        <div class="price-container">
+                                            <div>
+                                                <span class="price">₹109</span>
+                                                <span class="original-price">₹299</span>
+                                            </div>
+                                            <div class="share-btn">📤</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        👖<br>Palazzo
+                                    </div>
+                                    <div class="wishlist-btn">💚</div>
+                                    <div class="product-info">
+                                        <div class="brand-name">Haajra Garments</div>
+                                        <div class="product-name">Scramble Fabric Palazzo For Women</div>
+                                        <div class="badges">
+                                            <div class="badge">64% Margin</div>
+                                            <div class="badge">MOQ: 10</div>
+                                        </div>
+                                        <div class="price-container">
+                                            <div>
+                                                <span class="price">₹109</span>
+                                                <span class="original-price">₹299</span>
+                                            </div>
+                                            <div class="share-btn">📤</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        👖<br>Palazzo
+                                    </div>
+                                    <div class="wishlist-btn">❤️</div>
+                                    <div class="product-info">
+                                        <div class="brand-name">Haajra Garments</div>
+                                        <div class="product-name">Traditional Palazzo Set</div>
+                                        <div class="badges">
+                                            <div class="badge">64% Margin</div>
+                                            <div class="badge">MOQ: 10</div>
+                                        </div>
+                                        <div class="price-container">
+                                            <div>
+                                                <span class="price">₹109</span>
+                                                <span class="original-price">₹299</span>
+                                            </div>
+                                            <div class="share-btn">📤</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        👖<br>Palazzo
+                                    </div>
+                                    <div class="wishlist-btn">❤️</div>
+                                    <div class="product-info">
+                                        <div class="brand-name">Haajra Garments</div>
+                                        <div class="product-name">Printed Palazzo Collection</div>
+                                        <div class="badges">
+                                            <div class="badge">64% Margin</div>
+                                            <div class="badge">MOQ: 10</div>
+                                        </div>
+                                        <div class="price-container">
+                                            <div>
+                                                <span class="price">₹109</span>
+                                                <span class="original-price">₹299</span>
+                                            </div>
+                                            <div class="share-btn">📤</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Navigation -->
+                    <div class="bottom-nav">
+                        <div class="nav-item">
+                            <div class="nav-icon active">🏠</div>
+                            <div class="nav-label active">Home</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">🛍️</div>
+                            <div class="nav-label">Products</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">📂</div>
+                            <div class="nav-label">Categories</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">❤️</div>
+                            <div class="nav-label">Wishlist</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">👤</div>
+                            <div class="nav-label">Profile</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard Demo -->
+        <div class="demo-section" id="admin-demo">
+            <div class="admin-container">
+                <!-- Header -->
+                <div class="admin-header">
+                    <h2 class="admin-title">Admin Dashboard</h2>
+                    <button class="admin-refresh-btn">
+                        <span>🔄</span>
+                        Refresh
+                    </button>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <h3>Total Products</h3>
+                            <div class="stat-value">1,250</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-content">
+                            <h3>Pending Reviews</h3>
+                            <div class="stat-value">5</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-content">
+                            <h3>Low Stock Alerts</h3>
+                            <div class="stat-value">23</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🛡️</div>
+                        <div class="stat-content">
+                            <h3>Authorized Brands</h3>
+                            <div class="stat-value">15</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Tabs -->
+                <div class="tabs-container">
+                    <div class="tabs-list">
+                        <div class="tab-trigger active" onclick="switchAdminTab('overview')">Overview</div>
+                        <div class="tab-trigger" onclick="switchAdminTab('brands')">Brands</div>
+                        <div class="tab-trigger" onclick="switchAdminTab('inventory')">Inventory</div>
+                        <div class="tab-trigger" onclick="switchAdminTab('bulk')">Bulk Ops</div>
+                    </div>
+
+                    <!-- Overview Tab -->
+                    <div class="tab-content active" id="overview-tab">
+                        <div class="overview-grid">
+                            <!-- Quick Actions -->
+                            <div class="quick-actions-card">
+                                <h3 class="quick-actions-title">Quick Actions</h3>
+                                <div class="actions-grid">
+                                    <div class="action-btn">
+                                        <div class="action-icon">🛡️</div>
+                                        <div class="action-text">Review Brands</div>
+                                        <div class="badge-small">5 pending</div>
+                                    </div>
+                                    <div class="action-btn">
+                                        <div class="action-icon">📊</div>
+                                        <div class="action-text">Inventory</div>
+                                        <div class="badge-small">23 alerts</div>
+                                    </div>
+                                    <div class="action-btn">
+                                        <div class="action-icon">📤</div>
+                                        <div class="action-text">Bulk Upload</div>
+                                    </div>
+                                    <div class="action-btn">
+                                        <div class="action-icon">👥</div>
+                                        <div class="action-text">User Management</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Recent Activity -->
+                            <div class="recent-activity-card">
+                                <h3 class="activity-title">Recent Activity</h3>
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon-small">🛡️</div>
+                                        <div class="activity-content">
+                                            <div class="activity-message">New brand authorization submitted</div>
+                                            <div class="activity-time">2 hours ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon-small">⚠️</div>
+                                        <div class="activity-content">
+                                            <div class="activity-message">Low stock alert for Cotton Palazzo</div>
+                                            <div class="activity-time">4 hours ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon-small">⚡</div>
+                                        <div class="activity-content">
+                                            <div class="activity-message">Brand authorization approved: Nike</div>
+                                            <div class="activity-time">1 day ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon-small">📤</div>
+                                        <div class="activity-content">
+                                            <div class="activity-message">Bulk upload completed: 150 products</div>
+                                            <div class="activity-time">2 days ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brands Tab -->
+                    <div class="tab-content" id="brands-tab">
+                        <div class="brand-card">
+                            <div class="brand-header">
+                                <h3 class="brand-title">Brand Management</h3>
+                                <button class="review-btn">
+                                    <span>🛡️</span>
+                                    Review All
+                                </button>
+                            </div>
+                            <div class="brand-list">
+                                <div class="brand-item">
+                                    <div class="brand-info">
+                                        <h4>Nike</h4>
+                                        <div class="brand-date">Submitted: Jan 15, 2024</div>
+                                    </div>
+                                    <div class="status-badge status-pending">PENDING REVIEW</div>
+                                </div>
+                                <div class="brand-item">
+                                    <div class="brand-info">
+                                        <h4>Adidas</h4>
+                                        <div class="brand-date">Submitted: Jan 10, 2024</div>
+                                    </div>
+                                    <div class="status-badge status-approved">APPROVED</div>
+                                </div>
+                                <div class="brand-item">
+                                    <div class="brand-info">
+                                        <h4>Puma</h4>
+                                        <div class="brand-date">Submitted: Jan 05, 2024</div>
+                                    </div>
+                                    <div class="status-badge status-rejected">REJECTED</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inventory Tab -->
+                    <div class="tab-content" id="inventory-tab">
+                        <div class="inventory-card">
+                            <div class="inventory-header">
+                                <h3 class="inventory-title">Inventory Overview</h3>
+                                <button class="view-btn">
+                                    <span>📊</span>
+                                    View All
+                                </button>
+                            </div>
+                            <div class="inventory-stats">
+                                <div class="stat-item">
+                                    <h4>Stock Value</h4>
+                                    <div class="value">₹2.5L</div>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Turnover Rate</h4>
+                                    <div class="value">2.5</div>
+                                </div>
+                            </div>
+                            <div class="alerts-section">
+                                <h4>Active Alerts</h4>
+                                <div class="alerts-list">
+                                    <div class="alert-item alert-high">
+                                        <div class="alert-icon">⚠️</div>
+                                        <div class="alert-content">
+                                            <h5>Low stock: Cotton Palazzo</h5>
+                                            <div class="alert-sku">SKU: WP-001</div>
+                                        </div>
+                                    </div>
+                                    <div class="alert-item alert-medium">
+                                        <div class="alert-icon">⚠️</div>
+                                        <div class="alert-content">
+                                            <h5>Stock threshold reached: Denim Jeans</h5>
+                                            <div class="alert-sku">SKU: WP-002</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bulk Operations Tab -->
+                    <div class="tab-content" id="bulk-tab">
+                        <div class="bulk-card">
+                            <h3 class="bulk-title">Bulk Operations</h3>
+                            <div class="bulk-grid">
+                                <div class="bulk-btn">
+                                    <div class="bulk-icon">📤</div>
+                                    <div class="bulk-text">Bulk Upload</div>
+                                    <div class="bulk-desc">Upload multiple products</div>
+                                </div>
+                                <div class="bulk-btn">
+                                    <div class="bulk-icon">✏️</div>
+                                    <div class="bulk-text">Bulk Edit</div>
+                                    <div class="bulk-desc">Update existing products</div>
+                                </div>
+                                <div class="bulk-btn">
+                                    <div class="bulk-icon">🏷️</div>
+                                    <div class="bulk-text">Generate Codes</div>
+                                    <div class="bulk-desc">SKU & Barcode generation</div>
+                                </div>
+                                <div class="bulk-btn">
+                                    <div class="bulk-icon">📊</div>
+                                    <div class="bulk-text">Export Data</div>
+                                    <div class="bulk-desc">Download reports</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchDemo(section) {
+            // Hide all demo sections
+            document.querySelectorAll('.demo-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(section + '-demo').classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function switchAdminTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tab triggers
+            document.querySelectorAll('.tab-trigger').forEach(trigger => {
+                trigger.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName + '-tab').classList.add('active');
+
+            // Add active class to clicked trigger
+            event.target.classList.add('active');
+        }
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category selection
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    document.querySelectorAll('.category-item').forEach(cat => {
+                        cat.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+
+            // Filter tabs
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+
+            // Wishlist toggle
+            document.querySelectorAll('.wishlist-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (this.textContent === '❤️') {
+                        this.textContent = '💚';
+                        this.style.color = '#ff2d55';
+                    } else {
+                        this.textContent = '❤️';
+                        this.style.color = '#666';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

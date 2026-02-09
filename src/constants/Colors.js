@@ -6,52 +6,52 @@ export const Colors = {
   primaryLight: '#4da6e6',
   primaryDark: '#0274c2',
   primaryBackground: '#f0f8ff',
-  
+
   // Background gradients (from CSS)
   backgroundGradientStart: '#667eea',
   backgroundGradientEnd: '#764ba2',
   bannerGradientStart: '#667eea',
   bannerGradientEnd: '#764ba2',
-  
+
   // Secondary colors
   secondary: '#6c757d',
   secondaryLight: '#9ca6af',
   secondaryDark: '#495057',
-  
+
   // Status colors
   success: '#28a745',
   successLight: '#5cb85c',
   successDark: '#1e7e34',
-  
+
   danger: '#dc3545',
   dangerLight: '#e4606d',
   dangerDark: '#bd2130',
-  
+
   warning: '#ffc107',
   warningLight: '#ffcd38',
   warningDark: '#e0a800',
-  
+
   info: '#17a2b8',
   infoLight: '#5bc0de',
   infoDark: '#117a8b',
-  
+
   // Neutral colors
   light: '#f8f9fa',
   lightGray: '#e9ecef',
   mediumLightGray: '#f1f1f1',
-  
+
   dark: '#343a40',
   darkGray: '#6c757d',
   mediumGray: '#adb5bd',
-  
+
   white: '#ffffff',
   black: '#000000',
-  
+
   // Surface colors
   background: '#f5f5f5',
   surface: '#ffffff',
   card: '#ffffff',
-  
+
   // Text colors (enhanced from CSS)
   text: {
     primary: '#333333',
@@ -64,17 +64,17 @@ export const Colors = {
     placeholder: '#999999',
     muted: '#666666',
   },
-  
+
   // Border colors
   border: '#e0e0e0',
   borderLight: '#f0f0f0',
   divider: '#f0f0f0',
-  
+
   // Overlay and shadows
   overlay: 'rgba(0, 0, 0, 0.5)',
   shadow: 'rgba(0, 0, 0, 0.1)',
   shadowHeavy: 'rgba(0, 0, 0, 0.3)',
-  
+
   // Special colors from HTML
   wishlistActive: '#ff2d55',
   wishlistInactive: '#666666',
@@ -82,7 +82,7 @@ export const Colors = {
   badgeText: '#0390F3',
   badgeSecondaryBackground: '#C6E7FF',
   badgeSecondaryText: '#041E42',
-  
+
   // Gradients
   gradient: {
     primary: ['#0390F3', '#4da6e6'],
@@ -92,7 +92,7 @@ export const Colors = {
     background: ['#667eea', '#764ba2'],
     phoneBackground: ['#000000', '#1a1a1a'],
   },
-  
+
   // Spacing (based on CSS analysis)
   spacing: {
     xs: 4,
@@ -103,7 +103,7 @@ export const Colors = {
     xxl: 24,
     xxxl: 30,
   },
-  
+
   // Border radius (from CSS)
   borderRadius: {
     sm: 8,
@@ -114,7 +114,18 @@ export const Colors = {
     round: 25,
     circle: 50,
   },
-  
+
+  // Backwards compatibility alias (some screens/components used `Colors.radius.*`).
+  radius: {
+    sm: 8,
+    md: 10,
+    lg: 12,
+    xl: 15,
+    xxl: 20,
+    round: 25,
+    circle: 50,
+  },
+
   // Font sizes (from CSS analysis)
   fontSize: {
     xs: 9,
@@ -122,13 +133,15 @@ export const Colors = {
     md: 11,
     lg: 12,
     xl: 14,
+    // Common semantic alias used throughout the app
+    body: 14,
     xxl: 16,
     title: 18,
     subtitle: 20,
     header: 24,
     logo: 28,
   },
-  
+
   // Font weights
   fontWeight: {
     light: '300',
@@ -137,7 +150,7 @@ export const Colors = {
     semibold: '600',
     bold: '700',
   },
-  
+
   // Shadows (React Native compatible)
   shadows: {
     small: {
@@ -162,6 +175,40 @@ export const Colors = {
       elevation: 8,
     },
   },
+};
+
+// Backwards/feature compatibility: many UI components in this repo import `{ COLORS }`
+// and expect an UPPER_SNAKE_CASE palette.
+export const COLORS = {
+  PRIMARY: Colors.primary,
+  PRIMARY_LIGHT: Colors.primaryLight,
+
+  SUCCESS: Colors.success,
+  SUCCESS_LIGHT: Colors.successLight,
+
+  WARNING: Colors.warning,
+  WARNING_LIGHT: Colors.warningLight,
+
+  INFO: Colors.info,
+  INFO_LIGHT: Colors.infoLight,
+
+  // Map "error" to the existing danger palette
+  ERROR: Colors.danger,
+  ERROR_LIGHT: Colors.dangerLight,
+
+  WHITE: Colors.white,
+  BLACK: Colors.black,
+
+  // Neutral grays used throughout the UI
+  GRAY_50: '#F9FAFB',
+  GRAY_100: '#F3F4F6',
+  GRAY_200: '#E5E7EB',
+  GRAY_300: '#D1D5DB',
+  GRAY_400: '#9CA3AF',
+  GRAY_500: '#6B7280',
+  GRAY_600: '#4B5563',
+  GRAY_700: '#374151',
+  GRAY_800: '#1F2937',
 };
 
 export default Colors;

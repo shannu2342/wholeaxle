@@ -1,0 +1,73 @@
+{
+    "testRunner": {
+        "args": {
+            "config": "e2e/config.json",
+            "maxWorkers": 1
+        },
+        "jest": {
+            "setupFilesAfterEnv": [
+                "<rootDir>/e2e/init.js"
+            ]
+        }
+    },
+    "apps": {
+        "ios.debug": {
+            "type": "ios.app",
+            "build": "xcodebuild -workspace ios/Wholexale.xcworkspace -scheme Wholexale -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+            "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Wholexale.app"
+        },
+        "ios.release": {
+            "type": "ios.app",
+            "build": "xcodebuild -workspace ios/Wholexale.xcworkspace -scheme Wholexale -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+            "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/Wholexale.app"
+        },
+        "android.debug": {
+            "type": "android.apk",
+            "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug",
+            "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk"
+        },
+        "android.release": {
+            "type": "android.apk",
+            "build": "cd android && ./gradlew assembleRelease",
+            "binaryPath": "android/app/build/outputs/apk/release/app-release.apk"
+        }
+    },
+    "devices": {
+        "simulator": {
+            "type": "ios.simulator",
+            "device": {
+                "type": "iPhone 14"
+            }
+        },
+        "android.emu.debug": {
+            "type": "android.emulator",
+            "device": {
+                "avdName": "Pixel_4_API_30"
+            }
+        },
+        "android.emu.release": {
+            "type": "android.emulator",
+            "device": {
+                "avdName": "Pixel_4_API_30"
+            }
+        }
+    },
+    "configurations": {
+        "ios.sim.debug": {
+            "device": "simulator",
+            "app": "ios.debug"
+        },
+        "ios.sim.release": {
+            "device": "simulator",
+            "app": "ios.release"
+        },
+        "android.emu.debug": {
+            "device": "android.emu.debug",
+            "app": "android.debug"
+        },
+        "android.emu.release": {
+            "device": "android.emu.release",
+            "app": "android.release"
+        }
+    }
+}

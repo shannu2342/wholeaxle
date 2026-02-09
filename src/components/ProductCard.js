@@ -8,6 +8,7 @@ import {
   Image,
   Animated
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../constants/Colors';
 
 const { width } = Dimensions.get('window');
@@ -74,14 +75,21 @@ const ProductCard = ({
         <View style={styles.productImage}>
           {product.image ? (
             <Image 
-              source={{ uri: product.image }} 
+              source={typeof product.image === 'number' ? product.image : { uri: product.image }} 
               style={styles.productImageStyle}
               resizeMode="contain"
             />
           ) : (
-            <Text style={styles.productImageText}>
-              {product.placeholderImage || '👖\nPalazzo'}
-            </Text>
+            <View style={styles.placeholderContent}>
+              <Icon
+                name={product.placeholderIcon || 'shopping-bag'}
+                size={28}
+                color={Colors.text.tertiary}
+              />
+              <Text style={styles.productImageText}>
+                {product.placeholderLabel || 'Product'}
+              </Text>
+            </View>
           )}
         </View>
         
@@ -91,12 +99,11 @@ const ProductCard = ({
           activeOpacity={1}
         >
           <Animated.View style={{ transform: [{ scale: heartAnim }] }}>
-            <Text style={[
-              styles.wishlistIcon,
-              { color: product.isWishlisted ? Colors.wishlistActive : Colors.wishlistInactive }
-            ]}>
-              {product.isWishlisted ? '💚' : '❤️'}
-            </Text>
+            <Icon
+              name={product.isWishlisted ? 'heart' : 'heart-o'}
+              size={14}
+              color={product.isWishlisted ? Colors.wishlistActive : Colors.wishlistInactive}
+            />
           </Animated.View>
         </TouchableOpacity>
       </TouchableOpacity>
@@ -127,7 +134,7 @@ const ProductCard = ({
             style={styles.shareBtn}
             onPress={() => onSharePress && onSharePress(product)}
           >
-            <Text style={styles.shareIcon}>📤</Text>
+            <Icon name="share-alt" size={14} color={Colors.text.secondary} />
           </TouchableOpacity>
         </View>
       </View>
@@ -160,11 +167,16 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  placeholderContent: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   productImageText: {
     fontSize: Colors.fontSize.sm,
     color: Colors.text.tertiary,
     textAlign: 'center',
     lineHeight: 16,
+    marginTop: 6,
   },
   wishlistBtn: {
     position: 'absolute',
@@ -177,9 +189,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     ...Colors.shadows.small,
-  },
-  wishlistIcon: {
-    fontSize: 14,
   },
   productInfo: {
     padding: 10,
@@ -239,10 +248,6 @@ const styles = StyleSheet.create({
   },
   shareBtn: {
     padding: 5,
-  },
-  shareIcon: {
-    fontSize: Colors.fontSize.sm,
-    color: Colors.text.secondary,
   },
 });
 

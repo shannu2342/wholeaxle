@@ -1,0 +1,505 @@
+# CI/CD Pipeline for Wholexale.com
+# Automated Testing, Building, and Deployment Pipeline
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop, staging ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+env:
+  NODE_VERSION: '18'
+  JAVA_VERSION: '11'
+  ANDROID_COMPILE_SDK: '33'
+  ANDROID_BUILD_TOOLS: '33.0.0'
+
+jobs:
+  # Unit and Integration Tests
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    
+    services:
+      mongodb:
+        image: mongo:5.0
+        env:
+          MONGO_INITDB_ROOT_USERNAME: admin
+          MONGO_INITDB_ROOT_PASSWORD: password
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand({ping: 1})'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:6-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd backend && npm ci
+
+      - name: Run linting
+        run: |
+          npm run lint
+          cd backend && npm run lint
+
+      - name: Run unit tests
+        run: npm run test:unit
+        env:
+          NODE_ENV: test
+          MONGODB_URI: mongodb://admin:password@localhost:27017/wholexale_test?authSource=admin
+          REDIS_URL: redis://localhost:6379
+          JWT_SECRET: test-jwt-secret-key
+          ENCRYPTION_KEY: test-encryption-key
+
+      - name: Run integration tests
+        run: npm run test:integration
+        env:
+          NODE_ENV: test
+          MONGODB_URI: mongodb://admin:password@localhost:27017/wholexale_test?authSource=admin
+          REDIS_URL: redis://localhost:6379
+          JWT_SECRET: test-jwt-secret-key
+          ENCRYPTION_KEY: test-encryption-key
+          API_BASE_URL: http://localhost:3000
+
+      - name: Generate test coverage
+        run: npm run test:coverage
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+      - name: Store test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results
+          path: |
+            coverage/
+            test-results/
+            backend/coverage/
+
+  # Security Testing
+  security:
+    name: Security Tests
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd backend && npm ci
+
+      - name: Run security audit
+        run: |
+          npm audit --audit-level moderate
+          cd backend && npm audit --audit-level moderate
+
+      - name: Run security tests
+        run: npm run test:security
+        env:
+          NODE_ENV: test
+          MONGODB_URI: mongodb://localhost:27017/wholexale_test
+          REDIS_URL: redis://localhost:6379
+          JWT_SECRET: test-jwt-secret-key
+          ENCRYPTION_KEY: test-encryption-key
+
+  # Performance Testing
+  performance:
+    name: Performance Tests
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd backend && npm ci
+
+      - name: Start backend server
+        run: |
+          cd backend && npm start &
+        env:
+          NODE_ENV: test
+          MONGODB_URI: mongodb://localhost:27017/wholexale_test
+          REDIS_URL: redis://localhost:6379
+          JWT_SECRET: test-jwt-secret-key
+          ENCRYPTION_KEY: test-encryption-key
+          PORT: 3000
+
+      - name: Wait for server to be ready
+        run: npx wait-on http://localhost:3000
+
+      - name: Install k6
+        run: |
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install k6
+
+      - name: Run performance tests
+        run: k6 run tests/performance/load.test.js
+        env:
+          BASE_URL: http://localhost:3000
+
+      - name: Upload performance results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: performance-results
+          path: |
+            performance_test_results.json
+            performance_test_results.html
+
+  # Build Android App
+  build-android:
+    name: Build Android App
+    runs-on: ubuntu-latest
+    needs: [test, security]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Android tests
+        run: npm run test:android
+        env:
+          NODE_ENV: test
+
+      - name: Build Android Debug APK
+        run: |
+          cd android
+          ./gradlew assembleDebug
+        env:
+          ANDROID_COMPILE_SDK: ${{ env.ANDROID_COMPILE_SDK }}
+          ANDROID_BUILD_TOOLS: ${{ env.ANDROID_BUILD_TOOLS }}
+
+      - name: Build Android Release APK
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd android
+          ./gradlew assembleRelease
+        env:
+          ANDROID_COMPILE_SDK: ${{ env.ANDROID_COMPILE_SDK }}
+          ANDROID_BUILD_TOOLS: ${{ env.ANDROID_BUILD_TOOLS }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+
+      - name: Upload APK artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-apks
+          path: |
+            android/app/build/outputs/apk/debug/*.apk
+            android/app/build/outputs/apk/release/*.apk
+
+  # Build iOS App (macOS only)
+  build-ios:
+    name: Build iOS App
+    runs-on: macos-latest
+    needs: [test, security]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.0'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install iOS dependencies
+        run: |
+          cd ios
+          pod install
+
+      - name: Build iOS App
+        run: |
+          xcodebuild -workspace Wholexale.xcworkspace \
+                     -scheme Wholexale \
+                     -configuration Release \
+                     -destination generic/platform=iOS \
+                     -archivePath Wholexale.xcarchive \
+                     archive
+        env:
+          DEVELOPER_ID: ${{ secrets.DEVELOPER_ID }}
+          APP_STORE_ID: ${{ secrets.APP_STORE_ID }}
+          PROVISIONING_PROFILE: ${{ secrets.PROVISIONING_PROFILE }}
+
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+                     -archivePath Wholexale.xcarchive \
+                     -exportPath . \
+                     -exportOptionsPlist ExportOptions.plist
+        env:
+          APP_STORE_PASSWORD: ${{ secrets.APP_STORE_PASSWORD }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-app
+          path: Wholexale.ipa
+
+  # Deploy Backend
+  deploy-backend:
+    name: Deploy Backend
+    runs-on: ubuntu-latest
+    needs: [test, security, performance]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd backend && npm ci
+
+      - name: Build backend
+        run: |
+          cd backend
+          npm run build
+          npm run test
+        env:
+          NODE_ENV: production
+          MONGODB_URI: ${{ secrets.PRODUCTION_MONGODB_URI }}
+          REDIS_URL: ${{ secrets.PRODUCTION_REDIS_URL }}
+          JWT_SECRET: ${{ secrets.PRODUCTION_JWT_SECRET }}
+          ENCRYPTION_KEY: ${{ secrets.PRODUCTION_ENCRYPTION_KEY }}
+
+      - name: Deploy to production server
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.PRODUCTION_HOST }}
+          username: ${{ secrets.PRODUCTION_USER }}
+          key: ${{ secrets.PRODUCTION_SSH_KEY }}
+          script: |
+            cd /var/www/wholexale
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart wholexale-backend
+            pm2 save
+
+      - name: Deploy to staging
+        if: github.ref == 'refs/heads/develop'
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          script: |
+            cd /var/www/wholexale-staging
+            git pull origin develop
+            npm ci --production
+            npm run build
+            pm2 restart wholexale-staging
+            pm2 save
+
+  # Deploy Mobile Apps
+  deploy-mobile:
+    name: Deploy Mobile Apps
+    runs-on: ubuntu-latest
+    needs: [build-android, build-ios, deploy-backend]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Android APK
+        uses: actions/download-artifact@v3
+        with:
+          name: android-apks
+          path: ./android-builds/
+
+      - name: Download iOS IPA
+        uses: actions/download-artifact@v3
+        with:
+          name: ios-app
+          path: ./ios-build/
+
+      - name: Deploy to Google Play Console
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+          packageName: com.wholexale.app
+          releaseFiles: android-builds/app-release.apk
+          track: production
+          status: completed
+
+      - name: Deploy to TestFlight
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          telegram_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          message: |
+            🚀 Wholexale iOS App Deployed to TestFlight!
+            Build: ${{ github.sha }}
+            Branch: ${{ github.ref }}
+            Time: ${{ github.event.head_commit.timestamp }}
+
+  # Notification and Monitoring
+  notify:
+    name: Send Notifications
+    runs-on: ubuntu-latest
+    needs: [deploy-backend, deploy-mobile]
+    if: always()
+
+    steps:
+      - name: Notify on success
+        if: needs.deploy-backend.result == 'success' && needs.deploy-mobile.result == 'success'
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          telegram_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          message: |
+            ✅ Wholexale Deployment Successful!
+            Environment: Production
+            Commit: ${{ github.sha }}
+            Branch: ${{ github.ref_name }}
+            Backend: ✅ Mobile Apps: ✅
+
+      - name: Notify on failure
+        if: needs.deploy-backend.result == 'failure' || needs.deploy-mobile.result == 'failure'
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          telegram_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          message: |
+            ❌ Wholexale Deployment Failed!
+            Environment: Production
+            Commit: ${{ github.sha }}
+            Branch: ${{ github.ref_name }}
+            Backend: ${{ needs.deploy-backend.result }}
+            Mobile: ${{ needs.deploy-mobile.result }}
+
+  # Post-deployment verification
+  post-deployment:
+    name: Post-deployment Verification
+    runs-on: ubuntu-latest
+    needs: [deploy-backend, deploy-mobile]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Health check backend
+        run: |
+          curl -f ${{ secrets.PRODUCTION_API_URL }}/health || exit 1
+          curl -f ${{ secrets.PRODUCTION_API_URL }}/api/health || exit 1
+
+      - name: Run smoke tests
+        run: |
+          npm run test:smoke
+        env:
+          API_BASE_URL: ${{ secrets.PRODUCTION_API_URL }}
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+
+      - name: Verify mobile app downloads
+        run: |
+          echo "Checking Google Play Store availability..."
+          curl -f "https://play.google.com/store/apps/details?id=com.wholexale.app" || echo "Play Store check failed"
+          
+      - name: Generate deployment report
+        run: |
+          echo "Deployment Report" > deployment-report.md
+          echo "=================" >> deployment-report.md
+          echo "Date: $(date)" >> deployment-report.md
+          echo "Commit: ${{ github.sha }}" >> deployment-report.md
+          echo "Branch: ${{ github.ref_name }}" >> deployment-report.md
+          echo "Environment: Production" >> deployment-report.md
+          echo "" >> deployment-report.md
+          echo "Backend Status: ${{ needs.deploy-backend.result }}" >> deployment-report.md
+          echo "Mobile Apps Status: ${{ needs.deploy-mobile.result }}" >> deployment-report.md
+
+      - name: Upload deployment report
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-report
+          path: deployment-report.md

@@ -1,0 +1,472 @@
+--------- beginning of main
+01-23 12:12:40.620 E/Parcel  (27753): Attempt to read from protected data in Parcel 0x7fe3761850
+01-23 12:12:40.620 E/Parcel  (27753): Attempt to read from protected data in Parcel 0x7fe3761850
+01-23 12:12:40.620 E/Parcel  (27753): Attempt to read from protected data in Parcel 0x7fe3761850
+01-23 12:12:40.620 E/Parcel  (27753): Attempt to read from protected data in Parcel 0x7fe3761850
+01-23 12:12:40.620 E/Parcel  (27753): Attempt to read from protected data in Parcel 0x7fe3761850
+01-23 12:12:40.669 E/Parcel  (27757): Attempt to read from protected data in Parcel 0x7ff862a6f0
+01-23 12:12:40.670 E/Parcel  (27757): Attempt to read from protected data in Parcel 0x7ff862a6f0
+01-23 12:12:40.670 E/Parcel  (27757): Attempt to read from protected data in Parcel 0x7ff862a6f0
+01-23 12:12:40.670 E/Parcel  (27757): Attempt to read from protected data in Parcel 0x7ff862a6f0
+01-23 12:12:40.670 E/Parcel  (27757): Attempt to read from protected data in Parcel 0x7ff862a6f0
+01-23 12:12:40.721 E/Parcel  (27761): Attempt to read from protected data in Parcel 0x7fe3a5d430
+01-23 12:12:40.721 E/Parcel  (27761): Attempt to read from protected data in Parcel 0x7fe3a5d430
+01-23 12:12:40.721 E/Parcel  (27761): Attempt to read from protected data in Parcel 0x7fe3a5d430
+01-23 12:12:40.721 E/Parcel  (27761): Attempt to read from protected data in Parcel 0x7fe3a5d430
+01-23 12:12:40.721 E/Parcel  (27761): Attempt to read from protected data in Parcel 0x7fe3a5d430
+01-23 12:12:40.780 E/Parcel  (27768): Attempt to read from protected data in Parcel 0x7fdd10ea90
+01-23 12:12:40.780 E/Parcel  (27768): Attempt to read from protected data in Parcel 0x7fdd10ea90
+01-23 12:12:40.780 E/Parcel  (27768): Attempt to read from protected data in Parcel 0x7fdd10ea90
+01-23 12:12:40.780 E/Parcel  (27768): Attempt to read from protected data in Parcel 0x7fdd10ea90
+01-23 12:12:40.780 E/Parcel  (27768): Attempt to read from protected data in Parcel 0x7fdd10ea90
+--------- beginning of system
+01-23 12:12:40.786 I/ActivityTaskManager( 1748): START u0 {flg=0x10000000 cmp=com.wholexale.app.staging/com.wholexale.app.MainActivity mCallingUid=2000} from uid 2000
+01-23 12:12:40.786 I/mtkpower_client( 1748): perf_lock_rel, hdl:77435, tid:2280
+01-23 12:12:40.787 I/mtkpower_client( 1748): perf_lock_acq, hdl:77435, dur:0, num:10, tid:2280
+01-23 12:12:40.787 I/libPowerHal(  859): [perfLockRel] hdl:77435, idx:0
+01-23 12:12:40.787 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 12:12:40.787 D/CompatibilityChangeReporter( 1748): Compat change id reported: 194480991; UID 10851; state: ENABLED
+01-23 12:12:40.789 D/OplusZoomWindowRUSConfigManager( 1748): isSupportZoomModeWithPolicyLocked: target = com.wholexale.app.staging/com.wholexale.app.MainActivity
+01-23 12:12:40.789 D/OplusZoomWindowRUSConfigManager( 1748): targetPkg = com.wholexale.app.staging
+01-23 12:12:40.789 V/OplusZoomWindowManagerService( 1748): unSupportZoom: false ,callingPid: 27769 ,sourceStack: null
+01-23 12:12:40.789 I/mtkpower_client( 1748): ret_hdl:77437
+01-23 12:12:40.789 I/mtkpower@impl(  859): [setMode] type:5, enabled:1
+01-23 12:12:40.790 I/libPowerHal(  859): system_server: cpu_ctrl set cpu freq: 1275000 -1 2200000 -1
+01-23 12:12:40.791 D/ActivityTaskManager( 1748): onWindowFocusChanged Task{d807002 #11689 type=standard A=10851:com.wholexale.app.staging U=0 visible=true visibleRequested=false mode=fullscreen translucent=true sz=1} would transfer to compact
+01-23 12:12:40.792 I/mtkpower_client( 1748): perf_lock_rel, hdl:77437, tid:2280
+01-23 12:12:40.792 I/InputDispatcher( 1748): setFocusedApplication displayId=0 ActivityRecord{819b4e4 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11689}
+01-23 12:12:40.792 I/libPowerHal(  859): LAUNCH: cpu_ctrl set cpu freq: 2000000 -1 2200000 -1
+01-23 12:12:40.792 V/WindowManager( 1748): Changing focus from Window{578cf9b u0 com.android.launcher/com.android.launcher.Launcher} to null,diplayid=0
+01-23 12:12:40.793 D/Theia.NoFocusWindow( 1748): FocusWindowErrorScene CheckFreezeScreen
+01-23 12:12:40.794 I/mtkpower_client( 1748): perf_lock_acq, hdl:77437, dur:0, num:10, tid:2280
+01-23 12:12:40.794 I/libPowerHal(  859): [perfLockRel] hdl:77437, idx:0
+01-23 12:12:40.795 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-23 12:12:40.795 D/ActivityTaskManager( 1748): getStartingWindowType: newTask=false, taskSwitch=true, processRunning=true, allowTaskSnapshot=true, activityCreated=true, snapshot=TaskSnapshot{ mId=1769150528875 mTopActivityComponent=com.wholexale.app.staging/com.wholexale.app.MainActivity mSnapshot=android.hardware.HardwareBuffer@c61ad52 (1080x2400) mColorSpace=sRGB IEC61966-2.1 (id=0, model=RGB) mOrientation=1 mRotation=0 mTaskSize=Point(1080, 2400) mContentInsets=[0,110][0,0] mLetterboxInsets=[0,0][0,0] mIsLowResolution=false mIsRealSnapshot=true mWindowingMode=1 mAppearance=8 mIsTranslucent=false mHasImeSurface=false, record:ActivityRecord{819b4e4 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11689}
+01-23 12:12:40.795 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-23 12:12:40.795 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 12:12:40.795 I/mtkpower_client( 1748): ret_hdl:77439
+01-23 12:12:40.796 I/mtkpower_client( 1748): perf_lock_rel, hdl:77439, tid:2280
+01-23 12:12:40.796 I/mtkpower_client( 1748): perf_lock_acq, hdl:77439, dur:0, num:10, tid:2280
+01-23 12:12:40.796 I/libPowerHal(  859): [perfLockRel] hdl:77439, idx:0
+01-23 12:12:40.796 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-23 12:12:40.796 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-23 12:12:40.796 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 12:12:40.797 I/mtkpower_client( 1748): ret_hdl:77440
+01-23 12:12:40.798 D/PhoneStartingWindowTypeAlgorithm( 2225): preferredStartingWindowType newTask=false, taskSwitch=true, processRunning=true, allowTaskSnapshot=true, activityCreated=true, isSolidColorSplashScreen=true, legacySplashScreen=false, activityDrawn=true, topIsHome=false
+01-23 12:12:40.798 I/PowerHalWrapper( 1748): <amsBoostResume> last:com.android.launcher, next:com.wholexale.app.staging 
+01-23 12:12:40.803 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-23 12:12:40.803 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 12:12:40.805 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:12:40.808 I/WindowManager( 1748): addWindow: New client android.os.BinderProxy@9c94c9e : window=Window{41f37f u0 SnapshotStartingWindow for taskId=11689}
+01-23 12:12:40.810 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:12:40.810 V/WindowManager( 1748): Relayout Window{41f37f u0 SnapshotStartingWindow for taskId=11689}: viewVisibility=0, oldvis=8, req=-1x-1
+01-23 12:12:40.811 I/BufferQueueDebug(  966): [SnapshotStartingWindow for taskId=11689#29593](this:0xb4000070202a89e8,id:-1,api:0,p:-1,c:-1) BufferQueue core=(966:/system/bin/surfaceflinger)
+01-23 12:12:40.818 V/SensorManager( 1748): call sensorServiceCommonInterface name: setScreenShotDisable
+01-23 12:12:40.818 D/SensorService( 1748): SensorService sensorServiceCommonInterface = setScreenShotDisable
+01-23 12:12:40.818 D/SensorServiceExtImpl( 1748): sensorServiceCommonInterface funcName = setScreenShotDisable, flag = 0, status = 0
+01-23 12:12:40.818 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-23 12:12:40.818 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 12:12:40.818 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 1
+01-23 12:12:40.818 I/OplusHansManager ( 1748): front pkg: com.wholexale.app.staging, uid: 10851, prev pkg: com.android.launcher, prev uid: 10106
+01-23 12:12:40.818 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging activity event: []
+01-23 12:12:40.818 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 12:12:40.818 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 1
+01-23 12:12:40.819 D/VRI[MainActivity]( 8534): dispatchAppVisibility visible:true
+01-23 12:12:40.820 I/FocusResolver( 1748): updateFocusedWindow,  on display 0, reason: Waiting for window because NOT_FOCUSABLE, result:   FocusedWindows: <none>
+01-23 12:12:40.820 W/ShellStartingWindow( 2225): create TaskSnapshotWindow snapshot frame:Rect(0, 0 - 1080, 2400), tmpFrames:Rect(0, 0 - 1080, 2400)
+01-23 12:12:40.821 I/OplusHansManager ( 1748): notifyAppGoForeground, uid=10851
+01-23 12:12:40.821 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging M exit SM
+01-23 12:12:40.821 I/OplusHansManager ( 1748): notifyAppGoBackground, uid=10106
+01-23 12:12:40.821 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging M exit(), M stay=0
+01-23 12:12:40.821 I/OplusHansManager ( 1748): uid=10851, pkg=com.wholexale.app.staging R exit(), R stay=0
+01-23 12:12:40.822 I/Osense-DecisionMaker( 1748): notifySceneToAthenaPolicy: SCENE_APP_SWITCH, bundle: Bundle[{prevPkgName=com.android.launcher, curUid=10851, curPkgName=com.wholexale.app.staging, prevUid=10106}]
+01-23 12:12:40.822 I/Osense-DecisionMaker( 1748): scene: SCENE_APP_SWITCH, excutingPolicy: freezer
+01-23 12:12:40.822 I/OplusJoystickManager( 1748): handleApplicationSwitch deprecated!
+01-23 12:12:40.822 D/Osense-DecisionMaker( 1748): invoke freezer policy,type: fast
+01-23 12:12:40.822 D/OplusAppSwitchListener( 1748): Detect com.android.launcher switch to background
+01-23 12:12:40.823 D/OplusEapManager( 1748): mTargetExitName :com.android.launcher
+01-23 12:12:40.823 I/PowerHalWrapper( 1748): amsBoostNotify pid:8534,activity:com.wholexale.app.MainActivity, package:com.wholexale.app.staging, mProcessCreatePackcom.wholexale.app.staging 
+01-23 12:12:40.823 I/PowerHalWrapper( 1748): state: 1 
+01-23 12:12:40.823 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.wholexale.app.staging/com.wholexale.app.MainActivity pid=8534 state:1
+01-23 12:12:40.823 I/game_scn( 1748): collectForegroundAppList packName=com.wholexale.app.staging, actName=com.wholexale.app.MainActivity, pid=8534, uid=10851, state:RESUMED
+01-23 12:12:40.823 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:false 
+01-23 12:12:40.823 V/DCSEX-AppSwitchManager( 1748): OnAppSwitchObserver: onAppExit, resuming = com.wholexale.app.staging, target = com.android.launcher, is ResumingFirstStart =  false, is ResumingMultiApp =  false, extensionInfo =  Bundle[{taskId=11689, uid=10851}]
+01-23 12:12:40.823 D/VRR [OPlusFrontAppManager]( 1748): OnAppSwitchObserver: onAppExit , info.targetName = com.android.launcher
+01-23 12:12:40.823 D/VRR [OPlusFrontAppManager]( 1748): packageName: null
+01-23 12:12:40.823 I/OplusResourcePreloadManager( 1748): resume pkg: com.wholexale.app.staging, uid:10851, prev pkg: com.android.launcher, prev uid: 10106
+01-23 12:12:40.823 I/libPowerHal(  859): [perfNotifyAppState] foreground:com.wholexale.app.staging, pid:8534, uid:10851
+01-23 12:12:40.824 D/VRR [OPlusRefreshRateService]( 1748): handleFrontAppChange pkgName: null
+01-23 12:12:40.824 D/DCSEX-AppLaunchEventRecorder( 1748): onAppSwitch from = com.android.launcher to = com.wholexale.app.staging
+01-23 12:12:40.824 D/VRR [OPlusExternalRefreshRateManager]( 1748): setFrontPackageName pkgName: null CurPkgName: com.android.launcher
+01-23 12:12:40.824 D/OplusAppSwitchListener( 1748): Detect com.wholexale.app.staging switch to foreground
+01-23 12:12:40.824 E/UxUtility(  859): notifyAppState error = NULL
+01-23 12:12:40.824 I/TouchUtility(  859): notifyAppState error = NULL
+01-23 12:12:40.824 D/OplusEapManager( 1748): mTargetEnterName :com.wholexale.app.staging
+01-23 12:12:40.824 D/OplusLatencyOptimizerManager( 1748): enter pkg: com.wholexale.app.staging isPrevBlackAppTop: false mIsBlackAppTop: false
+01-23 12:12:40.824 V/DCSEX-AppSwitchManager( 1748): OnAppSwitchObserver: onAppEnter, launchedFrom =  com.android.shell, target =  com.wholexale.app.staging, is firstStart =  false, is multiApp =  false, extensionInfo =  Bundle[{taskId=11689, pid=8534, uid=10851, versionCode=1}]
+01-23 12:12:40.824 D/VRR [OPlusFrontAppManager]( 1748): OnAppSwitchObserver: onAppEnter , info.targetName = com.wholexale.app.staging
+01-23 12:12:40.824 D/VRR [OPlusFrontAppManager]( 1748): packageName: com.wholexale.app.staging
+01-23 12:12:40.825 E/Athena  ( 1748): MemoryGuardAction: handleAppChange
+01-23 12:12:40.826 I/DeepThinker( 5470): IntentManager: onIntentProduced 1
+01-23 12:12:40.826 I/DeepThinker( 5470): IntentManager: dispatchIntents 1
+01-23 12:12:40.826 I/DeepThinker( 5470): EventFountainDispatcher: dispatchSpecificIntents 1
+01-23 12:12:40.826 I/DeepThinker( 5470): EventFountainDispatcher: dispatchSpecificIntents com.pantanal.action.APPS_LIST
+01-23 12:12:40.826 D/VRR [OPlusRefreshRateService]( 1748): handleFrontAppChange pkgName: com.wholexale.app.staging
+01-23 12:12:40.827 D/VRR [OPlusExternalRefreshRateManager]( 1748): setFrontPackageName pkgName: com.wholexale.app.staging CurPkgName: null
+01-23 12:12:40.827 W/Battery ( 4587): ThermalControlUtils: mForegroundPkg=com.wholexale.app.staging
+01-23 12:12:40.827 I/Athena  ( 2605): AthenaDynamicReceiver: pre_app:com.android.launcher, next_app:com.wholexale.app.staging(10851|8534)
+01-23 12:12:40.827 D/VRR [OPlusRefreshRateService]( 1748):  setFrameRateTargetControl [ 0.0 , com.android.launcher , false , com.oplus.battery ]
+01-23 12:12:40.827 D/VRR [OPlusRefreshRateService]( 1748):  setFrameRateTargetControl from [0, 1000, android.uid.system:1000]
+01-23 12:12:40.827 D/VRR [OPlusExternalRefreshRateManager]( 1748):  [FRTC] FrameRate : 0 com.android.launcher false com.oplus.battery 0 1000
+01-23 12:12:40.828 I/mtkpower@impl(  859): [notifyAppState] pc:0, com.android.launcher => com.wholexale.app.staging
+01-23 12:12:40.829 D/VRR [OPlusSurfaceFlingerController]( 1748):  add frtc FrameRate : 0 com.android.launcher false com.oplus.battery
+01-23 12:12:40.830 I/VRR [FRTC](  966): setFrameRateTarget with [0, com.android.launcher, 0, com.oplus.battery, 1, 0, 1000]
+01-23 12:12:40.830 W/VRR [FRTC](  966): invalid param { fps 0, proc_name com.android.launcher, strict_mode 0, description com.oplus.battery, proc_id 0, rate_status 0, backend Surface, version 1, pid 0, uid 1000, enable at 2026-01-23 12:12:40, disable waiting } for current status.
+01-23 12:12:40.830 W/VRR [FRTC](  966): CurrentTarget size 0:
+01-23 12:12:40.831 E/OplusThermalStats( 1748): Error getting package info: com.wholexale.app.staging
+01-23 12:12:40.831 D/TaskFragmentExtImpl( 1748): addColorModeOnResume resume=true pkg = com.wholexale.app.staging
+01-23 12:12:40.831 W/Battery ( 4587): ThermalControllHandler: tempLevel=5,userMode=3,gameUserMode=7,appType=-1,envTempType=1,appStates=[],appSwitchSafetyMode=false
+01-23 12:12:40.833 D/VRI[MainActivity]( 8534): setWindowStopped stopped:false
+01-23 12:12:40.834 D/OplusLayer(  966): (29593,SnapshotStartingWindow for taskId=11689#29593,com.android.systemui) setBuffer
+01-23 12:12:40.837 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10162, pkgCmd = PKG_CMD_MAX
+01-23 12:12:40.838 I/PowerHalWrapper( 1748): amsBoostNotify pid:2623,activity:com.android.launcher.Launcher, package:com.android.launcher, mProcessCreatePackcom.wholexale.app.staging 
+01-23 12:12:40.838 I/PowerHalWrapper( 1748): state: 0 
+01-23 12:12:40.838 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.android.launcher/com.android.launcher.Launcher pid=2623 state:0
+01-23 12:12:40.838 I/game_scn( 1748): collectForegroundAppList packName=com.android.launcher, actName=com.android.launcher.Launcher, pid=2623, uid=10106, state:PAUSED
+01-23 12:12:40.838 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:false 
+01-23 12:12:40.839 D/VRI[Launcher]( 2623): onFocusEvent false
+01-23 12:12:40.839 W/Battery ( 4587): ThermalControllerCenter: mSafetyState=10000
+01-23 12:12:40.842 D/WindowManager( 1748): finishDrawingWindow: Window{41f37f u0 SnapshotStartingWindow for taskId=11689} mDrawState=DRAW_PENDING
+01-23 12:12:40.843 W/Battery ( 4587): ThermalControllHandler: tempGear=5,configItemName=common_config
+01-23 12:12:40.844 D/OplusBatteryServiceFeature( 1748): setSmartCoolDown: coolDown = 7, normalCoolDown = 7, pkgName = com.wholexale.app.staging
+01-23 12:12:40.845 D/vendor.oplus.hardware.charger@1.0-service(  897): set cooldown:7,  normalCoolDown:7
+01-23 12:12:40.845 E/Parcel  (27775): Attempt to read from protected data in Parcel 0x7fce3b51d0
+01-23 12:12:40.846 W/Battery ( 4587): ThermalControllHandler: MSG_THERMAL_CONTROL_CATEGORY_CHANGED
+01-23 12:12:40.846 E/Parcel  (27775): Attempt to read from protected data in Parcel 0x7fce3b51d0
+01-23 12:12:40.846 E/Parcel  (27775): Attempt to read from protected data in Parcel 0x7fce3b51d0
+01-23 12:12:40.846 E/Parcel  (27775): Attempt to read from protected data in Parcel 0x7fce3b51d0
+01-23 12:12:40.846 E/Parcel  (27775): Attempt to read from protected data in Parcel 0x7fce3b51d0
+01-23 12:12:40.858 I/WindowStateExtImpl( 1748): onSurfaceShowChange show = true mPackageName = com.wholexale.app.staging parentPkgName = com.wholexale.app.staging
+01-23 12:12:40.862 D/WindowManager( 1748): finishDrawingWindow: Window{41f37f u0 SnapshotStartingWindow for taskId=11689} mDrawState=HAS_DRAWN
+01-23 12:12:40.865 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging moveToTop:[]
+01-23 12:12:40.865 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 12:12:40.865 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging boost hint: 8534
+01-23 12:12:40.865 D/OplusUIFirst_FB( 1748): handleParaSwitch com.wholexale.app.staging null null 0
+01-23 12:12:40.866 D/OplusUIFirst_FB( 1748): com.wholexale.app.staging toForeOps: []
+01-23 12:12:40.866 D/OplusUIFirst_FB( 1748): List of ThreadOp: size=0 []
+01-23 12:12:40.867 D/OplusAtlas.OplusAtlasEventDispatch( 3300): setEvent:atlas_event_on_foreground_activities_changed info:pid:8534,uid:10851,hasForegroundActivities:1
+01-23 12:12:40.867 D/OplusFullScreenDisplayManager( 1748): adjustWindowParamsLw com.wholexale.app.staging, no change cutoutMode: 0
+01-23 12:12:40.867 V/WindowManager( 1748): Relayout Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity}: viewVisibility=0, oldvis=8, req=1080x2400
+01-23 12:12:40.868 D/Layer   (  966): reparent to null sequence=29589, seq[1], name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#29589
+01-23 12:12:40.868 D/Layer   (  966): reparent to null sequence=29590, seq[2], name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#29590
+01-23 12:12:40.868 D/OplusLayer(  966): ~Layer() sequence=29589, name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#29589
+01-23 12:12:40.868 D/OplusLayer(  966): ~Layer() sequence=29590, name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#29590
+01-23 12:12:40.868 I/BufferQueueDebug(  966): [com.wholexale.app.staging/com.wholexale.app.MainActivity#29598](this:0xb40000702031d9e8,id:-1,api:0,p:-1,c:-1) BufferQueue core=(966:/system/bin/surfaceflinger)
+01-23 12:12:40.869 W/View    ( 2225): requestLayout() improperly called by android.widget.ProgressBar{e107b16 V.ED..... ......ID 0,0-61,31 #7f0b090a app:id/stat_battery_view} during layout: running second layout pass
+01-23 12:12:40.869 D/OplusUIFirst_FB( 1748): com.google.android.googlequicksearchbox moveToBack 12190
+01-23 12:12:40.871 V/DeepThinker( 5470): ProcessManager: onForegroundActivitiesChanged pid:8534, uid:10851, foregroundActivities:true
+01-23 12:12:40.871 D/OplusAtlas.OplusAudioScene( 3300): callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:8534,uid:10851,hasForegroundActivities:1
+01-23 12:12:40.871 D/OplusUIFirst_FB( 1748): com.coloros.assistantscreen moveToBack 4044
+01-23 12:12:40.871 D/OplusAtlas.OplusMessageHandler( 3300): handleMessage: Msg { when=0 what=2 obj=com.oplus.atlas.OplusAtlasEvent@6674cd3 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+01-23 12:12:40.879 D/PhoneInterfaceManager( 2568): [PhoneIntfMgr] QueryTelephonyChecker-getDataNetworkTypeForSubscriber: packageName = com.android.phone, isGrant = true
+01-23 12:12:40.880 V/WindowManager( 1748): Changing focus from null to Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity},diplayid=0
+01-23 12:12:40.880 D/PhoneInterfaceManager( 2568): [PhoneIntfMgr] QueryTelephonyChecker-getDataNetworkTypeForSubscriber: packageName = com.android.phone, isGrant = true
+01-23 12:12:40.885 D/Theia.NoFocusWindow( 1748): FocusWindowErrorScene cancelCheckFreezeScreen
+01-23 12:12:40.886 I/DispPerfService(  966): updateLayerMask 9
+01-23 12:12:40.888 I/mtkpower@impl(  859): [setMode] type:6, enabled:1
+01-23 12:12:40.888 D/[OSIE]  (  966): scltmLayer_name VRI[MainActivity][com.wholexale.app.staging/com.wholexale.app.MainActivity]
+01-23 12:12:40.888 E/mtkpower@impl(  859): [setMode] unknown type
+01-23 12:12:40.888 D/[OSIE]  (  966): IsSCLTMLayer=0 
+01-23 12:12:40.888 D/BufferQueueConsumer( 8534): [](id:215600000002,api:0,p:-1,c:8534) connect: controlledByApp=false
+01-23 12:12:40.888 E/IPCThreadState( 8534): attemptIncStrongHandle(53): Not supported
+01-23 12:12:40.891 D/VRI[MainActivity]( 8534): registerCallbacksForSync syncBuffer=false
+01-23 12:12:40.901 D/Layer   (  966): reparent to null sequence=29597, seq[2], name=Surface(name=209d612 NavigationBar0)/@0x85ef509 - animation-leash of insets_animation#29597
+01-23 12:12:40.901 D/Layer   (  966): reparent to null sequence=29596, seq[1], name=Surface(name=36bcf5d StatusBar)/@0xe761cc2 - animation-leash of insets_animation#29596
+01-23 12:12:40.908 I/bpas    (12190): onPause
+01-23 12:12:40.915 D/BLASTBufferQueue( 8534): [VRI[MainActivity][com.wholexale.app.staging/com.wholexale.app.MainActivity]#2](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=122201990114898(auto) mPendingTransactions.size=0 graphicBufferId=36653250904082 transform=0
+01-23 12:12:40.916 D/VRI[MainActivity]( 8534): Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+01-23 12:12:40.916 D/VRI[MainActivity]( 8534): draw finished.
+01-23 12:12:40.917 I/Quality ( 8534): Skipped: true 3 cost 52.97661 refreshRate 16548896 bit true processName com.wholexale.app.staging
+01-23 12:12:40.917 D/WindowManager( 1748): finishDrawingWindow: Window{119b6d1 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} mDrawState=DRAW_PENDING
+01-23 12:12:40.921 E/Parcel  (27782): Attempt to read from protected data in Parcel 0x7fdf2ed5c0
+01-23 12:12:40.921 E/Parcel  (27782): Attempt to read from protected data in Parcel 0x7fdf2ed5c0
+01-23 12:12:40.921 E/Parcel  (27782): Attempt to read from protected data in Parcel 0x7fdf2ed5c0
+01-23 12:12:40.921 E/Parcel  (27782): Attempt to read from protected data in Parcel 0x7fdf2ed5c0
+01-23 12:12:40.921 E/Parcel  (27782): Attempt to read from protected data in Parcel 0x7fdf2ed5c0
+01-23 12:12:40.928 D/OplusStartingWindowManager( 1748): interceptRemoveStartingWindow: packageName=com.wholexale.app.staging, isSnapshot=true, startingSurfaceRunnable=null
+01-23 12:12:40.928 D/OplusSplitScreenDnDUI( 1748): notifyRemoveStartingWindow isSpitScreenDrag = false mDropTargetSurface = null StartingWindowpkgName = com.wholexale.app.staging DragPkg = null isLauncherResume = false
+01-23 12:12:40.932 I/mtkpower@impl(  859): [setMode] type:5, enabled:0
+01-23 12:12:40.933 I/libPowerHal(  859): [perfLockRel] hdl:77438, idx:1
+01-23 12:12:40.933 I/PowerHalWrapper( 1748): amsBoostStop AMS_BOOST_PACK_SWITCH:true, AMS_BOOST_ACT_SWITCH:false, AMS_BOOST_PROCESS_CREATE:false 
+01-23 12:12:40.933 D/BufferStateLayer(  966): com.wholexale.app.staging/com.wholexale.app.MainActivity#29598 setBuffer frameId=1, bufferId=36653250904082 fenceId=816, w= 1080, h=2400
+01-23 12:12:40.934 D/OplusLayer(  966): (29598,com.wholexale.app.staging/com.wholexale.app.MainActivity#29598,com.wholexale.app.staging) setBuffer
+01-23 12:12:40.935 I/libPowerHal(  859): [perfLockRel] hdl:77441, idx:2
+01-23 12:12:40.935 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PACK_SWITCH update cmd:1000000, param:-1
+01-23 12:12:40.935 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PACK_SWITCH update cmd:1408300 param:0
+01-23 12:12:40.936 I/FocusResolver( 1748): updateFocusedWindow, 119b6d1 com.wholexale.app.staging/com.wholexale.app.MainActivity on display 0, reason: Window became focusable. Previous reason: NOT_VISIBLE, result:   FocusedWindows:
+01-23 12:12:40.936 I/FocusResolver( 1748):     displayId=0, name='119b6d1 com.wholexale.app.staging/com.wholexale.app.MainActivity'
+01-23 12:12:40.936 I/libPowerHal(  859): [PD] MTKPOWER_HINT_PACK_SWITCH update cmd:1000000 param:-1
+01-23 12:12:40.936 I/DispPerfService(  966): updateLayerMask 9
+01-23 12:12:40.936 D/VRI[MainActivity]( 8534): onFocusEvent true
+01-23 12:12:40.939 D/InputMethodManagerService( 1748): isSecurity: attribute.packageName=com.wholexale.app.staging mCurMethodId=com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+01-23 12:12:40.939 D/InputMethodManagerService( 1748): isSecurity= false (  enable=false needShow=false inBlackList=false isExist=true )
+01-23 12:12:40.942 I/GoogleInputMethodService(12290): GoogleInputMethodService.onFinishInput():2099 
+01-23 12:12:40.944 I/Module  (12290): DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 0, locked = false
+01-23 12:12:40.945 I/GoogleInputMethodService(12290): GoogleInputMethodService.onStartInput():1371 onStartInput(EditorInfo{EditorInfo{packageName=com.wholexale.app.staging, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=Bundle[{com.oplus.im.SCENES=0}], hintText=null, hintLocales=[]}}, false)
+01-23 12:12:40.946 I/Module  (12290): DeviceLockedStatusModuleProvider$Module.updateDeviceLockedStatus():103 repeatCheckTimes = 1, locked = false
+01-23 12:12:40.950 D/InputMethodManagerService( 1748): onHandleImeWindowVisibleStatus: vis = 0, needsToShowImeSwitcher = false
+01-23 12:12:40.950 D/Layer   (  966): reparent to null sequence=29591, seq[3], name=Surface(name=48c0b3 InputMethod)/@0xce4cde9 - animation-leash of insets_animation#29591
+01-23 12:12:40.954 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-23 12:12:40.954 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.wholexale.app.staging
+01-23 12:12:40.955 D/OplusAppListInterceptManager( 1748): shouldFilterTask
+01-23 12:12:40.955 D/OplusAppListInterceptManager( 1748): shouldFilterTask::packageName = com.whatsapp
+01-23 12:12:40.967 D/OplusLayer(  966): ~Layer() sequence=29591, name=Surface(name=48c0b3 InputMethod)/@0xce4cde9 - animation-leash of insets_animation#29591
+01-23 12:12:40.998 E/Parcel  (27787): Attempt to read from protected data in Parcel 0x7fe73231b0
+01-23 12:12:40.998 E/Parcel  (27787): Attempt to read from protected data in Parcel 0x7fe73231b0
+01-23 12:12:40.998 E/Parcel  (27787): Attempt to read from protected data in Parcel 0x7fe73231b0
+01-23 12:12:40.998 E/Parcel  (27787): Attempt to read from protected data in Parcel 0x7fe73231b0
+01-23 12:12:40.998 E/Parcel  (27787): Attempt to read from protected data in Parcel 0x7fe73231b0
+01-23 12:12:41.030 W/InputManager-JNI( 1748): Input channel object '41f37f SnapshotStartingWindow for taskId=11689 (client)' was disposed without first being removed with the input manager!
+01-23 12:12:41.055 E/Parcel  (27791): Attempt to read from protected data in Parcel 0x7fea760240
+01-23 12:12:41.055 E/Parcel  (27791): Attempt to read from protected data in Parcel 0x7fea760240
+01-23 12:12:41.055 E/Parcel  (27791): Attempt to read from protected data in Parcel 0x7fea760240
+01-23 12:12:41.055 E/Parcel  (27791): Attempt to read from protected data in Parcel 0x7fea760240
+01-23 12:12:41.055 E/Parcel  (27791): Attempt to read from protected data in Parcel 0x7fea760240
+01-23 12:12:41.103 E/Parcel  (27795): Attempt to read from protected data in Parcel 0x7fee73a110
+01-23 12:12:41.103 E/Parcel  (27795): Attempt to read from protected data in Parcel 0x7fee73a110
+01-23 12:12:41.103 E/Parcel  (27795): Attempt to read from protected data in Parcel 0x7fee73a110
+01-23 12:12:41.103 E/Parcel  (27795): Attempt to read from protected data in Parcel 0x7fee73a110
+01-23 12:12:41.103 E/Parcel  (27795): Attempt to read from protected data in Parcel 0x7fee73a110
+01-23 12:12:41.134 V/OplusZoomWindowManagerService( 1748): onAnimationFinished:  r = ActivityRecord{819b4e4 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11689}
+01-23 12:12:41.134 I/OplusAppSwitchManagerService( 1748):  handleAppVisible , r = ActivityRecord{819b4e4 u0 com.wholexale.app.staging/com.wholexale.app.MainActivity} t11689}
+01-23 12:12:41.136 V/OplusZoomWindowManagerService( 1748): onAnimationFinished:  r = ActivityRecord{a1e8fdf u0 com.android.launcher/.Launcher} t6}
+01-23 12:12:41.136 D/VRI[Launcher]( 2623): dispatchAppVisibility visible:false
+01-23 12:12:41.137 D/VRI[Launcher](12190): dispatchAppVisibility visible:false
+01-23 12:12:41.142 I/WindowStateExtImpl( 1748): onSurfaceShowChange show = false mPackageName = com.android.launcher parentPkgName = com.android.launcher
+01-23 12:12:41.149 D/Layer   (  966): reparent to null sequence=29594, seq[49], name=Surface(name=Task=11689)/@0x8c9d62d - animation-leash of app_transition#29594
+01-23 12:12:41.149 D/Layer   (  966): reparent to null sequence=29595, seq[19], name=Surface(name=Task=6)/@0xbb6404 - animation-leash of app_transition#29595
+01-23 12:12:41.149 D/OplusLayer(  966): ~Layer() sequence=29595, name=Surface(name=Task=6)/@0xbb6404 - animation-leash of app_transition#29595
+01-23 12:12:41.150 D/OplusLayer(  966): ~Layer() sequence=29594, name=Surface(name=Task=11689)/@0x8c9d62d - animation-leash of app_transition#29594
+01-23 12:12:41.153 I/PowerHalWrapper( 1748): amsBoostNotify pid:2623,activity:com.android.launcher.Launcher, package:com.android.launcher, mProcessCreatePackcom.wholexale.app.staging 
+01-23 12:12:41.154 I/PowerHalWrapper( 1748): state: 0 
+01-23 12:12:41.154 I/DispPerfService(  966): updateLayerMask 0
+01-23 12:12:41.154 I/mtkpower_client( 1748): [Legacy][PowerHal_Wrap_notifyAppState] com.android.launcher/com.android.launcher.Launcher pid=2623 state:0
+01-23 12:12:41.154 I/game_scn( 1748): collectForegroundAppList packName=com.android.launcher, actName=com.android.launcher.Launcher, pid=2623, uid=10106, state:PAUSED
+01-23 12:12:41.154 I/PowerHalWrapper( 1748): amsBoostNotify AMS_BOOST_PROCESS_CREATE_BOOST:false 
+01-23 12:12:41.154 V/WindowManager( 1748): Relayout Window{64337ed u0 com.android.launcher/com.android.launcher.Launcher}: viewVisibility=8, oldvis=0, req=1080x2400
+01-23 12:12:41.156 I/mtkpower@impl(  859): [setMode] type:6, enabled:0
+01-23 12:12:41.156 E/mtkpower@impl(  859): [setMode] unknown type
+01-23 12:12:41.159 E/Parcel  (27799): Attempt to read from protected data in Parcel 0x7ffba9a9f0
+01-23 12:12:41.159 E/Parcel  (27799): Attempt to read from protected data in Parcel 0x7ffba9a9f0
+01-23 12:12:41.159 E/Parcel  (27799): Attempt to read from protected data in Parcel 0x7ffba9a9f0
+01-23 12:12:41.159 E/Parcel  (27799): Attempt to read from protected data in Parcel 0x7ffba9a9f0
+01-23 12:12:41.159 E/Parcel  (27799): Attempt to read from protected data in Parcel 0x7ffba9a9f0
+01-23 12:12:41.160 D/BLASTBufferQueue(12190): [VRI[Launcher][com.android.launcher/com.android.launcher.Launcher]#161](f:0,a:1) destructor()
+01-23 12:12:41.160 D/BufferQueueConsumer(12190): [VRI[Launcher][com.android.launcher/com.android.launcher.Launcher]#161(BLAST Consumer)161](id:2f9e000000a1,api:0,p:-1,c:12190) disconnect
+01-23 12:12:41.162 I/boun    (12190): (REDACTED) onApplyWindowInsets: systemWindowInsets=%s
+01-23 12:12:41.162 I/boun    (12190): (REDACTED) onApplyWindowInsets: systemWindowInsets=%s
+01-23 12:12:41.164 D/OplusUIFirst_FB( 1748): com.android.launcher moveToBack 2623
+01-23 12:12:41.173 D/BtGatt.ScanManager( 3256): uid 10128 isForeground true scanMode 1
+01-23 12:12:41.174 V/WindowManager( 1748): Relayout Window{578cf9b u0 com.android.launcher/com.android.launcher.Launcher}: viewVisibility=8, oldvis=0, req=1080x2400
+01-23 12:12:41.178 I/OplusCustomScanStrategy( 3256): msg.what = 6
+01-23 12:12:41.180 D/BLASTBufferQueue( 2623): [VRI[Launcher][com.android.launcher/com.android.launcher.Launcher]#658](f:0,a:1) destructor()
+01-23 12:12:41.180 D/BufferQueueConsumer( 2623): [VRI[Launcher][com.android.launcher/com.android.launcher.Launcher]#658(BLAST Consumer)658](id:a3f000002bc,api:0,p:-1,c:2623) disconnect
+01-23 12:12:41.182 D/VRI[Launcher]( 2623): setWindowStopped stopped:true
+01-23 12:12:41.185 I/bpas    (12190): onStop
+01-23 12:12:41.198 D/Layer   (  966): reparent to null sequence=29586, seq[6], name=com.android.launcher/com.android.launcher.Launcher#29586
+01-23 12:12:41.198 D/Layer   (  966): reparent to null sequence=29587, seq[6], name=com.android.launcher/com.android.launcher.Launcher#29587
+01-23 12:12:41.199 I/BufferQueueDebug(  966): [com.android.launcher/com.android.launcher.Launcher#29586](this:0xb400006ff00699e8,id:-1,api:0,p:-1,c:966) onDestructor()
+01-23 12:12:41.199 D/OplusLayer(  966): ~Layer() sequence=29586, name=com.android.launcher/com.android.launcher.Launcher#29586
+01-23 12:12:41.201 D/OplusAtlas.OplusAtlasEventDispatch( 3300): setEvent:atlas_event_on_foreground_activities_changed info:pid:2623,uid:10106,hasForegroundActivities:0
+01-23 12:12:41.201 V/DeepThinker( 5470): ProcessManager: onForegroundActivitiesChanged pid:2623, uid:10106, foregroundActivities:false
+01-23 12:12:41.201 D/OplusAtlas.OplusAudioScene( 3300): callback success event:atlas_event_on_foreground_activities_changed eventInfo:pid:2623,uid:10106,hasForegroundActivities:0
+01-23 12:12:41.202 D/OplusAtlas.OplusMessageHandler( 3300): handleMessage: Msg { when=0 what=2 obj=com.oplus.atlas.OplusAtlasEvent@1963010 target=com.oplus.atlas.OplusMessageHandler$MyHandler }
+01-23 12:12:41.202 I/WindowStateExtImpl( 1748): onSurfaceShowChange show = false mPackageName = com.wholexale.app.staging parentPkgName = com.wholexale.app.staging
+01-23 12:12:41.215 D/Layer   (  966): reparent to null sequence=29593, seq[2], name=SnapshotStartingWindow for taskId=11689#29593
+01-23 12:12:41.215 D/Layer   (  966): reparent to null sequence=29592, seq[4], name=41f37f SnapshotStartingWindow for taskId=11689#29592
+01-23 12:12:41.215 D/Layer   (  966): reparent to null sequence=29602, seq[23], name=Surface(name=41f37f SnapshotStartingWindow for taskId=11689)/@0x81b46e6 - animation-leash of window_animation#29602
+01-23 12:12:41.216 I/BufferQueueDebug(  966): [com.android.launcher/com.android.launcher.Launcher#29587](this:0xb40000701df479e8,id:-1,api:0,p:-1,c:966) onDestructor()
+01-23 12:12:41.216 D/OplusLayer(  966): ~Layer() sequence=29587, name=com.android.launcher/com.android.launcher.Launcher#29587
+01-23 12:12:41.217 D/OplusLayer(  966): ~Layer() sequence=29602, name=Surface(name=41f37f SnapshotStartingWindow for taskId=11689)/@0x81b46e6 - animation-leash of window_animation#29602
+01-23 12:12:41.217 D/OplusLayer(  966): ~Layer() sequence=29592, name=41f37f SnapshotStartingWindow for taskId=11689#29592
+01-23 12:12:41.220 I/BufferQueueDebug(  966): [SnapshotStartingWindow for taskId=11689#29593](this:0xb4000070202a89e8,id:-1,api:0,p:-1,c:966) onDestructor()
+01-23 12:12:41.220 D/OplusLayer(  966): ~Layer() sequence=29593, name=SnapshotStartingWindow for taskId=11689#29593
+01-23 12:12:41.220 I/DispPerfService(  966): updateLayerMask 0
+01-23 12:12:41.221 E/Parcel  (27803): Attempt to read from protected data in Parcel 0x7fd4364c70
+01-23 12:12:41.221 E/Parcel  (27803): Attempt to read from protected data in Parcel 0x7fd4364c70
+01-23 12:12:41.221 E/Parcel  (27803): Attempt to read from protected data in Parcel 0x7fd4364c70
+01-23 12:12:41.221 E/Parcel  (27803): Attempt to read from protected data in Parcel 0x7fd4364c70
+01-23 12:12:41.221 E/Parcel  (27803): Attempt to read from protected data in Parcel 0x7fd4364c70
+01-23 12:12:41.266 E/Parcel  (27807): Attempt to read from protected data in Parcel 0x7fe58a2600
+01-23 12:12:41.266 E/Parcel  (27807): Attempt to read from protected data in Parcel 0x7fe58a2600
+01-23 12:12:41.266 E/Parcel  (27807): Attempt to read from protected data in Parcel 0x7fe58a2600
+01-23 12:12:41.266 E/Parcel  (27807): Attempt to read from protected data in Parcel 0x7fe58a2600
+01-23 12:12:41.266 E/Parcel  (27807): Attempt to read from protected data in Parcel 0x7fe58a2600
+01-23 12:12:41.285 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:12:41.312 E/Parcel  (27811): Attempt to read from protected data in Parcel 0x7febbf3dd0
+01-23 12:12:41.312 E/Parcel  (27811): Attempt to read from protected data in Parcel 0x7febbf3dd0
+01-23 12:12:41.312 E/Parcel  (27811): Attempt to read from protected data in Parcel 0x7febbf3dd0
+01-23 12:12:41.312 E/Parcel  (27811): Attempt to read from protected data in Parcel 0x7febbf3dd0
+01-23 12:12:41.312 E/Parcel  (27811): Attempt to read from protected data in Parcel 0x7febbf3dd0
+01-23 12:12:41.325 D/CameraDelegate( 1748): handleMessage:200
+01-23 12:12:41.359 E/Parcel  (27815): Attempt to read from protected data in Parcel 0x7fdbee9370
+01-23 12:12:41.359 E/Parcel  (27815): Attempt to read from protected data in Parcel 0x7fdbee9370
+01-23 12:12:41.359 E/Parcel  (27815): Attempt to read from protected data in Parcel 0x7fdbee9370
+01-23 12:12:41.359 E/Parcel  (27815): Attempt to read from protected data in Parcel 0x7fdbee9370
+01-23 12:12:41.359 E/Parcel  (27815): Attempt to read from protected data in Parcel 0x7fdbee9370
+01-23 12:12:41.398 I/mtkpower_client( 1748): perf_lock_rel, hdl:77440, tid:2280
+01-23 12:12:41.398 I/mtkpower_client( 1748): perf_lock_acq, hdl:77440, dur:0, num:4, tid:2280
+01-23 12:12:41.399 I/libPowerHal(  859): [perfLockRel] hdl:77440, idx:0
+01-23 12:12:41.399 I/libPowerHal(  859): system_server: cpu_ctrl set cpu freq: -1 -1 -1 -1
+01-23 12:12:41.399 I/libPowerHal(  859): [PD] system_server update cmd:1c3c000 param:1
+01-23 12:12:41.399 I/libPowerHal(  859): [PD] (more) /proc/mcdi/state set +prefix:enable 1;
+01-23 12:12:41.399 I/libPowerHal(  859): [PD] system_server update cmd:2004100 param:2
+01-23 12:12:41.400 I/mtkpower_client( 1748): ret_hdl:77442
+01-23 12:12:41.406 E/Parcel  (27819): Attempt to read from protected data in Parcel 0x7ffd123460
+01-23 12:12:41.406 E/Parcel  (27819): Attempt to read from protected data in Parcel 0x7ffd123460
+01-23 12:12:41.406 E/Parcel  (27819): Attempt to read from protected data in Parcel 0x7ffd123460
+01-23 12:12:41.406 E/Parcel  (27819): Attempt to read from protected data in Parcel 0x7ffd123460
+01-23 12:12:41.406 E/Parcel  (27819): Attempt to read from protected data in Parcel 0x7ffd123460
+01-23 12:12:41.470 E/Parcel  (27823): Attempt to read from protected data in Parcel 0x7fe5218be0
+01-23 12:12:41.470 E/Parcel  (27823): Attempt to read from protected data in Parcel 0x7fe5218be0
+01-23 12:12:41.470 E/Parcel  (27823): Attempt to read from protected data in Parcel 0x7fe5218be0
+01-23 12:12:41.470 E/Parcel  (27823): Attempt to read from protected data in Parcel 0x7fe5218be0
+01-23 12:12:41.470 E/Parcel  (27823): Attempt to read from protected data in Parcel 0x7fe5218be0
+01-23 12:12:41.534 E/Parcel  (27827): Attempt to read from protected data in Parcel 0x7fe7cf4a70
+01-23 12:12:41.534 E/Parcel  (27827): Attempt to read from protected data in Parcel 0x7fe7cf4a70
+01-23 12:12:41.534 E/Parcel  (27827): Attempt to read from protected data in Parcel 0x7fe7cf4a70
+01-23 12:12:41.534 E/Parcel  (27827): Attempt to read from protected data in Parcel 0x7fe7cf4a70
+01-23 12:12:41.534 E/Parcel  (27827): Attempt to read from protected data in Parcel 0x7fe7cf4a70
+01-23 12:12:41.598 E/Parcel  (27831): Attempt to read from protected data in Parcel 0x7ffd7347c0
+01-23 12:12:41.598 E/Parcel  (27831): Attempt to read from protected data in Parcel 0x7ffd7347c0
+01-23 12:12:41.598 E/Parcel  (27831): Attempt to read from protected data in Parcel 0x7ffd7347c0
+01-23 12:12:41.598 E/Parcel  (27831): Attempt to read from protected data in Parcel 0x7ffd7347c0
+01-23 12:12:41.598 E/Parcel  (27831): Attempt to read from protected data in Parcel 0x7ffd7347c0
+01-23 12:12:41.663 E/Parcel  (27836): Attempt to read from protected data in Parcel 0x7ff9049370
+01-23 12:12:41.663 E/Parcel  (27836): Attempt to read from protected data in Parcel 0x7ff9049370
+01-23 12:12:41.663 E/Parcel  (27836): Attempt to read from protected data in Parcel 0x7ff9049370
+01-23 12:12:41.663 E/Parcel  (27836): Attempt to read from protected data in Parcel 0x7ff9049370
+01-23 12:12:41.663 E/Parcel  (27836): Attempt to read from protected data in Parcel 0x7ff9049370
+01-23 12:12:41.714 E/Parcel  (27840): Attempt to read from protected data in Parcel 0x7fee5f8b60
+01-23 12:12:41.714 E/Parcel  (27840): Attempt to read from protected data in Parcel 0x7fee5f8b60
+01-23 12:12:41.714 E/Parcel  (27840): Attempt to read from protected data in Parcel 0x7fee5f8b60
+01-23 12:12:41.714 E/Parcel  (27840): Attempt to read from protected data in Parcel 0x7fee5f8b60
+01-23 12:12:41.714 E/Parcel  (27840): Attempt to read from protected data in Parcel 0x7fee5f8b60
+01-23 12:12:41.774 E/Parcel  (27844): Attempt to read from protected data in Parcel 0x7fe156a3d0
+01-23 12:12:41.775 E/Parcel  (27844): Attempt to read from protected data in Parcel 0x7fe156a3d0
+01-23 12:12:41.775 E/Parcel  (27844): Attempt to read from protected data in Parcel 0x7fe156a3d0
+01-23 12:12:41.775 E/Parcel  (27844): Attempt to read from protected data in Parcel 0x7fe156a3d0
+01-23 12:12:41.775 E/Parcel  (27844): Attempt to read from protected data in Parcel 0x7fe156a3d0
+01-23 12:12:41.827 E/Parcel  (27848): Attempt to read from protected data in Parcel 0x7fd0161a70
+01-23 12:12:41.828 E/Parcel  (27848): Attempt to read from protected data in Parcel 0x7fd0161a70
+01-23 12:12:41.828 E/Parcel  (27848): Attempt to read from protected data in Parcel 0x7fd0161a70
+01-23 12:12:41.828 E/Parcel  (27848): Attempt to read from protected data in Parcel 0x7fd0161a70
+01-23 12:12:41.828 E/Parcel  (27848): Attempt to read from protected data in Parcel 0x7fd0161a70
+01-23 12:12:41.882 E/Parcel  (27852): Attempt to read from protected data in Parcel 0x7fe3a34240
+01-23 12:12:41.882 E/Parcel  (27852): Attempt to read from protected data in Parcel 0x7fe3a34240
+01-23 12:12:41.882 E/Parcel  (27852): Attempt to read from protected data in Parcel 0x7fe3a34240
+01-23 12:12:41.882 E/Parcel  (27852): Attempt to read from protected data in Parcel 0x7fe3a34240
+01-23 12:12:41.882 E/Parcel  (27852): Attempt to read from protected data in Parcel 0x7fe3a34240
+01-23 12:12:41.944 E/Parcel  (27856): Attempt to read from protected data in Parcel 0x7ffe6eff10
+01-23 12:12:41.944 E/Parcel  (27856): Attempt to read from protected data in Parcel 0x7ffe6eff10
+01-23 12:12:41.944 E/Parcel  (27856): Attempt to read from protected data in Parcel 0x7ffe6eff10
+01-23 12:12:41.944 E/Parcel  (27856): Attempt to read from protected data in Parcel 0x7ffe6eff10
+01-23 12:12:41.944 E/Parcel  (27856): Attempt to read from protected data in Parcel 0x7ffe6eff10
+01-23 12:12:41.996 E/Parcel  (27860): Attempt to read from protected data in Parcel 0x7ff102dca0
+01-23 12:12:41.997 E/Parcel  (27860): Attempt to read from protected data in Parcel 0x7ff102dca0
+01-23 12:12:41.997 E/Parcel  (27860): Attempt to read from protected data in Parcel 0x7ff102dca0
+01-23 12:12:41.997 E/Parcel  (27860): Attempt to read from protected data in Parcel 0x7ff102dca0
+01-23 12:12:41.997 E/Parcel  (27860): Attempt to read from protected data in Parcel 0x7ff102dca0
+01-23 12:12:42.049 E/Parcel  (27865): Attempt to read from protected data in Parcel 0x7fe7aebb40
+01-23 12:12:42.050 E/Parcel  (27865): Attempt to read from protected data in Parcel 0x7fe7aebb40
+01-23 12:12:42.050 E/Parcel  (27865): Attempt to read from protected data in Parcel 0x7fe7aebb40
+01-23 12:12:42.050 E/Parcel  (27865): Attempt to read from protected data in Parcel 0x7fe7aebb40
+01-23 12:12:42.050 E/Parcel  (27865): Attempt to read from protected data in Parcel 0x7fe7aebb40
+01-23 12:12:42.631 D/AALLightSensor( 1193): oldLux=2 [SA:0 LA:0] newLux=2 (oriLux: 0)
+01-23 12:12:42.823 D/Osense-DecisionMaker( 1748): notifyDelayedSceneToPolicy
+01-23 12:12:42.823 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2279
+01-23 12:12:42.823 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2279
+01-23 12:12:42.823 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2279
+01-23 12:12:42.824 D/Osense-DecisionMaker( 1748): getCurrentSysStats, availmemMb: 2279
+01-23 12:12:43.307 I/OplusHansManager ( 1748): uid=10845, pkg=in.org.npci.upiapp can transition from M to F
+01-23 12:12:43.308 I/OplusHansManager ( 1748): uid=10845, pkg=in.org.npci.upiapp F enter(), M stay=10
+01-23 12:12:43.311 I/OplusHansManager ( 1748): freeze uid: 10845 in.org.npci.upiapp pids: [13321] scene: LcdOn
+01-23 12:12:43.312 D/IHansComunication( 6221): HansComunication::addUid-- 10845, persistent--0
+01-23 12:12:43.312 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = PKG, targetUid = 10845, pkgCmd = ADD_ONE_UID
+01-23 12:12:43.356 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.safetynet.service.START pkg=com.google.android.gms }
+01-23 12:12:43.380 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.safebrowsing.SafeBrowsingService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+01-23 12:12:43.479 D/CompatibilityChangeReporter( 1748): Compat change id reported: 161145287; UID 10186; state: DISABLED
+01-23 12:12:43.484 E/FilePhenotypeFlags(26418): Config package com.google.android.gms.clearcut_client#in.cricketexchange.app.cricketexchange cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+01-23 12:12:43.537 E/FilePhenotypeFlags(26418): Config package com.google.android.gms.clearcut_client#in.cricketexchange.app.cricketexchange cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+01-23 12:12:43.538 E/FilePhenotypeFlags(26418): Config package com.google.android.gms.clearcut_client#in.cricketexchange.app.cricketexchange cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+01-23 12:12:43.563 D/vendor.oplus.hardware.charger@1.0-service(  897): getChargerControl:
+01-23 12:12:43.671 W/HidlServiceHelper(10434): Failed to read virtual TLC buffer usage returns is NULLnull
+01-23 12:12:43.805 D/AES     ( 1748): AEEIOCTL_GET/SET_SF_STATE IOCTL,cmd= 1074294797, lParam=0. 
+01-23 12:12:43.805 D/AES     ( 1748): AEEIOCTL_RT_MON_Kick IOCTL,cmd= 2147774474, lParam=300. 
+01-23 12:12:43.835 E/TaskPersister( 1748): File error accessing recents directory (directory doesn't exist?).
+01-23 12:12:44.130 D/UsageStatsService( 1748): User[0] type=0 b=1769150242858 e=1769150564128 cb=1769064906582 ce=1769150561197 disk=0 all=32
+01-23 12:12:44.297 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.appset.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+01-23 12:12:44.313 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10845, pkgCmd = PKG_CMD_MAX
+01-23 12:12:44.377 D/BoundBrokerSvc(24720): onUnbind: Intent { act=com.google.android.gms.ads.identifier.service.EVENT_ATTESTATION dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+01-23 12:12:44.751 D/OplusNetKit( 1748): interface name from LP: [ccmni0]
+01-23 12:12:44.752 D/OplusNetKit( 1748): interface name from LP: [ccmni1]
+01-23 12:12:44.752 D/OplusNetKit( 1748): interface name from LP: [wlan0]
+01-23 12:12:44.752 D/OplusNetKit( 1748): in getLpByInterface name from LP: [ccmni0]
+01-23 12:12:44.752 D/OplusNetKit( 1748): in getLpByInterface name from LP: [ccmni1]
+01-23 12:12:44.752 D/OplusNetKit( 1748): in getLpByInterface name from LP: [wlan0]
+01-23 12:12:44.752 D/OplusNetKit( 1748): in getLpByInterface name from LP: [ccmni0]
+01-23 12:12:44.752 D/OplusNetKit( 1748): in getLpByInterface name from LP: [ccmni1]
+01-23 12:12:44.752 D/OplusNetKit( 1748): in getLpByInterface name from LP: [wlan0]
+01-23 12:12:44.752 D/OplusNetKit( 1748): Route is ipv4 on wlan0 found, break
+01-23 12:12:44.818 I/keystore2(  628): keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
+01-23 12:12:44.904 D/AppStateRecord( 1748): handleMessage: EVENT_FOREGROUND_APP_CHANGE
+01-23 12:12:44.904 D/AppStateRecord( 1748): isFgAppInStuckList
+01-23 12:12:44.904 D/AppStateRecord( 1748): getFgAppInStuckList: fgApp com.wholexale.app.staging
+01-23 12:12:44.904 D/AppStateRecord( 1748): handleMessage: not fg stuck app, updateQoeEvent false
+01-23 12:12:44.937 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  
+01-23 12:12:44.974 I/OplusHansManager ( 1748): uid=10349, pkg=com.jio.myjio can transition from M to F
+01-23 12:12:44.974 I/OplusHansManager ( 1748): uid=10349, pkg=com.jio.myjio F enter(), M stay=10
+01-23 12:12:44.979 I/OplusHansManager ( 1748): freeze uid: 10349 com.jio.myjio pids: [22270] scene: LcdOn
+01-23 12:12:44.980 D/IHansComunication( 6221): HansComunication::addUid-- 10349, persistent--0
+01-23 12:12:44.980 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = PKG, targetUid = 10349, pkgCmd = ADD_ONE_UID
+01-23 12:12:45.275 I/OplusHansManager ( 1748): uid=10186, pkg=in.cricketexchange.app.cricketexchange can transition from R to M
+01-23 12:12:45.275 I/OplusHansManager ( 1748): uid=10186, pkg=in.cricketexchange.app.cricketexchange M enter(), R stay=20
+01-23 12:12:45.679 D/UsageStatsService( 1748): User[999] type=0 b=1769149752546 e=1769150565679 cb=1769073226312 ce=1769150520969 disk=0 all=1
+01-23 12:12:45.801 E/OplusArpPeer_euclid_psw( 1748): ARP read failure: android.system.ErrnoException: read failed: EAGAIN (Try again)
+01-23 12:12:45.803 E/OplusArpPeer_euclid_psw( 1748):  OplusArpPeer close
+01-23 12:12:45.849 D/AppSwitchObserverHelper( 4587): packageName: com.wholexale.app.staging,com.android.launcher
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; CpuFgTime = 0 ms; CpuBgTime = -2879 ms.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; CpuKernelFgTime = 0 ms; CpuKernelBgTime = -962 ms.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; CpuUserFgTime = 0 ms ; CpuUserBgTime = -1917 ms.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; CpuFgPower = 0.0 mAh.; CpuBgPower = -6.552083333333333E-4 mAh.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; AlarmFgWakeupCount = 0; AlarmBgWakeupCount = 0
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; JobFgCount = 0; JobBgCount = 0; JobFgTime = 0; JobBgTime = 0
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; SyncFgCount = 0; SyncBgCount = 0; SyncFgTime = 0; SyncBgTime = 0
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; WakeLockFgTime = 0 ms; WakeLockFgPower = 0.0 mAh.; WakeLockBgTime = 0 ms; WakeLockBgPower = 0.0 mAh.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; ScreenFgTime = 204803 ms; ScreenFgPower = 3.4133833333333334 mAh.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgWifiRxBytes = 0 Bytes; BgWifiRxBytes = 0 Bytes; FgWifiTxBytes = 0 Bytes; BgWifiTxBytes = 0 Bytes; FgWifiRxPackets = 0 ; BgWifiRxPackets = 0 ; FgWifiTxPackets = 0 ; BgWifiTxPackets = 0 ; FgWiFiScanTimeMs = 0 ; BgWiFiScanTimeMs = 0 ; FgWiFiBatchScanTimeMs = 0 ; BgWiFiBatchScanTimeMs = 0 
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgWifiRxPacketsPower = 0.0 mAh; BgWifiRxPacketsPower = 0.0 mAh; FgWifiTxPacketsPower = 0.0 mAh; BgWifiTxPacketsPower = 0.0 mAh; FgWifiScanPower = 0.0 mAh; BgWifiScanPower = 0.0 mAh; FgWifiBatchScanPower = 0.0 mAh; BgWifiBatchScanPower = 0.0 mAh; FgWiFiTotalPower = 0.0 mAh; BgWiFiTotalPower = 0.0 mAh.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgMobileRxBytes = 0 Bytes; BgMobileRxBytes = 0 Bytes; FgMobileTxBytes = 0 Bytes; BgMobileTxBytes = 0 Bytes; FgMobileRxPackets = 0 ; BgMobileRxPackets = 0 ; FgMobileTxPackets = 0 ; BgMobileTxPackets = 0 ; FgMobileActiveCount = 0 ; BgMobileActiveCount = 0 ; FgMobileActiveTime = 0 ; BgMobileActiveTime = 0 
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgMobileRxPacketsPower = 0.0 mAh; BgMobileRxPacketsPower = 0.0 mAh; FgMobileTxPacketsPower = 0.0 mAh; BgMobileTxPacketsPower = 0.0 mAh; FgMobileTotalPower = 0.0 mAh; BgMobileTotalPower = 0.0 mAh.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgGpsTime = 0 ms; BgGpsTime = 0 ms.
+01-23 12:12:45.929 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgGpsPower = 0.0 mAh; BgGpsPower = 0.0 mAh.
+01-23 12:12:45.930 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgSensorTime = 0 ms; BgSensorTime = 0 ms.
+01-23 12:12:45.930 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgSensorPower = 0.0 mAh; BgSensorPower = 0.0 mAh.
+01-23 12:12:45.930 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgCameraTime = 0 ms; BgCameraTime = 0 ms
+01-23 12:12:45.930 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgCameraPower = 0.0 mAh; BgCameraPower = 0.0 mAh
+01-23 12:12:45.930 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgFlashLightTime = 0 ms; BgFlashLightTime = 0 ms
+01-23 12:12:45.930 E/Battery ( 4587): AppStats: Uid = 10125; pkgName = com.wholexale.app.staging; FgFlashLightPower = 0.0 mAh; BgFlashLightPower = 0.0 mAh
+01-23 12:12:45.981 D/IHansComunication( 6221): HANS sendMessageToKernel: threadId = 516689218736, netLinkSetup = 1, type = FROZEN_TRANS, targetUid = 10349, pkgCmd = PKG_CMD_MAX
+01-23 12:12:46.090 D/AAL     ( 1193): onALIChanged: 2 -> 0
+01-23 12:12:46.090 D/AALLightSensor( 1193): Notify lux = 0
+01-23 12:12:46.628 D/FusionLightExtImpl( 1748): processRawLux stop to shot
+01-23 12:12:46.630 D/FusionLightExtImpl( 1748): processRawLux ShotOnce, after outEvent->light = 3.185807, comp_lux = 255.502869, RGB(255.000000, 228.000000, 182.000000), C = 168.000000, threshold = 1000, mBrightLevel = 757
+01-23 12:12:46.631 D/AALLightSensor( 1193): oldLux=0 [SA:2 LA:1] newLux=0 (oriLux: 3)
+01-23 12:12:46.956 D/OplusThermalStats( 1748): REPORT_UPDATE_CPU  ->  phoneTemp:360  preHeatThreshold:400
+01-23 12:12:46.979 I/OplusHansManager ( 1748): unfreeze uid: 10349 com.jio.myjio pids: [22270] reason: Broadcast scene: LcdOn
+01-23 12:12:46.980 I/OplusHansManager ( 1748): uid=10349, pkg=com.jio.myjio, transition from Frozen to Middle, reason=Broadcast
+01-23 12:12:46.980 I/OplusHansManager ( 1748): uid=10349, pkg=com.jio.myjio F exit(), F stay=2, reason=Broadcast
+01-23 12:12:46.985 D/vendor.oplus.hardware.charger@1.0-service(  897): getChargerControl:
+01-23 12:12:47.052 D/ProcessCpuTrackerExtImpl( 1748): mContext is already set, return now! 
+01-23 12:12:47.279 D/OplusHecate(  966): pixels[183,120]=0xffffffff
+01-23 12:12:47.385 I/hwcomposer(  843): [HWC] (0)fire a callback of refresh to SF[4]  

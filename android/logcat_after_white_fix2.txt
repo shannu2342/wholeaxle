@@ -1,0 +1,42 @@
+--------- beginning of main
+01-22 20:30:33.346 I/ReactNativeJS( 9979): ✅ Patched FlatList._checkProps to tolerate undefined props
+01-22 20:30:33.349 I/ReactNativeJS( 9979): ✅ Patched React Native list components (FlatList/VirtualizedList/SectionList) to guard against undefined `this` / props
+01-22 20:30:33.350 I/ReactNativeJS( 9979): 🚀 Starting Wholexale app...
+01-22 20:30:33.350 I/ReactNativeJS( 9979): 'App name:', 'WholexaleApp'
+01-22 20:30:33.372 I/ReactNativeJS( 9979): Loading App.js...
+01-22 20:30:33.419 E/ReactNativeJS( 9979): [react-native-gesture-handler] react-native-gesture-handler module was not found. Make sure you're running your app on the native platform and your code is linked properly (cd ios && pod install && cd ..).
+01-22 20:30:33.419 E/ReactNativeJS( 9979): 
+01-22 20:30:33.419 E/ReactNativeJS( 9979): For installation instructions, please refer to https://docs.swmansion.com/react-native-gesture-handler/docs/#installation
+01-22 20:30:33.430 I/ReactNativeJS( 9979): 'App component:', 'Loaded'
+01-22 20:30:33.430 I/ReactNativeJS( 9979): ✅ App registered successfully
+01-22 20:30:33.431 I/ReactNativeJS( 9979): Running "WholexaleApp
+01-22 20:30:33.438 I/ReactNativeJS( 9979): 🚀 App component rendering...
+01-22 20:30:33.438 I/ReactNativeJS( 9979): 🔍 Loading ReduxProvider...
+01-22 20:30:33.438 I/ReactNativeJS( 9979): 🔍 Loading AIProvider...
+01-22 20:30:33.438 I/ReactNativeJS( 9979): 🔍 Loading AppProvider...
+01-22 20:30:33.438 I/ReactNativeJS( 9979): 🔍 Loading AppInner...
+01-22 20:30:33.465 E/ReactNativeJS( 9979): Error: The package '@react-native-community/geolocation' doesn't seem to be linked. Make sure: 
+01-22 20:30:33.465 E/ReactNativeJS( 9979): 
+01-22 20:30:33.465 E/ReactNativeJS( 9979): - You rebuilt the app after installing the package
+01-22 20:30:33.465 E/ReactNativeJS( 9979): - You are not using Expo managed workflow
+01-22 20:30:33.465 E/ReactNativeJS( 9979): , js engine: hermes
+01-22 20:30:33.468 E/ReactNativeJS( 9979): TypeError: Cannot read property 'store' of undefined
+01-22 20:30:33.468 E/ReactNativeJS( 9979): 
+01-22 20:30:33.468 E/ReactNativeJS( 9979): This error is located at:
+01-22 20:30:33.468 E/ReactNativeJS( 9979):     in ReduxProvider
+01-22 20:30:33.468 E/ReactNativeJS( 9979):     in App
+01-22 20:30:33.468 E/ReactNativeJS( 9979):     in RCTView
+01-22 20:30:33.468 E/ReactNativeJS( 9979):     in Unknown
+01-22 20:30:33.468 E/ReactNativeJS( 9979):     in RCTView
+01-22 20:30:33.468 E/ReactNativeJS( 9979):     in Unknown
+01-22 20:30:33.468 E/ReactNativeJS( 9979):     in AppContainer, js engine: hermes
+01-22 20:30:33.469 E/ReactNativeJS( 9979): TypeError: Cannot read property 'store' of undefined
+01-22 20:30:33.469 E/ReactNativeJS( 9979): 
+01-22 20:30:33.469 E/ReactNativeJS( 9979): This error is located at:
+01-22 20:30:33.469 E/ReactNativeJS( 9979):     in ReduxProvider
+01-22 20:30:33.469 E/ReactNativeJS( 9979):     in App
+01-22 20:30:33.469 E/ReactNativeJS( 9979):     in RCTView
+01-22 20:30:33.469 E/ReactNativeJS( 9979):     in Unknown
+01-22 20:30:33.469 E/ReactNativeJS( 9979):     in RCTView
+01-22 20:30:33.469 E/ReactNativeJS( 9979):     in Unknown
+01-22 20:30:33.469 E/ReactNativeJS( 9979):     in AppContainer, js engine: hermes

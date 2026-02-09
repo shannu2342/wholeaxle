@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Wholexale",
-    "slug": "wholexale-app",
+    "slug": "wholeaxle",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": null,
@@ -28,6 +28,11 @@
     "web": {
       "favicon": null
     },
-    "plugins": []
+    "plugins": [],
+    "extra": {
+      "eas": {
+        "projectId": "cc330dba-82b8-4e21-942d-ebe32a6a064f"
+      }
+    }
   }
 }

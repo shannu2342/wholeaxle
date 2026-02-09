@@ -6,42 +6,86 @@ import {
   ScrollView,
   StyleSheet,
   StatusBar,
+  SafeAreaView,
 } from 'react-native';
 import { Colors } from '../constants/Colors';
+import { useSelector } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import AppHeader from '../components/AppHeader';
 
 const SellerDashboardScreen = ({ navigation }) => {
+  const { user } = useSelector((state) => state.auth);
+  const isAdmin = user?.userType === 'admin';
+
   const menuItems = [
     {
       id: 1,
       title: 'Add Product',
-      icon: '➕',
+      icon: 'plus-circle',
+      screen: 'AddProduct',
     },
     {
       id: 2,
       title: 'My Products',
-      icon: '📦',
+      icon: 'cubes',
+      screen: 'InventoryManagement',
     },
     {
       id: 3,
       title: 'Orders',
-      icon: '📋',
+      icon: 'shopping-bag',
+      screen: 'Orders',
     },
     {
       id: 4,
       title: 'Analytics',
-      icon: '📊',
+      icon: 'line-chart',
+      screen: 'SellerAnalytics',
     },
     {
       id: 5,
-      title: 'Profile',
-      icon: '👤',
+      title: 'Brand Submission',
+      icon: 'certificate',
+      screen: 'BrandAuthorization',
     },
     {
       id: 6,
+      title: 'Profile',
+      icon: 'user',
+      screen: 'Profile',
+    },
+    {
+      id: 7,
       title: 'Settings',
-      icon: '⚙️',
+      icon: 'cog',
+      screen: 'Settings',
+    },
+    {
+      id: 8,
+      title: 'Finance Hub',
+      icon: 'bank',
+      screen: 'FinanceHub',
+    },
+    {
+      id: 9,
+      title: 'Bulk Upload',
+      icon: 'upload',
+      screen: 'BulkUpload',
+    },
+    {
+      id: 10,
+      title: 'SKU & Barcode',
+      icon: 'barcode',
+      screen: 'BarcodeGenerator',
     },
   ];
+
+  // Add admin-specific menu items
+  if (isAdmin) {
+    menuItems.push(
+      { id: 11, title: 'Vendor Applications', icon: 'clipboard', screen: 'AdminVendorApplications' },
+    );
+  }
 
   const stats = [
     { label: 'Total Products', value: '45' },
@@ -51,14 +95,22 @@ const SellerDashboardScreen = ({ navigation }) => {
   ];
 
   const renderMenuItem = (item) => (
-    <TouchableOpacity key={item.id} style={styles.menuItem}>
+    <TouchableOpacity
+      key={item.id}
+      style={styles.menuItem}
+      onPress={() => {
+        if (item.screen) {
+          navigation.navigate(item.screen);
+        }
+      }}
+    >
       <View style={styles.menuItemLeft}>
         <View style={styles.menuIcon}>
-          <Text style={styles.menuIconText}>{item.icon}</Text>
+          <Icon name={item.icon} size={16} color={Colors.primary} />
         </View>
         <Text style={styles.menuText}>{item.title}</Text>
       </View>
-      <Text style={styles.menuArrow}>→</Text>
+      <Icon name="chevron-right" size={12} color="#bbb" />
     </TouchableOpacity>
   );
 
@@ -70,9 +122,15 @@ const SellerDashboardScreen = ({ navigation }) => {
   );
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      <View style={styles.content}>
+      <AppHeader
+        title="Seller Dashboard"
+        backgroundColor={Colors.white}
+        textColor={Colors.text.primary}
+        variant="compact"
+      />
+      <ScrollView contentContainerStyle={styles.content}>
         {/* Welcome Section (matching HTML) */}
         <View style={styles.welcomeSection}>
           <View>
@@ -80,7 +138,7 @@ const SellerDashboardScreen = ({ navigation }) => {
             <Text style={styles.businessName}>Haajra Garments</Text>
           </View>
           <View style={styles.notificationContainer}>
-            <Text style={styles.notificationIcon}>🔔</Text>
+            <Icon name="bell" size={16} color={Colors.primary} />
             <View style={styles.notificationBadge}>
               <Text style={styles.notificationBadgeText}>3</Text>
             </View>
@@ -98,29 +156,35 @@ const SellerDashboardScreen = ({ navigation }) => {
         <View style={styles.quickActionsSection}>
           <Text style={styles.sectionTitle}>Quick Actions</Text>
           <View style={styles.quickActionsGrid}>
-            <TouchableOpacity style={styles.quickActionItem}>
+            <TouchableOpacity style={styles.quickActionItem} onPress={() => navigation.navigate('AddProduct')}>
               <View style={[styles.quickActionIcon, { backgroundColor: '#e3f2fd' }]}>
-                <Text style={styles.quickActionIconText}>➕</Text>
+                <Icon name="plus" size={16} color={Colors.primary} />
               </View>
               <Text style={styles.quickActionText}>Add Product</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.quickActionItem}>
+            <TouchableOpacity style={styles.quickActionItem} onPress={() => navigation.navigate('InventoryManagement')}>
               <View style={[styles.quickActionIcon, { backgroundColor: '#e8f5e9' }]}>
-                <Text style={styles.quickActionIconText}>📦</Text>
+                <Icon name="cubes" size={16} color="#2e7d32" />
               </View>
               <Text style={styles.quickActionText}>My Products</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.quickActionItem}>
+            <TouchableOpacity style={styles.quickActionItem} onPress={() => navigation.navigate('Orders')}>
               <View style={[styles.quickActionIcon, { backgroundColor: '#fff3e0' }]}>
-                <Text style={styles.quickActionIconText}>🛍️</Text>
+                <Icon name="shopping-bag" size={16} color="#f5a80c" />
               </View>
               <Text style={styles.quickActionText}>Orders</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.quickActionItem}>
+            <TouchableOpacity style={styles.quickActionItem} onPress={() => navigation.navigate('SellerAnalytics')}>
               <View style={[styles.quickActionIcon, { backgroundColor: '#f3e5f5' }]}>
-                <Text style={styles.quickActionIconText}>📊</Text>
+                <Icon name="line-chart" size={16} color="#6a1b9a" />
               </View>
               <Text style={styles.quickActionText}>Analytics</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.quickActionItem} onPress={() => navigation.navigate('BrandAuthorization')}>
+              <View style={[styles.quickActionIcon, { backgroundColor: '#e0f7fa' }]}>
+                <Icon name="certificate" size={16} color="#00796b" />
+              </View>
+              <Text style={styles.quickActionText}>Brand Submission</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -131,7 +195,7 @@ const SellerDashboardScreen = ({ navigation }) => {
             <Text style={styles.sectionTitle}>Recent Orders</Text>
             <Text style={styles.viewAllText}>View All</Text>
           </View>
-          
+
           <View style={styles.orderItem}>
             <View>
               <Text style={styles.orderId}>ORD001</Text>
@@ -171,8 +235,13 @@ const SellerDashboardScreen = ({ navigation }) => {
             </View>
           </View>
         </View>
-      </View>
-    </ScrollView>
+
+        {/* Menu Section */}
+        <View style={styles.menuSection}>
+          {menuItems.map(renderMenuItem)}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -184,7 +253,7 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
   },
-  
+
   // Header (matching HTML)
   header: {
     flexDirection: 'row',
@@ -204,7 +273,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#333',
   },
-  
+
   // Welcome Section (matching HTML)
   welcomeSection: {
     flexDirection: 'row',
@@ -245,7 +314,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
   },
-  
+
   // Stats Section (matching HTML)
   statsSection: {
     marginBottom: 30,
@@ -274,7 +343,7 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
   },
-  
+
   // Section Title
   sectionTitle: {
     fontSize: 16,
@@ -294,10 +363,13 @@ const styles = StyleSheet.create({
   },
   quickActionsGrid: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
   quickActionItem: {
     alignItems: 'center',
+    width: '31%',
+    marginBottom: 12,
   },
   quickActionIcon: {
     width: 50,

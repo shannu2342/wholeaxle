@@ -1,32 +1,28 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   ScrollView,
   StyleSheet,
-  FlatList,
   Alert,
   StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../constants/Colors';
+import AppHeader from '../components/AppHeader';
+import { useDispatch, useSelector } from 'react-redux';
+import { createOrder } from '../store/slices/orderSlice';
 
 const CartScreen = ({ navigation }) => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: '4/Pocket Scramble Plazzo For Women',
-      price: 109,
-      quantity: 2,
-    },
-    {
-      id: 2,
-      name: 'Scramble Fabric Palazzo For Women',
-      price: 109,
-      quantity: 1,
-    },
-  ]);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth || {});
+  const [cartItems, setCartItems] = useState(
+    (user?.cartItems || []).slice(0, 2).map((item, index) => ({
+      ...item,
+      quantity: index === 0 ? 2 : 1,
+    }))
+  );
 
   const updateQuantity = (itemId, newQuantity) => {
     if (newQuantity === 0) {
@@ -42,10 +38,46 @@ const CartScreen = ({ navigation }) => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
+  const orderItems = useMemo(() => {
+    return cartItems.map((item) => ({
+      productId: item.id || item._id,
+      name: item.name,
+      quantity: item.quantity,
+      price: item.price,
+      total: item.price * item.quantity,
+      vendor: item.brand || item.vendor?.name,
+    }));
+  }, [cartItems]);
+
+  const handleCheckout = async () => {
+    if (cartItems.length === 0) return;
+    try {
+      const total = calculateTotal();
+      const orderPayload = {
+        items: orderItems,
+        totalAmount: total,
+        discount: 0,
+        finalAmount: total,
+        paymentMethod: 'cod',
+        paymentStatus: 'pending',
+        shipping: {
+          address: user?.location?.city || 'Pending address',
+        },
+      };
+      await dispatch(createOrder(orderPayload)).unwrap();
+      Alert.alert('Order placed', 'Your order has been created.', [
+        { text: 'OK', onPress: () => navigation.navigate('Orders') },
+      ]);
+      setCartItems([]);
+    } catch (error) {
+      Alert.alert('Checkout failed', error?.message || 'Unable to place order.');
+    }
+  };
+
   const renderCartItem = ({ item }) => (
     <View style={styles.cartItem}>
       <View style={styles.cartImage}>
-        <Text style={styles.cartImageText}>👖</Text>
+        <Icon name={item.placeholderIcon || 'shopping-bag'} size={22} color={Colors.text.secondary} />
       </View>
       <View style={styles.cartInfo}>
         <Text style={styles.cartTitle}>{item.name}</Text>
@@ -73,25 +105,31 @@ const CartScreen = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={Colors.primary} />
       
-      {/* Header (matching HTML) */}
-      <View style={styles.appHeader}>
-        <Text style={styles.headerTitle}>Shopping Cart</Text>
-        <TouchableOpacity 
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Text style={styles.backButtonText}>←</Text>
-        </TouchableOpacity>
-      </View>
+      <AppHeader
+        title="Shopping Cart"
+        showBackButton
+        onBackPress={() => navigation.goBack()}
+        backgroundColor={Colors.primary}
+        textColor={Colors.white}
+      />
 
       <View style={styles.content}>
-        <FlatList
-          data={cartItems}
-          renderItem={renderCartItem}
-          keyExtractor={(item) => item.id.toString()}
-          contentContainerStyle={styles.cartList}
-          showsVerticalScrollIndicator={false}
-        />
+        {cartItems.length === 0 ? (
+          <View style={styles.emptyState}>
+            <Icon name="shopping-cart" size={48} color={Colors.text.tertiary} />
+            <Text style={styles.emptyTitle}>Your cart is empty</Text>
+            <Text style={styles.emptySubtitle}>Add products to proceed with checkout.</Text>
+          </View>
+        ) : (
+          <ScrollView
+            contentContainerStyle={styles.cartList}
+            showsVerticalScrollIndicator={false}
+          >
+            {cartItems.map((item) => (
+              <View key={item.id}>{renderCartItem({ item })}</View>
+            ))}
+          </ScrollView>
+        )}
 
         {/* Total Section (matching HTML) */}
         <View style={styles.totalSection}>
@@ -103,7 +141,11 @@ const CartScreen = ({ navigation }) => {
             <Text style={styles.totalLabel}>Total:</Text>
             <Text style={styles.totalValueBold}>₹{calculateTotal()}</Text>
           </View>
-          <TouchableOpacity style={styles.checkoutButton}>
+          <TouchableOpacity
+            style={styles.checkoutButton}
+            disabled={cartItems.length === 0}
+            onPress={handleCheckout}
+          >
             <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
           </TouchableOpacity>
         </View>
@@ -116,28 +158,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.white,
-  },
-  
-  // Header (matching HTML)
-  appHeader: {
-    backgroundColor: Colors.primary,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: Colors.white,
-  },
-  backButton: {
-    padding: 5,
-  },
-  backButtonText: {
-    fontSize: 20,
-    color: Colors.white,
   },
   
   content: {
@@ -164,9 +184,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 15,
-  },
-  cartImageText: {
-    fontSize: 24,
   },
   cartInfo: {
     flex: 1,
@@ -251,6 +268,23 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 16,
     fontWeight: '600',
+  },
+  emptyState: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 60,
+  },
+  emptyTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: Colors.text.primary,
+    marginTop: 12,
+  },
+  emptySubtitle: {
+    fontSize: 13,
+    color: Colors.text.secondary,
+    marginTop: 6,
   },
 });
 
