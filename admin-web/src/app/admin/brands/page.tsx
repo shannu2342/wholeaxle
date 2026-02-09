@@ -13,7 +13,7 @@ import { getApiErrorMessage } from "@/lib/errors"
 type BrandRequest = {
   id: string
   brandData?: { brandName?: string }
-  status: "pending_review" | "approved" | "rejected" | string
+  status: "pending" | "approved" | "rejected" | string
   submittedAt?: string
   updatedAt?: string
   submittedBy?: { id: string; email: string }
@@ -24,7 +24,7 @@ type BrandRequest = {
 
 const statusBadgeVariant = (status: string): "warning" | "success" | "destructive" | "secondary" => {
   switch (status) {
-    case "pending_review":
+    case "pending":
       return "warning"
     case "approved":
       return "success"
@@ -37,7 +37,7 @@ const statusBadgeVariant = (status: string): "warning" | "success" | "destructiv
 
 const statusLabel = (status: string) => {
   switch (status) {
-    case "pending_review":
+    case "pending":
       return "Pending Review"
     case "approved":
       return "Approved"
@@ -51,7 +51,7 @@ const statusLabel = (status: string) => {
 export default function BrandsPage() {
   const [loading, setLoading] = useState(true)
   const [requests, setRequests] = useState<BrandRequest[]>([])
-  const [status, setStatus] = useState<string>("pending_review")
+  const [status, setStatus] = useState<string>("pending")
   const [q, setQ] = useState("")
   const [actionBusyId, setActionBusyId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -141,7 +141,7 @@ export default function BrandsPage() {
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
               >
-                <option value="pending_review">Pending</option>
+                <option value="pending">Pending</option>
                 <option value="approved">Approved</option>
                 <option value="rejected">Rejected</option>
                 <option value="all">All</option>

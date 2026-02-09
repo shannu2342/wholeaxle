@@ -19,45 +19,28 @@ import {
 type BadgeVariant = "default" | "secondary" | "destructive" | "success" | "warning" | "outline"
 type BrandRequestSlice = { name: string; value: number }
 
-// Mock data - will be replaced with API calls
-const mockDashboardData = {
+const emptyDashboardData = {
     stats: {
-        totalUsers: 320,
-        totalProducts: 1250,
-        pendingAuthorizations: 5,
-        lowStockItems: 23,
-        totalBrands: 15,
-        totalStockValue: 500000,
-        stockTurnoverRate: 2.5,
+        totalUsers: 0,
+        totalProducts: 0,
+        pendingAuthorizations: 0,
+        lowStockItems: 0,
+        totalBrands: 0,
+        totalStockValue: 0,
+        stockTurnoverRate: 0,
     },
-    recentActivity: [
-        { id: 1, type: 'brand', message: 'New brand authorization submitted', time: '2 hours ago' },
-        { id: 2, type: 'inventory', message: 'Low stock alert for Cotton Palazzo', time: '4 hours ago' },
-        { id: 3, type: 'approval', message: 'Brand authorization approved: Nike', time: '1 day ago' },
-        { id: 4, type: 'upload', message: 'Bulk upload completed: 150 products', time: '2 days ago' },
-    ],
-    brandApplications: [
-        { id: 1, brandName: 'Nike', status: 'pending_review', submittedAt: '2024-01-15' },
-        { id: 2, brandName: 'Adidas', status: 'approved', submittedAt: '2024-01-10' },
-        { id: 3, brandName: 'Puma', status: 'rejected', submittedAt: '2024-01-05' },
-    ],
-    inventoryAlerts: [
-        { id: 1, sku: 'WP-001', message: 'Low stock: Cotton Palazzo', severity: 'high' },
-        { id: 2, sku: 'WP-002', message: 'Stock threshold reached: Denim Jeans', severity: 'medium' },
-    ],
+    recentActivity: [],
+    brandApplications: [],
+    inventoryAlerts: [],
     charts: {
-        brandRequests: [
-            { name: 'Pending', value: 5 },
-            { name: 'Approved', value: 15 },
-            { name: 'Rejected', value: 2 },
-        ],
+        brandRequests: [],
     },
 }
 
 export default function AdminDashboard() {
     const router = useRouter()
     const [activeTab, setActiveTab] = useState('overview')
-    const [dashboardData, setDashboardData] = useState(mockDashboardData)
+    const [dashboardData, setDashboardData] = useState(emptyDashboardData)
     const [loading, setLoading] = useState(true)
     const [lastUpdatedAt, setLastUpdatedAt] = useState<string | null>(null)
 
@@ -69,26 +52,26 @@ export default function AdminDashboard() {
                 const response = await adminApi.getDashboard()
 
                 const dashboard = (response?.data?.dashboard || null) as
-                    | (Partial<typeof mockDashboardData> & {
-                        stats?: Partial<typeof mockDashboardData.stats>
-                        charts?: Partial<typeof mockDashboardData.charts>
+                    | (Partial<typeof emptyDashboardData> & {
+                        stats?: Partial<typeof emptyDashboardData.stats>
+                        charts?: Partial<typeof emptyDashboardData.charts>
                     })
                     | null
                 if (dashboard) {
                     setDashboardData({
-                        ...mockDashboardData,
+                        ...emptyDashboardData,
                         ...dashboard,
-                        stats: { ...mockDashboardData.stats, ...(dashboard.stats || {}) },
-                        charts: { ...mockDashboardData.charts, ...(dashboard.charts || {}) },
+                        stats: { ...emptyDashboardData.stats, ...(dashboard.stats || {}) },
+                        charts: { ...emptyDashboardData.charts, ...(dashboard.charts || {}) },
                     })
                     setLastUpdatedAt(new Date().toISOString())
                 } else {
-                    setDashboardData(mockDashboardData)
+                    setDashboardData(emptyDashboardData)
                     setLastUpdatedAt(new Date().toISOString())
                 }
             } catch (error) {
                 console.error('Failed to fetch dashboard data:', error)
-                setDashboardData(mockDashboardData)
+                setDashboardData(emptyDashboardData)
                 setLastUpdatedAt(new Date().toISOString())
             } finally {
                 setLoading(false)

@@ -6,6 +6,11 @@
     --primary-color: #0390F3;
     --primary-dark: #027BC9;
     --primary-light: #E5F4FF;
+    --navy-900: #0B1020;
+    --ink-900: #111827;
+    --ink-700: #374151;
+    --surface-0: #F7F9FC;
+    --surface-1: #FFFFFF;
     --secondary-color: #10B981;
     --danger-color: #EF4444;
     --warning-color: #F59E0B;
@@ -15,6 +20,15 @@
 
 body {
     @apply bg-gray-50;
+    font-family: var(--font-body);
+}
+
+.font-display {
+    font-family: var(--font-display);
+}
+
+.font-body {
+    font-family: var(--font-body);
 }
 
 /* Custom scrollbar */

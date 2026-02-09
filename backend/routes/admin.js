@@ -45,19 +45,86 @@ router.get('/partitions', adminOnly, asyncHandler(async (req, res) => {
 // @route   GET /api/admin/dashboard
 // @access  Private (admin/super_admin + overview)
 router.get('/dashboard', adminOnly, requirePartition('overview'), asyncHandler(async (req, res) => {
-    const [usersTotal, productsTotal, ordersTotal, brandPending] = await Promise.all([
+    const lowStockThreshold = Number(req.query?.lowStockThreshold || 10);
+    const [usersTotal, productsTotal, ordersTotal, brandPending, brandApproved, lowStockCount] = await Promise.all([
         User.countDocuments({}),
         Product.countDocuments({}),
         Order.countDocuments({}),
         BrandRequest.countDocuments({ status: 'pending' }),
+        BrandRequest.countDocuments({ status: 'approved' }),
+        Product.countDocuments({ stock: { $lte: lowStockThreshold } }),
     ]);
 
+    const [stockValueAgg, lastOrders, brandRequests, lowStockItems, auditLogs] = await Promise.all([
+        Product.aggregate([
+            { $project: { stockValue: { $multiply: ['$price', '$stock'] } } },
+            { $group: { _id: null, total: { $sum: '$stockValue' } } },
+        ]),
+        Order.find({}).sort({ createdAt: -1 }).limit(50).lean(),
+        BrandRequest.find({}).sort({ createdAt: -1 }).limit(5).lean(),
+        Product.find({ stock: { $lte: lowStockThreshold } }).sort({ stock: 1 }).limit(5).lean(),
+        AuditLog.find({}).sort({ createdAt: -1 }).limit(6).populate('userId', 'email role').lean(),
+    ]);
+
+    const totalStockValue = Number(stockValueAgg?.[0]?.total || 0);
+    const orderItemCount = lastOrders.reduce((sum, o) => {
+        const items = Array.isArray(o.items) ? o.items : [];
+        return sum + items.reduce((s, it) => s + (Number(it.quantity) || 0), 0);
+    }, 0);
+    const stockTurnoverRate = productsTotal > 0 ? Number((orderItemCount / productsTotal).toFixed(2)) : 0;
+
+    const brandStatusCounts = brandRequests.reduce((acc, r) => {
+        const status = r.status || 'unknown';
+        acc[status] = (acc[status] || 0) + 1;
+        return acc;
+    }, {});
+
+    const formatActivity = (log) => {
+        const action = log?.action || 'activity';
+        const entity = log?.entity || 'system';
+        let type = 'activity';
+        if (action.includes('brand')) type = 'brand';
+        if (action.includes('inventory') || action.includes('product')) type = 'inventory';
+        if (action.includes('approve') || action.includes('reject')) type = 'approval';
+        if (action.includes('bulk')) type = 'upload';
+        return {
+            id: String(log._id),
+            type,
+            message: `${action.replace(/\./g, ' ')} (${entity})`,
+            time: log.createdAt ? new Date(log.createdAt).toLocaleString() : '',
+        };
+    };
+
     const dashboard = {
-        users: { total: usersTotal },
-        products: { total: productsTotal },
-        orders: { total: ordersTotal },
-        brands: { pending: brandPending },
-        system: { uptime: process.uptime(), status: 'healthy' },
+        stats: {
+            totalUsers: usersTotal,
+            totalProducts: productsTotal,
+            pendingAuthorizations: brandPending,
+            lowStockItems: lowStockCount,
+            totalBrands: brandApproved,
+            totalStockValue,
+            stockTurnoverRate,
+        },
+        recentActivity: auditLogs.map(formatActivity),
+        brandApplications: brandRequests.map((r) => ({
+            id: String(r._id),
+            brandName: r.brandName || 'Unknown',
+            status: r.status === 'pending' ? 'pending_review' : r.status,
+            submittedAt: r.createdAt ? new Date(r.createdAt).toISOString() : null,
+        })),
+        inventoryAlerts: lowStockItems.map((p) => ({
+            id: String(p._id),
+            sku: p.barcode || String(p._id).slice(-6),
+            message: `Low stock: ${p.name}`,
+            severity: Number(p.stock) <= Math.max(1, lowStockThreshold / 2) ? 'high' : 'medium',
+        })),
+        charts: {
+            brandRequests: [
+                { name: 'Pending', value: brandStatusCounts.pending || 0 },
+                { name: 'Approved', value: brandStatusCounts.approved || 0 },
+                { name: 'Rejected', value: brandStatusCounts.rejected || 0 },
+            ],
+        },
     };
 
     res.json({ dashboard });
@@ -352,6 +419,10 @@ router.get('/analytics', adminOnly, requirePartition('analytics'), asyncHandler(
 router.get('/settings', adminOnly, requirePartition('settings'), asyncHandler(async (req, res) => {
     res.json({
         settings: {
+            apiVersion: process.env.API_VERSION || 'v1',
+            serverTime: new Date().toISOString(),
+            role: req.user?.role || 'admin',
+            partitions: req.user?.partitions || [],
             environment: process.env.NODE_ENV || 'development',
             supportEmail: process.env.SUPPORT_EMAIL || 'support@wholexale.com',
             brandAutoApprove: false,
@@ -527,4 +598,3 @@ router.patch('/admins/:id', superAdminOnly, asyncHandler(async (req, res) => {
 }));
 
 module.exports = router;
-
