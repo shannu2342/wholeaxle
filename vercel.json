@@ -1,0 +1,9 @@
+{
+  "builds": [
+    {
+      "src": "admin-web/package.json",
+      "use": "@vercel/next"
+    }
+  ]
+}
+
