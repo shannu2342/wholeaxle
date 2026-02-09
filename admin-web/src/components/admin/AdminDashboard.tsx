@@ -18,6 +18,9 @@ import {
 
 type BadgeVariant = "default" | "secondary" | "destructive" | "success" | "warning" | "outline"
 type BrandRequestSlice = { name: string; value: number }
+type RecentActivity = { id: string; type: string; message: string; time: string }
+type BrandApplication = { id: string; brandName: string; status: string; submittedAt: string | null }
+type InventoryAlert = { id: string; sku: string; message: string; severity: string }
 
 const emptyDashboardData = {
     stats: {
@@ -29,9 +32,9 @@ const emptyDashboardData = {
         totalStockValue: 0,
         stockTurnoverRate: 0,
     },
-    recentActivity: [],
-    brandApplications: [],
-    inventoryAlerts: [],
+    recentActivity: [] as RecentActivity[],
+    brandApplications: [] as BrandApplication[],
+    inventoryAlerts: [] as InventoryAlert[],
     charts: {
         brandRequests: [],
     },
