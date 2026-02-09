@@ -1,5 +1,5 @@
 {
-  "installCommand": "cd admin-web && npm install",
-  "buildCommand": "cd admin-web && npm run build",
+  "installCommand": "npm install --prefix admin-web --no-audit --no-fund",
+  "buildCommand": "npm run build --prefix admin-web",
   "outputDirectory": "admin-web/out"
 }
