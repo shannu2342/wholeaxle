@@ -1,38 +1,49 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     content: [
-        "./src/**/*.{js,ts,jsx,tsx,mdx}",
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: '#0390F3',
-                    dark: '#027BC9',
-                    light: '#E5F4FF',
+                    DEFAULT: '#0B5ED7',
+                    foreground: '#ffffff',
                 },
                 secondary: {
-                    DEFAULT: '#10B981',
-                    dark: '#059669',
-                    light: '#D1FAE5',
+                    DEFAULT: '#64748B',
+                    foreground: '#ffffff',
                 },
-                danger: {
+                destructive: {
                     DEFAULT: '#EF4444',
-                    dark: '#DC2626',
-                    light: '#FEE2E2',
+                    foreground: '#ffffff',
+                },
+                success: {
+                    DEFAULT: '#10B981',
+                    foreground: '#ffffff',
                 },
                 warning: {
                     DEFAULT: '#F59E0B',
-                    dark: '#D97706',
-                    light: '#FEF3C7',
+                    foreground: '#ffffff',
                 },
-                info: {
-                    DEFAULT: '#3B82F6',
-                    dark: '#2563EB',
-                    light: '#DBEAFE',
+                background: '#ffffff',
+                foreground: '#1F2937',
+                muted: {
+                    DEFAULT: '#F3F4F6',
+                    foreground: '#6B7280',
                 },
+                border: '#E5E7EB',
+                input: '#E5E7EB',
+                ring: '#0B5ED7',
+            },
+            fontFamily: {
+                body: ['Manrope', 'sans-serif'],
+                display: ['Space Grotesk', 'sans-serif'],
             },
         },
     },
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [
+        require('@tailwindcss/forms'),
+    ],
 }

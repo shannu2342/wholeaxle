@@ -1,7 +1,8 @@
 "use client"
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {
     Activity,
@@ -84,9 +85,8 @@ const isAllowed = (user: AdminUser | null, item: NavItem) => {
 }
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-    const location = useLocation()
-    const navigate = useNavigate()
-    const pathname = location.pathname
+    const pathname = usePathname()
+    const router = useRouter()
 
     const [user, setUser] = useState<AdminUser | null>(null)
     const [partitions, setPartitions] = useState<AdminPartition[]>([])
@@ -97,8 +97,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         if (typeof window !== 'undefined') {
             window.localStorage.removeItem('adminToken')
         }
-        navigate('/admin/login')
-    }, [navigate])
+        router.push('/admin/login')
+    }, [router])
 
     const refresh = useCallback(async () => {
         if (typeof window === 'undefined') return
@@ -194,7 +194,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     <h1 className="text-lg font-semibold text-gray-900">Session Error</h1>
                     <p className="mt-2 text-sm text-gray-600">{error}</p>
                     <div className="mt-4 flex gap-2">
-                        <Button onClick={() => navigate('/admin/login')}>Go to Login</Button>
+                        <Button onClick={() => router.push('/admin/login')}>Go to Login</Button>
                         <Button variant="outline" onClick={refresh}>
                             Retry
                         </Button>
@@ -226,7 +226,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     <div className="flex-1 overflow-y-auto p-4">
                         <nav className="space-y-1">
                             {allowedNavItems.map((item) => (
-                                <Link key={item.name} to={item.href}>
+                                <Link key={item.name} href={item.href}>
                                     <Button
                                         variant={pathname === item.href ? 'secondary' : 'ghost'}
                                         className="w-full justify-start gap-3"

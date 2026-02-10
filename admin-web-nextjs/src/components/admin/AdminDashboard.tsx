@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -41,7 +41,7 @@ const emptyDashboardData = {
 }
 
 export default function AdminDashboard() {
-    const navigate = useNavigate()
+    const router = useRouter()
     const [activeTab, setActiveTab] = useState('overview')
     const [dashboardData, setDashboardData] = useState(emptyDashboardData)
     const [loading, setLoading] = useState(true)
@@ -219,7 +219,7 @@ export default function AdminDashboard() {
                                     <Button
                                         variant="outline"
                                         className="flex flex-col h-20 justify-center items-center gap-2"
-                                        onClick={() => navigate('/admin/brands')}
+                                        onClick={() => router.push('/admin/brands')}
                                     >
                                         <Shield className="h-6 w-6" />
                                         <span className="text-sm">Review Brands</span>
@@ -230,7 +230,7 @@ export default function AdminDashboard() {
                                     <Button
                                         variant="outline"
                                         className="flex flex-col h-20 justify-center items-center gap-2"
-                                        onClick={() => navigate('/admin/inventory')}
+                                        onClick={() => router.push('/admin/inventory')}
                                     >
                                         <Barcode className="h-6 w-6" />
                                         <span className="text-sm">Inventory</span>
@@ -241,7 +241,7 @@ export default function AdminDashboard() {
                                     <Button
                                         variant="outline"
                                         className="flex flex-col h-20 justify-center items-center gap-2"
-                                        onClick={() => navigate('/admin/bulk')}
+                                        onClick={() => router.push('/admin/bulk')}
                                     >
                                         <Upload className="h-6 w-6" />
                                         <span className="text-sm">Bulk Upload</span>
@@ -249,7 +249,7 @@ export default function AdminDashboard() {
                                     <Button
                                         variant="outline"
                                         className="flex flex-col h-20 justify-center items-center gap-2"
-                                        onClick={() => navigate('/admin/users')}
+                                        onClick={() => router.push('/admin/users')}
                                     >
                                         <Users className="h-6 w-6" />
                                         <span className="text-sm">User Management</span>
@@ -262,7 +262,7 @@ export default function AdminDashboard() {
                         <Card>
                             <CardHeader className="flex flex-row items-center justify-between">
                                 <CardTitle>Brand Authorization Status</CardTitle>
-                                <Button size="sm" variant="outline" onClick={() => navigate('/admin/brands')}>
+                                <Button size="sm" variant="outline" onClick={() => router.push('/admin/brands')}>
                                     <Shield className="mr-2 h-4 w-4" />
                                     Manage
                                 </Button>
@@ -332,7 +332,7 @@ export default function AdminDashboard() {
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between">
                             <CardTitle>Brand Management</CardTitle>
-                            <Button size="sm" onClick={() => navigate('/admin/brands')}>
+                            <Button size="sm" onClick={() => router.push('/admin/brands')}>
                                 <Shield className="mr-2 h-4 w-4" />
                                 Review All
                             </Button>
