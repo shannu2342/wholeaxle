@@ -3,7 +3,6 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { adminApi } from '@/lib/api'
 import { getApiErrorMessage } from '@/lib/errors'
 
@@ -25,6 +24,59 @@ type FinanceState = {
   expenses: number
   settlements: number
   pendingPayouts: number
+}
+
+const MODULES = [
+  'coverage',
+  'vendors',
+  'returns',
+  'reviews',
+  'support',
+  'offers',
+  'chat',
+  'finance',
+  'affiliate',
+  'permissions',
+  'marketing',
+  'notifications',
+  'content',
+  'system',
+] as const
+
+type ModuleKey = typeof MODULES[number]
+
+const MODULE_LABELS: Record<ModuleKey, string> = {
+  coverage: 'Coverage',
+  vendors: 'Vendors',
+  returns: 'Returns',
+  reviews: 'Reviews',
+  support: 'Support',
+  offers: 'Offers',
+  chat: 'Chat',
+  finance: 'Finance',
+  affiliate: 'Affiliate',
+  permissions: 'Permissions',
+  marketing: 'Marketing',
+  notifications: 'Notifications',
+  content: 'Content',
+  system: 'System',
+}
+
+const MODULE_DESCRIPTIONS: Record<ModuleKey, string> = {
+  coverage: 'Buyer/seller/admin ownership mapping with governance actions.',
+  vendors: 'Approve, reject, and track seller onboarding.',
+  returns: 'Control return statuses and resolutions.',
+  reviews: 'Moderate ratings and review content.',
+  support: 'Manage support queues and close tickets.',
+  offers: 'Oversee offer negotiations and disputes.',
+  chat: 'Escalate and manage conversations.',
+  finance: 'Monitor revenue, expenses, and payout flows.',
+  affiliate: 'Approve and supervise affiliate performance.',
+  permissions: 'Create roles and assign permissions.',
+  marketing: 'Review campaigns and budgets.',
+  notifications: 'Broadcast platform announcements.',
+  content: 'Edit hero banners, terms, and privacy policy.',
+  system: 'Track system events and alerts.',
 }
 
 const demoVendorApps: VendorApp[] = [
@@ -86,7 +138,8 @@ const featureMatrix = [
   { module: 'Permissions', buyer: 'N/A', seller: 'Team access controls', admin: 'Role design and permission assignment' },
 ]
 
-export default function AdminOperationsPage() {
+export default function AdminOperationsPage({ initialModule = 'coverage' }: { initialModule?: ModuleKey }) {
+  const [activeModule, setActiveModule] = useState<ModuleKey>(initialModule)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
@@ -249,6 +302,10 @@ export default function AdminOperationsPage() {
     loadAll()
   }, [])
 
+  useEffect(() => {
+    setActiveModule(initialModule)
+  }, [initialModule])
+
   const stats = useMemo(() => ({
     pendingVendors: vendorApps.filter((x) => x.status === 'pending').length,
     openReturns: returns.filter((x) => !['refunded', 'closed', 'resolved'].includes(x.status)).length,
@@ -373,12 +430,72 @@ export default function AdminOperationsPage() {
     setMessage(`Affiliate ${status}.`)
   }
 
+  const renderModule = () => {
+    if (activeModule === 'coverage') {
+      return (
+        <Card>
+          <CardHeader><CardTitle>Buyer/Seller to Admin Governance Matrix</CardTitle></CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left text-gray-600">
+                    <th className="py-2">Module</th>
+                    <th className="py-2">Buyer Capability</th>
+                    <th className="py-2">Seller Capability</th>
+                    <th className="py-2">Admin Control</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {featureMatrix.map((row) => (
+                    <tr key={row.module} className="border-b align-top">
+                      <td className="py-3 font-medium">{row.module}</td>
+                      <td className="py-3 text-gray-700">{row.buyer}</td>
+                      <td className="py-3 text-gray-700">{row.seller}</td>
+                      <td className="py-3 text-gray-900">{row.admin}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+      )
+    }
+
+    if (activeModule === 'vendors') return <Card><CardHeader><CardTitle>Vendor Applications</CardTitle></CardHeader><CardContent className="space-y-3">{vendorApps.map((v) => <div key={v.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{v.businessName}</div><div className="text-xs text-gray-500">{v.ownerEmail}</div></div><div className="flex items-center gap-2"><Badge variant={v.status === 'approved' ? 'success' : v.status === 'rejected' ? 'destructive' : 'warning'}>{v.status}</Badge><Button size="sm" onClick={() => updateVendor(v.id, 'approved')}>Approve</Button><Button size="sm" variant="destructive" onClick={() => updateVendor(v.id, 'rejected')}>Reject</Button></div></div>)}</CardContent></Card>
+
+    if (activeModule === 'returns') return <Card><CardHeader><CardTitle>Returns Management</CardTitle></CardHeader><CardContent className="space-y-3">{returns.map((r) => <div key={r.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{r.orderId} • INR {r.amount.toLocaleString()}</div><div className="text-xs text-gray-500">{r.reason}</div></div><div className="flex items-center gap-2"><Badge variant="secondary">{r.status}</Badge><select className="h-8 rounded-md border px-2 text-xs" value={r.status} onChange={(e) => updateReturn(r.id, e.target.value)}><option value="requested">requested</option><option value="in_review">in_review</option><option value="approved">approved</option><option value="refunded">refunded</option><option value="closed">closed</option></select></div></div>)}</CardContent></Card>
+
+    if (activeModule === 'reviews') return <Card><CardHeader><CardTitle>Review Moderation</CardTitle></CardHeader><CardContent className="space-y-3">{reviews.map((r) => <div key={r.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{r.productName} • {r.rating}/5</div><div className="text-xs text-gray-500">{r.comment}</div></div><div className="flex items-center gap-2"><Badge variant={r.status === 'approved' ? 'success' : r.status === 'rejected' ? 'destructive' : 'warning'}>{r.status}</Badge><Button size="sm" onClick={() => moderateReview(r.id, 'approve')}>Approve</Button><Button size="sm" variant="destructive" onClick={() => moderateReview(r.id, 'reject')}>Reject</Button></div></div>)}</CardContent></Card>
+
+    if (activeModule === 'support') return <Card><CardHeader><CardTitle>Support Tickets</CardTitle></CardHeader><CardContent className="space-y-3">{tickets.map((t) => <div key={t.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{t.subject}</div><div className="text-xs text-gray-500">{t.requester} • {t.priority}</div></div><div className="flex items-center gap-2"><Badge variant={t.status === 'closed' ? 'success' : 'warning'}>{t.status}</Badge><Button size="sm" variant="outline" onClick={() => updateTicket(t.id, 'in_progress')}>In Progress</Button><Button size="sm" onClick={() => updateTicket(t.id, 'closed')}>Close</Button></div></div>)}</CardContent></Card>
+
+    if (activeModule === 'offers') return <Card><CardHeader><CardTitle>Offer Control</CardTitle></CardHeader><CardContent className="space-y-3">{offers.map((o) => <div key={o.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{o.title} • INR {o.amount.toLocaleString()}</div><div className="text-xs text-gray-500">{o.buyer} → {o.seller}</div></div><div className="flex items-center gap-2"><Badge variant={o.status === 'accepted' ? 'success' : o.status === 'rejected' ? 'destructive' : 'warning'}>{o.status}</Badge><Button size="sm" onClick={() => offerResponse(o.id, 'accept')}>Accept</Button><Button size="sm" variant="destructive" onClick={() => offerResponse(o.id, 'reject')}>Reject</Button></div></div>)}</CardContent></Card>
+
+    if (activeModule === 'chat') return <Card><CardHeader><CardTitle>Chat Escalation Console</CardTitle></CardHeader><CardContent className="space-y-3">{chats.map((c) => <div key={c.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{c.name}</div><div className="text-xs text-gray-500">Unread: {c.unread} • {c.lastMessage}</div></div><div className="flex items-center gap-2"><Badge variant={c.escalated ? 'destructive' : 'secondary'}>{c.escalated ? 'escalated' : 'normal'}</Badge><Button size="sm" variant="outline" onClick={() => toggleEscalation(c.id)}>{c.escalated ? 'De-escalate' : 'Escalate'}</Button></div></div>)}</CardContent></Card>
+
+    if (activeModule === 'finance') return <><div className="grid gap-4 md:grid-cols-4"><Card><CardHeader><CardTitle className="text-sm">Revenue</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">INR {finance.revenue.toLocaleString()}</div></CardContent></Card><Card><CardHeader><CardTitle className="text-sm">Expenses</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">INR {finance.expenses.toLocaleString()}</div></CardContent></Card><Card><CardHeader><CardTitle className="text-sm">Net</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">INR {financeNet.toLocaleString()}</div></CardContent></Card><Card><CardHeader><CardTitle className="text-sm">Pending Payouts</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">INR {finance.pendingPayouts.toLocaleString()}</div></CardContent></Card></div><Card className="mt-4"><CardHeader><CardTitle>Finance Controls</CardTitle></CardHeader><CardContent className="flex flex-wrap gap-2"><Button variant="outline" onClick={() => setMessage('Reconciliation started (demo).')}>Run Reconciliation</Button><Button variant="outline" onClick={() => setMessage('Payout batch queued (demo).')}>Trigger Payout Batch</Button><Button variant="outline" onClick={() => setMessage('Risk scan initiated (demo).')}>Run Risk Scan</Button></CardContent></Card></>
+
+    if (activeModule === 'affiliate') return <Card><CardHeader><CardTitle>Affiliate Governance</CardTitle></CardHeader><CardContent className="space-y-3">{affiliates.map((a) => <div key={a.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{a.name}</div><div className="text-xs text-gray-500">Commission: INR {a.commission.toLocaleString()}</div></div><div className="flex items-center gap-2"><Badge variant={a.status === 'approved' ? 'success' : a.status === 'rejected' ? 'destructive' : 'warning'}>{a.status}</Badge><Button size="sm" onClick={() => markAffiliate(a.id, 'approved')}>Approve</Button><Button size="sm" variant="destructive" onClick={() => markAffiliate(a.id, 'rejected')}>Reject</Button></div></div>)}</CardContent></Card>
+
+    if (activeModule === 'permissions') return <Card><CardHeader><CardTitle>Roles & Permissions</CardTitle></CardHeader><CardContent className="space-y-3"><div className="flex gap-2"><Input value={newRoleName} onChange={(e) => setNewRoleName(e.target.value)} placeholder="Create role (e.g. fraud_ops)" /><Button onClick={createRole}>Create Role</Button></div>{roles.map((r) => <div key={r.id} className="rounded-md border p-3"><div className="font-medium">{r.name}</div><div className="mt-1 text-xs text-gray-600">{r.permissions.length ? r.permissions.join(', ') : 'No permissions assigned yet'}</div></div>)}</CardContent></Card>
+
+    if (activeModule === 'marketing') return <Card><CardHeader><CardTitle>Marketing Campaign Oversight</CardTitle></CardHeader><CardContent className="space-y-3">{campaigns.map((c) => <div key={c.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{c.name}</div><div className="text-xs text-gray-500">Budget: INR {c.budget.toLocaleString()}</div></div><Badge variant={c.status === 'active' ? 'success' : 'secondary'}>{c.status}</Badge></div>)}</CardContent></Card>
+
+    if (activeModule === 'notifications') return <Card><CardHeader><CardTitle>Notification Broadcast</CardTitle></CardHeader><CardContent className="space-y-3"><div className="grid gap-3 md:grid-cols-2"><Input value={notifTitle} onChange={(e) => setNotifTitle(e.target.value)} placeholder="Title" /><Input value={notifBody} onChange={(e) => setNotifBody(e.target.value)} placeholder="Message" /></div><Button onClick={sendNotification}>Send Test Notification</Button><div className="space-y-2">{notifications.slice(0, 8).map((n) => <div key={n.id} className="rounded-md border p-3"><div className="flex items-center justify-between gap-2"><div className="font-medium">{n.title}</div><Badge variant="secondary">{n.status}</Badge></div><div className="text-xs text-gray-500">{n.message}</div></div>)}</div></CardContent></Card>
+
+    if (activeModule === 'content') return <><Card><CardHeader><CardTitle>Hero Section Controls (Buyer/Seller Apps)</CardTitle></CardHeader><CardContent className="space-y-4"><Input value={contentTitle} onChange={(e) => setContentTitle(e.target.value)} placeholder="Homepage hero section title" /><div className="space-y-3">{heroBanners.map((banner, idx) => <div key={banner.id} className="rounded-md border p-3 space-y-2"><div className="flex items-center justify-between"><p className="text-sm font-medium">Banner {idx + 1}</p><Button size="sm" variant="destructive" onClick={() => removeHeroBanner(banner.id)}>Remove</Button></div><Input value={banner.title} onChange={(e) => updateHeroField(banner.id, 'title', e.target.value)} placeholder="Banner title" /><Input value={banner.subtitle} onChange={(e) => updateHeroField(banner.id, 'subtitle', e.target.value)} placeholder="Banner subtitle" /><Input value={banner.image} onChange={(e) => updateHeroField(banner.id, 'image', e.target.value)} placeholder="Banner image URL" /></div>)}</div><div className="flex flex-wrap gap-2"><Button variant="outline" onClick={addHeroBanner}>Add Hero Banner</Button><Button onClick={saveContent}>Save Hero Content</Button></div></CardContent></Card><Card className="mt-4"><CardHeader><CardTitle>Terms & Privacy Policy Editor</CardTitle></CardHeader><CardContent className="space-y-3"><div><p className="mb-1 text-sm font-medium">Terms and Conditions</p><textarea className="min-h-[180px] w-full rounded-md border p-3 text-sm" value={termsText} onChange={(e) => setTermsText(e.target.value)} /></div><div><p className="mb-1 text-sm font-medium">Privacy Policy</p><textarea className="min-h-[180px] w-full rounded-md border p-3 text-sm" value={privacyText} onChange={(e) => setPrivacyText(e.target.value)} /></div><Button onClick={savePolicies}>Save Terms & Privacy</Button></CardContent></Card></>
+
+    return <Card><CardHeader><CardTitle>System Events</CardTitle></CardHeader><CardContent className="space-y-2">{events.map((e) => <div key={e.id} className="rounded-md border p-3"><div className="flex items-center justify-between gap-2"><div className="font-medium">{e.type}</div><div className="text-xs text-gray-500">{new Date(e.createdAt).toLocaleString()}</div></div><div className="text-sm text-gray-600">{e.message}</div></div>)}</CardContent></Card>
+  }
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Operations Control Center</h1>
-          <p className="text-sm text-gray-500">Admin controls for user/seller workflows across marketplace operations.</p>
+          <p className="text-sm text-gray-500">Coverage is available in the left module list and the main admin sidebar.</p>
         </div>
         <Button variant="outline" onClick={loadAll} disabled={loading}>Refresh All</Button>
       </div>
@@ -397,80 +514,31 @@ export default function AdminOperationsPage() {
         </div>
       )}
 
-      <Tabs defaultValue="matrix" className="space-y-4">
-        <TabsList className="grid h-auto grid-cols-2 gap-1 p-1 md:grid-cols-4 lg:grid-cols-7">
-          <TabsTrigger value="matrix">Coverage</TabsTrigger>
-          <TabsTrigger value="vendors">Vendors</TabsTrigger>
-          <TabsTrigger value="returns">Returns</TabsTrigger>
-          <TabsTrigger value="reviews">Reviews</TabsTrigger>
-          <TabsTrigger value="support">Support</TabsTrigger>
-          <TabsTrigger value="offers">Offers</TabsTrigger>
-          <TabsTrigger value="chat">Chat</TabsTrigger>
-          <TabsTrigger value="finance">Finance</TabsTrigger>
-          <TabsTrigger value="affiliate">Affiliate</TabsTrigger>
-          <TabsTrigger value="permissions">Permissions</TabsTrigger>
-          <TabsTrigger value="marketing">Marketing</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          <TabsTrigger value="content">Content</TabsTrigger>
-          <TabsTrigger value="system">System</TabsTrigger>
-        </TabsList>
+      <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
+        <Card>
+          <CardHeader><CardTitle>Modules</CardTitle></CardHeader>
+          <CardContent className="space-y-2">
+            {MODULES.map((key) => (
+              <Button
+                key={key}
+                variant={activeModule === key ? 'secondary' : 'ghost'}
+                className="w-full justify-start"
+                onClick={() => setActiveModule(key)}
+              >
+                {MODULE_LABELS[key]}
+              </Button>
+            ))}
+          </CardContent>
+        </Card>
 
-        <TabsContent value="matrix">
-          <Card>
-            <CardHeader><CardTitle>Buyer/Seller to Admin Governance Matrix</CardTitle></CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b text-left text-gray-600">
-                      <th className="py-2">Module</th>
-                      <th className="py-2">Buyer Capability</th>
-                      <th className="py-2">Seller Capability</th>
-                      <th className="py-2">Admin Control</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {featureMatrix.map((row) => (
-                      <tr key={row.module} className="border-b align-top">
-                        <td className="py-3 font-medium">{row.module}</td>
-                        <td className="py-3 text-gray-700">{row.buyer}</td>
-                        <td className="py-3 text-gray-700">{row.seller}</td>
-                        <td className="py-3 text-gray-900">{row.admin}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="vendors"><Card><CardHeader><CardTitle>Vendor Applications</CardTitle></CardHeader><CardContent className="space-y-3">{vendorApps.map((v) => <div key={v.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{v.businessName}</div><div className="text-xs text-gray-500">{v.ownerEmail}</div></div><div className="flex items-center gap-2"><Badge variant={v.status === 'approved' ? 'success' : v.status === 'rejected' ? 'destructive' : 'warning'}>{v.status}</Badge><Button size="sm" onClick={() => updateVendor(v.id, 'approved')}>Approve</Button><Button size="sm" variant="destructive" onClick={() => updateVendor(v.id, 'rejected')}>Reject</Button></div></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="returns"><Card><CardHeader><CardTitle>Returns Management</CardTitle></CardHeader><CardContent className="space-y-3">{returns.map((r) => <div key={r.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{r.orderId} • INR {r.amount.toLocaleString()}</div><div className="text-xs text-gray-500">{r.reason}</div></div><div className="flex items-center gap-2"><Badge variant="secondary">{r.status}</Badge><select className="h-8 rounded-md border px-2 text-xs" value={r.status} onChange={(e) => updateReturn(r.id, e.target.value)}><option value="requested">requested</option><option value="in_review">in_review</option><option value="approved">approved</option><option value="refunded">refunded</option><option value="closed">closed</option></select></div></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="reviews"><Card><CardHeader><CardTitle>Review Moderation</CardTitle></CardHeader><CardContent className="space-y-3">{reviews.map((r) => <div key={r.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{r.productName} • {r.rating}/5</div><div className="text-xs text-gray-500">{r.comment}</div></div><div className="flex items-center gap-2"><Badge variant={r.status === 'approved' ? 'success' : r.status === 'rejected' ? 'destructive' : 'warning'}>{r.status}</Badge><Button size="sm" onClick={() => moderateReview(r.id, 'approve')}>Approve</Button><Button size="sm" variant="destructive" onClick={() => moderateReview(r.id, 'reject')}>Reject</Button></div></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="support"><Card><CardHeader><CardTitle>Support Tickets</CardTitle></CardHeader><CardContent className="space-y-3">{tickets.map((t) => <div key={t.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{t.subject}</div><div className="text-xs text-gray-500">{t.requester} • {t.priority}</div></div><div className="flex items-center gap-2"><Badge variant={t.status === 'closed' ? 'success' : 'warning'}>{t.status}</Badge><Button size="sm" variant="outline" onClick={() => updateTicket(t.id, 'in_progress')}>In Progress</Button><Button size="sm" onClick={() => updateTicket(t.id, 'closed')}>Close</Button></div></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="offers"><Card><CardHeader><CardTitle>Offer Control</CardTitle></CardHeader><CardContent className="space-y-3">{offers.map((o) => <div key={o.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{o.title} • INR {o.amount.toLocaleString()}</div><div className="text-xs text-gray-500">{o.buyer} → {o.seller}</div></div><div className="flex items-center gap-2"><Badge variant={o.status === 'accepted' ? 'success' : o.status === 'rejected' ? 'destructive' : 'warning'}>{o.status}</Badge><Button size="sm" onClick={() => offerResponse(o.id, 'accept')}>Accept</Button><Button size="sm" variant="destructive" onClick={() => offerResponse(o.id, 'reject')}>Reject</Button></div></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="chat"><Card><CardHeader><CardTitle>Chat Escalation Console</CardTitle></CardHeader><CardContent className="space-y-3">{chats.map((c) => <div key={c.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{c.name}</div><div className="text-xs text-gray-500">Unread: {c.unread} • {c.lastMessage}</div></div><div className="flex items-center gap-2"><Badge variant={c.escalated ? 'destructive' : 'secondary'}>{c.escalated ? 'escalated' : 'normal'}</Badge><Button size="sm" variant="outline" onClick={() => toggleEscalation(c.id)}>{c.escalated ? 'De-escalate' : 'Escalate'}</Button></div></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="finance"><div className="grid gap-4 md:grid-cols-4"><Card><CardHeader><CardTitle className="text-sm">Revenue</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">INR {finance.revenue.toLocaleString()}</div></CardContent></Card><Card><CardHeader><CardTitle className="text-sm">Expenses</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">INR {finance.expenses.toLocaleString()}</div></CardContent></Card><Card><CardHeader><CardTitle className="text-sm">Net</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">INR {financeNet.toLocaleString()}</div></CardContent></Card><Card><CardHeader><CardTitle className="text-sm">Pending Payouts</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">INR {finance.pendingPayouts.toLocaleString()}</div></CardContent></Card></div><Card className="mt-4"><CardHeader><CardTitle>Finance Controls</CardTitle></CardHeader><CardContent className="flex flex-wrap gap-2"><Button variant="outline" onClick={() => setMessage('Reconciliation started (demo).')}>Run Reconciliation</Button><Button variant="outline" onClick={() => setMessage('Payout batch queued (demo).')}>Trigger Payout Batch</Button><Button variant="outline" onClick={() => setMessage('Risk scan initiated (demo).')}>Run Risk Scan</Button></CardContent></Card></TabsContent>
-
-        <TabsContent value="affiliate"><Card><CardHeader><CardTitle>Affiliate Governance</CardTitle></CardHeader><CardContent className="space-y-3">{affiliates.map((a) => <div key={a.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{a.name}</div><div className="text-xs text-gray-500">Commission: INR {a.commission.toLocaleString()}</div></div><div className="flex items-center gap-2"><Badge variant={a.status === 'approved' ? 'success' : a.status === 'rejected' ? 'destructive' : 'warning'}>{a.status}</Badge><Button size="sm" onClick={() => markAffiliate(a.id, 'approved')}>Approve</Button><Button size="sm" variant="destructive" onClick={() => markAffiliate(a.id, 'rejected')}>Reject</Button></div></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="permissions"><Card><CardHeader><CardTitle>Roles & Permissions</CardTitle></CardHeader><CardContent className="space-y-3"><div className="flex gap-2"><Input value={newRoleName} onChange={(e) => setNewRoleName(e.target.value)} placeholder="Create role (e.g. fraud_ops)" /><Button onClick={createRole}>Create Role</Button></div>{roles.map((r) => <div key={r.id} className="rounded-md border p-3"><div className="font-medium">{r.name}</div><div className="mt-1 text-xs text-gray-600">{r.permissions.length ? r.permissions.join(', ') : 'No permissions assigned yet'}</div></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="marketing"><Card><CardHeader><CardTitle>Marketing Campaign Oversight</CardTitle></CardHeader><CardContent className="space-y-3">{campaigns.map((c) => <div key={c.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{c.name}</div><div className="text-xs text-gray-500">Budget: INR {c.budget.toLocaleString()}</div></div><Badge variant={c.status === 'active' ? 'success' : 'secondary'}>{c.status}</Badge></div>)}</CardContent></Card></TabsContent>
-
-        <TabsContent value="notifications"><Card><CardHeader><CardTitle>Notification Broadcast</CardTitle></CardHeader><CardContent className="space-y-3"><div className="grid gap-3 md:grid-cols-2"><Input value={notifTitle} onChange={(e) => setNotifTitle(e.target.value)} placeholder="Title" /><Input value={notifBody} onChange={(e) => setNotifBody(e.target.value)} placeholder="Message" /></div><Button onClick={sendNotification}>Send Test Notification</Button><div className="space-y-2">{notifications.slice(0, 8).map((n) => <div key={n.id} className="rounded-md border p-3"><div className="flex items-center justify-between gap-2"><div className="font-medium">{n.title}</div><Badge variant="secondary">{n.status}</Badge></div><div className="text-xs text-gray-500">{n.message}</div></div>)}</div></CardContent></Card></TabsContent>
-
-        <TabsContent value="content"><><Card><CardHeader><CardTitle>Hero Section Controls (Buyer/Seller Apps)</CardTitle></CardHeader><CardContent className="space-y-4"><Input value={contentTitle} onChange={(e) => setContentTitle(e.target.value)} placeholder="Homepage hero section title" /><div className="space-y-3">{heroBanners.map((banner, idx) => <div key={banner.id} className="rounded-md border p-3 space-y-2"><div className="flex items-center justify-between"><p className="text-sm font-medium">Banner {idx + 1}</p><Button size="sm" variant="destructive" onClick={() => removeHeroBanner(banner.id)}>Remove</Button></div><Input value={banner.title} onChange={(e) => updateHeroField(banner.id, 'title', e.target.value)} placeholder="Banner title" /><Input value={banner.subtitle} onChange={(e) => updateHeroField(banner.id, 'subtitle', e.target.value)} placeholder="Banner subtitle" /><Input value={banner.image} onChange={(e) => updateHeroField(banner.id, 'image', e.target.value)} placeholder="Banner image URL" /></div>)}</div><div className="flex flex-wrap gap-2"><Button variant="outline" onClick={addHeroBanner}>Add Hero Banner</Button><Button onClick={saveContent}>Save Hero Content</Button></div></CardContent></Card><Card className="mt-4"><CardHeader><CardTitle>Terms & Privacy Policy Editor</CardTitle></CardHeader><CardContent className="space-y-3"><div><p className="mb-1 text-sm font-medium">Terms and Conditions</p><textarea className="min-h-[180px] w-full rounded-md border p-3 text-sm" value={termsText} onChange={(e) => setTermsText(e.target.value)} /></div><div><p className="mb-1 text-sm font-medium">Privacy Policy</p><textarea className="min-h-[180px] w-full rounded-md border p-3 text-sm" value={privacyText} onChange={(e) => setPrivacyText(e.target.value)} /></div><Button onClick={savePolicies}>Save Terms & Privacy</Button></CardContent></Card></></TabsContent>
-
-        <TabsContent value="system"><Card><CardHeader><CardTitle>System Events</CardTitle></CardHeader><CardContent className="space-y-2">{events.map((e) => <div key={e.id} className="rounded-md border p-3"><div className="flex items-center justify-between gap-2"><div className="font-medium">{e.type}</div><div className="text-xs text-gray-500">{new Date(e.createdAt).toLocaleString()}</div></div><div className="text-sm text-gray-600">{e.message}</div></div>)}</CardContent></Card></TabsContent>
-      </Tabs>
+        <div className="space-y-3">
+          <div>
+            <h2 className="text-xl font-semibold">{MODULE_LABELS[activeModule]}</h2>
+            <p className="text-sm text-gray-500">{MODULE_DESCRIPTIONS[activeModule]}</p>
+          </div>
+          {renderModule()}
+        </div>
+      </div>
     </div>
   )
 }
