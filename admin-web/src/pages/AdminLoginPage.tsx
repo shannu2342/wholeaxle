@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from 'react'
+import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -17,7 +17,21 @@ export default function AdminLoginPage() {
     const [password, setPassword] = useState(isDev ? testPassword : '')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const [heroIndex, setHeroIndex] = useState(0)
     const navigate = useNavigate()
+    const heroImages = [
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80',
+        'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80',
+        'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1800&q=80',
+        'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80',
+    ]
+
+    useEffect(() => {
+        const timer = window.setInterval(() => {
+            setHeroIndex((prev) => (prev + 1) % heroImages.length)
+        }, 4200)
+        return () => window.clearInterval(timer)
+    }, [heroImages.length])
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -80,7 +94,20 @@ export default function AdminLoginPage() {
     return (
         <div className="min-h-screen bg-[var(--surface-0)]">
             <div className="relative grid min-h-screen grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top,#0B5ED7_0%,#0A3E8C_35%,#0B1020_100%)] px-8 py-16 text-white">
+                <div className="relative overflow-hidden px-8 py-16 text-white">
+                    <div className="absolute inset-0">
+                        {heroImages.map((src, idx) => (
+                            <img
+                                key={src}
+                                src={src}
+                                alt={`Admin hero ${idx + 1}`}
+                                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                                    heroIndex === idx ? 'opacity-100' : 'opacity-0'
+                                }`}
+                            />
+                        ))}
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0B5ED7]/80 via-[#0A3E8C]/70 to-[#0B1020]/85" />
                     <div className="absolute inset-0 opacity-30">
                         <div className="absolute -left-32 top-10 h-80 w-80 rounded-full bg-cyan-300 blur-[120px]" />
                         <div className="absolute right-0 top-40 h-96 w-96 rounded-full bg-blue-400 blur-[140px]" />
@@ -130,6 +157,19 @@ export default function AdminLoginPage() {
                                 <p className="text-sm font-medium">Audit-ready</p>
                                 <p className="text-xs text-white/70">Every change tracked for compliance.</p>
                             </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            {heroImages.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    type="button"
+                                    aria-label={`Show hero image ${idx + 1}`}
+                                    onClick={() => setHeroIndex(idx)}
+                                    className={`h-2.5 rounded-full transition-all ${
+                                        heroIndex === idx ? 'w-7 bg-white' : 'w-2.5 bg-white/50'
+                                    }`}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>

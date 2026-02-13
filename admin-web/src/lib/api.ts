@@ -128,6 +128,17 @@ export const adminApi = {
     getSystemEvents: () => api.get('/system/events'),
     getMarketingCampaigns: () => api.get('/marketing/campaigns'),
     getMarketingAnalytics: () => api.get('/marketing/analytics'),
+    getFinanceAnalytics: () => api.get('/finance/analytics'),
+    getFinanceSummary: () => api.get('/finance/analytics/summary'),
+    getWallets: () => api.get('/finance/wallet/all'),
+    getPermissionRoles: () => api.get('/permissions/roles'),
+    createPermissionRole: (payload: Record<string, unknown>) => api.post('/permissions/roles', payload),
+    assignPermission: (payload: Record<string, unknown>) => api.post('/permissions/assign', payload),
+    revokePermission: (payload: Record<string, unknown>) => api.post('/permissions/revoke', payload),
+    checkPermission: (payload: Record<string, unknown>) => api.post('/permissions/check', payload),
+    getPermissionAudit: () => api.get('/permissions/audit'),
+    getAffiliateProfile: () => api.get('/affiliate/profile'),
+    getAffiliatePerformance: () => api.get('/affiliate/performance'),
 }
 
 export default api

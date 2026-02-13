@@ -43,6 +43,7 @@ const emptyDashboardData = {
 export default function AdminDashboard() {
     const navigate = useNavigate()
     const [activeTab, setActiveTab] = useState('overview')
+    const [heroIndex, setHeroIndex] = useState(0)
     const [dashboardData, setDashboardData] = useState(emptyDashboardData)
     const [loading, setLoading] = useState(true)
     const [lastUpdatedAt, setLastUpdatedAt] = useState<string | null>(null)
@@ -83,6 +84,35 @@ export default function AdminDashboard() {
 
         fetchDashboardData()
     }, [])
+
+    useEffect(() => {
+        const timer = window.setInterval(() => setHeroIndex((p) => (p + 1) % 3), 5000)
+        return () => window.clearInterval(timer)
+    }, [])
+
+    const heroSlides = [
+        {
+            title: 'Unified Marketplace Governance',
+            subtitle: 'Monitor buyer and seller lifecycles from onboarding to payout.',
+            image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80',
+            actionLabel: 'Open Operations',
+            actionPath: '/admin/operations',
+        },
+        {
+            title: 'Trust, Compliance, and Risk Controls',
+            subtitle: 'Handle reviews, returns, disputes, and policy enforcement fast.',
+            image: 'https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=1800&q=80',
+            actionLabel: 'Open Audit',
+            actionPath: '/admin/audit',
+        },
+        {
+            title: 'Growth Intelligence for Sellers',
+            subtitle: 'Track inventory, orders, campaigns, and revenue signals in one place.',
+            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80',
+            actionLabel: 'Open Analytics',
+            actionPath: '/admin/analytics',
+        },
+    ]
 
     const getStatusBadgeVariant = (status: string): BadgeVariant => {
         switch (status) {
@@ -153,6 +183,46 @@ export default function AdminDashboard() {
                     Refresh
                 </Button>
             </div>
+
+            <Card className="overflow-hidden border-none text-white shadow-sm">
+                <CardContent className="relative p-0">
+                    {heroSlides.map((slide, idx) => (
+                        <div
+                            key={slide.title}
+                            className={`absolute inset-0 transition-opacity duration-700 ${
+                                idx === heroIndex ? 'opacity-100' : 'opacity-0'
+                            }`}
+                        >
+                            <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" />
+                        </div>
+                    ))}
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-blue-900/75 to-slate-900/80" />
+                    <div className="relative z-10 p-6 md:p-8">
+                        <h2 className="text-2xl font-semibold">{heroSlides[heroIndex].title}</h2>
+                        <p className="mt-2 max-w-2xl text-sm text-white/90">{heroSlides[heroIndex].subtitle}</p>
+                        <div className="mt-4 flex flex-wrap items-center gap-3">
+                            <Button onClick={() => navigate(heroSlides[heroIndex].actionPath)}>
+                                {heroSlides[heroIndex].actionLabel}
+                            </Button>
+                            <Button variant="outline" className="bg-white/10 text-white hover:bg-white/20" onClick={() => navigate('/admin/operations')}>
+                                Manage Buyer/Seller Ops
+                            </Button>
+                            <div className="ml-auto flex gap-2">
+                                {heroSlides.map((_, idx) => (
+                                    <button
+                                        key={idx}
+                                        type="button"
+                                        aria-label={`Select dashboard hero ${idx + 1}`}
+                                        className={`h-2.5 rounded-full transition-all ${idx === heroIndex ? 'w-7 bg-white' : 'w-2.5 bg-white/60'}`}
+                                        onClick={() => setHeroIndex(idx)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="h-56 md:h-48" />
+                </CardContent>
+            </Card>
 
             {/* Quick Stats */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
