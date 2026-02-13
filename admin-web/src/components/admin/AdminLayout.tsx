@@ -84,7 +84,7 @@ const isAllowed = (user: AdminUser | null, item: NavItem) => {
 }
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-    const demoEnabled = import.meta.env.DEV || String(import.meta.env.VITE_DEMO_LOGIN).toLowerCase() === 'true'
+    const demoEnabled = String(import.meta.env.VITE_DEMO_LOGIN ?? 'true').toLowerCase() !== 'false'
     const location = useLocation()
     const navigate = useNavigate()
     const pathname = location.pathname

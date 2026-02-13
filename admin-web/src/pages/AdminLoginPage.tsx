@@ -8,7 +8,7 @@ import { adminApi } from '@/lib/api'
 import { ShieldCheck, Sparkles, TrendingUp, Users2 } from 'lucide-react'
 
 export default function AdminLoginPage() {
-    const demoEnabled = import.meta.env.DEV || String(import.meta.env.VITE_DEMO_LOGIN).toLowerCase() === 'true'
+    const demoEnabled = String(import.meta.env.VITE_DEMO_LOGIN ?? 'true').toLowerCase() !== 'false'
     const testEmail = import.meta.env.VITE_TEST_ADMIN_EMAIL || 'admin@wholexale.com'
     const testPassword = import.meta.env.VITE_TEST_ADMIN_PASSWORD || 'Password123'
     const isDev = import.meta.env.DEV
@@ -26,18 +26,22 @@ export default function AdminLoginPage() {
 
         try {
             if (demoEnabled) {
-                if (email.trim().toLowerCase() !== testEmail.toLowerCase() || password !== testPassword) {
+                const normalizedEmail = email.trim().toLowerCase()
+                const validEmails = [testEmail.toLowerCase(), 'admin@wholexale.com', 'superadmin@wholexale.com']
+                if (!validEmails.includes(normalizedEmail) || password !== testPassword) {
                     setError('Invalid demo credentials.')
                     return
                 }
 
                 const demoUser = {
                     id: 'demo-admin-1',
-                    email: testEmail,
-                    role: 'admin',
+                    email: normalizedEmail,
+                    role: normalizedEmail === 'superadmin@wholexale.com' ? 'super_admin' : 'admin',
                     firstName: 'Demo',
                     lastName: 'Admin',
-                    partitions: ['overview', 'users', 'brands', 'products', 'orders', 'analytics', 'settings'],
+                    partitions: normalizedEmail === 'superadmin@wholexale.com'
+                        ? ['*']
+                        : ['overview', 'users', 'brands', 'products', 'orders', 'analytics', 'settings'],
                 }
 
                 window.localStorage.setItem('adminToken', 'demo-admin-token')
