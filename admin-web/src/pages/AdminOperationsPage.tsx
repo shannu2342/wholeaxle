@@ -562,7 +562,7 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
 
       <div className="space-y-4">
         <Tabs value={activeModule} onValueChange={(value) => setActiveModule(value as ModuleKey)}>
-          <TabsList className="flex w-full flex-nowrap items-center justify-start gap-2 overflow-x-auto">
+          <TabsList className="flex w-full flex-wrap items-center justify-start gap-2">
             {MODULES.map((key) => (
               <TabsTrigger key={key} value={key} className="whitespace-nowrap data-[state=active]:bg-primary data-[state=active]:text-white">
                 {MODULE_LABELS[key]}
