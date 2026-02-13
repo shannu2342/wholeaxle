@@ -557,11 +557,11 @@ export default function AdminOperationsPage({ initialModule = 'vendors' }: { ini
       </div>
 
       <div className="grid gap-4 md:grid-cols-5">
-        <Card><CardHeader><CardTitle className="text-sm">Pending Vendor Apps</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.pendingVendors}</div></CardContent></Card>
-        <Card><CardHeader><CardTitle className="text-sm">Open Returns</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.openReturns}</div></CardContent></Card>
-        <Card><CardHeader><CardTitle className="text-sm">Pending Reviews</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.pendingReviews}</div></CardContent></Card>
-        <Card><CardHeader><CardTitle className="text-sm">Open Tickets</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.openTickets}</div></CardContent></Card>
-        <Card><CardHeader><CardTitle className="text-sm">Unread Chats</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.unreadChats}</div></CardContent></Card>
+        <Card><CardHeader><CardTitle className="min-h-10 text-sm leading-tight">Pending Vendors</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.pendingVendors}</div></CardContent></Card>
+        <Card><CardHeader><CardTitle className="min-h-10 text-sm leading-tight">Open Returns</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.openReturns}</div></CardContent></Card>
+        <Card><CardHeader><CardTitle className="min-h-10 text-sm leading-tight">Pending Reviews</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.pendingReviews}</div></CardContent></Card>
+        <Card><CardHeader><CardTitle className="min-h-10 text-sm leading-tight">Open Tickets</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.openTickets}</div></CardContent></Card>
+        <Card><CardHeader><CardTitle className="min-h-10 text-sm leading-tight">Unread Chats</CardTitle></CardHeader><CardContent><div className="text-2xl font-bold">{stats.unreadChats}</div></CardContent></Card>
       </div>
 
       {(message || error) && (
@@ -572,14 +572,14 @@ export default function AdminOperationsPage({ initialModule = 'vendors' }: { ini
 
       <div className="space-y-4">
         <Tabs value={activeModule} onValueChange={(value) => setActiveModule(value as ModuleKey)}>
-          <TabsList className="flex w-full flex-wrap items-center justify-start gap-2">
+          <TabsList className="flex h-auto w-full flex-wrap items-start justify-start gap-2">
             {MODULES.map((key) => (
               <TabsTrigger key={key} value={key} className="whitespace-nowrap data-[state=active]:bg-primary data-[state=active]:text-white">
                 {MODULE_LABELS[key]}
               </TabsTrigger>
             ))}
           </TabsList>
-          <TabsContent value={activeModule} className="mt-4 space-y-3">
+          <TabsContent value={activeModule} className="mt-6 space-y-3">
             <div>
               <h2 className="text-xl font-semibold">{MODULE_LABELS[activeModule]}</h2>
               <p className="text-sm text-gray-500">{MODULE_DESCRIPTIONS[activeModule]}</p>
