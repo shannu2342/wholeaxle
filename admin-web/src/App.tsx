@@ -110,14 +110,6 @@ function App() {
                     }
                 />
                 <Route
-                    path="/admin/coverage"
-                    element={
-                        <AdminLayout>
-                            <AdminOperationsPage initialModule="coverage" />
-                        </AdminLayout>
-                    }
-                />
-                <Route
                     path="/admin/chat"
                     element={
                         <AdminLayout>

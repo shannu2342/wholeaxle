@@ -28,7 +28,6 @@ type FinanceState = {
 }
 
 const MODULES = [
-  'coverage',
   'vendors',
   'returns',
   'reviews',
@@ -47,7 +46,6 @@ const MODULES = [
 type ModuleKey = typeof MODULES[number]
 
 const MODULE_LABELS: Record<ModuleKey, string> = {
-  coverage: 'Coverage',
   vendors: 'Vendors',
   returns: 'Returns',
   reviews: 'Reviews',
@@ -64,7 +62,6 @@ const MODULE_LABELS: Record<ModuleKey, string> = {
 }
 
 const MODULE_DESCRIPTIONS: Record<ModuleKey, string> = {
-  coverage: 'Buyer/seller/admin ownership mapping with governance actions.',
   vendors: 'Approve, reject, and track seller onboarding.',
   returns: 'Control return statuses and resolutions.',
   reviews: 'Moderate ratings and review content.',
@@ -125,7 +122,7 @@ const demoAffiliates: AffiliatePerf[] = [
   { id: 'aff-2', name: 'Partner Two', status: 'pending', commission: 12000 },
 ]
 
-const featureMatrix = [
+const coverageMatrix = [
   { module: 'Catalog & Product Discovery', buyer: 'Browse/search/filter products', seller: 'Create/update listings', admin: 'Moderate catalog, enforce compliance' },
   { module: 'Orders', buyer: 'Place/track/cancel orders', seller: 'Accept/ship/manage fulfillment', admin: 'Override status, dispute handling, SLA audits' },
   { module: 'Offers & Negotiation', buyer: 'Send/accept offers', seller: 'Counter/accept/reject', admin: 'Policy enforcement, suspicious offer review' },
@@ -139,7 +136,7 @@ const featureMatrix = [
   { module: 'Permissions', buyer: 'N/A', seller: 'Team access controls', admin: 'Role design and permission assignment' },
 ]
 
-export default function AdminOperationsPage({ initialModule = 'coverage' }: { initialModule?: ModuleKey }) {
+export default function AdminOperationsPage({ initialModule = 'vendors' }: { initialModule?: ModuleKey }) {
   const [activeModule, setActiveModule] = useState<ModuleKey>(initialModule)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -448,38 +445,6 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
   }
 
   const renderModule = () => {
-    if (activeModule === 'coverage') {
-      return (
-        <Card>
-          <CardHeader><CardTitle>Buyer/Seller to Admin Governance Matrix</CardTitle></CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b text-left text-gray-600">
-                    <th className="py-2">Module</th>
-                    <th className="py-2">Buyer Capability</th>
-                    <th className="py-2">Seller Capability</th>
-                    <th className="py-2">Admin Control</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {featureMatrix.map((row) => (
-                    <tr key={row.module} className="border-b align-top">
-                      <td className="py-3 font-medium">{row.module}</td>
-                      <td className="py-3 text-gray-700">{row.buyer}</td>
-                      <td className="py-3 text-gray-700">{row.seller}</td>
-                      <td className="py-3 text-gray-900">{row.admin}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
-      )
-    }
-
     if (activeModule === 'vendors') return <Card><CardHeader><CardTitle>Vendor Applications</CardTitle></CardHeader><CardContent className="space-y-3">{vendorApps.map((v) => <div key={v.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{v.businessName}</div><div className="text-xs text-gray-500">{v.ownerEmail}</div></div><div className="flex items-center gap-2"><Badge variant={v.status === 'approved' ? 'success' : v.status === 'rejected' ? 'destructive' : 'warning'}>{v.status}</Badge><Button size="sm" onClick={() => updateVendor(v.id, 'approved')}>Approve</Button><Button size="sm" variant="destructive" onClick={() => updateVendor(v.id, 'rejected')}>Reject</Button></div></div>)}</CardContent></Card>
 
     if (activeModule === 'returns') return <Card><CardHeader><CardTitle>Returns Management</CardTitle></CardHeader><CardContent className="space-y-3">{returns.map((r) => <div key={r.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{r.orderId} • INR {r.amount.toLocaleString()}</div><div className="text-xs text-gray-500">{r.reason}</div></div><div className="flex items-center gap-2"><Badge variant="secondary">{r.status}</Badge><select className="h-8 rounded-md border px-2 text-xs" value={r.status} onChange={(e) => updateReturn(r.id, e.target.value)}><option value="requested">requested</option><option value="in_review">in_review</option><option value="approved">approved</option><option value="refunded">refunded</option><option value="closed">closed</option></select></div></div>)}</CardContent></Card>
@@ -533,7 +498,52 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
 
     if (activeModule === 'content') return <><Card><CardHeader><CardTitle>Hero Section Controls (Buyer/Seller Apps)</CardTitle></CardHeader><CardContent className="space-y-4"><Input value={contentTitle} onChange={(e) => setContentTitle(e.target.value)} placeholder="Homepage hero section title" /><div className="space-y-3">{heroBanners.map((banner, idx) => <div key={banner.id} className="rounded-md border p-3 space-y-2"><div className="flex items-center justify-between"><p className="text-sm font-medium">Banner {idx + 1}</p><Button size="sm" variant="destructive" onClick={() => removeHeroBanner(banner.id)}>Remove</Button></div><Input value={banner.title} onChange={(e) => updateHeroField(banner.id, 'title', e.target.value)} placeholder="Banner title" /><Input value={banner.subtitle} onChange={(e) => updateHeroField(banner.id, 'subtitle', e.target.value)} placeholder="Banner subtitle" /><Input value={banner.image} onChange={(e) => updateHeroField(banner.id, 'image', e.target.value)} placeholder="Banner image URL" /></div>)}</div><div className="flex flex-wrap gap-2"><Button variant="outline" onClick={addHeroBanner}>Add Hero Banner</Button><Button onClick={saveContent}>Save Hero Content</Button></div></CardContent></Card><Card className="mt-4"><CardHeader><CardTitle>Terms & Privacy Policy Editor</CardTitle></CardHeader><CardContent className="space-y-3"><div><p className="mb-1 text-sm font-medium">Terms and Conditions</p><textarea className="min-h-[180px] w-full rounded-md border p-3 text-sm" value={termsText} onChange={(e) => setTermsText(e.target.value)} /></div><div><p className="mb-1 text-sm font-medium">Privacy Policy</p><textarea className="min-h-[180px] w-full rounded-md border p-3 text-sm" value={privacyText} onChange={(e) => setPrivacyText(e.target.value)} /></div><Button onClick={savePolicies}>Save Terms & Privacy</Button></CardContent></Card></>
 
-    return <Card><CardHeader><CardTitle>System Events</CardTitle></CardHeader><CardContent className="space-y-2">{events.map((e) => <div key={e.id} className="rounded-md border p-3"><div className="flex items-center justify-between gap-2"><div className="font-medium">{e.type}</div><div className="text-xs text-gray-500">{new Date(e.createdAt).toLocaleString()}</div></div><div className="text-sm text-gray-600">{e.message}</div></div>)}</CardContent></Card>
+    return (
+      <div className="space-y-4">
+        <Card>
+          <CardHeader><CardTitle>Coverage Matrix</CardTitle></CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left text-gray-600">
+                    <th className="py-2">Module</th>
+                    <th className="py-2">Buyer Capability</th>
+                    <th className="py-2">Seller Capability</th>
+                    <th className="py-2">Admin Control</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {coverageMatrix.map((row) => (
+                    <tr key={row.module} className="border-b align-top">
+                      <td className="py-3 font-medium">{row.module}</td>
+                      <td className="py-3 text-gray-700">{row.buyer}</td>
+                      <td className="py-3 text-gray-700">{row.seller}</td>
+                      <td className="py-3 text-gray-900">{row.admin}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader><CardTitle>System Events</CardTitle></CardHeader>
+          <CardContent className="space-y-2">
+            {events.map((e) => (
+              <div key={e.id} className="rounded-md border p-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="font-medium">{e.type}</div>
+                  <div className="text-xs text-gray-500">{new Date(e.createdAt).toLocaleString()}</div>
+                </div>
+                <div className="text-sm text-gray-600">{e.message}</div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
+    )
   }
 
   return (
@@ -541,7 +551,7 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Operations Control Center</h1>
-          <p className="text-sm text-gray-500">Coverage is available in the left module list and the main admin sidebar.</p>
+          <p className="text-sm text-gray-500">Coverage matrix has been relocated under System.</p>
         </div>
         <Button variant="outline" onClick={loadAll} disabled={loading}>Refresh All</Button>
       </div>
