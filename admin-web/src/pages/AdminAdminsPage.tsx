@@ -8,6 +8,15 @@ import { ADMIN_PARTITIONS, clone, demoAdmins, type DemoAdmin } from '@/lib/admin
 
 type AdminStatus = 'verified' | 'disabled' | 'pending'
 
+const ROLE_TEMPLATES: Record<string, { label: string; role?: DemoAdmin['role']; partitions: string[] }> = {
+  super_admin: { label: 'Super Admin', role: 'super_admin', partitions: ['*'] },
+  full_ops: { label: 'Full Ops Admin', partitions: ['overview', 'users', 'brands', 'products', 'orders', 'analytics', 'settings'] },
+  support_ops: { label: 'Support Ops', partitions: ['overview', 'users', 'orders'] },
+  catalog_ops: { label: 'Catalog Ops', partitions: ['overview', 'brands', 'products'] },
+  risk_ops: { label: 'Risk & Audit Ops', partitions: ['overview', 'users', 'orders', 'settings'] },
+  finance_ops: { label: 'Finance Ops', partitions: ['overview', 'orders', 'analytics', 'settings'] },
+}
+
 export default function AdminAdminsPage() {
   const [rows, setRows] = useState<DemoAdmin[]>([])
   const [loading, setLoading] = useState(true)
@@ -18,6 +27,7 @@ export default function AdminAdminsPage() {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [selectedPartitions, setSelectedPartitions] = useState<string[]>(['overview'])
+  const [selectedTemplate, setSelectedTemplate] = useState('full_ops')
 
   const load = async () => {
     setLoading(true)
@@ -58,19 +68,23 @@ export default function AdminAdminsPage() {
       return
     }
 
+    const template = ROLE_TEMPLATES[selectedTemplate]
+    const partitionsForCreate = template?.partitions || selectedPartitions
+    const roleForCreate = template?.role || 'admin'
+
     try {
-      const res = await adminApi.createAdmin({ email, password, firstName, lastName, partitions: selectedPartitions })
+      const res = await adminApi.createAdmin({ email, password, firstName, lastName, partitions: partitionsForCreate })
       const admin = res?.data?.admin
       if (admin) {
         setRows((prev) => [
           {
             id: String(admin.id),
             email: String(admin.email),
-            role: String(admin.role) as DemoAdmin['role'],
+            role: (String(admin.role) as DemoAdmin['role']) || roleForCreate,
             firstName: String(admin.firstName || firstName || 'Admin'),
             lastName: String(admin.lastName || lastName || 'User'),
             status: String(admin.status || 'verified') as DemoAdmin['status'],
-            partitions: Array.isArray(admin.partitions) ? (admin.partitions as string[]) : selectedPartitions,
+            partitions: Array.isArray(admin.partitions) ? (admin.partitions as string[]) : partitionsForCreate,
           },
           ...prev,
         ])
@@ -84,7 +98,7 @@ export default function AdminAdminsPage() {
         firstName: firstName || 'Admin',
         lastName: lastName || 'User',
         status: 'verified',
-        partitions: selectedPartitions,
+        partitions: partitionsForCreate,
       }
       setRows((prev) => [demo, ...prev])
       setMessage('Admin created in demo mode.')
@@ -93,7 +107,7 @@ export default function AdminAdminsPage() {
     setEmail('')
     setFirstName('')
     setLastName('')
-    setSelectedPartitions(['overview'])
+    setSelectedPartitions(partitionsForCreate)
   }
 
   const updateAdmin = async (id: string, payload: { status?: AdminStatus; partitions?: string[] }) => {
@@ -111,6 +125,33 @@ export default function AdminAdminsPage() {
         )
       )
       setBusyId(null)
+    }
+  }
+
+  const assignTemplate = async (id: string, templateKey: string) => {
+    const template = ROLE_TEMPLATES[templateKey]
+    if (!template) return
+
+    setBusyId(id)
+    try {
+      await adminApi.updateAdmin(id, { partitions: template.partitions, status: 'verified' })
+    } catch {
+      // demo fallback
+    } finally {
+      setRows((prev) =>
+        prev.map((r) =>
+          r.id === id
+            ? {
+                ...r,
+                role: template.role || r.role,
+                status: 'verified',
+                partitions: template.partitions,
+              }
+            : r
+        )
+      )
+      setBusyId(null)
+      setMessage(`Assigned template: ${template.label}`)
     }
   }
 
@@ -146,6 +187,22 @@ export default function AdminAdminsPage() {
             <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
             <Input value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" />
             <Input value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" />
+            <select
+              className="h-10 rounded-md border px-3 text-sm md:col-span-2"
+              value={selectedTemplate}
+              onChange={(e) => {
+                const next = e.target.value
+                setSelectedTemplate(next)
+                const tpl = ROLE_TEMPLATES[next]
+                if (tpl) setSelectedPartitions(tpl.partitions)
+              }}
+            >
+              {Object.entries(ROLE_TEMPLATES).map(([key, tpl]) => (
+                <option key={key} value={key}>
+                  Template: {tpl.label}
+                </option>
+              ))}
+            </select>
             <div className="md:col-span-2 rounded-md border p-3">
               <p className="mb-2 text-sm font-medium">Partitions</p>
               <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
@@ -193,6 +250,19 @@ export default function AdminAdminsPage() {
                       <div className="flex flex-wrap gap-2">
                         <Button size="sm" variant="outline" disabled={busyId === a.id} onClick={() => updateAdmin(a.id, { status: 'verified' })}>Enable</Button>
                         <Button size="sm" variant="destructive" disabled={busyId === a.id} onClick={() => updateAdmin(a.id, { status: 'disabled' })}>Disable</Button>
+                        <select
+                          className="h-8 rounded-md border px-2 text-xs"
+                          disabled={busyId === a.id}
+                          defaultValue=""
+                          onChange={(e) => {
+                            if (e.target.value) assignTemplate(a.id, e.target.value)
+                          }}
+                        >
+                          <option value="" disabled>Assign Template</option>
+                          {Object.entries(ROLE_TEMPLATES).map(([key, tpl]) => (
+                            <option key={key} value={key}>{tpl.label}</option>
+                          ))}
+                        </select>
                       </div>
                     </td>
                   </tr>

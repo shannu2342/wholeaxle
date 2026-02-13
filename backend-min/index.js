@@ -243,6 +243,34 @@ const requirePartition = (partitionId) => (req, res, next) => {
 // --- Domain stores (in-memory) ---
 const brandRequests = [];
 
+// -------------------------
+// Content + Policy stores
+// -------------------------
+const contentStore = {
+  banners: [
+    {
+      id: 'banner-1',
+      title: 'Fashion & Lifestyle Marketplace',
+      subtitle: 'Wholesale Fashion for retailers',
+      image: 'https://via.placeholder.com/1200x400.png?text=Wholexale+Banner',
+    },
+  ],
+  brands: [
+    { id: 'brand-1', name: 'Haajra Garments' },
+    { id: 'brand-2', name: 'SoundWave' },
+  ],
+  faqs: [
+    { id: 'faq-1', question: 'How to become a seller?', answer: 'Apply in profile and get approved by admin.' },
+  ],
+};
+
+const policyStore = {
+  terms:
+    'Terms and Conditions\\n\\n1. Use of platform is subject to compliance checks.\\n2. Admin may suspend accounts for policy violations.',
+  privacy:
+    'Privacy Policy\\n\\n1. Buyer and seller data is processed for order fulfillment and compliance.\\n2. Platform logs are retained for security and audit.',
+};
+
 // --- Routes ---
 app.get('/health', (req, res) => {
   res.json({ ok: true, service: 'wholexale-backend-min' });
@@ -921,23 +949,52 @@ app.patch('/api/admin/admins/:id', requireAuth, requireRole(['super_admin']), (r
 });
 
 app.get('/api/content/home', (req, res) => {
-  res.json({
-    banners: [
-      {
-        id: 'banner-1',
-        title: 'Fashion & Lifestyle Marketplace',
-        subtitle: 'Wholesale Fashion for retailers',
-        image: 'https://via.placeholder.com/1200x400.png?text=Wholexale+Banner',
-      },
-    ],
-    brands: [
-      { id: 'brand-1', name: 'Haajra Garments' },
-      { id: 'brand-2', name: 'SoundWave' },
-    ],
-    faqs: [
-      { id: 'faq-1', question: 'How to become a seller?', answer: 'Apply in profile and get approved by admin.' },
-    ],
+  res.json(contentStore);
+});
+
+app.get('/api/content/policies', (req, res) => {
+  res.json({ policies: policyStore });
+});
+
+// Admin editable content (hero/banner) for buyer/seller apps
+app.get('/api/admin/content/home', requireAuth, requireRole(['admin', 'super_admin']), (req, res) => {
+  res.json(contentStore);
+});
+
+app.put('/api/admin/content/home', requireAuth, requireRole(['admin', 'super_admin']), (req, res) => {
+  const { banners, brands, faqs } = req.body || {};
+  if (Array.isArray(banners)) contentStore.banners = banners;
+  if (Array.isArray(brands)) contentStore.brands = brands;
+  if (Array.isArray(faqs)) contentStore.faqs = faqs;
+
+  recordAudit({
+    actor: req.user,
+    action: 'content.home.updated',
+    target: { type: 'content', id: 'home' },
+    meta: { banners: contentStore.banners.length, brands: contentStore.brands.length, faqs: contentStore.faqs.length },
   });
+
+  res.json({ ok: true, content: contentStore });
+});
+
+// Admin editable legal policies
+app.get('/api/admin/content/policies', requireAuth, requireRole(['admin', 'super_admin']), (req, res) => {
+  res.json({ policies: policyStore });
+});
+
+app.put('/api/admin/content/policies', requireAuth, requireRole(['admin', 'super_admin']), (req, res) => {
+  const { terms, privacy } = req.body || {};
+  if (typeof terms === 'string') policyStore.terms = terms;
+  if (typeof privacy === 'string') policyStore.privacy = privacy;
+
+  recordAudit({
+    actor: req.user,
+    action: 'content.policies.updated',
+    target: { type: 'content', id: 'policies' },
+    meta: { termsLength: policyStore.terms.length, privacyLength: policyStore.privacy.length },
+  });
+
+  res.json({ ok: true, policies: policyStore });
 });
 
 app.get('/api/chat/conversations', (req, res) => {

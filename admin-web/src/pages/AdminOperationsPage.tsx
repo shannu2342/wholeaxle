@@ -18,6 +18,7 @@ type ChatItem = { id: string; name: string; unread: number; lastMessage: string;
 type CampaignItem = { id: string; name: string; status: string; budget: number }
 type PermissionRole = { id: string; name: string; permissions: string[] }
 type AffiliatePerf = { id: string; name: string; status: string; commission: number }
+type HeroBanner = { id: string; title: string; subtitle: string; image: string }
 
 type FinanceState = {
   revenue: number
@@ -102,6 +103,9 @@ export default function AdminOperationsPage() {
   const [roles, setRoles] = useState<PermissionRole[]>([])
   const [affiliates, setAffiliates] = useState<AffiliatePerf[]>([])
   const [contentTitle, setContentTitle] = useState('')
+  const [heroBanners, setHeroBanners] = useState<HeroBanner[]>([])
+  const [termsText, setTermsText] = useState('')
+  const [privacyText, setPrivacyText] = useState('')
   const [notifTitle, setNotifTitle] = useState('Ops Broadcast')
   const [notifBody, setNotifBody] = useState('This is a demo admin notification broadcast.')
   const [newRoleName, setNewRoleName] = useState('')
@@ -121,6 +125,8 @@ export default function AdminOperationsPage() {
       notificationsRes,
       eventsRes,
       contentRes,
+      adminContentRes,
+      policiesRes,
       chatsRes,
       campaignsRes,
       permRes,
@@ -135,6 +141,8 @@ export default function AdminOperationsPage() {
       adminApi.getNotifications(),
       adminApi.getSystemEvents(),
       adminApi.getContentHome(),
+      adminApi.getAdminContentHome(),
+      adminApi.getAdminPolicies(),
       adminApi.getConversations(),
       adminApi.getMarketingCampaigns(),
       adminApi.getPermissionRoles(),
@@ -181,6 +189,46 @@ export default function AdminOperationsPage() {
       const title = String(contentRes.value?.data?.banners?.[0]?.title || 'Home Banner')
       setContentTitle(title)
     } else setContentTitle('Fashion & Lifestyle Marketplace')
+
+    if (adminContentRes.status === 'fulfilled') {
+      const banners = (adminContentRes.value?.data?.banners || []) as Array<Record<string, unknown>>
+      setHeroBanners(
+        banners.map((b, i) => ({
+          id: String(b.id || `banner-${i + 1}`),
+          title: String(b.title || ''),
+          subtitle: String(b.subtitle || ''),
+          image: String(b.image || ''),
+        }))
+      )
+    } else if (contentRes.status === 'fulfilled') {
+      const banners = (contentRes.value?.data?.banners || []) as Array<Record<string, unknown>>
+      setHeroBanners(
+        banners.map((b, i) => ({
+          id: String(b.id || `banner-${i + 1}`),
+          title: String(b.title || ''),
+          subtitle: String(b.subtitle || ''),
+          image: String(b.image || ''),
+        }))
+      )
+    } else {
+      setHeroBanners([
+        {
+          id: 'banner-1',
+          title: 'Fashion & Lifestyle Marketplace',
+          subtitle: 'Wholesale Fashion for retailers',
+          image: 'https://via.placeholder.com/1200x400.png?text=Wholexale+Banner',
+        },
+      ])
+    }
+
+    if (policiesRes.status === 'fulfilled') {
+      const policies = (policiesRes.value?.data?.policies || {}) as Record<string, unknown>
+      setTermsText(String(policies.terms || ''))
+      setPrivacyText(String(policies.privacy || ''))
+    } else {
+      setTermsText('Terms and Conditions\\n\\n1. Use of platform is subject to compliance checks.\\n2. Admin may suspend accounts for policy violations.')
+      setPrivacyText('Privacy Policy\\n\\n1. Buyer and seller data is processed for order fulfillment and compliance.\\n2. Platform logs are retained for security and audit.')
+    }
 
     if (chatsRes.status === 'fulfilled') {
       const list = (chatsRes.value?.data?.conversations || chatsRes.value?.data || []) as Array<Record<string, unknown>>
@@ -306,8 +354,49 @@ export default function AdminOperationsPage() {
   }
 
   const saveContent = () => {
-    localStorage.setItem('adminOpsContentTitle', contentTitle)
-    setMessage('Home banner title saved locally (demo control).')
+    const payload = {
+      banners: heroBanners,
+      title: contentTitle,
+    }
+
+    adminApi
+      .updateAdminContentHome(payload)
+      .then(() => setMessage('Hero content saved to backend.'))
+      .catch(() => {
+        localStorage.setItem('adminOpsContent', JSON.stringify(payload))
+        setMessage('Hero content saved locally (demo fallback).')
+      })
+  }
+
+  const savePolicies = () => {
+    const payload = { terms: termsText, privacy: privacyText }
+    adminApi
+      .updateAdminPolicies(payload)
+      .then(() => setMessage('Terms and privacy policy saved to backend.'))
+      .catch(() => {
+        localStorage.setItem('adminOpsPolicies', JSON.stringify(payload))
+        setMessage('Policies saved locally (demo fallback).')
+      })
+  }
+
+  const updateHeroField = (id: string, field: keyof HeroBanner, value: string) => {
+    setHeroBanners((prev) => prev.map((b) => (b.id === id ? { ...b, [field]: value } : b)))
+  }
+
+  const addHeroBanner = () => {
+    setHeroBanners((prev) => [
+      ...prev,
+      {
+        id: `banner-${Date.now()}`,
+        title: 'New Hero Title',
+        subtitle: 'New subtitle for buyer/seller apps',
+        image: 'https://via.placeholder.com/1200x400.png?text=New+Banner',
+      },
+    ])
+  }
+
+  const removeHeroBanner = (id: string) => {
+    setHeroBanners((prev) => prev.filter((b) => b.id !== id))
   }
 
   const toggleEscalation = (id: string) => {
@@ -504,7 +593,54 @@ export default function AdminOperationsPage() {
 
         <TabsContent value="notifications"><Card><CardHeader><CardTitle>Notification Broadcast</CardTitle></CardHeader><CardContent className="space-y-3"><div className="grid gap-3 md:grid-cols-2"><Input value={notifTitle} onChange={(e) => setNotifTitle(e.target.value)} placeholder="Title" /><Input value={notifBody} onChange={(e) => setNotifBody(e.target.value)} placeholder="Message" /></div><Button onClick={sendNotification}>Send Test Notification</Button><div className="space-y-2">{notifications.slice(0, 8).map((n) => <div key={n.id} className="rounded-md border p-3"><div className="flex items-center justify-between gap-2"><div className="font-medium">{n.title}</div><Badge variant="secondary">{n.status}</Badge></div><div className="text-xs text-gray-500">{n.message}</div></div>)}</div></CardContent></Card></TabsContent>
 
-        <TabsContent value="content"><Card><CardHeader><CardTitle>Content Controls</CardTitle></CardHeader><CardContent className="space-y-3"><Input value={contentTitle} onChange={(e) => setContentTitle(e.target.value)} placeholder="Homepage banner title" /><Button onClick={saveContent}>Save Banner Title</Button><p className="text-xs text-gray-500">Content write APIs are limited in current backend. Saved value is applied as local admin override.</p></CardContent></Card></TabsContent>
+        <TabsContent value="content">
+          <Card>
+            <CardHeader><CardTitle>Hero Section Controls (Buyer/Seller Apps)</CardTitle></CardHeader>
+            <CardContent className="space-y-4">
+              <Input value={contentTitle} onChange={(e) => setContentTitle(e.target.value)} placeholder="Homepage hero section title" />
+              <div className="space-y-3">
+                {heroBanners.map((banner, idx) => (
+                  <div key={banner.id} className="rounded-md border p-3 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm font-medium">Banner {idx + 1}</p>
+                      <Button size="sm" variant="destructive" onClick={() => removeHeroBanner(banner.id)}>Remove</Button>
+                    </div>
+                    <Input value={banner.title} onChange={(e) => updateHeroField(banner.id, 'title', e.target.value)} placeholder="Banner title" />
+                    <Input value={banner.subtitle} onChange={(e) => updateHeroField(banner.id, 'subtitle', e.target.value)} placeholder="Banner subtitle" />
+                    <Input value={banner.image} onChange={(e) => updateHeroField(banner.id, 'image', e.target.value)} placeholder="Banner image URL" />
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button variant="outline" onClick={addHeroBanner}>Add Hero Banner</Button>
+                <Button onClick={saveContent}>Save Hero Content</Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="mt-4">
+            <CardHeader><CardTitle>Terms & Privacy Policy Editor</CardTitle></CardHeader>
+            <CardContent className="space-y-3">
+              <div>
+                <p className="mb-1 text-sm font-medium">Terms and Conditions</p>
+                <textarea
+                  className="min-h-[180px] w-full rounded-md border p-3 text-sm"
+                  value={termsText}
+                  onChange={(e) => setTermsText(e.target.value)}
+                />
+              </div>
+              <div>
+                <p className="mb-1 text-sm font-medium">Privacy Policy</p>
+                <textarea
+                  className="min-h-[180px] w-full rounded-md border p-3 text-sm"
+                  value={privacyText}
+                  onChange={(e) => setPrivacyText(e.target.value)}
+                />
+              </div>
+              <Button onClick={savePolicies}>Save Terms & Privacy</Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
 
         <TabsContent value="system"><Card><CardHeader><CardTitle>System Events</CardTitle></CardHeader><CardContent className="space-y-2">{events.map((e) => <div key={e.id} className="rounded-md border p-3"><div className="flex items-center justify-between gap-2"><div className="font-medium">{e.type}</div><div className="text-xs text-gray-500">{new Date(e.createdAt).toLocaleString()}</div></div><div className="text-sm text-gray-600">{e.message}</div></div>)}</CardContent></Card></TabsContent>
       </Tabs>

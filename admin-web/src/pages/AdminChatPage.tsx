@@ -59,6 +59,8 @@ export default function AdminChatPage() {
   const [loading, setLoading] = useState(true)
   const [query, setQuery] = useState('')
   const [note, setNote] = useState('')
+  const [replyText, setReplyText] = useState('')
+  const [messageState, setMessageState] = useState('')
 
   const loadConversations = async () => {
     setLoading(true)
@@ -136,6 +138,36 @@ export default function AdminChatPage() {
     }
     setMessages((prev) => ({ ...prev, [activeId]: [...(prev[activeId] || []), msg] }))
     setNote('')
+    setMessageState('Internal note added.')
+  }
+
+  const sendReply = async () => {
+    if (!activeId || !replyText.trim()) return
+    const outgoing = replyText.trim()
+    const optimistic: Message = {
+      id: `out-${Date.now()}`,
+      sender: 'admin@wholexale.com',
+      content: outgoing,
+      at: new Date().toISOString(),
+    }
+
+    setMessages((prev) => ({ ...prev, [activeId]: [...(prev[activeId] || []), optimistic] }))
+    setReplyText('')
+
+    try {
+      await adminApi.sendChatMessage({ conversationId: activeId, content: outgoing, messageType: 'text' })
+      setMessageState('Reply sent.')
+    } catch {
+      setMessageState('Reply added in demo mode.')
+    }
+
+    setConversations((prev) =>
+      prev.map((c) =>
+        c.id === activeId
+          ? { ...c, lastMessage: outgoing, updatedAt: new Date().toISOString(), unreadCount: 0 }
+          : c
+      )
+    )
   }
 
   return (
@@ -147,6 +179,12 @@ export default function AdminChatPage() {
         </div>
         <Button variant="outline" onClick={loadConversations} disabled={loading}>Refresh</Button>
       </div>
+
+      {messageState && (
+        <div className="rounded-md border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-700">
+          {messageState}
+        </div>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
         <Card>
@@ -212,6 +250,20 @@ export default function AdminChatPage() {
                 <div className="space-y-2">
                   <Input value={note} onChange={(e) => setNote(e.target.value)} placeholder="Add internal admin note" />
                   <Button onClick={addInternalNote}>Add Note</Button>
+                </div>
+
+                <div className="space-y-2 rounded-md border p-3">
+                  <p className="text-sm font-medium">Reply as Admin</p>
+                  <textarea
+                    className="min-h-[100px] w-full rounded-md border p-2 text-sm"
+                    value={replyText}
+                    onChange={(e) => setReplyText(e.target.value)}
+                    placeholder="Type reply to buyer/seller..."
+                  />
+                  <div className="flex gap-2">
+                    <Button onClick={sendReply}>Send Reply</Button>
+                    <Button variant="outline" onClick={() => setReplyText('')}>Clear</Button>
+                  </div>
                 </div>
               </>
             ) : (

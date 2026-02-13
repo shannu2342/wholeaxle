@@ -124,7 +124,13 @@ export const adminApi = {
     getConversations: () => api.get('/chat/conversations'),
     getConversationMessages: (conversationId: string) =>
         api.get(`/chat/messages/${conversationId}`).catch(() => api.get('/chat/messages', { params: { conversationId } })),
+    sendChatMessage: (payload: { conversationId: string; content: string; messageType?: string }) =>
+        api.post('/chat/messages', payload),
     getContentHome: () => api.get('/content/home'),
+    getAdminContentHome: () => api.get('/admin/content/home'),
+    updateAdminContentHome: (payload: Record<string, unknown>) => api.put('/admin/content/home', payload),
+    getAdminPolicies: () => api.get('/admin/content/policies'),
+    updateAdminPolicies: (payload: Record<string, unknown>) => api.put('/admin/content/policies', payload),
     getSystemHealth: () => api.get('/system/health'),
     getSystemStats: () => api.get('/system/stats'),
     getSystemEvents: () => api.get('/system/events'),
