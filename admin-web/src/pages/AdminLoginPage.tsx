@@ -8,6 +8,7 @@ import { adminApi } from '@/lib/api'
 import { ShieldCheck, Sparkles, TrendingUp, Users2 } from 'lucide-react'
 
 export default function AdminLoginPage() {
+    const demoEnabled = import.meta.env.DEV || String(import.meta.env.VITE_DEMO_LOGIN).toLowerCase() === 'true'
     const testEmail = import.meta.env.VITE_TEST_ADMIN_EMAIL || 'admin@wholexale.com'
     const testPassword = import.meta.env.VITE_TEST_ADMIN_PASSWORD || 'Password123'
     const isDev = import.meta.env.DEV
@@ -24,6 +25,27 @@ export default function AdminLoginPage() {
         setError('')
 
         try {
+            if (demoEnabled) {
+                if (email.trim().toLowerCase() !== testEmail.toLowerCase() || password !== testPassword) {
+                    setError('Invalid demo credentials.')
+                    return
+                }
+
+                const demoUser = {
+                    id: 'demo-admin-1',
+                    email: testEmail,
+                    role: 'admin',
+                    firstName: 'Demo',
+                    lastName: 'Admin',
+                    partitions: ['overview', 'users', 'brands', 'products', 'orders', 'analytics', 'settings'],
+                }
+
+                window.localStorage.setItem('adminToken', 'demo-admin-token')
+                window.localStorage.setItem('adminDemoSession', JSON.stringify(demoUser))
+                navigate('/admin/dashboard')
+                return
+            }
+
             const response = await adminApi.login({ email, password })
             const token = response?.data?.token as string | undefined
             const user = response?.data?.user as { role?: string } | undefined
@@ -34,11 +56,13 @@ export default function AdminLoginPage() {
 
             if (!user?.role || !['admin', 'super_admin'].includes(user.role)) {
                 window.localStorage.removeItem('adminToken')
+                window.localStorage.removeItem('adminDemoSession')
                 setError('Access denied: this account is not an admin.')
                 return
             }
 
             window.localStorage.setItem('adminToken', token)
+            window.localStorage.removeItem('adminDemoSession')
 
             navigate('/admin/dashboard')
         } catch (err) {
@@ -167,6 +191,11 @@ export default function AdminLoginPage() {
                                 {isDev && (
                                     <p className="text-center text-[11px] text-gray-500">
                                         Dev seed: {testEmail} / {testPassword}
+                                    </p>
+                                )}
+                                {demoEnabled && !isDev && (
+                                    <p className="text-center text-[11px] text-gray-500">
+                                        Demo login enabled
                                     </p>
                                 )}
                                 <p className="text-center text-xs text-gray-500">

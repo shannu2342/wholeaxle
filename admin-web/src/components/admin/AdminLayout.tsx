@@ -84,6 +84,7 @@ const isAllowed = (user: AdminUser | null, item: NavItem) => {
 }
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+    const demoEnabled = import.meta.env.DEV || String(import.meta.env.VITE_DEMO_LOGIN).toLowerCase() === 'true'
     const location = useLocation()
     const navigate = useNavigate()
     const pathname = location.pathname
@@ -96,6 +97,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     const logout = useCallback(() => {
         if (typeof window !== 'undefined') {
             window.localStorage.removeItem('adminToken')
+            window.localStorage.removeItem('adminDemoSession')
         }
         navigate('/admin/login')
     }, [navigate])
@@ -111,6 +113,27 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         setError(null)
         setLoading(true)
         try {
+            if (demoEnabled) {
+                const rawDemoSession = window.localStorage.getItem('adminDemoSession')
+                if (rawDemoSession) {
+                    const demoUser = JSON.parse(rawDemoSession) as AdminUser
+                    if (demoUser?.id && ['admin', 'super_admin'].includes(demoUser.role)) {
+                        setUser(demoUser)
+                        setPartitions([
+                            { id: 'overview', label: 'Overview' },
+                            { id: 'admins', label: 'Admin Management' },
+                            { id: 'users', label: 'User Management' },
+                            { id: 'brands', label: 'Brand Authorizations' },
+                            { id: 'products', label: 'Products' },
+                            { id: 'orders', label: 'Orders' },
+                            { id: 'analytics', label: 'Analytics' },
+                            { id: 'settings', label: 'Settings' },
+                        ])
+                        return
+                    }
+                }
+            }
+
             const [meRes, partsRes] = await Promise.all([
                 adminApi.me(),
                 adminApi.getPartitions().catch(() => null),

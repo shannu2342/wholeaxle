@@ -130,11 +130,25 @@ const seed = async () => {
     await Product.deleteMany({});
 
     for (const u of seedUsers) {
-        const existing = await User.findOne({ email: u.email });
+        const existing = await User.findOne({ email: u.email }).select('+password');
         if (!existing) {
             // Create triggers password hashing via pre-save hook.
             await User.create(u);
+            continue;
         }
+
+        // Keep test credentials deterministic for existing seed users.
+        existing.firstName = u.firstName;
+        existing.lastName = u.lastName;
+        existing.phone = u.phone;
+        existing.role = u.role;
+        existing.partitions = u.partitions || [];
+        existing.status = u.status;
+        existing.isActive = u.isActive;
+        existing.isVerified = u.isVerified;
+        existing.emailVerified = u.emailVerified;
+        existing.password = u.password;
+        await existing.save();
     }
 
     const categoryDocs = await Category.insertMany(categories);

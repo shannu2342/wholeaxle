@@ -9,7 +9,10 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "cli": "node cli.js"
+    "cli": "node cli.js",
+    "demo:backend": "npm --prefix backend-min start",
+    "demo:admin-web": "npm --prefix admin-web run dev",
+    "demo:admin": "bash -lc 'npm --prefix backend-min start & npm --prefix admin-web run dev'"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
