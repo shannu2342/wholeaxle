@@ -22,6 +22,7 @@ type BrandRequestSlice = { name: string; value: number }
 type RecentActivity = { id: string; type: string; message: string; time: string }
 type BrandApplication = { id: string; brandName: string; status: string; submittedAt: string | null }
 type InventoryAlert = { id: string; sku: string; message: string; severity: string }
+type ReviewItem = { id: string; productName: string; rating: number; status: string; comment: string; reply?: string | null }
 type CouponItem = {
     id: string
     code: string
@@ -30,6 +31,8 @@ type CouponItem = {
     minOrder: number
     expiresAt: string
     active: boolean
+    createdBy?: string
+    createdByRole?: string
 }
 
 const emptyDashboardData = {
@@ -50,6 +53,11 @@ const emptyDashboardData = {
     },
 }
 
+const demoReviews: ReviewItem[] = [
+    { id: 'rev-1', productName: 'Bluetooth Earbuds', rating: 2, status: 'pending', comment: 'Battery drain issue' },
+    { id: 'rev-2', productName: 'Cotton Shirt Combo', rating: 5, status: 'approved', comment: 'Great quality' },
+]
+
 export default function AdminDashboard() {
     const navigate = useNavigate()
     const [activeTab, setActiveTab] = useState('overview')
@@ -58,6 +66,8 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(true)
     const [lastUpdatedAt, setLastUpdatedAt] = useState<string | null>(null)
     const [coupons, setCoupons] = useState<CouponItem[]>([])
+    const [reviews, setReviews] = useState<ReviewItem[]>(demoReviews)
+    const [reviewReplies, setReviewReplies] = useState<Record<string, string>>({})
     const [couponForm, setCouponForm] = useState({
         code: '',
         type: 'percent' as CouponItem['type'],
@@ -109,16 +119,61 @@ export default function AdminDashboard() {
     }, [])
 
     useEffect(() => {
-        if (typeof window === 'undefined') return
-        const stored = window.localStorage.getItem('adminCoupons')
-        if (stored) {
+        const loadCoupons = async () => {
             try {
-                const parsed = JSON.parse(stored) as CouponItem[]
-                if (Array.isArray(parsed)) setCoupons(parsed)
+                const res = await adminApi.getCoupons()
+                const list = (res?.data?.coupons || res?.data || []) as Array<Record<string, unknown>>
+                const normalized = list.map((c, i) => ({
+                    id: String(c.id || `cp-${i}`),
+                    code: String(c.code || 'COUPON'),
+                    type: c.type === 'flat' ? 'flat' : 'percent',
+                    amount: Number(c.amount || 0),
+                    minOrder: Number(c.minOrder || 0),
+                    expiresAt: String(c.expiresAt || ''),
+                    active: Boolean(c.active ?? true),
+                    createdBy: c.createdBy ? String(c.createdBy) : undefined,
+                    createdByRole: c.createdByRole ? String(c.createdByRole) : undefined,
+                })) as CouponItem[]
+                setCoupons(normalized)
+                if (typeof window !== 'undefined') {
+                    window.localStorage.setItem('adminCoupons', JSON.stringify(normalized))
+                }
             } catch {
-                // ignore malformed storage
+                if (typeof window === 'undefined') return
+                const stored = window.localStorage.getItem('adminCoupons')
+                if (stored) {
+                    try {
+                        const parsed = JSON.parse(stored) as CouponItem[]
+                        if (Array.isArray(parsed)) setCoupons(parsed)
+                    } catch {
+                        // ignore malformed storage
+                    }
+                }
             }
         }
+
+        loadCoupons()
+    }, [])
+
+    useEffect(() => {
+        const loadReviews = async () => {
+            try {
+                const res = await adminApi.getReviews()
+                const list = (res?.data?.reviews || res?.data || []) as Array<Record<string, unknown>>
+                setReviews(list.map((x, i) => ({
+                    id: String(x.id || x._id || i),
+                    productName: String(x.productName || x.product || 'Unknown Product'),
+                    rating: Number(x.rating || 0),
+                    status: String(x.status || 'pending'),
+                    comment: String(x.comment || ''),
+                    reply: typeof x.reply === 'string' ? x.reply : null,
+                })))
+            } catch {
+                setReviews(demoReviews)
+            }
+        }
+
+        loadReviews()
     }, [])
 
     const persistCoupons = (next: CouponItem[]) => {
@@ -142,16 +197,33 @@ export default function AdminDashboard() {
             expiresAt: couponForm.expiresAt || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
             active: true,
         }
+        adminApi.createCoupon(newCoupon).catch(() => null)
         persistCoupons([newCoupon, ...coupons])
         setCouponForm({ code: '', type: couponForm.type, amount: '', minOrder: '', expiresAt: '' })
     }
 
     const toggleCoupon = (id: string) => {
-        persistCoupons(coupons.map((c) => (c.id === id ? { ...c, active: !c.active } : c)))
+        const next = coupons.map((c) => (c.id === id ? { ...c, active: !c.active } : c))
+        const updated = next.find((c) => c.id === id)
+        if (updated) adminApi.updateCoupon(id, { active: updated.active }).catch(() => null)
+        persistCoupons(next)
     }
 
     const deleteCoupon = (id: string) => {
+        adminApi.deleteCoupon(id).catch(() => null)
         persistCoupons(coupons.filter((c) => c.id !== id))
+    }
+
+    const replyToReview = async (id: string) => {
+        const reply = (reviewReplies[id] || '').trim()
+        if (!reply) return
+        try {
+            await adminApi.replyReview(id, reply)
+        } catch {
+            // demo fallback
+        }
+        setReviews((prev) => prev.map((r) => (r.id === id ? { ...r, reply } : r)))
+        setReviewReplies((prev) => ({ ...prev, [id]: '' }))
     }
 
     const heroSlides = [
@@ -448,6 +520,11 @@ export default function AdminDashboard() {
                                                         {coupon.type === 'percent' ? `${coupon.amount}% off` : `₹${coupon.amount} off`} •
                                                         Min order ₹{coupon.minOrder.toLocaleString()} • Expires {coupon.expiresAt}
                                                     </div>
+                                                    {coupon.createdByRole && (
+                                                        <div className="text-xs text-muted-foreground">
+                                                            Created by {coupon.createdByRole}
+                                                        </div>
+                                                    )}
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <Badge variant={coupon.active ? 'success' : 'secondary'}>
@@ -531,6 +608,37 @@ export default function AdminDashboard() {
                                         </div>
                                     ))}
                                 </div>
+                            </CardContent>
+                        </Card>
+
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Review Replies</CardTitle>
+                            </CardHeader>
+                            <CardContent className="space-y-3">
+                                {reviews.map((review) => (
+                                    <div key={review.id} className="space-y-2 rounded-lg border p-3">
+                                        <div className="flex flex-wrap items-center justify-between gap-2">
+                                            <div>
+                                                <div className="font-medium">{review.productName} • {review.rating}/5</div>
+                                                <div className="text-xs text-muted-foreground">{review.comment}</div>
+                                            </div>
+                                            <Badge variant={review.status === 'approved' ? 'success' : review.status === 'rejected' ? 'destructive' : 'warning'}>
+                                                {review.status}
+                                            </Badge>
+                                        </div>
+                                        <div className="flex flex-wrap items-center gap-2">
+                                            <Input
+                                                value={reviewReplies[review.id] || ''}
+                                                onChange={(e) => setReviewReplies((prev) => ({ ...prev, [review.id]: e.target.value }))}
+                                                placeholder={review.reply ? `Reply sent: ${review.reply}` : 'Reply to review...'}
+                                            />
+                                            <Button size="sm" variant="outline" onClick={() => replyToReview(review.id)}>
+                                                Reply
+                                            </Button>
+                                        </div>
+                                    </div>
+                                ))}
                             </CardContent>
                         </Card>
                     </div>

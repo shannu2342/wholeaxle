@@ -112,6 +112,7 @@ export const adminApi = {
     updateReturnStatus: (id: string, status: string) => api.patch(`/returns/${id}/status`, { status }),
     getReviews: () => api.get('/reviews'),
     moderateReview: (id: string, action: 'approve' | 'reject') => api.patch(`/reviews/${id}/moderate`, { action }),
+    replyReview: (id: string, message: string) => api.post(`/reviews/${id}/reply`, { message }),
     getSupportTickets: () => api.get('/support/tickets'),
     updateSupportTicketStatus: (id: string, status: string) => api.patch(`/support/tickets/${id}/status`, { status }),
     assignSupportTicket: (id: string, assigneeId: string) => api.post(`/support/tickets/${id}/assign`, { assigneeId }),
@@ -147,6 +148,10 @@ export const adminApi = {
     getPermissionAudit: () => api.get('/permissions/audit'),
     getAffiliateProfile: () => api.get('/affiliate/profile'),
     getAffiliatePerformance: () => api.get('/affiliate/performance'),
+    getCoupons: () => api.get('/admin/coupons'),
+    createCoupon: (payload: Record<string, unknown>) => api.post('/admin/coupons', payload),
+    updateCoupon: (id: string, payload: Record<string, unknown>) => api.patch(`/admin/coupons/${id}`, payload),
+    deleteCoupon: (id: string) => api.delete(`/admin/coupons/${id}`),
 }
 
 export default api

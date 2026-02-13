@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
+import { apiRequest } from '../services/apiClient';
 import {
     fetchSalesEvents,
     createSalesEvent,
@@ -74,6 +75,15 @@ const MarketingDashboard = ({
         bidAmount: '',
         placementType: 'search',
     });
+    const [coupons, setCoupons] = useState([]);
+    const [couponForm, setCouponForm] = useState({
+        code: '',
+        type: 'percent',
+        amount: '',
+        minOrder: '',
+        expiresAt: '',
+    });
+    const [couponLoading, setCouponLoading] = useState(false);
 
     const tabs = userType === 'admin'
         ? [
@@ -84,6 +94,7 @@ const MarketingDashboard = ({
             { id: 'roi', label: 'ROI Tracking', icon: 'pie-chart' },
             { id: 'abtests', label: 'A/B Tests', icon: 'flask' },
             { id: 'campaigns', label: 'Campaigns', icon: 'send' },
+            { id: 'coupons', label: 'Coupons', icon: 'ticket' },
         ]
         : [
             { id: 'overview', label: 'Overview', icon: 'dashboard' },
@@ -92,10 +103,12 @@ const MarketingDashboard = ({
             { id: 'analytics', label: 'Analytics', icon: 'bar-chart' },
             { id: 'roi', label: 'ROI', icon: 'pie-chart' },
             { id: 'abtests', label: 'A/B Tests', icon: 'flask' },
+            { id: 'coupons', label: 'Coupons', icon: 'ticket' },
         ];
 
     useEffect(() => {
         loadMarketingData();
+        loadCoupons();
     }, []);
 
     const loadMarketingData = async () => {
@@ -108,7 +121,21 @@ const MarketingDashboard = ({
     const onRefresh = async () => {
         setRefreshing(true);
         await loadMarketingData();
+        await loadCoupons();
         setRefreshing(false);
+    };
+
+    const loadCoupons = async () => {
+        try {
+            setCouponLoading(true);
+            const response = await apiRequest('/api/coupons');
+            const list = response?.coupons || response?.data?.coupons || [];
+            setCoupons(Array.isArray(list) ? list : []);
+        } catch (error) {
+            // keep existing coupons on failure
+        } finally {
+            setCouponLoading(false);
+        }
     };
 
     const handleCreateEvent = async () => {
@@ -152,6 +179,36 @@ const MarketingDashboard = ({
         });
 
         Alert.alert('Success', 'Advertisement created successfully');
+    };
+
+    const handleCreateCoupon = async () => {
+        if (!couponForm.code || !couponForm.amount) {
+            Alert.alert('Error', 'Please fill in coupon code and amount');
+            return;
+        }
+        try {
+            await apiRequest('/api/coupons', {
+                method: 'POST',
+                body: {
+                    code: couponForm.code,
+                    type: couponForm.type,
+                    amount: parseFloat(couponForm.amount),
+                    minOrder: parseFloat(couponForm.minOrder) || 0,
+                    expiresAt: couponForm.expiresAt,
+                },
+            });
+            setCouponForm({
+                code: '',
+                type: couponForm.type,
+                amount: '',
+                minOrder: '',
+                expiresAt: '',
+            });
+            await loadCoupons();
+            Alert.alert('Success', 'Coupon created successfully');
+        } catch (error) {
+            Alert.alert('Error', error?.message || 'Failed to create coupon');
+        }
     };
 
     const handlePlaceBid = async () => {
@@ -744,6 +801,105 @@ const MarketingDashboard = ({
         </ScrollView>
     );
 
+    const renderCoupons = () => (
+        <ScrollView>
+            <View style={styles.sectionContainer}>
+                <View style={styles.sectionHeader}>
+                    <Text style={styles.sectionTitle}>Create Coupon</Text>
+                </View>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputLabel}>Coupon Code</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        value={couponForm.code}
+                        onChangeText={(text) => setCouponForm({ ...couponForm, code: text })}
+                        placeholder="SAVE10"
+                        autoCapitalize="characters"
+                    />
+                </View>
+                <View style={styles.inputRow}>
+                    <View style={[styles.inputContainer, { flex: 1, marginRight: 8 }]}>
+                        <Text style={styles.inputLabel}>Type</Text>
+                        <View style={styles.typeRow}>
+                            {['percent', 'flat'].map(type => (
+                                <TouchableOpacity
+                                    key={type}
+                                    style={[styles.typeButton, couponForm.type === type && styles.typeButtonActive]}
+                                    onPress={() => setCouponForm({ ...couponForm, type })}
+                                >
+                                    <Text style={[styles.typeButtonText, couponForm.type === type && styles.typeButtonTextActive]}>
+                                        {type === 'percent' ? '%' : '₹'}
+                                    </Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </View>
+                    <View style={[styles.inputContainer, { flex: 1, marginLeft: 8 }]}>
+                        <Text style={styles.inputLabel}>Amount</Text>
+                        <TextInput
+                            style={styles.textInput}
+                            value={couponForm.amount}
+                            onChangeText={(text) => setCouponForm({ ...couponForm, amount: text })}
+                            placeholder={couponForm.type === 'percent' ? '10' : '100'}
+                            keyboardType="numeric"
+                        />
+                    </View>
+                </View>
+                <View style={styles.inputRow}>
+                    <View style={[styles.inputContainer, { flex: 1, marginRight: 8 }]}>
+                        <Text style={styles.inputLabel}>Min Order</Text>
+                        <TextInput
+                            style={styles.textInput}
+                            value={couponForm.minOrder}
+                            onChangeText={(text) => setCouponForm({ ...couponForm, minOrder: text })}
+                            placeholder="500"
+                            keyboardType="numeric"
+                        />
+                    </View>
+                    <View style={[styles.inputContainer, { flex: 1, marginLeft: 8 }]}>
+                        <Text style={styles.inputLabel}>Expiry (YYYY-MM-DD)</Text>
+                        <TextInput
+                            style={styles.textInput}
+                            value={couponForm.expiresAt}
+                            onChangeText={(text) => setCouponForm({ ...couponForm, expiresAt: text })}
+                            placeholder="2026-12-31"
+                        />
+                    </View>
+                </View>
+                <TouchableOpacity style={styles.createButton} onPress={handleCreateCoupon} disabled={couponLoading}>
+                    <Text style={styles.createButtonText}>{couponLoading ? 'Saving...' : 'Create Coupon'}</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.sectionContainer}>
+                <View style={styles.sectionHeader}>
+                    <Text style={styles.sectionTitle}>Your Coupons</Text>
+                    <TouchableOpacity style={styles.viewAllButton} onPress={loadCoupons}>
+                        <Text style={styles.viewAllText}>Refresh</Text>
+                    </TouchableOpacity>
+                </View>
+                {coupons.length === 0 ? (
+                    <Text style={styles.subtitle}>No coupons created yet.</Text>
+                ) : (
+                    coupons.map(coupon => (
+                        <View key={coupon.id || coupon.code} style={styles.couponCard}>
+                            <View style={styles.couponInfo}>
+                                <Text style={styles.couponCode}>{coupon.code}</Text>
+                                <Text style={styles.couponMeta}>
+                                    {coupon.type === 'flat' ? `₹${coupon.amount} off` : `${coupon.amount}% off`} •
+                                    Min ₹{coupon.minOrder || 0} • Expires {coupon.expiresAt}
+                                </Text>
+                            </View>
+                            <View style={[styles.statusBadge, { backgroundColor: coupon.active ? '#4CAF50' : '#9E9E9E' }]}>
+                                <Text style={styles.statusText}>{coupon.active ? 'Active' : 'Inactive'}</Text>
+                            </View>
+                        </View>
+                    ))
+                )}
+            </View>
+        </ScrollView>
+    );
+
     const renderTabContent = () => {
         switch (selectedTab) {
             case 'overview':
@@ -758,6 +914,8 @@ const MarketingDashboard = ({
                 return renderROITracking();
             case 'abtests':
                 return renderABTests();
+            case 'coupons':
+                return renderCoupons();
             case 'campaigns':
                 return <Text>Campaign management content here</Text>;
             default:
@@ -1067,6 +1225,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         marginRight: 8,
     },
+    typeRow: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
     typeButtonActive: {
         backgroundColor: '#0390F3',
     },
@@ -1144,6 +1306,29 @@ const styles = StyleSheet.create({
     eventActions: {
         alignItems: 'flex-end',
         marginLeft: 12,
+    },
+    couponCard: {
+        backgroundColor: '#f8f9fa',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    couponInfo: {
+        flex: 1,
+        marginRight: 12,
+    },
+    couponCode: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#333',
+        marginBottom: 4,
+    },
+    couponMeta: {
+        fontSize: 12,
+        color: '#666',
     },
     joinButton: {
         backgroundColor: '#4CAF50',

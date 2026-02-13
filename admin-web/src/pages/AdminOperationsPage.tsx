@@ -148,6 +148,7 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
   const [vendorApps, setVendorApps] = useState<VendorApp[]>([])
   const [returns, setReturns] = useState<ReturnItem[]>([])
   const [reviews, setReviews] = useState<ReviewItem[]>([])
+  const [reviewReplies, setReviewReplies] = useState<Record<string, string>>({})
   const [tickets, setTickets] = useState<TicketItem[]>([])
   const [offers, setOffers] = useState<OfferItem[]>([])
   const [notifications, setNotifications] = useState<NotificationItem[]>([])
@@ -348,6 +349,21 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
     setMessage(`Review ${action}d.`)
   }
 
+  const replyToReview = async (id: string) => {
+    const reply = (reviewReplies[id] || '').trim()
+    if (!reply) {
+      setError('Reply message is required.')
+      return
+    }
+    try {
+      await adminApi.replyReview(id, reply)
+      setMessage('Reply sent to review.')
+    } catch {
+      setMessage('Reply sent to review (demo mode).')
+    }
+    setReviewReplies((prev) => ({ ...prev, [id]: '' }))
+  }
+
   const updateTicket = async (id: string, status: string) => {
     try {
       await adminApi.updateSupportTicketStatus(id, status)
@@ -468,7 +484,36 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
 
     if (activeModule === 'returns') return <Card><CardHeader><CardTitle>Returns Management</CardTitle></CardHeader><CardContent className="space-y-3">{returns.map((r) => <div key={r.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{r.orderId} • INR {r.amount.toLocaleString()}</div><div className="text-xs text-gray-500">{r.reason}</div></div><div className="flex items-center gap-2"><Badge variant="secondary">{r.status}</Badge><select className="h-8 rounded-md border px-2 text-xs" value={r.status} onChange={(e) => updateReturn(r.id, e.target.value)}><option value="requested">requested</option><option value="in_review">in_review</option><option value="approved">approved</option><option value="refunded">refunded</option><option value="closed">closed</option></select></div></div>)}</CardContent></Card>
 
-    if (activeModule === 'reviews') return <Card><CardHeader><CardTitle>Review Moderation</CardTitle></CardHeader><CardContent className="space-y-3">{reviews.map((r) => <div key={r.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{r.productName} • {r.rating}/5</div><div className="text-xs text-gray-500">{r.comment}</div></div><div className="flex items-center gap-2"><Badge variant={r.status === 'approved' ? 'success' : r.status === 'rejected' ? 'destructive' : 'warning'}>{r.status}</Badge><Button size="sm" onClick={() => moderateReview(r.id, 'approve')}>Approve</Button><Button size="sm" variant="destructive" onClick={() => moderateReview(r.id, 'reject')}>Reject</Button></div></div>)}</CardContent></Card>
+    if (activeModule === 'reviews') return (
+      <Card>
+        <CardHeader><CardTitle>Review Moderation</CardTitle></CardHeader>
+        <CardContent className="space-y-3">
+          {reviews.map((r) => (
+            <div key={r.id} className="space-y-3 rounded-md border p-3">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <div className="font-medium">{r.productName} • {r.rating}/5</div>
+                  <div className="text-xs text-gray-500">{r.comment}</div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge variant={r.status === 'approved' ? 'success' : r.status === 'rejected' ? 'destructive' : 'warning'}>{r.status}</Badge>
+                  <Button size="sm" onClick={() => moderateReview(r.id, 'approve')}>Approve</Button>
+                  <Button size="sm" variant="destructive" onClick={() => moderateReview(r.id, 'reject')}>Reject</Button>
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Input
+                  value={reviewReplies[r.id] || ''}
+                  onChange={(e) => setReviewReplies((prev) => ({ ...prev, [r.id]: e.target.value }))}
+                  placeholder="Reply to review..."
+                />
+                <Button size="sm" variant="outline" onClick={() => replyToReview(r.id)}>Reply</Button>
+              </div>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    )
 
     if (activeModule === 'support') return <Card><CardHeader><CardTitle>Support Tickets</CardTitle></CardHeader><CardContent className="space-y-3">{tickets.map((t) => <div key={t.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border p-3"><div><div className="font-medium">{t.subject}</div><div className="text-xs text-gray-500">{t.requester} • {t.priority}</div></div><div className="flex items-center gap-2"><Badge variant={t.status === 'closed' ? 'success' : 'warning'}>{t.status}</Badge><Button size="sm" variant="outline" onClick={() => updateTicket(t.id, 'in_progress')}>In Progress</Button><Button size="sm" onClick={() => updateTicket(t.id, 'closed')}>Close</Button></div></div>)}</CardContent></Card>
 
@@ -517,9 +562,9 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
 
       <div className="space-y-4">
         <Tabs value={activeModule} onValueChange={(value) => setActiveModule(value as ModuleKey)}>
-          <TabsList className="flex w-full flex-wrap justify-start">
+          <TabsList className="flex w-full flex-nowrap items-center justify-start gap-2 overflow-x-auto">
             {MODULES.map((key) => (
-              <TabsTrigger key={key} value={key} className="data-[state=active]:bg-primary data-[state=active]:text-white">
+              <TabsTrigger key={key} value={key} className="whitespace-nowrap data-[state=active]:bg-primary data-[state=active]:text-white">
                 {MODULE_LABELS[key]}
               </TabsTrigger>
             ))}

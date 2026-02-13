@@ -128,6 +128,46 @@ const products = [
   },
 ];
 
+const reviews = [
+  {
+    id: 'rev-1',
+    productName: 'Bluetooth Earbuds',
+    rating: 2,
+    status: 'pending',
+    comment: 'Battery drain issue after two days.',
+    reply: null,
+    createdAt: nowIso(),
+    buyerId: 'user-buyer-1',
+    sellerId: 'user-seller-1',
+  },
+  {
+    id: 'rev-2',
+    productName: 'Cotton Shirt Combo',
+    rating: 5,
+    status: 'approved',
+    comment: 'Great quality and fast delivery.',
+    reply: 'Thank you for the feedback!',
+    createdAt: nowIso(),
+    buyerId: 'user-buyer-1',
+    sellerId: 'user-seller-1',
+  },
+];
+
+const coupons = [
+  {
+    id: 'coupon-1',
+    code: 'WELCOME10',
+    type: 'percent',
+    amount: 10,
+    minOrder: 1000,
+    expiresAt: '2026-12-31',
+    active: true,
+    createdBy: 'user-seller-1',
+    createdByRole: 'seller',
+    createdAt: nowIso(),
+  },
+];
+
 function nowIso() {
   return new Date().toISOString();
 }
@@ -371,6 +411,90 @@ app.get('/api/products', (req, res) => {
       hasMore: end < filtered.length,
     },
   });
+});
+
+app.get('/api/reviews', (req, res) => {
+  res.json({ reviews });
+});
+
+app.patch('/api/reviews/:id/moderate', (req, res) => {
+  const { id } = req.params;
+  const { action } = req.body || {};
+  const review = reviews.find(r => r.id === id);
+  if (!review) {
+    return res.status(404).json({ error: 'Review not found' });
+  }
+  if (action === 'approve') review.status = 'approved';
+  if (action === 'reject') review.status = 'rejected';
+
+  recordAudit({
+    actor: getUserFromReq(req),
+    action: 'reviews.moderated',
+    target: { type: 'review', id },
+    meta: { status: review.status },
+  });
+
+  return res.json({ review });
+});
+
+app.post('/api/reviews/:id/reply', (req, res) => {
+  const { id } = req.params;
+  const { message } = req.body || {};
+  const review = reviews.find(r => r.id === id);
+  if (!review) {
+    return res.status(404).json({ error: 'Review not found' });
+  }
+  if (!message || !String(message).trim()) {
+    return res.status(400).json({ error: 'Reply message is required' });
+  }
+  review.reply = String(message).trim();
+
+  recordAudit({
+    actor: getUserFromReq(req),
+    action: 'reviews.replied',
+    target: { type: 'review', id },
+    meta: { replyLength: review.reply.length },
+  });
+
+  return res.json({ review });
+});
+
+app.get('/api/coupons', (req, res) => {
+  res.json({ coupons });
+});
+
+app.post('/api/coupons', (req, res) => {
+  const actor = getUserFromReq(req);
+  const { code, type = 'percent', amount, minOrder = 0, expiresAt } = req.body || {};
+  if (!code || !amount) {
+    return res.status(400).json({ error: 'Coupon code and amount are required' });
+  }
+  const exists = coupons.find(c => c.code.toUpperCase() === String(code).toUpperCase());
+  if (exists) {
+    return res.status(409).json({ error: 'Coupon code already exists' });
+  }
+  const newCoupon = {
+    id: `coupon-${uuidv4()}`,
+    code: String(code).toUpperCase(),
+    type: type === 'flat' ? 'flat' : 'percent',
+    amount: Number(amount),
+    minOrder: Number(minOrder) || 0,
+    expiresAt: expiresAt ? String(expiresAt) : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
+    active: true,
+    createdBy: actor?.id || 'seller-demo',
+    createdByRole: actor?.role || 'seller',
+    createdAt: nowIso(),
+  };
+  coupons.unshift(newCoupon);
+
+  recordAudit({
+    actor: actor || null,
+    action: 'coupons.created',
+    target: { type: 'coupon', id: newCoupon.id },
+    meta: { code: newCoupon.code },
+  });
+
+  return res.status(201).json({ coupon: newCoupon });
 });
 
 app.post('/api/products', requireAuth, (req, res) => {
@@ -849,6 +973,82 @@ app.get('/api/admin/settings', requireAuth, requirePartition('settings'), (req, 
       partitions: user.partitions || [],
     },
   });
+});
+
+app.get('/api/admin/coupons', requireAuth, requireRole(['admin', 'super_admin']), (req, res) => {
+  res.json({ coupons });
+});
+
+app.post('/api/admin/coupons', requireAuth, requireRole(['admin', 'super_admin']), (req, res) => {
+  const actor = req.user;
+  const { code, type = 'percent', amount, minOrder = 0, expiresAt } = req.body || {};
+  if (!code || !amount) {
+    return res.status(400).json({ error: 'Coupon code and amount are required' });
+  }
+  const exists = coupons.find(c => c.code.toUpperCase() === String(code).toUpperCase());
+  if (exists) {
+    return res.status(409).json({ error: 'Coupon code already exists' });
+  }
+  const newCoupon = {
+    id: `coupon-${uuidv4()}`,
+    code: String(code).toUpperCase(),
+    type: type === 'flat' ? 'flat' : 'percent',
+    amount: Number(amount),
+    minOrder: Number(minOrder) || 0,
+    expiresAt: expiresAt ? String(expiresAt) : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
+    active: true,
+    createdBy: actor.id,
+    createdByRole: actor.role,
+    createdAt: nowIso(),
+  };
+  coupons.unshift(newCoupon);
+
+  recordAudit({
+    actor,
+    action: 'coupons.created',
+    target: { type: 'coupon', id: newCoupon.id },
+    meta: { code: newCoupon.code },
+  });
+
+  return res.status(201).json({ coupon: newCoupon });
+});
+
+app.patch('/api/admin/coupons/:id', requireAuth, requireRole(['admin', 'super_admin']), (req, res) => {
+  const { id } = req.params;
+  const { active, expiresAt } = req.body || {};
+  const coupon = coupons.find(c => c.id === id);
+  if (!coupon) {
+    return res.status(404).json({ error: 'Coupon not found' });
+  }
+  if (typeof active === 'boolean') coupon.active = active;
+  if (expiresAt) coupon.expiresAt = String(expiresAt);
+
+  recordAudit({
+    actor: req.user,
+    action: 'coupons.updated',
+    target: { type: 'coupon', id },
+    meta: { active: coupon.active },
+  });
+
+  return res.json({ coupon });
+});
+
+app.delete('/api/admin/coupons/:id', requireAuth, requireRole(['admin', 'super_admin']), (req, res) => {
+  const { id } = req.params;
+  const index = coupons.findIndex(c => c.id === id);
+  if (index === -1) {
+    return res.status(404).json({ error: 'Coupon not found' });
+  }
+  const removed = coupons.splice(index, 1)[0];
+
+  recordAudit({
+    actor: req.user,
+    action: 'coupons.deleted',
+    target: { type: 'coupon', id },
+    meta: { code: removed.code },
+  });
+
+  return res.json({ ok: true });
 });
 
 // Super admin: create/manage admins
