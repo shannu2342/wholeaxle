@@ -122,6 +122,8 @@ export const adminApi = {
     sendTestNotification: (payload: { title: string; message: string; channels?: string[] }) =>
         api.post('/notifications/test', payload),
     getConversations: () => api.get('/chat/conversations'),
+    getConversationMessages: (conversationId: string) =>
+        api.get(`/chat/messages/${conversationId}`).catch(() => api.get('/chat/messages', { params: { conversationId } })),
     getContentHome: () => api.get('/content/home'),
     getSystemHealth: () => api.get('/system/health'),
     getSystemStats: () => api.get('/system/stats'),

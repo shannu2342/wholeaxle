@@ -12,6 +12,7 @@ import AdminAuditPage from '@/pages/AdminAuditPage'
 import AdminAdminsPage from '@/pages/AdminAdminsPage'
 import AdminSettingsPage from '@/pages/AdminSettingsPage'
 import AdminOperationsPage from '@/pages/AdminOperationsPage'
+import AdminChatPage from '@/pages/AdminChatPage'
 import HomePage from '@/pages/HomePage'
 
 function App() {
@@ -105,6 +106,14 @@ function App() {
                     element={
                         <AdminLayout>
                             <AdminOperationsPage />
+                        </AdminLayout>
+                    }
+                />
+                <Route
+                    path="/admin/chat"
+                    element={
+                        <AdminLayout>
+                            <AdminChatPage />
                         </AdminLayout>
                     }
                 />
