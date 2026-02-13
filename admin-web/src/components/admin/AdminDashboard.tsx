@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
 import { Activity, Package, Shield, Barcode, Upload, Users, AlertTriangle } from 'lucide-react'
@@ -21,6 +22,15 @@ type BrandRequestSlice = { name: string; value: number }
 type RecentActivity = { id: string; type: string; message: string; time: string }
 type BrandApplication = { id: string; brandName: string; status: string; submittedAt: string | null }
 type InventoryAlert = { id: string; sku: string; message: string; severity: string }
+type CouponItem = {
+    id: string
+    code: string
+    type: 'percent' | 'flat'
+    amount: number
+    minOrder: number
+    expiresAt: string
+    active: boolean
+}
 
 const emptyDashboardData = {
     stats: {
@@ -47,6 +57,14 @@ export default function AdminDashboard() {
     const [dashboardData, setDashboardData] = useState(emptyDashboardData)
     const [loading, setLoading] = useState(true)
     const [lastUpdatedAt, setLastUpdatedAt] = useState<string | null>(null)
+    const [coupons, setCoupons] = useState<CouponItem[]>([])
+    const [couponForm, setCouponForm] = useState({
+        code: '',
+        type: 'percent' as CouponItem['type'],
+        amount: '',
+        minOrder: '',
+        expiresAt: '',
+    })
 
     // Fetch dashboard data from API
     useEffect(() => {
@@ -89,6 +107,52 @@ export default function AdminDashboard() {
         const timer = window.setInterval(() => setHeroIndex((p) => (p + 1) % 3), 5000)
         return () => window.clearInterval(timer)
     }, [])
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return
+        const stored = window.localStorage.getItem('adminCoupons')
+        if (stored) {
+            try {
+                const parsed = JSON.parse(stored) as CouponItem[]
+                if (Array.isArray(parsed)) setCoupons(parsed)
+            } catch {
+                // ignore malformed storage
+            }
+        }
+    }, [])
+
+    const persistCoupons = (next: CouponItem[]) => {
+        setCoupons(next)
+        if (typeof window !== 'undefined') {
+            window.localStorage.setItem('adminCoupons', JSON.stringify(next))
+        }
+    }
+
+    const createCoupon = () => {
+        const code = couponForm.code.trim().toUpperCase()
+        const amount = Number(couponForm.amount)
+        const minOrder = Number(couponForm.minOrder)
+        if (!code || !Number.isFinite(amount) || amount <= 0) return
+        const newCoupon: CouponItem = {
+            id: `cp-${Date.now()}`,
+            code,
+            type: couponForm.type,
+            amount,
+            minOrder: Number.isFinite(minOrder) ? minOrder : 0,
+            expiresAt: couponForm.expiresAt || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
+            active: true,
+        }
+        persistCoupons([newCoupon, ...coupons])
+        setCouponForm({ code: '', type: couponForm.type, amount: '', minOrder: '', expiresAt: '' })
+    }
+
+    const toggleCoupon = (id: string) => {
+        persistCoupons(coupons.map((c) => (c.id === id ? { ...c, active: !c.active } : c)))
+    }
+
+    const deleteCoupon = (id: string) => {
+        persistCoupons(coupons.filter((c) => c.id !== id))
+    }
 
     const heroSlides = [
         {
@@ -324,6 +388,81 @@ export default function AdminDashboard() {
                                         <Users className="h-6 w-6" />
                                         <span className="text-sm">User Management</span>
                                     </Button>
+                                    <Button
+                                        variant="outline"
+                                        className="flex flex-col h-20 justify-center items-center gap-2"
+                                        onClick={() => document.getElementById('coupon-manager')?.scrollIntoView({ behavior: 'smooth' })}
+                                    >
+                                        <Activity className="h-6 w-6" />
+                                        <span className="text-sm">Create Coupon</span>
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        <Card id="coupon-manager">
+                            <CardHeader>
+                                <CardTitle>Create Coupon</CardTitle>
+                            </CardHeader>
+                            <CardContent className="space-y-4">
+                                <div className="grid gap-3 md:grid-cols-5">
+                                    <Input
+                                        value={couponForm.code}
+                                        onChange={(e) => setCouponForm((prev) => ({ ...prev, code: e.target.value }))}
+                                        placeholder="CODE10"
+                                    />
+                                    <select
+                                        className="h-10 rounded-md border px-3 text-sm"
+                                        value={couponForm.type}
+                                        onChange={(e) => setCouponForm((prev) => ({ ...prev, type: e.target.value as CouponItem['type'] }))}
+                                    >
+                                        <option value="percent">Percent</option>
+                                        <option value="flat">Flat</option>
+                                    </select>
+                                    <Input
+                                        value={couponForm.amount}
+                                        onChange={(e) => setCouponForm((prev) => ({ ...prev, amount: e.target.value }))}
+                                        placeholder={couponForm.type === 'percent' ? 'Discount %' : 'Discount amount'}
+                                    />
+                                    <Input
+                                        value={couponForm.minOrder}
+                                        onChange={(e) => setCouponForm((prev) => ({ ...prev, minOrder: e.target.value }))}
+                                        placeholder="Min order"
+                                    />
+                                    <Input
+                                        type="date"
+                                        value={couponForm.expiresAt}
+                                        onChange={(e) => setCouponForm((prev) => ({ ...prev, expiresAt: e.target.value }))}
+                                    />
+                                </div>
+                                <Button onClick={createCoupon}>Create Coupon</Button>
+                                <div className="space-y-2">
+                                    {coupons.length === 0 ? (
+                                        <p className="text-sm text-muted-foreground">No coupons created yet.</p>
+                                    ) : (
+                                        coupons.map((coupon) => (
+                                            <div key={coupon.id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border p-3">
+                                                <div>
+                                                    <div className="font-medium">{coupon.code}</div>
+                                                    <div className="text-xs text-muted-foreground">
+                                                        {coupon.type === 'percent' ? `${coupon.amount}% off` : `₹${coupon.amount} off`} •
+                                                        Min order ₹{coupon.minOrder.toLocaleString()} • Expires {coupon.expiresAt}
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Badge variant={coupon.active ? 'success' : 'secondary'}>
+                                                        {coupon.active ? 'active' : 'inactive'}
+                                                    </Badge>
+                                                    <Button size="sm" variant="outline" onClick={() => toggleCoupon(coupon.id)}>
+                                                        {coupon.active ? 'Disable' : 'Enable'}
+                                                    </Button>
+                                                    <Button size="sm" variant="destructive" onClick={() => deleteCoupon(coupon.id)}>
+                                                        Delete
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        ))
+                                    )}
                                 </div>
                             </CardContent>
                         </Card>

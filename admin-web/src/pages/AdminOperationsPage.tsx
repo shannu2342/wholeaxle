@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { adminApi } from '@/lib/api'
 import { getApiErrorMessage } from '@/lib/errors'
 
@@ -514,30 +515,23 @@ export default function AdminOperationsPage({ initialModule = 'coverage' }: { in
         </div>
       )}
 
-      <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
-        <Card>
-          <CardHeader><CardTitle>Modules</CardTitle></CardHeader>
-          <CardContent className="space-y-2">
+      <div className="space-y-4">
+        <Tabs value={activeModule} onValueChange={(value) => setActiveModule(value as ModuleKey)}>
+          <TabsList className="flex w-full flex-wrap justify-start">
             {MODULES.map((key) => (
-              <Button
-                key={key}
-                variant={activeModule === key ? 'secondary' : 'ghost'}
-                className="w-full justify-start"
-                onClick={() => setActiveModule(key)}
-              >
+              <TabsTrigger key={key} value={key} className="data-[state=active]:bg-primary data-[state=active]:text-white">
                 {MODULE_LABELS[key]}
-              </Button>
+              </TabsTrigger>
             ))}
-          </CardContent>
-        </Card>
-
-        <div className="space-y-3">
-          <div>
-            <h2 className="text-xl font-semibold">{MODULE_LABELS[activeModule]}</h2>
-            <p className="text-sm text-gray-500">{MODULE_DESCRIPTIONS[activeModule]}</p>
-          </div>
-          {renderModule()}
-        </div>
+          </TabsList>
+          <TabsContent value={activeModule} className="mt-4 space-y-3">
+            <div>
+              <h2 className="text-xl font-semibold">{MODULE_LABELS[activeModule]}</h2>
+              <p className="text-sm text-gray-500">{MODULE_DESCRIPTIONS[activeModule]}</p>
+            </div>
+            {renderModule()}
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   )
