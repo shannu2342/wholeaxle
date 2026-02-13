@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import {
     Activity,
     Barcode,
+    BriefcaseBusiness,
     LineChart,
     LogOut,
     Package,
@@ -58,6 +59,7 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: <Package className="h-5 w-5" />, partition: 'overview' },
+    { name: 'Operations', href: '/admin/operations', icon: <BriefcaseBusiness className="h-5 w-5" />, partition: 'overview' },
     { name: 'Brands', href: '/admin/brands', icon: <Shield className="h-5 w-5" />, partition: 'brands' },
     { name: 'Inventory', href: '/admin/inventory', icon: <Barcode className="h-5 w-5" />, partition: 'products' },
     { name: 'Bulk Ops', href: '/admin/bulk', icon: <Upload className="h-5 w-5" />, partition: 'products' },

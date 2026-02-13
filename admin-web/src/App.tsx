@@ -11,6 +11,7 @@ import AdminUsersPage from '@/pages/AdminUsersPage'
 import AdminAuditPage from '@/pages/AdminAuditPage'
 import AdminAdminsPage from '@/pages/AdminAdminsPage'
 import AdminSettingsPage from '@/pages/AdminSettingsPage'
+import AdminOperationsPage from '@/pages/AdminOperationsPage'
 import HomePage from '@/pages/HomePage'
 
 function App() {
@@ -96,6 +97,14 @@ function App() {
                     element={
                         <AdminLayout>
                             <AdminSettingsPage />
+                        </AdminLayout>
+                    }
+                />
+                <Route
+                    path="/admin/operations"
+                    element={
+                        <AdminLayout>
+                            <AdminOperationsPage />
                         </AdminLayout>
                     }
                 />
