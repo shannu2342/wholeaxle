@@ -8,8 +8,12 @@ import { adminApi } from '@/lib/api'
 import { ShieldCheck, Sparkles, TrendingUp, Users2 } from 'lucide-react'
 
 export default function AdminLoginPage() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const testEmail = import.meta.env.VITE_TEST_ADMIN_EMAIL || 'admin@wholexale.com'
+    const testPassword = import.meta.env.VITE_TEST_ADMIN_PASSWORD || 'Password123'
+    const isDev = import.meta.env.DEV
+
+    const [email, setEmail] = useState(isDev ? testEmail : '')
+    const [password, setPassword] = useState(isDev ? testPassword : '')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate()
@@ -144,9 +148,27 @@ export default function AdminLoginPage() {
                                         {error}
                                     </div>
                                 )}
+                                {isDev && (
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        className="h-10 w-full"
+                                        onClick={() => {
+                                            setEmail(testEmail)
+                                            setPassword(testPassword)
+                                        }}
+                                    >
+                                        Use Seeded Test Admin
+                                    </Button>
+                                )}
                                 <Button type="submit" className="h-11 w-full" disabled={loading}>
                                     {loading ? 'Signing in...' : 'Continue to dashboard'}
                                 </Button>
+                                {isDev && (
+                                    <p className="text-center text-[11px] text-gray-500">
+                                        Dev seed: {testEmail} / {testPassword}
+                                    </p>
+                                )}
                                 <p className="text-center text-xs text-gray-500">
                                     Protected by Wholexale security standards.
                                 </p>

@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install --prefix admin-web --no-audit --no-fund",
-  "buildCommand": "npm run build --prefix admin-web",
-  "outputDirectory": "admin-web/out"
+  "installCommand": "npm install --no-audit --no-fund",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
