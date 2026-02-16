@@ -121,6 +121,16 @@ const offerSchema = new mongoose.Schema({
         ],
         default: 'pending'
     },
+    maxVendorCounters: {
+        type: Number,
+        default: 2,
+        min: [0, 'maxVendorCounters cannot be negative']
+    },
+    vendorCounterCount: {
+        type: Number,
+        default: 0,
+        min: [0, 'vendorCounterCount cannot be negative']
+    },
 
     // Timeline
     validity: {
@@ -348,6 +358,11 @@ offerSchema.virtual('daysRemaining').get(function () {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 });
 
+// Virtual for remaining vendor counters
+offerSchema.virtual('remainingVendorCounters').get(function () {
+    return Math.max(0, (this.maxVendorCounters || 2) - (this.vendorCounterCount || 0));
+});
+
 // Pre-save middleware
 offerSchema.pre('save', function (next) {
     // Calculate discount
@@ -370,7 +385,7 @@ offerSchema.pre('save', function (next) {
 
 // Methods
 offerSchema.methods.accept = function (userId, message = '') {
-    if (this.status !== 'pending' && this.status !== 'sent') {
+    if (!['pending', 'sent', 'countered'].includes(this.status)) {
         throw new Error('Offer cannot be accepted in current status');
     }
 
@@ -387,7 +402,7 @@ offerSchema.methods.accept = function (userId, message = '') {
 };
 
 offerSchema.methods.reject = function (userId, message = '') {
-    if (this.status !== 'pending' && this.status !== 'sent') {
+    if (!['pending', 'sent', 'countered'].includes(this.status)) {
         throw new Error('Offer cannot be rejected in current status');
     }
 
@@ -404,16 +419,27 @@ offerSchema.methods.reject = function (userId, message = '') {
 };
 
 offerSchema.methods.counter = function (userId, changes, message = '') {
-    if (this.status !== 'pending' && this.status !== 'sent') {
+    if (!['pending', 'sent', 'countered'].includes(this.status)) {
         throw new Error('Offer cannot be countered in current status');
+    }
+
+    const isSellerCounter = this.seller.toString() === userId.toString();
+    if (isSellerCounter) {
+        const remaining = Math.max(0, (this.maxVendorCounters || 2) - (this.vendorCounterCount || 0));
+        if (remaining <= 0) {
+            const err = new Error('Vendor counter limit reached. Accept or reject the latest buyer offer.');
+            err.code = 'VENDOR_COUNTER_LIMIT_REACHED';
+            throw err;
+        }
+        this.vendorCounterCount += 1;
     }
 
     this.status = 'countered';
 
     // Apply changes
-    if (changes.price) this.pricing.offerPrice = changes.price;
-    if (changes.quantity) this.quantity.requested = changes.quantity;
-    if (changes.description) this.description = changes.description;
+    if (changes?.price !== undefined && changes?.price !== null) this.pricing.offerPrice = changes.price;
+    if (changes?.quantity !== undefined && changes?.quantity !== null) this.quantity.requested = changes.quantity;
+    if (changes?.description) this.description = changes.description;
 
     this.negotiations.push({
         fromUser: userId,

@@ -5,17 +5,14 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
-  Alert,
   StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../constants/Colors';
 import AppHeader from '../components/AppHeader';
-import { useDispatch, useSelector } from 'react-redux';
-import { createOrder } from '../store/slices/orderSlice';
+import { useSelector } from 'react-redux';
 
 const CartScreen = ({ navigation }) => {
-  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth || {});
   const [cartItems, setCartItems] = useState(
     (user?.cartItems || []).slice(0, 2).map((item, index) => ({
@@ -51,27 +48,18 @@ const CartScreen = ({ navigation }) => {
 
   const handleCheckout = async () => {
     if (cartItems.length === 0) return;
-    try {
-      const total = calculateTotal();
-      const orderPayload = {
-        items: orderItems,
-        totalAmount: total,
-        discount: 0,
-        finalAmount: total,
-        paymentMethod: 'cod',
-        paymentStatus: 'pending',
-        shipping: {
-          address: user?.location?.city || 'Pending address',
-        },
-      };
-      await dispatch(createOrder(orderPayload)).unwrap();
-      Alert.alert('Order placed', 'Your order has been created.', [
-        { text: 'OK', onPress: () => navigation.navigate('Orders') },
-      ]);
-      setCartItems([]);
-    } catch (error) {
-      Alert.alert('Checkout failed', error?.message || 'Unable to place order.');
-    }
+
+    navigation.navigate('CheckoutFlow', {
+      cartItems: orderItems,
+      draftAddress: {
+        fullName: user?.fullName || user?.businessName || '',
+        phone: user?.phone || '',
+        line1: user?.address || '',
+        city: user?.location?.city || '',
+        state: user?.location?.state || '',
+        pincode: user?.location?.pincode || '',
+      },
+    });
   };
 
   const renderCartItem = ({ item }) => (

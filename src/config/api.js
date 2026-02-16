@@ -1,13 +1,14 @@
 // API Configuration
-const LOCAL_API_URL = 'http://localhost:8000';
-const PROD_API_URL = 'https://api.wholexale.com';
+const LOCAL_API_URL = global.__LOCAL_API_URL || 'http://localhost:8000';
+const PROD_API_URL = global.__API_BASE_URL || 'http://91.99.219.154:18000';
+const USE_LOCAL_API = global.__USE_LOCAL_API__ === true;
 
-export const API_BASE_URL = __DEV__ || global.__USE_LOCAL_API__
+export const API_BASE_URL = USE_LOCAL_API
     ? LOCAL_API_URL // Local/Dev API URL
     : PROD_API_URL; // Production API URL
 
 // Socket.io Configuration
-export const SOCKET_URL = __DEV__ || global.__USE_LOCAL_API__
+export const SOCKET_URL = USE_LOCAL_API
     ? LOCAL_API_URL
     : PROD_API_URL;
 

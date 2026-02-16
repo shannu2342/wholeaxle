@@ -9,7 +9,9 @@ import { AppProvider } from './src/context/AppContext';
 import ReduxProvider from './src/providers/ReduxProvider';
 import AIProvider from './src/providers/AIProvider';
 
-global.__USE_LOCAL_API__ = true;
+if (typeof global.__USE_LOCAL_API__ !== 'boolean') {
+  global.__USE_LOCAL_API__ = false;
+}
 console.log('Loading App.js...');
 
 // Import category-related components
@@ -74,6 +76,7 @@ import SubcategoryProductsScreen from './src/screens/SubcategoryProductsScreen';
 import OrdersScreen from './src/screens/OrdersScreen';
 import AddressesScreen from './src/screens/AddressesScreen';
 import PaymentMethodsScreen from './src/screens/PaymentMethodsScreen';
+import CheckoutFlowScreen from './src/screens/CheckoutFlowScreen';
 import OffersDealsScreen from './src/screens/OffersDealsScreen';
 import HelpSupportScreen from './src/screens/HelpSupportScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
@@ -389,6 +392,7 @@ function AppInner() {
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="SubcategoryProducts" component={SubcategoryProductsScreen} />
         <Stack.Screen name="Orders" component={OrdersScreen} />
+        <Stack.Screen name="CheckoutFlow" component={CheckoutFlowScreen} />
         <Stack.Screen name="Addresses" component={AddressesScreen} />
         <Stack.Screen name="PaymentMethods" component={PaymentMethodsScreen} />
         <Stack.Screen name="OffersDeals" component={OffersDealsScreen} />

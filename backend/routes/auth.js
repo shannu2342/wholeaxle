@@ -21,7 +21,7 @@ router.post('/register', [
     body('firstName').notEmpty().trim().withMessage('First name is required'),
     body('lastName').notEmpty().trim().withMessage('Last name is required'),
     body('phone').optional().isMobilePhone('any').withMessage('Please enter a valid phone number'),
-    body('businessName').optional().trim().maxlength(100),
+    body('businessName').optional().trim().isLength({ max: 100 }),
     body('businessType').optional().isIn(['manufacturer', 'wholesaler', 'distributor', 'retailer', 'service_provider']),
     body('gstNumber').optional().isLength({ min: 15, max: 15 }).withMessage('Please enter a valid GST number')
 ], asyncHandler(async (req, res) => {
@@ -416,7 +416,7 @@ router.put('/profile', authMiddleware, [
     body('firstName').optional().trim().notEmpty().withMessage('First name cannot be empty'),
     body('lastName').optional().trim().notEmpty().withMessage('Last name cannot be empty'),
     body('phone').optional().isMobilePhone('any').withMessage('Please enter a valid phone number'),
-    body('businessName').optional().trim().maxlength(100),
+    body('businessName').optional().trim().isLength({ max: 100 }),
     body('gstNumber').optional().isLength({ min: 15, max: 15 }).withMessage('Please enter a valid GST number')
 ], asyncHandler(async (req, res) => {
     const errors = validationResult(req);

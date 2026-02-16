@@ -7,6 +7,8 @@ const logger = require('../utils/logger');
 
 const router = express.Router();
 
+const CLOSED_STATUSES = ['accepted', 'rejected', 'withdrawn', 'expired', 'cancelled', 'completed'];
+
 // @route   GET /api/offers
 // @desc    Get user's offers
 // @access  Private
@@ -67,6 +69,67 @@ router.get('/', [
             totalCount: total,
             hasNext: page * limit < total,
             hasPrev: page > 1
+        }
+    });
+}));
+
+// @route   GET /api/offers/analytics/summary
+// @desc    Get offer analytics summary
+// @access  Private
+router.get('/analytics/summary', asyncHandler(async (req, res) => {
+    const userId = req.userId;
+
+    // Get stats for offers sent
+    const sentStats = await Offer.aggregate([
+        { $match: { buyer: userId, isDeleted: false } },
+        {
+            $group: {
+                _id: '$status',
+                count: { $sum: 1 },
+                totalValue: { $sum: '$pricing.offerPrice' }
+            }
+        }
+    ]);
+
+    // Get stats for offers received
+    const receivedStats = await Offer.aggregate([
+        { $match: { seller: userId, isDeleted: false } },
+        {
+            $group: {
+                _id: '$status',
+                count: { $sum: 1 },
+                totalValue: { $sum: '$pricing.offerPrice' }
+            }
+        }
+    ]);
+
+    // Calculate response rate
+    const totalSent = await Offer.countDocuments({ buyer: userId, isDeleted: false });
+    const respondedSent = await Offer.countDocuments({
+        buyer: userId,
+        status: { $in: ['accepted', 'rejected', 'countered'] },
+        isDeleted: false
+    });
+
+    const totalReceived = await Offer.countDocuments({ seller: userId, isDeleted: false });
+    const respondedReceived = await Offer.countDocuments({
+        seller: userId,
+        status: { $in: ['accepted', 'rejected', 'countered'] },
+        isDeleted: false
+    });
+
+    res.json({
+        sent: {
+            total: totalSent,
+            responded: respondedSent,
+            responseRate: totalSent > 0 ? (respondedSent / totalSent * 100).toFixed(2) : 0,
+            stats: sentStats
+        },
+        received: {
+            total: totalReceived,
+            responded: respondedReceived,
+            responseRate: totalReceived > 0 ? (respondedReceived / totalReceived * 100).toFixed(2) : 0,
+            stats: receivedStats
         }
     });
 }));
@@ -140,7 +203,16 @@ router.post('/', [
 
     const offerData = {
         ...req.body,
-        buyer: req.userId
+        buyer: req.userId,
+        negotiations: [
+            {
+                fromUser: req.userId,
+                toUser: req.body.seller,
+                action: 'sent',
+                message: req.body.description || '',
+                timestamp: new Date()
+            }
+        ]
     };
 
     // Check if seller is valid (not the same as buyer)
@@ -194,12 +266,41 @@ router.put('/:offerId/respond', [
         });
     }
 
-    // Check if user is the seller
-    if (offer.seller.toString() !== req.userId.toString()) {
+    const userId = req.userId.toString();
+    const isBuyer = offer.buyer.toString() === userId;
+    const isSeller = offer.seller.toString() === userId;
+
+    if (!isBuyer && !isSeller) {
         return res.status(403).json({
-            error: 'Only the seller can respond to this offer',
+            error: 'You are not allowed to respond to this offer',
             code: 'UNAUTHORIZED'
         });
+    }
+
+    if (CLOSED_STATUSES.includes(offer.status)) {
+        return res.status(400).json({
+            error: `Offer is already ${offer.status} and cannot be updated`,
+            code: 'OFFER_CLOSED'
+        });
+    }
+
+    const lastNegotiation = offer.negotiations?.[offer.negotiations.length - 1];
+    const isInitialOffer = offer.status === 'pending' || offer.status === 'sent';
+
+    if (action === 'counter') {
+        if (isInitialOffer && !isSeller) {
+            return res.status(403).json({
+                error: 'Only the seller can counter the initial buyer offer',
+                code: 'INITIAL_COUNTER_SELLER_ONLY'
+            });
+        }
+
+        if (lastNegotiation?.action === 'countered' && String(lastNegotiation.fromUser) === userId) {
+            return res.status(400).json({
+                error: 'Wait for the other party to respond before countering again',
+                code: 'WAIT_FOR_COUNTER_RESPONSE'
+            });
+        }
     }
 
     let updatedOffer;
@@ -218,9 +319,10 @@ router.put('/:offerId/respond', [
                 throw new Error('Invalid action');
         }
     } catch (error) {
+        const code = error?.code || 'INVALID_ACTION';
         return res.status(400).json({
             error: error.message,
-            code: 'INVALID_ACTION'
+            code
         });
     }
 
@@ -228,7 +330,7 @@ router.put('/:offerId/respond', [
     await updatedOffer.populate('buyer', 'firstName lastName businessName avatar');
     await updatedOffer.populate('seller', 'firstName lastName businessName avatar');
 
-    logger.info(`Offer ${offerId} ${action}ed by user ${req.userId}`);
+    logger.info(`Offer ${offerId} action=${action} by user ${req.userId}`);
 
     res.json({
         message: `Offer ${action}ed successfully`,
@@ -284,67 +386,6 @@ router.put('/:offerId/withdraw', [
     res.json({
         message: 'Offer withdrawn successfully',
         offer: offer.toJSON()
-    });
-}));
-
-// @route   GET /api/offers/analytics/summary
-// @desc    Get offer analytics summary
-// @access  Private
-router.get('/analytics/summary', asyncHandler(async (req, res) => {
-    const userId = req.userId;
-
-    // Get stats for offers sent
-    const sentStats = await Offer.aggregate([
-        { $match: { buyer: userId, isDeleted: false } },
-        {
-            $group: {
-                _id: '$status',
-                count: { $sum: 1 },
-                totalValue: { $sum: '$pricing.offerPrice' }
-            }
-        }
-    ]);
-
-    // Get stats for offers received
-    const receivedStats = await Offer.aggregate([
-        { $match: { seller: userId, isDeleted: false } },
-        {
-            $group: {
-                _id: '$status',
-                count: { $sum: 1 },
-                totalValue: { $sum: '$pricing.offerPrice' }
-            }
-        }
-    ]);
-
-    // Calculate response rate
-    const totalSent = await Offer.countDocuments({ buyer: userId, isDeleted: false });
-    const respondedSent = await Offer.countDocuments({
-        buyer: userId,
-        status: { $in: ['accepted', 'rejected', 'countered'] },
-        isDeleted: false
-    });
-
-    const totalReceived = await Offer.countDocuments({ seller: userId, isDeleted: false });
-    const respondedReceived = await Offer.countDocuments({
-        seller: userId,
-        status: { $in: ['accepted', 'rejected', 'countered'] },
-        isDeleted: false
-    });
-
-    res.json({
-        sent: {
-            total: totalSent,
-            responded: respondedSent,
-            responseRate: totalSent > 0 ? (respondedSent / totalSent * 100).toFixed(2) : 0,
-            stats: sentStats
-        },
-        received: {
-            total: totalReceived,
-            responded: respondedReceived,
-            responseRate: totalReceived > 0 ? (respondedReceived / totalReceived * 100).toFixed(2) : 0,
-            stats: receivedStats
-        }
     });
 }));
 

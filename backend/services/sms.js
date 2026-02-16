@@ -1,13 +1,22 @@
 const twilio = require('twilio');
 const logger = require('../utils/logger');
 
-// Initialize Twilio client
-const client = twilio(
-    process.env.TWILIO_ACCOUNT_SID,
-    process.env.TWILIO_AUTH_TOKEN
+// Initialize Twilio client lazily and safely so missing SMS creds don't crash backend startup.
+const hasTwilioConfig = Boolean(
+    process.env.TWILIO_ACCOUNT_SID &&
+    process.env.TWILIO_AUTH_TOKEN &&
+    process.env.TWILIO_PHONE_NUMBER
 );
-
+const client = hasTwilioConfig
+    ? twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN)
+    : null;
 const fromNumber = process.env.TWILIO_PHONE_NUMBER;
+
+const smsProviderUnavailable = (to = null) => ({
+    success: false,
+    error: 'SMS provider is not configured',
+    to
+});
 
 // SMS templates
 const templates = {
@@ -65,6 +74,11 @@ const templates = {
 // Send SMS function
 const sendSMS = async (to, template, data = {}) => {
     try {
+        if (!client || !fromNumber) {
+            logger.warn('SMS send skipped: Twilio is not configured.');
+            return smsProviderUnavailable(to);
+        }
+
         // Format phone number
         const formattedPhone = formatPhoneNumber(to);
 
@@ -144,6 +158,11 @@ const sendBulkSMS = async (smsList) => {
 // Send SMS with custom message
 const sendCustomSMS = async (to, message) => {
     try {
+        if (!client || !fromNumber) {
+            logger.warn('Custom SMS skipped: Twilio is not configured.');
+            return smsProviderUnavailable(to);
+        }
+
         const formattedPhone = formatPhoneNumber(to);
 
         const result = await client.messages.create({
@@ -175,6 +194,13 @@ const sendCustomSMS = async (to, message) => {
 // Get SMS status
 const getSMSStatus = async (messageId) => {
     try {
+        if (!client) {
+            return {
+                success: false,
+                error: 'SMS provider is not configured'
+            };
+        }
+
         const message = await client.messages(messageId).fetch();
 
         return {

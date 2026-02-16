@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
 const logger = require('../utils/logger');
+const { findUserById } = require('../services/authUserService');
 
 const authMiddleware = async (req, res, next) => {
     try {
@@ -14,7 +14,7 @@ const authMiddleware = async (req, res, next) => {
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await User.findById(decoded.id).select('-password');
+        const user = await findUserById(decoded.id);
 
         if (!user) {
             return res.status(401).json({
@@ -31,7 +31,7 @@ const authMiddleware = async (req, res, next) => {
         }
 
         req.user = user;
-        req.userId = user._id;
+        req.userId = String(user.id || user._id);
         req.userRole = user.role;
         next();
     } catch (error) {
@@ -94,11 +94,11 @@ const optionalAuth = async (req, res, next) => {
 
         if (token) {
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            const user = await User.findById(decoded.id).select('-password');
+            const user = await findUserById(decoded.id);
 
             if (user && user.isActive) {
                 req.user = user;
-                req.userId = user._id;
+                req.userId = String(user.id || user._id);
                 req.userRole = user.role;
             }
         }

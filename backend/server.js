@@ -14,13 +14,16 @@ const { initializeDatabase } = require('./config/database');
 
 // Import middleware
 const { authMiddleware } = require('./middleware/auth');
-const errorHandler = require('./middleware/errorHandler');
+const { errorHandler } = require('./middleware/errorHandler');
 const logger = require('./utils/logger');
 
 // Import routes
-const authRoutes = require('./routes/auth');
+const authRoutes = (process.env.AUTH_DB || 'mongo').toLowerCase() === 'mysql'
+    ? require('./routes/auth.mysql')
+    : require('./routes/auth');
 const chatRoutes = require('./routes/chat');
 const offersRoutes = require('./routes/offers');
+const checkoutRoutes = require('./routes/checkout');
 const financeRoutes = require('./routes/finance');
 const systemRoutes = require('./routes/system');
 const adminRoutes = require('./routes/admin');
@@ -32,6 +35,7 @@ const categoryRoutes = require('./routes/categories');
 const orderRoutes = require('./routes/orders');
 const locationRoutes = require('./routes/location');
 const returnRoutes = require('./routes/returns');
+const logisticsRoutes = require('./routes/logistics');
 const affiliateRoutes = require('./routes/affiliate');
 const marketingRoutes = require('./routes/marketing');
 const analyticsRoutes = require('./routes/analytics');
@@ -125,6 +129,7 @@ const startServer = async () => {
         app.use('/api/auth', authRoutes);
         app.use('/api/chat', authMiddleware, chatRoutes);
         app.use('/api/offers', authMiddleware, offersRoutes);
+        app.use('/api/checkout', authMiddleware, checkoutRoutes);
         app.use('/api/finance', authMiddleware, financeRoutes);
         app.use('/api/system', authMiddleware, systemRoutes);
         app.use('/api/admin', authMiddleware, adminRoutes);
@@ -136,6 +141,7 @@ const startServer = async () => {
         app.use('/api/orders', orderRoutes);
         app.use('/api/location', locationRoutes);
         app.use('/api/returns', returnRoutes);
+        app.use('/api/logistics', logisticsRoutes);
         app.use('/api/affiliate', affiliateRoutes);
         app.use('/api/marketing', marketingRoutes);
         app.use('/api/analytics', analyticsRoutes);
@@ -163,13 +169,13 @@ const startServer = async () => {
                 const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
                 // Get user from database
-                const User = require('./models/User');
-                const user = await User.findById(decoded.id);
+                const { findUserById } = require('./services/authUserService');
+                const user = await findUserById(decoded.id);
                 if (!user || !user.isActive) {
                     return next(new Error('User not found or inactive'));
                 }
 
-                socket.userId = user._id;
+                socket.userId = String(user.id || user._id);
                 socket.userRole = user.role;
                 socket.user = user;
                 next();

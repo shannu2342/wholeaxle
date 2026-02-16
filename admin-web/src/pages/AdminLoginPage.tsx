@@ -8,9 +8,9 @@ import { adminApi } from '@/lib/api'
 import { ShieldCheck, Sparkles, TrendingUp, Users2 } from 'lucide-react'
 
 export default function AdminLoginPage() {
-    const demoEnabled = String(import.meta.env.VITE_DEMO_LOGIN ?? 'true').toLowerCase() !== 'false'
+    const demoEnabled = String(import.meta.env.VITE_DEMO_LOGIN ?? 'false').toLowerCase() !== 'false'
     const testEmail = import.meta.env.VITE_TEST_ADMIN_EMAIL || 'admin@wholexale.com'
-    const testPassword = import.meta.env.VITE_TEST_ADMIN_PASSWORD || 'Password123'
+    const testPassword = import.meta.env.VITE_TEST_ADMIN_PASSWORD || ''
     const isDev = import.meta.env.DEV
 
     const [email, setEmail] = useState(isDev ? testEmail : '')

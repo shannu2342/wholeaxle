@@ -1,13 +1,19 @@
 const mongoose = require('mongoose');
 const { Sequelize } = require('sequelize');
 const logger = require('../utils/logger');
+const { initializeMySQL } = require('./mysql');
 
 // MongoDB connection
 const connectMongoDB = async () => {
+    if (!process.env.MONGODB_URI) {
+        throw new Error('MONGODB_URI is not set');
+    }
+
     try {
         const conn = await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            serverSelectionTimeoutMS: parseInt(process.env.MONGO_SERVER_SELECTION_TIMEOUT_MS || '5000', 10),
         });
 
         logger.info(`MongoDB Connected: ${conn.connection.host}`);
@@ -28,12 +34,17 @@ const connectMongoDB = async () => {
         return conn;
     } catch (error) {
         logger.error('MongoDB connection failed:', error);
-        process.exit(1);
+        throw error;
     }
 };
 
 // PostgreSQL connection using Sequelize
 const connectPostgreSQL = async () => {
+    if (!process.env.POSTGRES_URI) {
+        logger.info('POSTGRES_URI not set, skipping PostgreSQL connection');
+        return null;
+    }
+
     try {
         const sequelize = new Sequelize(process.env.POSTGRES_URI, {
             dialect: 'postgres',
@@ -70,7 +81,7 @@ const connectPostgreSQL = async () => {
         return sequelize;
     } catch (error) {
         logger.error('PostgreSQL connection failed:', error);
-        process.exit(1);
+        throw error;
     }
 };
 
@@ -127,9 +138,34 @@ const connectRedis = async () => {
 const initializeDatabase = async () => {
     try {
         logger.info('Initializing database connections...');
+        const authDbMode = (process.env.AUTH_DB || 'mongo').toLowerCase();
 
-        // Connect to MongoDB (primary database)
-        const mongoConnection = await connectMongoDB();
+        let mongoConnection = null;
+        let mysqlConnection = null;
+
+        // Keep MongoDB connected for non-auth marketplace modules unless explicitly unavailable.
+        if (process.env.MONGODB_URI) {
+            try {
+                mongoConnection = await connectMongoDB();
+            } catch (error) {
+                if (authDbMode === 'mysql') {
+                    logger.warn(`MongoDB unavailable in AUTH_DB=mysql mode: ${error.message}. Continuing with auth-only MySQL mode.`);
+                } else {
+                    throw error;
+                }
+            }
+        } else if (authDbMode !== 'mysql') {
+            throw new Error('MONGODB_URI is required when AUTH_DB is not mysql');
+        } else {
+            logger.warn('MONGODB_URI not set while AUTH_DB=mysql. Non-auth Mongo-backed modules may fail.');
+        }
+
+        if (authDbMode === 'mysql') {
+            mysqlConnection = await initializeMySQL();
+            logger.info('Auth DB mode: mysql');
+        } else {
+            logger.info('Auth DB mode: mongo');
+        }
 
         // Connect to PostgreSQL (for complex queries and analytics)
         let postgresConnection = null;
@@ -151,6 +187,7 @@ const initializeDatabase = async () => {
 
         return {
             mongo: mongoConnection,
+            mysql: mysqlConnection,
             postgres: postgresConnection,
             redis: redisConnection
         };
@@ -169,6 +206,11 @@ const closeDatabaseConnections = async (connections) => {
         if (connections.mongo) {
             await mongoose.connection.close();
             logger.info('MongoDB connection closed');
+        }
+
+        if (connections.mysql) {
+            await connections.mysql.close();
+            logger.info('MySQL connection closed');
         }
 
         // Close PostgreSQL connection
@@ -193,6 +235,7 @@ const closeDatabaseConnections = async (connections) => {
 const checkDatabaseHealth = async (connections) => {
     const health = {
         mongodb: false,
+        mysql: false,
         postgresql: false,
         redis: false,
         timestamp: new Date().toISOString()
@@ -215,6 +258,16 @@ const checkDatabaseHealth = async (connections) => {
             health.postgresql = true;
         } catch (error) {
             logger.error('PostgreSQL health check failed:', error);
+        }
+    }
+
+    // Check MySQL
+    if (connections.mysql) {
+        try {
+            await connections.mysql.authenticate();
+            health.mysql = true;
+        } catch (error) {
+            logger.error('MySQL health check failed:', error);
         }
     }
 

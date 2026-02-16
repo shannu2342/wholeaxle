@@ -3,8 +3,37 @@ const { body, validationResult } = require('express-validator');
 const Return = require('../models/Return');
 const { asyncHandler } = require('../middleware/errorHandler');
 const { authMiddleware } = require('../middleware/auth');
+const logger = require('../utils/logger');
+const delhivery = require('../services/delhivery');
 
 const router = express.Router();
+
+const toBoolean = (value) => {
+    if (typeof value === 'boolean') return value;
+    if (typeof value === 'number') return value === 1;
+    if (typeof value !== 'string') return false;
+    return ['1', 'true', 'yes', 'on'].includes(value.toLowerCase());
+};
+
+const buildDefaultDelhiveryPickupPayload = ({ returnRequest, body, trackingNumber }) => {
+    const pickupDate = body.date || body.scheduledDate || body.preferredDate;
+    const pickupTime = body.timeSlot || body.scheduledTime || body.preferredTime;
+
+    return {
+        pickup_date: pickupDate,
+        pickup_time: pickupTime,
+        pickup_location: body.pickupLocation || process.env.DELHIVERY_PICKUP_LOCATION || '',
+        contact_name: body.contactPerson || '',
+        contact_phone: body.contactPhone || '',
+        shipments: [
+            {
+                waybill: trackingNumber,
+                return_id: String(returnRequest._id),
+                order_id: returnRequest.orderId ? String(returnRequest.orderId) : undefined,
+            },
+        ],
+    };
+};
 
 // @route   GET /api/returns
 // @desc    List returns
@@ -113,21 +142,172 @@ router.post('/:id/pickup', authMiddleware, asyncHandler(async (req, res) => {
         return res.status(404).json({ error: 'Return request not found' });
     }
 
+    let trackingNumber = req.body.trackingNumber || `TRK${Date.now()}`;
+    const courierPartner = String(req.body.courierPartner || '').toLowerCase();
+    const useDelhivery = courierPartner === 'delhivery'
+        || toBoolean(req.body.useDelhivery)
+        || toBoolean(req.body.useProvider);
+
+    let providerIntegration = null;
+
+    if (useDelhivery) {
+        if (!delhivery.isConfigured()) {
+            return res.status(503).json({
+                error: 'Delhivery integration is not configured',
+                code: 'DELHIVERY_NOT_CONFIGURED',
+            });
+        }
+
+        providerIntegration = { provider: 'delhivery' };
+
+        try {
+            const shouldAllocateWaybill = toBoolean(req.body.allocateWaybill);
+            if (shouldAllocateWaybill || !req.body.trackingNumber) {
+                const waybillData = await delhivery.allocateWaybills(1);
+                const allocated = delhivery.extractWaybill(waybillData);
+
+                if (allocated) {
+                    trackingNumber = allocated;
+                }
+
+                providerIntegration.waybill = {
+                    allocated: Boolean(allocated),
+                    trackingNumber,
+                    raw: waybillData,
+                };
+            }
+
+            const shipmentPayload = req.body.providerShipmentPayload || req.body.delhiveryShipmentPayload;
+            const pickupPayload = req.body.providerPickupPayload || req.body.delhiveryPickupPayload;
+            const shouldCreateShipment = toBoolean(req.body.createShipmentWithProvider) || Boolean(shipmentPayload);
+            const shouldCreatePickup = toBoolean(req.body.schedulePickupWithProvider) || Boolean(pickupPayload);
+
+            if (shouldCreateShipment) {
+                const payload = shipmentPayload || {
+                    shipments: [{ waybill: trackingNumber, return_id: String(returnRequest._id) }],
+                };
+                const shipmentResult = await delhivery.createShipment(payload);
+                providerIntegration.shipment = {
+                    created: true,
+                    raw: shipmentResult,
+                };
+
+                const providerWaybill = delhivery.extractWaybill(shipmentResult);
+                if (providerWaybill) {
+                    trackingNumber = providerWaybill;
+                }
+            }
+
+            if (shouldCreatePickup) {
+                const payload = pickupPayload || buildDefaultDelhiveryPickupPayload({
+                    returnRequest,
+                    body: req.body,
+                    trackingNumber,
+                });
+                const pickupResult = await delhivery.createPickupRequest(payload);
+                providerIntegration.pickup = {
+                    created: true,
+                    raw: pickupResult,
+                };
+            }
+
+            if (!shouldCreateShipment && !shouldCreatePickup) {
+                providerIntegration.note = 'Delhivery enabled. No providerShipmentPayload/providerPickupPayload supplied, so only local pickup was scheduled.';
+            }
+        } catch (error) {
+            logger.error('Delhivery pickup integration failed:', error);
+            return res.status(error.statusCode || 502).json({
+                error: error.message || 'Delhivery request failed',
+                code: 'DELHIVERY_REQUEST_FAILED',
+                provider: 'delhivery',
+                action: error.action,
+                details: error.providerData || undefined,
+            });
+        }
+    }
+
     returnRequest.pickupDetails = {
         ...(returnRequest.pickupDetails || {}),
         ...req.body,
+        required: req.body.required !== undefined
+            ? toBoolean(req.body.required)
+            : (returnRequest.pickupDetails?.required ?? true),
+        preferredDate: req.body.preferredDate || req.body.date || returnRequest.pickupDetails?.preferredDate,
+        preferredTime: req.body.preferredTime || req.body.timeSlot || returnRequest.pickupDetails?.preferredTime,
+        scheduledDate: req.body.scheduledDate || req.body.date || returnRequest.pickupDetails?.scheduledDate,
+        scheduledTime: req.body.scheduledTime || req.body.timeSlot || returnRequest.pickupDetails?.scheduledTime,
         status: 'scheduled',
-        trackingNumber: req.body.trackingNumber || `TRK${Date.now()}`,
+        trackingNumber,
     };
 
+    returnRequest.status = returnRequest.status || 'pickup_scheduled';
     returnRequest.timeline.push({
         status: 'pickup_scheduled',
         timestamp: new Date(),
-        description: 'Pickup scheduled',
+        description: useDelhivery
+            ? `Pickup scheduled${trackingNumber ? ` (Delhivery: ${trackingNumber})` : ' via Delhivery'}`
+            : 'Pickup scheduled',
     });
 
     await returnRequest.save();
-    res.json({ pickup: returnRequest.pickupDetails, returnRequest: { ...returnRequest.toObject(), id: returnRequest._id } });
+    res.json({
+        pickup: returnRequest.pickupDetails,
+        providerIntegration,
+        returnRequest: { ...returnRequest.toObject(), id: returnRequest._id },
+    });
+}));
+
+// @route   GET /api/returns/:id/tracking
+// @desc    Get tracking details for a return shipment
+// @access  Private
+router.get('/:id/tracking', authMiddleware, asyncHandler(async (req, res) => {
+    const returnRequest = await Return.findById(req.params.id).lean();
+    if (!returnRequest) {
+        return res.status(404).json({ error: 'Return request not found' });
+    }
+
+    const trackingNumber = returnRequest?.pickupDetails?.trackingNumber;
+    const courierPartner = String(returnRequest?.pickupDetails?.courierPartner || '').toLowerCase();
+
+    if (!trackingNumber) {
+        return res.status(400).json({
+            error: 'Tracking number is not available for this return',
+            code: 'NO_TRACKING_NUMBER',
+        });
+    }
+
+    if (courierPartner === 'delhivery') {
+        if (!delhivery.isConfigured()) {
+            return res.status(503).json({
+                error: 'Delhivery integration is not configured',
+                code: 'DELHIVERY_NOT_CONFIGURED',
+            });
+        }
+
+        try {
+            const tracking = await delhivery.trackShipment({ waybill: trackingNumber });
+            return res.json({
+                provider: 'delhivery',
+                trackingNumber,
+                tracking,
+            });
+        } catch (error) {
+            logger.error('Delhivery tracking error:', error);
+            return res.status(error.statusCode || 502).json({
+                error: error.message || 'Delhivery tracking failed',
+                code: 'DELHIVERY_TRACKING_FAILED',
+                provider: 'delhivery',
+                action: error.action,
+                details: error.providerData || undefined,
+            });
+        }
+    }
+
+    return res.json({
+        provider: courierPartner || 'unknown',
+        trackingNumber,
+        message: 'Tracking integration is not configured for this courier partner',
+    });
 }));
 
 // @route   POST /api/returns/:id/quality-check
