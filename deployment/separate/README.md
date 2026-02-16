@@ -46,6 +46,20 @@ If you do not have sudo/root package access for MongoDB, use the user-space runt
 bash deployment/separate/setup-user-mongodb.sh
 ```
 
+## 2.1) Lock Node Runtime to v20 (Required)
+
+`deploy-separate.sh` now enforces Node 20+ and will fail on Node 18.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
+nvm install 20
+nvm alias default 20
+nvm use 20
+node -v
+```
+
 ## 3) Initialize MySQL User/Database
 
 ```bash
@@ -117,6 +131,7 @@ sudo certbot --nginx -d admin2.example.com
 curl http://127.0.0.1:18000/health
 curl -I http://admin2.example.com/admin/login
 bash deployment/separate/smoke-test.sh
+bash deployment/separate/check-api-keys.sh
 ```
 
 Optional: validate seeded admin login in smoke test
@@ -156,6 +171,18 @@ Set mobile production API URL before APK/IPA release:
 
 ```bash
 bash deployment/separate/set-mobile-api.sh https://admin2.example.com
+```
+
+You can also wire Google geocoding key in the same command:
+
+```bash
+bash deployment/separate/set-mobile-api.sh https://admin2.example.com YOUR_GOOGLE_GEOCODING_KEY
+```
+
+For full mobile wiring and key checklist, use:
+
+```bash
+cat deployment/separate/MOBILE_SETUP_CHECKLIST.md
 ```
 
 Then rebuild Android/iOS app.

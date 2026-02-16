@@ -19,6 +19,17 @@ FRONTEND_URL="${FRONTEND_URL:-https://$APP_DOMAIN}"
 ADMIN_SEED_ON_DEPLOY="${ADMIN_SEED_ON_DEPLOY:-false}"
 ADMIN_SEED_RESET_PASSWORD="${ADMIN_SEED_RESET_PASSWORD:-false}"
 
+# Prefer user-level Node from nvm when available.
+if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
+  # shellcheck source=/dev/null
+  source "$HOME/.nvm/nvm.sh"
+  if nvm ls 20 >/dev/null 2>&1; then
+    nvm use 20 >/dev/null
+  elif nvm alias default >/dev/null 2>&1; then
+    nvm use default >/dev/null || true
+  fi
+fi
+
 mkdir -p "$RUNTIME_DIR"
 
 required_vars=(
@@ -65,7 +76,11 @@ fi
 
 NODE_MAJOR="$(node -v | sed -E 's/^v([0-9]+).*/\1/')"
 if [[ "$NODE_MAJOR" -lt 20 ]]; then
-  echo "Warning: Node $(node -v) detected. Node 20+ is recommended for this repo."
+  echo "Error: Node $(node -v) detected. Node 20+ is required."
+  echo "Install user-level Node 20 with:"
+  echo "  curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
+  echo "  export NVM_DIR=\"\$HOME/.nvm\" && source \"\$NVM_DIR/nvm.sh\" && nvm install 20 && nvm alias default 20"
+  exit 1
 fi
 
 echo "Installing backend dependencies..."

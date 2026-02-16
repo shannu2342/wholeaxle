@@ -31,8 +31,8 @@ This file lists external integrations found in the current codebase and their st
 4. Google Maps Geocoding API (Mobile App)
 - Purpose: reverse geocoding / forward geocoding in mobile location flows.
 - Required key: Google Maps Geocoding API key.
-- Current status: key is not env-driven; code currently initializes with `null`.
-- Code: `src/services/GeoLocationService.js`, `src/store/slices/locationSlice.js`.
+- Current status: key is wired via `src/config/api.js` (`GOOGLE_GEOCODING_API_KEY`) and can be updated with `deployment/separate/set-mobile-api.sh`.
+- Code: `src/services/GeoLocationService.js`, `src/config/api.js`, `src/store/slices/locationSlice.js`.
 
 5. Legacy Category Preference API (Mobile App)
 - Purpose: sync category preference to a remote API.
@@ -129,7 +129,8 @@ Based on `deployment/separate/.env` at audit time:
 - `WEBHOOK_SECRET`.
 
 5. Missing for Google Geocoding in mobile
-- Google Maps API key assignment in `src/services/GeoLocationService.js`.
+- `GOOGLE_GEOCODING_API_KEY` in `deployment/separate/.env` and apply it with:
+  `bash deployment/separate/set-mobile-api.sh <api-base-url> "$GOOGLE_GEOCODING_API_KEY"`.
 
 ## Notes
 
