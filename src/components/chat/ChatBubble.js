@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
     View,
     Text,
@@ -9,10 +9,45 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../constants/Colors';
+import { getVendorCounterMeta, getOfferStatusColor } from '../../store/slices/offersSlice';
+
+const resolveMessageType = (message) => {
+    if (!message) return 'text';
+    if (message.messageType) return message.messageType;
+    if (message.type) return message.type;
+    if (message.isSystemMessage) return 'system';
+    return 'text';
+};
+
+const getSystemConfig = (type) => {
+    switch (type) {
+        case 'delivery_attempt':
+        case 'delivery_attempted':
+            return { icon: 'local-shipping', color: '#FF9800', title: 'Delivery Attempted' };
+        case 'rto':
+        case 'rto_marked':
+            return { icon: 'warning', color: '#F44336', title: 'Order Marked RTO' };
+        case 'credit_note':
+            return { icon: 'description', color: '#2196F3', title: 'Credit Note Generated' };
+        default:
+            return { icon: 'info', color: Colors.info, title: 'System Update' };
+    }
+};
 
 const ChatBubble = ({ message, isOwn, vendorAvatar }) => {
     const [showActions, setShowActions] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const messageType = resolveMessageType(message);
+    const isSystemMessage = messageType === 'system';
+
+    const offerMeta = useMemo(() => {
+        const rawOffer =
+            message?.offerData ||
+            message?.offer ||
+            (typeof message?.content === 'object' ? message?.content?.offer : null) ||
+            {};
+        const counterMeta = getVendorCounterMeta(rawOffer);
+        return { rawOffer, counterMeta };
+    }, [message]);
 
     const formatTime = (timestamp) => {
         try {
@@ -24,6 +59,7 @@ const ChatBubble = ({ message, isOwn, vendorAvatar }) => {
     };
 
     const handleMessagePress = () => {
+        if (isSystemMessage) return;
         setShowActions(!showActions);
     };
 
@@ -42,48 +78,118 @@ const ChatBubble = ({ message, isOwn, vendorAvatar }) => {
         setShowActions(false);
     };
 
+    const renderOfferMessage = () => {
+        const { rawOffer, counterMeta } = offerMeta;
+        const status = rawOffer.status || 'pending';
+        const statusColor = getOfferStatusColor(status);
+        const quantity = rawOffer.quantity || rawOffer.qty || rawOffer?.quantityRequested;
+        const unitPrice = rawOffer.unitPrice || rawOffer.price || rawOffer?.pricing?.offerPrice;
+        const total = quantity && unitPrice ? Number(quantity) * Number(unitPrice) : null;
+        const description =
+            (typeof message.content === 'string' ? message.content : null) ||
+            rawOffer.description ||
+            rawOffer.title ||
+            'Negotiation update';
+
+        return (
+            <View style={styles.offerContainer}>
+                <View style={styles.offerHeader}>
+                    <View style={styles.offerHeaderLeft}>
+                        <Icon name="local-offer" size={16} color={Colors.white} />
+                        <Text style={styles.offerHeaderTitle}>Offer</Text>
+                    </View>
+                    <View style={[styles.offerStatusBadge, { backgroundColor: statusColor }]}>
+                        <Text style={styles.offerStatusText}>{String(status).toUpperCase()}</Text>
+                    </View>
+                </View>
+
+                <Text style={styles.offerContent}>{description}</Text>
+
+                {(quantity || unitPrice) && (
+                    <View style={styles.offerDetails}>
+                        {quantity ? (
+                            <Text style={styles.offerDetailText}>Qty: {quantity}</Text>
+                        ) : null}
+                        {unitPrice ? (
+                            <Text style={styles.offerDetailText}>Unit: ₹{unitPrice}</Text>
+                        ) : null}
+                        {total ? (
+                            <Text style={styles.offerDetailText}>Total: ₹{total}</Text>
+                        ) : null}
+                    </View>
+                )}
+
+                <View style={styles.counterMetaRow}>
+                    <Text style={styles.counterMetaText}>
+                        Counters used: {counterMeta.used}/{counterMeta.max}
+                    </Text>
+                    <Text
+                        style={[
+                            styles.counterMetaText,
+                            counterMeta.remaining === 0 ? styles.counterMetaTextDanger : styles.counterMetaTextInfo
+                        ]}
+                    >
+                        {counterMeta.remaining > 0
+                            ? `${counterMeta.remaining} counter left`
+                            : 'Max vendor counter limit reached'}
+                    </Text>
+                </View>
+            </View>
+        );
+    };
+
+    const renderSystemMessage = () => {
+        const payload = typeof message.content === 'object' ? message.content : {};
+        const systemType = payload?.type || message.systemType || 'info';
+        const config = getSystemConfig(systemType);
+        const title = payload?.title || message.title || config.title;
+        const body = payload?.body || (typeof message.content === 'string' ? message.content : '');
+        const amount = payload?.meta?.amount;
+
+        return (
+            <View style={styles.systemMessageContainer}>
+                <View style={styles.systemHeader}>
+                    <Icon name={config.icon} size={16} color={config.color} />
+                    <Text style={[styles.systemTitle, { color: config.color }]}>{title}</Text>
+                </View>
+                {body ? <Text style={styles.systemBody}>{body}</Text> : null}
+                {amount ? (
+                    <Text style={styles.systemMeta}>Amount: ₹{amount}</Text>
+                ) : null}
+            </View>
+        );
+    };
+
     const renderMessageContent = () => {
-        switch (message.type) {
+        switch (messageType) {
             case 'image':
                 return (
                     <View style={styles.imageContainer}>
                         <Image
                             source={{ uri: message.content }}
                             style={styles.messageImage}
-                            onLoadEnd={() => setImageLoaded(true)}
                         />
-                        {message.caption && (
+                        {message.caption ? (
                             <Text style={styles.imageCaption}>{message.caption}</Text>
-                        )}
+                        ) : null}
                     </View>
                 );
 
             case 'offer':
-                return (
-                    <View style={styles.offerContainer}>
-                        <View style={styles.offerHeader}>
-                            <Icon name="card-giftcard" size={16} color={Colors.warning} />
-                            <Text style={styles.offerTitle}>Special Offer</Text>
-                        </View>
-                        <Text style={styles.offerContent}>{message.content}</Text>
-                        {message.offerData && (
-                            <View style={styles.offerDetails}>
-                                <Text style={styles.offerPrice}>₹{message.offerData.price}</Text>
-                                <Text style={styles.offerValidity}>Valid till {message.offerData.validity}</Text>
-                            </View>
-                        )}
-                    </View>
-                );
+                return renderOfferMessage();
+
+            case 'system':
+                return renderSystemMessage();
 
             case 'location':
                 return (
                     <View style={styles.locationContainer}>
                         <Icon name="location-on" size={16} color={Colors.danger} />
                         <View style={styles.locationContent}>
-                            <Text style={styles.locationTitle}>📍 {message.content}</Text>
-                            {message.locationData && (
+                            <Text style={styles.locationTitle}>{message.content}</Text>
+                            {message.locationData ? (
                                 <Text style={styles.locationAddress}>{message.locationData.address}</Text>
-                            )}
+                            ) : null}
                         </View>
                     </View>
                 );
@@ -93,8 +199,8 @@ const ChatBubble = ({ message, isOwn, vendorAvatar }) => {
                     <View style={styles.fileContainer}>
                         <Icon name="insert-drive-file" size={20} color={Colors.primary} />
                         <View style={styles.fileContent}>
-                            <Text style={styles.fileName}>{message.fileName}</Text>
-                            <Text style={styles.fileSize}>{message.fileSize}</Text>
+                            <Text style={styles.fileName}>{message.fileName || 'Attachment'}</Text>
+                            <Text style={styles.fileSize}>{message.fileSize || 'Unknown size'}</Text>
                         </View>
                         <TouchableOpacity style={styles.downloadButton}>
                             <Icon name="download" size={16} color={Colors.primary} />
@@ -102,18 +208,29 @@ const ChatBubble = ({ message, isOwn, vendorAvatar }) => {
                     </View>
                 );
 
-            default:
+            default: {
+                const contentText =
+                    typeof message.content === 'string'
+                        ? message.content
+                        : message?.content?.text || 'Message';
+
                 return (
                     <Text style={[styles.messageText, isOwn ? styles.ownMessageText : styles.otherMessageText]}>
-                        {message.content}
+                        {contentText}
                     </Text>
                 );
+            }
         }
     };
 
     return (
-        <View style={[styles.container, isOwn ? styles.ownContainer : styles.otherContainer]}>
-            {!isOwn && (
+        <View
+            style={[
+                styles.container,
+                isSystemMessage ? styles.systemContainer : (isOwn ? styles.ownContainer : styles.otherContainer),
+            ]}
+        >
+            {!isOwn && !isSystemMessage ? (
                 <View style={styles.avatarContainer}>
                     {vendorAvatar ? (
                         <Image source={{ uri: vendorAvatar }} style={styles.avatar} />
@@ -123,10 +240,17 @@ const ChatBubble = ({ message, isOwn, vendorAvatar }) => {
                         </View>
                     )}
                 </View>
-            )}
+            ) : null}
 
-            <View style={[styles.bubble, isOwn ? styles.ownBubble : styles.otherBubble]}>
-                <TouchableOpacity onPress={handleMessagePress} activeOpacity={0.8}>
+            <View
+                style={[
+                    styles.bubble,
+                    isSystemMessage
+                        ? styles.systemBubble
+                        : (isOwn ? styles.ownBubble : styles.otherBubble),
+                ]}
+            >
+                <TouchableOpacity onPress={handleMessagePress} activeOpacity={0.85}>
                     {renderMessageContent()}
 
                     <View style={styles.messageFooter}>
@@ -134,23 +258,23 @@ const ChatBubble = ({ message, isOwn, vendorAvatar }) => {
                             {formatTime(message.timestamp)}
                         </Text>
 
-                        {isOwn && (
+                        {isOwn && !isSystemMessage ? (
                             <View style={styles.statusIcons}>
-                                {message.status === 'sent' && (
+                                {message.status === 'sent' ? (
                                     <Icon name="check" size={12} color={Colors.mediumGray} />
-                                )}
-                                {message.status === 'delivered' && (
+                                ) : null}
+                                {message.status === 'delivered' ? (
                                     <Icon name="done-all" size={12} color={Colors.mediumGray} />
-                                )}
-                                {message.status === 'read' && (
+                                ) : null}
+                                {message.status === 'read' ? (
                                     <Icon name="done-all" size={12} color={Colors.primary} />
-                                )}
+                                ) : null}
                             </View>
-                        )}
+                        ) : null}
                     </View>
                 </TouchableOpacity>
 
-                {showActions && (
+                {showActions && !isSystemMessage ? (
                     <View
                         style={[
                             styles.actionMenu,
@@ -170,7 +294,7 @@ const ChatBubble = ({ message, isOwn, vendorAvatar }) => {
                             <Text style={styles.actionText}>Copy</Text>
                         </TouchableOpacity>
                     </View>
-                )}
+                ) : null}
             </View>
         </View>
     );
@@ -187,6 +311,9 @@ const styles = StyleSheet.create({
     },
     otherContainer: {
         justifyContent: 'flex-start',
+    },
+    systemContainer: {
+        justifyContent: 'center',
     },
     avatarContainer: {
         marginRight: 8,
@@ -210,7 +337,7 @@ const styles = StyleSheet.create({
         color: Colors.text.secondary,
     },
     bubble: {
-        maxWidth: '75%',
+        maxWidth: '78%',
         borderRadius: 16,
         padding: 12,
         elevation: 1,
@@ -226,6 +353,15 @@ const styles = StyleSheet.create({
     otherBubble: {
         backgroundColor: Colors.white,
         borderBottomLeftRadius: 4,
+    },
+    systemBubble: {
+        backgroundColor: '#f7fbff',
+        borderWidth: 1,
+        borderColor: '#d9ebff',
+        borderBottomLeftRadius: 12,
+        borderBottomRightRadius: 12,
+        width: '90%',
+        maxWidth: '90%',
     },
     messageText: {
         fontSize: 16,
@@ -243,8 +379,8 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     messageImage: {
-        width: 200,
-        height: 150,
+        width: 220,
+        height: 160,
         resizeMode: 'cover',
     },
     imageCaption: {
@@ -254,41 +390,92 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     offerContainer: {
-        backgroundColor: Colors.warningLight,
-        borderRadius: 8,
-        padding: 12,
+        backgroundColor: '#fffaf0',
+        borderRadius: 10,
+        padding: 10,
         borderLeftWidth: 3,
         borderLeftColor: Colors.warning,
     },
     offerHeader: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 8,
     },
-    offerTitle: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        color: Colors.warning,
-        marginLeft: 6,
+    offerHeaderLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+    },
+    offerHeaderTitle: {
+        color: Colors.text.primary,
+        fontSize: 13,
+        fontWeight: '700',
+    },
+    offerStatusBadge: {
+        borderRadius: 10,
+        paddingHorizontal: 8,
+        paddingVertical: 3,
+    },
+    offerStatusText: {
+        color: Colors.white,
+        fontSize: 10,
+        fontWeight: '700',
     },
     offerContent: {
-        fontSize: 14,
+        fontSize: 13,
         color: Colors.text.primary,
         marginBottom: 8,
     },
     offerDetails: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: 10,
+        marginBottom: 8,
     },
-    offerPrice: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: Colors.text.primary,
-    },
-    offerValidity: {
+    offerDetailText: {
         fontSize: 12,
         color: Colors.text.secondary,
+        fontWeight: '600',
+    },
+    counterMetaRow: {
+        borderTopWidth: 1,
+        borderTopColor: '#f0e4cc',
+        paddingTop: 8,
+        gap: 2,
+    },
+    counterMetaText: {
+        fontSize: 11,
+        color: Colors.text.secondary,
+    },
+    counterMetaTextInfo: {
+        color: Colors.primary,
+        fontWeight: '600',
+    },
+    counterMetaTextDanger: {
+        color: Colors.danger,
+        fontWeight: '700',
+    },
+    systemMessageContainer: {
+        gap: 6,
+    },
+    systemHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+    },
+    systemTitle: {
+        fontSize: 13,
+        fontWeight: '700',
+    },
+    systemBody: {
+        fontSize: 12,
+        color: Colors.text.secondary,
+    },
+    systemMeta: {
+        fontSize: 12,
+        fontWeight: '600',
+        color: Colors.text.primary,
     },
     locationContainer: {
         flexDirection: 'row',
@@ -340,7 +527,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
-        marginTop: 4,
+        marginTop: 6,
     },
     timestamp: {
         fontSize: 11,
@@ -358,7 +545,7 @@ const styles = StyleSheet.create({
     },
     actionMenu: {
         position: 'absolute',
-        bottom: -40,
+        bottom: -42,
         backgroundColor: Colors.white,
         borderRadius: 8,
         padding: 8,

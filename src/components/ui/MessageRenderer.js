@@ -16,13 +16,13 @@ const MessageRenderer = memo(({
     const renderMessageContent = () => {
         switch (message.type) {
             case 'offer':
-                return <OfferBubble offer={message.content} />;
+                return <OfferBubble message={message} isOwn={isOwn} />;
 
             case 'settlement':
                 return <SettlementBubble settlement={message.content} />;
 
             case 'system':
-                return <SystemMessage content={message.content} />;
+                return <SystemMessage event={message.content || message.event || message} compact />;
 
             case 'financial':
                 return <CreditAwareChat content={message.content} />;

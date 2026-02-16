@@ -231,8 +231,17 @@ const chatSlice = createSlice({
                 const conversation = state.conversations.find(conv => conv.id === chatId);
 
                 if (conversation) {
+                    const hasMessageIds = Array.isArray(messageIds) && messageIds.length > 0;
                     conversation.messages.forEach(msg => {
-                        if (messageIds.includes(msg.id)) {
+                        if (hasMessageIds) {
+                            if (messageIds.includes(msg.id)) {
+                                msg.read = true;
+                            }
+                            return;
+                        }
+
+                        // If messageIds are not provided, mark all messages from others as read.
+                        if (msg.senderId !== state.userId) {
                             msg.read = true;
                         }
                     });

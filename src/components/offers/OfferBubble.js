@@ -18,7 +18,8 @@ import {
     canAcceptOffer,
     canRejectOffer,
     canCounterOffer,
-    getOfferStatusColor
+    getOfferStatusColor,
+    getVendorCounterMeta
 } from '../../store/slices/offersSlice';
 import OfferCard from './OfferCard';
 import OfferActions from './OfferActions';
@@ -43,6 +44,7 @@ const OfferBubble = ({
     // Find the offer data
     const offerData = message.offerData || offers.find(o => o.id === message.offerId);
     const offer = offerData || message.offer;
+    const counterMeta = getVendorCounterMeta(offer || {});
 
     if (!offer) {
         // Fallback to basic offer rendering if no offer data
@@ -208,16 +210,16 @@ const OfferBubble = ({
             )}
 
             {/* Timestamp and Counter Info */}
-            <View style={styles.offerFooter}>
-                <Text style={styles.timestamp}>
-                    {formatTime(offer.createdAt)}
-                </Text>
-                {offer.counterOfferCount > 0 && (
+                <View style={styles.offerFooter}>
+                    <Text style={styles.timestamp}>
+                        {formatTime(offer.createdAt)}
+                    </Text>
+                {counterMeta.used > 0 && (
                     <Text style={styles.counterCount}>
-                        {offer.counterOfferCount} counter{offer.counterOfferCount > 1 ? 's' : ''}
+                        {counterMeta.used} counter{counterMeta.used > 1 ? 's' : ''}
                     </Text>
                 )}
-            </View>
+                </View>
         </View>
     );
 
@@ -269,9 +271,16 @@ const OfferBubble = ({
                             >
                                 <Icon name="swap-horiz" size={16} color={COLORS.WHITE} />
                                 <Text style={styles.actionButtonText}>
-                                    Counter ({2 - offer.counterOfferCount} left)
+                                    Counter ({counterMeta.remaining} left)
                                 </Text>
                             </TouchableOpacity>
+                        )}
+
+                        {!canCounterOffer(offer) && counterMeta.max > 0 && counterMeta.remaining === 0 && (
+                            <View style={[styles.actionButton, styles.counterLimitButton]}>
+                                <Icon name="block" size={16} color={COLORS.GRAY_500} />
+                                <Text style={styles.counterLimitText}>Max limit reached</Text>
+                            </View>
                         )}
 
                         {canRejectOffer(offer) && (
@@ -595,6 +604,11 @@ const styles = StyleSheet.create({
     counterButton: {
         backgroundColor: COLORS.PRIMARY,
     },
+    counterLimitButton: {
+        backgroundColor: COLORS.GRAY_100,
+        borderWidth: 1,
+        borderColor: COLORS.GRAY_300,
+    },
     rejectButton: {
         backgroundColor: COLORS.ERROR,
     },
@@ -602,6 +616,12 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: '600',
         color: COLORS.WHITE,
+        marginLeft: 4,
+    },
+    counterLimitText: {
+        fontSize: 12,
+        fontWeight: '600',
+        color: COLORS.GRAY_600,
         marginLeft: 4,
     },
     quickActionsMenu: {

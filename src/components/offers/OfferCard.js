@@ -19,6 +19,7 @@ import {
     canAcceptOffer,
     canRejectOffer,
     canCounterOffer,
+    getVendorCounterMeta,
 } from '../../store/slices/offersSlice';
 import OfferStatusIndicator from './OfferStatusIndicator';
 import OfferActions from './OfferActions';
@@ -33,6 +34,7 @@ const OfferCard = ({ offer, isOwn, vendorAvatar, onClose, onAction }) => {
     const dispatch = useDispatch();
     const { user } = useSelector(state => state.auth);
     const { offers } = useSelector(state => state.offers);
+    const counterMeta = getVendorCounterMeta(offer || {});
 
     const formatTime = (timestamp) => {
         try {
@@ -233,11 +235,11 @@ const OfferCard = ({ offer, isOwn, vendorAvatar, onClose, onAction }) => {
                     </View>
                 )}
 
-                {offer.counterOfferCount > 0 && (
+                {counterMeta.used > 0 && (
                     <View style={styles.metadataRow}>
                         <Text style={styles.metadataLabel}>Counter Offers:</Text>
                         <Text style={styles.metadataValue}>
-                            {offer.counterOfferCount} of 2 used
+                            {counterMeta.used} of {counterMeta.max} used
                         </Text>
                     </View>
                 )}
@@ -328,9 +330,16 @@ const OfferCard = ({ offer, isOwn, vendorAvatar, onClose, onAction }) => {
                         >
                             <Icon name="swap-horiz" size={20} color={COLORS.WHITE} />
                             <Text style={styles.actionButtonText}>
-                                Make Counter Offer ({2 - offer.counterOfferCount} left)
+                                Make Counter Offer ({counterMeta.remaining} left)
                             </Text>
                         </TouchableOpacity>
+                    )}
+
+                    {!canCounterOffer(offer) && counterMeta.max > 0 && counterMeta.remaining === 0 && (
+                        <View style={[styles.actionButton, styles.counterLimitButton]}>
+                            <Icon name="block" size={20} color={COLORS.GRAY_500} />
+                            <Text style={styles.counterLimitText}>Vendor counter limit reached</Text>
+                        </View>
                     )}
 
                     {canRejectOffer(offer) && (
@@ -368,7 +377,7 @@ const OfferCard = ({ offer, isOwn, vendorAvatar, onClose, onAction }) => {
                 {renderOfferMetadata()}
                 {renderActionButtons()}
 
-                {offer.counterOfferCount > 0 && (
+                {counterMeta.used > 0 && (
                     <View style={styles.historySection}>
                         <TouchableOpacity
                             style={styles.historyButton}
@@ -626,6 +635,11 @@ const styles = StyleSheet.create({
     counterButton: {
         backgroundColor: COLORS.PRIMARY,
     },
+    counterLimitButton: {
+        backgroundColor: COLORS.GRAY_100,
+        borderWidth: 1,
+        borderColor: COLORS.GRAY_300,
+    },
     rejectButton: {
         backgroundColor: COLORS.ERROR,
     },
@@ -633,6 +647,11 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '600',
         color: COLORS.WHITE,
+    },
+    counterLimitText: {
+        fontSize: 13,
+        fontWeight: '600',
+        color: COLORS.GRAY_600,
     },
     historySection: {
         marginBottom: 32,

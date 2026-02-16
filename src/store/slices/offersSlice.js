@@ -428,22 +428,33 @@ export const selectOffersLoading = (state) => state.offers.loading;
 export const selectOffersError = (state) => state.offers.error;
 
 // Utility functions
+export const getVendorCounterMeta = (offer = {}) => {
+    const max = Number(offer.maxVendorCounters ?? 2);
+    const used = Number(offer.vendorCounterCount ?? offer.counterOfferCount ?? 0);
+    const safeMax = Number.isFinite(max) && max >= 0 ? max : 2;
+    const safeUsed = Number.isFinite(used) && used >= 0 ? used : 0;
+    return {
+        max: safeMax,
+        used: safeUsed,
+        remaining: Math.max(0, safeMax - safeUsed),
+    };
+};
+
 export const canCounterOffer = (offer) => {
-    return offer &&
-        offer.status === OFFER_STATES.PENDING &&
-        offer.counterOfferCount < 2 &&
-        !offer.isExpired;
+    if (!offer || offer.isExpired) return false;
+    const { remaining } = getVendorCounterMeta(offer);
+    return ['pending', 'sent', 'countered'].includes(offer.status) && remaining > 0;
 };
 
 export const canAcceptOffer = (offer) => {
     return offer &&
-        offer.status === OFFER_STATES.PENDING &&
+        ['pending', 'sent', 'countered'].includes(offer.status) &&
         !offer.isExpired;
 };
 
 export const canRejectOffer = (offer) => {
     return offer &&
-        (offer.status === OFFER_STATES.PENDING || offer.status === OFFER_STATES.COUNTERED) &&
+        ['pending', 'sent', 'countered'].includes(offer.status) &&
         !offer.isExpired;
 };
 

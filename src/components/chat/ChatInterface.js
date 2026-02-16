@@ -28,23 +28,31 @@ const ChatInterface = ({ route, navigation }) => {
     const dispatch = useDispatch();
     const { conversations = [] } = useSelector(state => state.chat || {});
     const user = useSelector(state => state.auth?.user);
+    const token = useSelector(state => state.auth?.token);
 
     const currentConversation = conversations.find(conv => conv.vendorId === vendorId);
 
     useEffect(() => {
         if (currentConversation) {
+            const unreadMessageIds = (currentConversation.messages || [])
+                .filter((msg) => !msg.read && String(msg.senderId || msg.sender) !== String(user?.id || user?._id))
+                .map((msg) => msg.id);
+
             // Mark messages as read when opening chat
-            dispatch(markAsRead({ chatId: currentConversation.id }));
+            dispatch(markAsRead({ chatId: currentConversation.id, messageIds: unreadMessageIds }));
         }
-    }, [currentConversation, dispatch]);
+    }, [currentConversation, dispatch, user?.id, user?._id]);
 
     const handleSendMessage = () => {
-        if (message.trim() && user) {
+        if (message.trim() && user && token) {
             dispatch(sendMessage({
                 chatId: currentConversation?.id || vendorId,
                 vendorId,
-                message: message.trim(),
-                senderId: user?.id,
+                conversationId: currentConversation?.id,
+                content: message.trim(),
+                messageType: 'text',
+                token,
+                senderId: user?.id || user?._id,
                 timestamp: new Date().toISOString(),
             }));
             setMessage('');
@@ -58,7 +66,7 @@ const ChatInterface = ({ route, navigation }) => {
     const renderMessage = ({ item }) => (
         <ChatBubble
             message={item}
-            isOwn={item.senderId === user?.id}
+            isOwn={String(item.senderId || item.sender) === String(user?.id || user?._id)}
             vendorAvatar={vendorAvatar}
         />
     );
@@ -87,7 +95,7 @@ const ChatInterface = ({ route, navigation }) => {
                     ref={flatListRef}
                     data={currentConversation?.messages || []}
                     renderItem={renderMessage}
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item, index) => item.id || item._id || `${item.timestamp || 'msg'}-${index}`}
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={styles.messagesList}
                     onContentSizeChange={() => flatListRef.current?.scrollToEnd()}

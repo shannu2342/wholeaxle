@@ -9,11 +9,13 @@ import {
     canAcceptOffer,
     canRejectOffer,
     canCounterOffer,
+    getVendorCounterMeta,
 } from '../../store/slices/offersSlice';
 
 const OfferActions = ({ offer, onActionComplete, style }) => {
     const dispatch = useDispatch();
     const { user } = useSelector(state => state.auth);
+    const counterMeta = getVendorCounterMeta(offer || {});
 
     const handleAcceptOffer = async () => {
         Alert.alert(
@@ -120,9 +122,16 @@ const OfferActions = ({ offer, onActionComplete, style }) => {
 
             {canCounterOffer(offer) && renderActionButton(
                 'swap-horiz',
-                `Counter (${2 - offer.counterOfferCount} left)`,
+                `Counter (${counterMeta.remaining} left)`,
                 handleCounterOffer,
                 'counter'
+            )}
+
+            {!canCounterOffer(offer) && counterMeta.max > 0 && counterMeta.remaining === 0 && (
+                <View style={[styles.actionButton, styles.counterLimitButton]}>
+                    <Icon name="block" size={16} color={COLORS.GRAY_500} />
+                    <Text style={styles.counterLimitButtonText}>Max limit reached</Text>
+                </View>
             )}
 
             {canRejectOffer(offer) && renderActionButton(
@@ -164,6 +173,10 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.PRIMARY,
         borderColor: COLORS.PRIMARY,
     },
+    counterLimitButton: {
+        borderColor: COLORS.GRAY_300,
+        backgroundColor: COLORS.GRAY_100,
+    },
     actionButtonText: {
         fontSize: 12,
         fontWeight: '600',
@@ -178,6 +191,12 @@ const styles = StyleSheet.create({
     },
     counterButtonText: {
         color: COLORS.WHITE,
+    },
+    counterLimitButtonText: {
+        color: COLORS.GRAY_600,
+        fontSize: 12,
+        fontWeight: '600',
+        marginLeft: 4,
     },
 });
 
