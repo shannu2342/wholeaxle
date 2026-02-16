@@ -24,6 +24,12 @@ const parsePartitions = (value) => {
     return partitions.length > 0 ? partitions : DEFAULT_PARTITIONS;
 };
 
+const parseBoolean = (value, defaultValue = false) => {
+    if (value === undefined || value === null || value === '') return defaultValue;
+    const normalized = String(value).trim().toLowerCase();
+    return ['1', 'true', 'yes', 'y', 'on'].includes(normalized);
+};
+
 const seedConfig = () => {
     const role = String(process.env.ADMIN_SEED_ROLE || 'admin').toLowerCase();
     if (!['admin', 'super_admin'].includes(role)) {
@@ -38,6 +44,7 @@ const seedConfig = () => {
         phone: String(process.env.ADMIN_SEED_PHONE || '9000000003'),
         role,
         partitions: role === 'super_admin' ? ['*'] : parsePartitions(process.env.ADMIN_SEED_PARTITIONS),
+        resetPassword: parseBoolean(process.env.ADMIN_SEED_RESET_PASSWORD, false),
     };
 };
 
@@ -51,9 +58,8 @@ const seedMongoAdmin = async (cfg) => {
         useUnifiedTopology: true,
     });
 
-    const payload = {
+    const basePayload = {
         email: cfg.email,
-        password: cfg.password,
         firstName: cfg.firstName,
         lastName: cfg.lastName,
         phone: cfg.phone,
@@ -67,15 +73,30 @@ const seedMongoAdmin = async (cfg) => {
 
     const existing = await User.findOne({ email: cfg.email }).select('+password');
     if (!existing) {
-        await User.create(payload);
+        await User.create({
+            ...basePayload,
+            password: cfg.password,
+        });
         console.log(`Created mongo admin user: ${cfg.email} (${cfg.role})`);
+        await mongoose.disconnect();
+        return { created: true, passwordReset: true };
     } else {
-        Object.assign(existing, payload);
+        const updatePayload = { ...basePayload };
+        if (cfg.resetPassword) {
+            updatePayload.password = cfg.password;
+        }
+
+        Object.assign(existing, updatePayload);
         await existing.save();
-        console.log(`Updated mongo admin user: ${cfg.email} (${cfg.role})`);
+        if (cfg.resetPassword) {
+            console.log(`Updated mongo admin user: ${cfg.email} (${cfg.role}) with password reset`);
+        } else {
+            console.log(`Updated mongo admin user profile: ${cfg.email} (${cfg.role}); password unchanged`);
+        }
     }
 
     await mongoose.disconnect();
+    return { created: false, passwordReset: cfg.resetPassword };
 };
 
 const seedMySQLAdmin = async (cfg) => {
@@ -86,7 +107,6 @@ const seedMySQLAdmin = async (cfg) => {
 
     const payload = {
         email: cfg.email,
-        passwordHash,
         firstName: cfg.firstName,
         lastName: cfg.lastName,
         phone: cfg.phone,
@@ -102,32 +122,47 @@ const seedMySQLAdmin = async (cfg) => {
 
     const existing = await AuthUser.findOne({ where: { email: cfg.email } });
     if (!existing) {
-        await AuthUser.create(payload);
+        await AuthUser.create({
+            ...payload,
+            passwordHash,
+        });
         console.log(`Created mysql admin user: ${cfg.email} (${cfg.role})`);
+        await getMySQLSequelize().close();
+        return { created: true, passwordReset: true };
     } else {
-        await existing.update(payload);
-        console.log(`Updated mysql admin user: ${cfg.email} (${cfg.role})`);
+        const updatePayload = {
+            ...payload,
+            ...(cfg.resetPassword ? { passwordHash } : {}),
+        };
+        await existing.update(updatePayload);
+        if (cfg.resetPassword) {
+            console.log(`Updated mysql admin user: ${cfg.email} (${cfg.role}) with password reset`);
+        } else {
+            console.log(`Updated mysql admin user profile: ${cfg.email} (${cfg.role}); password unchanged`);
+        }
     }
 
     await getMySQLSequelize().close();
+    return { created: false, passwordReset: cfg.resetPassword };
 };
 
 const run = async () => {
     const mode = String(process.env.AUTH_DB || 'mongo').toLowerCase();
     const cfg = seedConfig();
 
-    if (mode === 'mysql') {
-        await seedMySQLAdmin(cfg);
-    } else {
-        await seedMongoAdmin(cfg);
-    }
+    const result = mode === 'mysql'
+        ? await seedMySQLAdmin(cfg)
+        : await seedMongoAdmin(cfg);
 
     console.log(`Login email: ${cfg.email}`);
-    console.log(`Login password: ${cfg.password}`);
+    if (result.created || result.passwordReset) {
+        console.log(`Login password: ${cfg.password}`);
+    } else {
+        console.log('Login password: unchanged (set ADMIN_SEED_RESET_PASSWORD=true to rotate)');
+    }
 };
 
 run().catch((error) => {
     console.error('Admin seed failed:', error.message);
     process.exit(1);
 });
-

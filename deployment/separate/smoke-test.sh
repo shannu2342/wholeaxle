@@ -53,7 +53,12 @@ if [[ "$categories_status" == "500" ]]; then
   exit 1
 fi
 
-if [[ -n "${ADMIN_SEED_EMAIL:-}" && -n "${ADMIN_SEED_PASSWORD:-}" ]]; then
+if [[ "${ADMIN_SEED_ASSERT_LOGIN:-false}" == "true" ]]; then
+  if [[ -z "${ADMIN_SEED_EMAIL:-}" || -z "${ADMIN_SEED_PASSWORD:-}" ]]; then
+    echo "ADMIN_SEED_ASSERT_LOGIN=true requires ADMIN_SEED_EMAIL and ADMIN_SEED_PASSWORD in $ENV_FILE"
+    exit 1
+  fi
+
   echo "Checking seeded admin auth flow..."
   login_payload="{\"email\":\"${ADMIN_SEED_EMAIL}\",\"password\":\"${ADMIN_SEED_PASSWORD}\"}"
   login_response="$(curl -sS -X POST "http://127.0.0.1:${BACKEND_PORT}/api/auth/login" -H 'Content-Type: application/json' -d "$login_payload")"

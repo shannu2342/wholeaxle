@@ -16,6 +16,8 @@ fi
 source "$ENV_FILE"
 ADMIN_MODE="${ADMIN_MODE:-static}"
 FRONTEND_URL="${FRONTEND_URL:-https://$APP_DOMAIN}"
+ADMIN_SEED_ON_DEPLOY="${ADMIN_SEED_ON_DEPLOY:-false}"
+ADMIN_SEED_RESET_PASSWORD="${ADMIN_SEED_RESET_PASSWORD:-false}"
 
 mkdir -p "$RUNTIME_DIR"
 
@@ -154,14 +156,20 @@ if [[ "$healthy" != "true" ]]; then
   exit 1
 fi
 
-if [[ -n "${ADMIN_SEED_EMAIL:-}" && -n "${ADMIN_SEED_PASSWORD:-}" ]]; then
-  echo "Seeding admin account: $ADMIN_SEED_EMAIL ($AUTH_DB)"
+if [[ "$ADMIN_SEED_ON_DEPLOY" == "true" ]]; then
+  if [[ -z "${ADMIN_SEED_EMAIL:-}" || -z "${ADMIN_SEED_PASSWORD:-}" ]]; then
+    echo "ADMIN_SEED_ON_DEPLOY=true requires ADMIN_SEED_EMAIL and ADMIN_SEED_PASSWORD in $ENV_FILE"
+    exit 1
+  fi
+
+  echo "Seeding admin account on deploy: $ADMIN_SEED_EMAIL ($AUTH_DB)"
   ADMIN_SEED_EMAIL="$ADMIN_SEED_EMAIL" \
   ADMIN_SEED_PASSWORD="$ADMIN_SEED_PASSWORD" \
   ADMIN_SEED_ROLE="${ADMIN_SEED_ROLE:-admin}" \
   ADMIN_SEED_FIRST_NAME="${ADMIN_SEED_FIRST_NAME:-Admin}" \
   ADMIN_SEED_LAST_NAME="${ADMIN_SEED_LAST_NAME:-Demo}" \
   ADMIN_SEED_PHONE="${ADMIN_SEED_PHONE:-9000000003}" \
+  ADMIN_SEED_RESET_PASSWORD="$ADMIN_SEED_RESET_PASSWORD" \
   AUTH_DB="$AUTH_DB" \
   MONGODB_URI="${MONGODB_URI:-}" \
   MYSQL_HOST="${MYSQL_HOST:-}" \
@@ -170,6 +178,8 @@ if [[ -n "${ADMIN_SEED_EMAIL:-}" && -n "${ADMIN_SEED_PASSWORD:-}" ]]; then
   MYSQL_USER="${MYSQL_USER:-}" \
   MYSQL_PASSWORD="${MYSQL_PASSWORD:-}" \
   npm --prefix "$ROOT_DIR/backend" run seed:admin
+else
+  echo "Skipping admin seeding on deploy (ADMIN_SEED_ON_DEPLOY=false)"
 fi
 
 if [[ "$ADMIN_MODE" == "preview" ]]; then

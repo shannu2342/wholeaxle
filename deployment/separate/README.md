@@ -76,8 +76,16 @@ Seeded admin credentials come from `.env`:
 - Email: `ADMIN_SEED_EMAIL`
 - Password: `ADMIN_SEED_PASSWORD` (set a strong value)
 
-When `ADMIN_SEED_EMAIL` and `ADMIN_SEED_PASSWORD` are set in `deployment/separate/.env`,
-`deploy-separate.sh` will auto-seed/update the admin account during deploy.
+Auto-seeding during deploy is disabled by default.
+To enable it explicitly:
+- `ADMIN_SEED_ON_DEPLOY=true`
+- `ADMIN_SEED_EMAIL=...`
+- `ADMIN_SEED_PASSWORD=...`
+
+To rotate password during deploy seeding, also set:
+- `ADMIN_SEED_RESET_PASSWORD=true`
+
+If `ADMIN_SEED_RESET_PASSWORD=false` (default), existing admin password is kept unchanged.
 
 The deploy script builds admin web to:
 - `deployment/separate/runtime/admin-dist`
@@ -108,6 +116,13 @@ sudo certbot --nginx -d admin2.example.com
 ```bash
 curl http://127.0.0.1:18000/health
 curl -I http://admin2.example.com/admin/login
+bash deployment/separate/smoke-test.sh
+```
+
+Optional: validate seeded admin login in smoke test
+
+```bash
+export ADMIN_SEED_ASSERT_LOGIN=true
 bash deployment/separate/smoke-test.sh
 ```
 
