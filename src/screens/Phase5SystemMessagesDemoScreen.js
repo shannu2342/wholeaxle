@@ -20,7 +20,7 @@ import BizUpdates from '../components/system/BizUpdates';
 import SmartListingsChip from '../components/system/SmartListingsChip';
 import WebhookManager from '../components/system/WebhookManager';
 import DocumentManager from '../components/system/docs/DocumentManager';
-import LogisticsIntegration from '../components/system/logs/LogisticsIntegration';
+import LogisticsIntegration from '../components/system/LogisticsIntegration';
 import NotificationActions from '../components/system/NotificationActions';
 import { fetchSystemEvents, addEvent } from '../store/slices/systemSlice';
 

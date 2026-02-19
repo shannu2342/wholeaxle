@@ -39,6 +39,15 @@ subprojects { subproject ->
   // Ensure androidx.activity APIs used by react-native-image-picker are available on its compile classpath.
   subproject.afterEvaluate {
     if (subproject.plugins.hasPlugin("com.android.library") || subproject.plugins.hasPlugin("com.android.application")) {
+      def androidExt = subproject.extensions.findByName("android")
+      if (androidExt != null && rootProject.ext.has("compileSdkVersion")) {
+        // Force all modules to use the project compile SDK. Some third-party modules hardcode 35.
+        androidExt.compileSdkVersion rootProject.ext.compileSdkVersion
+      }
+      if (androidExt != null && androidExt.hasProperty("defaultConfig") && rootProject.ext.has("targetSdkVersion")) {
+        androidExt.defaultConfig.targetSdkVersion rootProject.ext.targetSdkVersion
+      }
+
       subproject.dependencies {
         add("implementation", "androidx.activity:activity:1.7.2")
       }
